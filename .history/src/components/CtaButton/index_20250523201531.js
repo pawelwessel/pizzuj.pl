@@ -1,0 +1,55 @@
+"use client";
+import React from "react";
+export default function CtaButton() {
+  const [inputOpen, setInputOpen] = React.useState(false);
+  const [name, setName] = React.useState("");
+  const [phone, setPhone] = React.useState("");
+  return (
+    <div className="golden flex flex-col items-center justify-center w-max max-w-full mx-auto px-8 rounded-md py-12">
+      <button
+        onClick={() => setInputOpen(true)}
+        className="mx-auto block p-3 px-6 rounded-md bg-[#ec7308] text-white font-bold"
+      >
+        Poproś o wycenę
+      </button>
+      {inputOpen && (
+        <div className="flex flex-col items-center justify-center mt-4">
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="np. Pizzeria XYZ"
+            className="text-black border-2 border-white p-2 rounded-md"
+          />
+          <input
+            type="text"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            placeholder="+48 000 000 000"
+            className="text-black border-2 border-white p-2 rounded-md mt-2"
+          />
+          <input
+            type="text"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            placeholder="pizzeria@example.com"
+            className="text-black border-2 border-white p-2 rounded-md mt-2"
+          />
+          <button
+            onClick={() => {
+              alert(
+                `Dziękujemy ${name}, skontaktujemy się z Tobą pod numerem ${phone}!`
+              );
+              setInputOpen(false);
+              setName("");
+              setPhone("");
+            }}
+            className="mt-2 p-2 px-4 bg-[#ec7308] text-white rounded-md"
+          >
+            Wyślij
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
