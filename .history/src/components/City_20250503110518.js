@@ -5,16 +5,13 @@ export default function City({ city }) {
   const [places, setPlaces] = useState([]);
   const pathname = usePathname();
   async function getPlace() {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_LINK}/api/getTextPlaces/`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ search: city }),
-      }
-    ).then((res) => res.json());
+    const response = await fetch(`http://localhost:3000/api/getTextPlaces/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ search: city }),
+    }).then((res) => res.json());
     return response;
   }
 
