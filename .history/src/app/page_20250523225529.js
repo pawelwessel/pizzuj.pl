@@ -135,7 +135,7 @@ export default function Page() {
           />
           <p className="text-left mt-6 text-3xl">O naszej ofercie...</p>
         </div>
-        <div className="h-px w-24 golden mt-2" />
+        <div className="h-px w-24 golden mt-2"></div>
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 lg:gap-12 mt-6">
           <div className="flex w-full mt-4 items-center lg:justify-center lg:flex-col">
             <FaCheckCircle className="text-[#ffa920] w-9 h-9 lg:w-24 lg:h-24" />

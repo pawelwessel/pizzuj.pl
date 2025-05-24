@@ -5,8 +5,7 @@ import Image from "next/image";
 import pizza from "../../public/assets/pizza.png";
 import accent from "../../public/assets/asset6.png";
 import accent1 from "../../public/assets/asset7.png";
-import accent2 from "../../public/assets/asset4.png";
-import { FaMagnifyingGlass } from "react-icons/fa6";
+import { FaCheck, FaMagnifyingGlass } from "react-icons/fa6";
 import CtaButton from "../components/CtaButton";
 import { FaCheckCircle } from "react-icons/fa";
 
@@ -111,7 +110,7 @@ export default function Page() {
         <Image
           src={pizza}
           alt="Promuj swój lokal z pizzą"
-          className="w-20 lg:w-32 xl:w-36 2xl:w-40 lg:top-12 xl:top-24 h-auto absolute z-0 left-4 top-4"
+          className="w-20 lg:w-32 xl:w-36 2xl:w-40 lg:top-12 xl:top-24  h-auto absolute z-0 left-4 top-4"
         />
         <span className="block px-8 rounded-b-md py-4 golden text-white w-max">
           Zareklamuj się
@@ -125,45 +124,13 @@ export default function Page() {
           Google. Zyskasz więcej opinii, nowych klientów i zwiększysz ilość
           zamówień przez internet.
         </p>
-        <div className="relative mt-12 mb-6">
-          <Image
-            src={accent2}
-            alt="Promuj swój lokal z pizzą"
-            className="w-20 lg:w-32 xl:w-36 2xl:w-40 lg:-top-8 xl:top-0 h-auto absolute z-0 -right-12 lg:-right-60 xl:-right-96 top-16 opacity-20"
-            width={250}
-            height={250}
-          />
-          <p className="text-left mt-6 text-3xl">O naszej ofercie...</p>
-        </div>
-        <div className="h-px w-24 golden mt-2" />
-        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 lg:gap-12 mt-6">
-          <div className="flex w-full mt-4 items-center lg:justify-center lg:flex-col">
-            <FaCheckCircle className="text-[#ffa920] w-9 h-9 lg:w-24 lg:h-24" />
-            <p className="font-light text-left text-black ml-2 w-[80%] lg:text-center mt-4">
-              Wyróżnienie Twojej restauracji w Pizzuj.pl
-            </p>
-          </div>
-          <div className="flex w-full mt-4 items-center lg:justify-center lg:flex-col">
-            <FaCheckCircle className="text-[#ffa920] w-9 h-9 lg:w-24 lg:h-24" />
-
-            <p className="font-light text-left text-black ml-2 w-[80%] lg:text-center mt-4">
-              Reklama w Google i innych wyszukiwarkach
-            </p>
-          </div>
-          <div className="flex w-full mt-4 items-center lg:justify-center lg:flex-col">
-            <FaCheckCircle className="text-[#ffa920] w-9 h-9 lg:w-24 lg:h-24" />
-
-            <p className="font-light text-left text-black ml-2 w-[80%] lg:text-center mt-4">
-              Polecenia poprzez kanały social media
-            </p>
-          </div>
-          <div className="flex w-full mt-4 items-center lg:justify-center lg:flex-col">
-            <FaCheckCircle className="text-[#ffa920] w-9 h-9 lg:w-24 lg:h-24" />
-
-            <p className="font-light text-left text-black ml-2 w-[80%] lg:text-center mt-4">
-              Promowany wpis na blogu Pizzuj.pl
-            </p>
-          </div>
+        Co zyskasz?
+        <div className="h-px w-24 bg-golden" />
+        <div className="flex items-center flex-wrap mt-4">
+          <FaCheckCircle className="text-[#ffa920] w-9 h-9" />
+          <p className="font-light text-left text-black ml-2">
+            Wyróżnienie Twojej pizzerii w Pizzuj.pl
+          </p>
         </div>
       </div>
 

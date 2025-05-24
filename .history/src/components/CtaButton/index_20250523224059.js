@@ -8,7 +8,7 @@ export default function CtaButton() {
   const [phone, setPhone] = React.useState("");
   return (
     <div
-      className={`w-[90%] flex flex-col items-center justify-center sm:w-max max-w-full mx-auto px-8 rounded-md pt-3 pb-12 ${
+      className={`flex flex-col items-center justify-center w-max max-w-full mx-auto px-8 rounded-md pt-3 pb-12 ${
         inputOpen && "golden scale-105 duration-300"
       }`}
     >

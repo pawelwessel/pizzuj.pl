@@ -111,7 +111,7 @@ export default function Page() {
         <Image
           src={pizza}
           alt="Promuj swój lokal z pizzą"
-          className="w-20 lg:w-32 xl:w-36 2xl:w-40 lg:top-12 xl:top-24 h-auto absolute z-0 left-4 top-4"
+          className="w-20 lg:w-32 xl:w-36 2xl:w-40 lg:top-12 xl:top-24 h-auto absolute z-0 left-12 top-24"
         />
         <span className="block px-8 rounded-b-md py-4 golden text-white w-max">
           Zareklamuj się
@@ -125,11 +125,11 @@ export default function Page() {
           Google. Zyskasz więcej opinii, nowych klientów i zwiększysz ilość
           zamówień przez internet.
         </p>
-        <div className="relative mt-12 mb-6">
+        <div className="relative my-12">
           <Image
             src={accent2}
             alt="Promuj swój lokal z pizzą"
-            className="w-20 lg:w-32 xl:w-36 2xl:w-40 lg:-top-8 xl:top-0 h-auto absolute z-0 -right-12 lg:-right-60 xl:-right-96 top-16 opacity-20"
+            className="w-20 lg:w-32 xl:w-36 2xl:w-40 lg:top-12 xl:top-24  h-auto absolute z-0 right-4 top-4"
             width={250}
             height={250}
           />

@@ -1,14 +1,12 @@
 "use client";
-import Link from "next/link";
 import React from "react";
-
 export default function CtaButton() {
   const [inputOpen, setInputOpen] = React.useState(false);
   const [name, setName] = React.useState("");
   const [phone, setPhone] = React.useState("");
   return (
     <div
-      className={`w-[90%] flex flex-col items-center justify-center sm:w-max max-w-full mx-auto px-8 rounded-md pt-3 pb-12 ${
+      className={`flex flex-col items-center justify-center w-max max-w-full mx-auto px-8 rounded-md pt-3 pb-12 ${
         inputOpen && "golden scale-105 duration-300"
       }`}
     >
@@ -49,12 +47,12 @@ export default function CtaButton() {
           <p className="text-xs text-white mt-2">
             Wypełniając formularz, wyrażasz zgodę na przetwarzanie swoich danych
             osobowych w celu kontaktu z Tobą. Więcej informacji znajdziesz w{" "}
-            <Link
+            <a
               href="/polityka-prywatnosci"
               className="text-[#ec7308] underline"
             >
               polityce prywatności
-            </Link>
+            </a>
             .
           </p>
           <button
@@ -63,7 +61,7 @@ export default function CtaButton() {
               setName("");
               setPhone("");
             }}
-            className="mt-2 p-2 px-12 bg-[#ec7308] text-white rounded-md"
+            className="mt-2 p-2 px-4 bg-[#ec7308] text-white rounded-md"
           >
             Wyślij
           </button>

@@ -125,7 +125,7 @@ export default function Page() {
           Google. Zyskasz więcej opinii, nowych klientów i zwiększysz ilość
           zamówień przez internet.
         </p>
-        <div className="relative mt-12 mb-6">
+        <div className="relative mt-12 mb-5">
           <Image
             src={accent2}
             alt="Promuj swój lokal z pizzą"
