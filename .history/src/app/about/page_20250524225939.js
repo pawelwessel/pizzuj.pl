@@ -16,7 +16,7 @@ export default function Page() {
         <p>
           Projekt <strong>pizzuj.pl</strong> to moje połączenie dwóch światów –
           technologii i gastronomii. Tworzę to miejsce, by dzielić się wiedzą,
-          obserwacjami i tworzyć przyszłość.
+          obserwacjami i historiami.
         </p>
         <p>
           Jeśli kochasz pizzę, chcesz poznać kulisy pracy w gastro albo szukasz
