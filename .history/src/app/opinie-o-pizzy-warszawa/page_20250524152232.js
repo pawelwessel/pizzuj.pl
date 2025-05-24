@@ -3,7 +3,7 @@ import removePolishSignsAndSpaces from "../../lib/removePolish";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-export default function Page() {
+export default function ArrayWithPlaces() {
   const [places, setPlaces] = useState([]);
 
   const pathname = usePathname();
@@ -13,7 +13,7 @@ export default function Page() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ search: "tutti santi" }),
+      body: JSON.stringify({ search: pathname }), // Extract search term from URL
     }).then((res) => res.json());
     console.log(response);
     return response;

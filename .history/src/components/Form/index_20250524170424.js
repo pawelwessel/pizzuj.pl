@@ -1,0 +1,15 @@
+export default function Form() {
+    return(
+        <div className="">
+            <input
+                type="text"
+                className="p-3 lg:p-6 rounded-md bg-white/50 text-black max-w-[450px]"
+                placeholder="Wpisz miasto"
+              />
+              <Link href={} className="text-white goldenShadow p-3 rounded-b-md flex w-max mx-auto max-w-full items-center">
+                <FaMagnifyingGlass className="w-7 h-7 mr-2" />
+                Znajdź lokal
+              </Link>
+        </div>
+    )
+}
