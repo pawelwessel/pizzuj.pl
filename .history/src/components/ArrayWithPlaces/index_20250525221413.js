@@ -17,9 +17,10 @@ export default function ArrayWithPlaces() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ search: `Pizza ${pathname}` }), // Extract search term from URL
+        body: JSON.stringify({ search: `pizza ${pathname}` }), // Extract search term from URL
       }
     ).then((res) => res.json());
+    console.log(response);
     return response;
   }
 

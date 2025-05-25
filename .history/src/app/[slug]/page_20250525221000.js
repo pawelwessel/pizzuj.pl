@@ -16,8 +16,7 @@ export async function generateStaticParams() {
 
 export default async function Page({ params }) {
   const { slug } = await params;
-  const { page } = await getDocument("pages", slug);
-  console.log(page);
+  const page = await getDocument("pages", slug);
 
   if (!page) {
     return <div>Page not found</div>;
