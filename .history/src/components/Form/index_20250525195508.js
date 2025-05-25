@@ -1,7 +1,7 @@
 "use client";
 
 import { getDocument } from "../../db/firebase";
-import createLinkFromText from "../../lib/createLinkFromText";
+import removePolishSignsAndSpaces from "../../lib/removePolishSignsAndSpaces";
 import Link from "next/link";
 import { useState } from "react";
 import {
@@ -21,14 +21,14 @@ export default function Form() {
     setIsLoading(true);
     const existingPage = await getDocument(
       "pages",
-      createLinkFromText(searchTerm)
+      removePolishSignsAndSpaces(searchTerm)
     );
     if (existingPage) {
       setIsLoading(false);
       setSearchTerm("");
       setError(null);
       // Redirect to the existing page
-      window.location.href = `/${createLinkFromText(searchTerm)}`;
+      window.location.href = `/${removePolishSignsAndSpaces(searchTerm)}`;
       return;
     }
     const response = await fetch(
@@ -39,8 +39,8 @@ export default function Form() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          place: createLinkFromText(searchTerm),
-          id: createLinkFromText(searchTerm),
+          place: removePolishSignsAndSpaces(searchTerm),
+          id: removePolishSignsAndSpaces(searchTerm),
         }), // Extract search term from URL
       }
     ).then((res) => res.json());
@@ -49,7 +49,7 @@ export default function Form() {
       setSearchTerm("");
       setError(null);
       // Redirect to the generated page
-      window.location.href = `/${createLinkFromText(searchTerm)}`;
+      window.location.href = `/${removePolishSignsAndSpaces(searchTerm)}`;
       return;
     }
     if (response.error) {

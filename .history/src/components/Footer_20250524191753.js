@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import pizzuj from "../../public/assets/pizzuj2.png";
-import createLinkFromText from "../lib/createLinkFromText";
+import removePolishSignsAndSpaces from "../lib/removePolishSignsAndSpaces";
 export const Footer = () => {
   const links = [
     { title: "Blog" },
@@ -45,7 +45,7 @@ export const Footer = () => {
         {links.map((link) => (
           <Link
             key={link.title}
-            href={createLinkFromText(link.title)}
+            href={removePolishSignsAndSpaces(link.title)}
             className="text-white font-light px-4 py-2 rounded-full transition duration-300 ease-in-out"
           >
             {link.title}
@@ -59,7 +59,7 @@ export const Footer = () => {
             key={link.title}
             href={
               link.title !== "Facebook"
-                ? createLinkFromText(link.title)
+                ? removePolishSignsAndSpaces(link.title)
                 : "https://www.facebook.com/pizzujpl"
             }
             className="text-white font-light px-4 py-2 rounded-full transition duration-300 ease-in-out"

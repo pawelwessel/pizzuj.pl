@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import createLinkFromText from "../../lib/createLinkFromText";
+import removePolishSignsAndSpaces from "../../lib/removePolishSignsAndSpaces";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -50,9 +50,9 @@ export default function ArrayWithPlaces(command) {
               />
               <div className="w-full h-max left-0 bottom-0 rounded-b-md absolute flex justify-between items-end bg-gradient-to-t from-black/70 via-black/30 to-transparent">
                 <Link
-                  href={`/${createLinkFromText(
+                  href={`/${removePolishSignsAndSpaces(
                     place.city
-                  )}/${createLinkFromText(place.name)}`}
+                  )}/${removePolishSignsAndSpaces(place.name)}`}
                   className="bg-black/50 p-3 drop-shadow-lg rounded-sm shadow-black text-white block w-max max-w-full truncate"
                 >
                   {place.name}
