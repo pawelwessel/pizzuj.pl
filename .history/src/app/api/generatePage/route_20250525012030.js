@@ -86,6 +86,8 @@ export async function POST(req) {
         place: data.place,
         createdAt: Date.now(),
       });
+    } catch (error) {
+      console.error("Error adding document:", error);
     }
   }
   return NextResponse.json({

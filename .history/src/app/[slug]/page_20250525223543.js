@@ -10,7 +10,6 @@ import { Footer } from "../../components/Footer";
 import CtaButton from "../../components/CtaButton";
 import pizza from "../../../public/assets/pizza.png";
 import { FaCheckCircle } from "react-icons/fa";
-import Form from "../../components/Form";
 
 const pages = await getDocuments("pages");
 export async function generateStaticParams() {
@@ -53,8 +52,16 @@ export default async function Page({ params }) {
             <p className="mt-6 w-[90%] mx-auto text-white drop-shadow-lg">
               {page.introduction}
             </p>
-            <div className="flex flex-col mt-8 mx-auto w-max max-w-full">
-              <Form />
+            <div className="flex flex-col mt-6 mx-auto w-max max-w-full">
+              <input
+                type="text"
+                className="p-3 lg:p-6 rounded-md bg-white/50 text-black max-w-[450px]"
+                placeholder="Wpisz miasto"
+              />
+              <button className="text-white goldenShadow p-3 rounded-b-md flex w-max mx-auto max-w-full items-center">
+                <FaMagnifyingGlass className="w-7 h-7 mr-2" />
+                Znajdź lokal
+              </button>
             </div>
           </div>
         </div>
