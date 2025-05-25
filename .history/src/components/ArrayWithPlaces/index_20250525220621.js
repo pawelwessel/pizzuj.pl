@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import createLinkFromText from "../../lib/createLinkFromText";
+import { createLinkFromText } from "../../lib/createLinkFromText";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";

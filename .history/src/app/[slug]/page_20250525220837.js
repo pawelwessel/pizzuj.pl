@@ -3,7 +3,7 @@ import accent from "../../../public/assets/asset6.png";
 import accent1 from "../../../public/assets/asset7.png";
 import Image from "next/image";
 import ArrayWithPlaces from "../../components/ArrayWithPlaces";
-import { createLinkFromText } from "../../lib/createLinkFromText";
+import createLinkFromText from "../../lib/createLinkFromText";
 import { getDocument, getDocuments } from "../../db/firebase";
 import { Footer } from "../../components/Footer";
 
@@ -16,9 +16,7 @@ export async function generateStaticParams() {
 
 export default async function Page({ params }) {
   const { slug } = await params;
-  const { page } = pages.find(
-    (p) => createLinkFromText(p.page.address) === slug
-  );
+  const page = await getDocument("pages", slug);
 
   if (!page) {
     return <div>Page not found</div>;
@@ -93,7 +91,7 @@ export default async function Page({ params }) {
           </div>
         </div>
       </div>
-      <p>{page.faqSection}</p>
+      {/* <p>{page.faqSection}</p> */}
       <Footer />
     </div>
   );

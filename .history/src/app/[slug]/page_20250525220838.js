@@ -3,7 +3,7 @@ import accent from "../../../public/assets/asset6.png";
 import accent1 from "../../../public/assets/asset7.png";
 import Image from "next/image";
 import ArrayWithPlaces from "../../components/ArrayWithPlaces";
-import createLinkFromText from "../../lib/createLinkFromText";
+import { createLinkFromText } from "../../lib/createLinkFromText";
 import { getDocument, getDocuments } from "../../db/firebase";
 import { Footer } from "../../components/Footer";
 

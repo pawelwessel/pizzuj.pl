@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import pizzuj from "../../public/assets/pizzuj2.png";
-import createLinkFromText from "../lib/createLinkFromText";
+import { createLinkFromText } from "../lib/createLinkFromText";
 export const Footer = () => {
   const links = [
     { title: "Blog" },

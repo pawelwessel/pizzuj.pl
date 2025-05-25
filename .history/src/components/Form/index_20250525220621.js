@@ -1,7 +1,7 @@
 "use client";
 
 import { getDocument } from "../../db/firebase";
-import createLinkFromText from "../../lib/createLinkFromText";
+import { createLinkFromText } from "../../lib/createLinkFromText";
 import Link from "next/link";
 import { useState } from "react";
 import {
