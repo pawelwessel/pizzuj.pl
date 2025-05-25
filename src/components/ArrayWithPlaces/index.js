@@ -4,6 +4,7 @@ import removePolishSignsAndSpaces from "../../lib/removePolishSignsAndSpaces";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { FaLocationArrow, FaStar } from "react-icons/fa6";
 export default function ArrayWithPlaces(command) {
   const [places, setPlaces] = useState([]);
 
@@ -32,35 +33,41 @@ export default function ArrayWithPlaces(command) {
   }, []);
 
   return (
-    <div className="">
-      <ul>
+    <div className="w-full">
+      <ul className="flex flex-wrap gap-4 mx-auto mt-12">
         {places.map((place, index) => (
-          <li key={index}>
+          <li
+            key={index}
+            className="relative flex flex-col w-full sm:w-[calc(50%-1rem)] md:w-[calc(33.333%-1rem)] lg:w-[calc(25%-1rem)] max-w-xs"
+          >
             <>
               <Image
                 src={place.photoUrl}
                 alt={place.name}
                 width={400}
                 height={400}
-                className="rounded-md"
+                className="rounded-md w-full h-48 object-cover"
               />
-              <p className="text-sm text-gray-500">{place.city}</p>
-              <p className="text-sm text-gray-500">Rating: {place.rating}</p>
-              <p className="text-sm text-gray-500">
-                Address: {place.formatted_address}
+              <div className="w-full h-max left-0 bottom-0 rounded-b-md absolute flex justify-between items-end bg-gradient-to-t from-black/70 via-black/30 to-transparent">
+                <Link
+                  href={`/${removePolishSignsAndSpaces(
+                    place.city
+                  )}/${removePolishSignsAndSpaces(place.name)}`}
+                  className="bg-black/50 p-3 drop-shadow-lg rounded-sm shadow-black text-white block w-max max-w-full truncate"
+                >
+                  {place.name}
+                </Link>
+              </div>
+              <p className="absolute right-0 top-0 flex items-center gap-2 text-sm text-white bg-black/50 p-2 rounded">
+                <FaStar className="text-yellow-500" />
+                {place.rating}/5
               </p>
-              <p className="text-sm text-gray-500">
-                Phone: {place.formatted_phone_number}
+              <p className="absolute left-0 top-0 flex items-center gap-2 text-sm text-white bg-black/50 p-2 rounded">
+                <FaLocationArrow className="text-yellow-500" />
+                {place.city}
               </p>
-              <Link
-                href={`/${removePolishSignsAndSpaces(
-                  place.city
-                )}/${removePolishSignsAndSpaces(place.name)}`}
-              >
-                {place.name}
-              </Link>
             </>
-          </li> // Assuming each place has a `name` property
+          </li>
         ))}
       </ul>
     </div>

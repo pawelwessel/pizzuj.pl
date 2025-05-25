@@ -27,7 +27,7 @@ export async function POST(req) {
   try {
     const data = await req.json();
     const response = await fetch(
-      `${PLACES_TEXTSEARCH_URL}?query=${data.search}&key=${GOOGLE_API_KEY}`
+      `${PLACES_TEXTSEARCH_URL}?query=pizza ${data.search}&key=${GOOGLE_API_KEY}`
     ).then((res) => res.json());
 
     const limitedResults = response.results.slice(0, 20);

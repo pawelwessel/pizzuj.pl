@@ -93,7 +93,7 @@ export default async function Page({ params }) {
           </div>
         </div>
       </div>
-      {/* <p>{page.faqSection}</p> */}
+      <p>{page.faqSection}</p>
       <Footer />
     </div>
   );

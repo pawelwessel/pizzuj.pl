@@ -11,11 +11,12 @@ export async function POST(req) {
     model: "gpt-4",
   });
 
+  console.log(data);
   // Send the initial message and wait for response
   await chat.sendMessage("Ping");
 
   const response = await chat.sendMessage(
-    `Generate PL content for pizza theme ranking page. Details: "${data.place}", "/${data.id}"`,
+    `Generate PL content for pizza theme ranking page. Details: ${data.place}`,
     {
       expect: {
         examples: [
@@ -83,8 +84,6 @@ export async function POST(req) {
         id: data.id,
         page: response.content,
         place: data.place,
-        lat: data.lat,
-        lng: data.lng,
         createdAt: Date.now(),
       });
     } catch (error) {

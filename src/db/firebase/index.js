@@ -34,3 +34,20 @@ const db = getFirestore(app);
 export async function addDocument(collectionName, uniqueId, data) {
   await setDoc(doc(db, collectionName, uniqueId), data);
 }
+
+export async function getDocuments(collectionName) {
+  const collectionRef = collection(db, collectionName);
+  const snapshot = await getDocs(collectionRef);
+  return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+}
+
+export async function getDocument(collectionName, uniqueId) {
+  const docRef = doc(db, collectionName, uniqueId);
+  const docSnap = await getDoc(docRef);
+  if (docSnap.exists()) {
+    return { id: docSnap.id, ...docSnap.data() };
+  } else {
+    console.log("No such document!");
+    return null;
+  }
+}
