@@ -16,7 +16,9 @@ export async function generateStaticParams() {
 
 export default async function Page({ params }) {
   const { slug } = await params;
-  const page = await getDocument("pages", slug);
+  const { page } = pages.find(
+    (p) => createLinkFromText(p.page.address) === slug
+  );
 
   if (!page) {
     return <div>Page not found</div>;
