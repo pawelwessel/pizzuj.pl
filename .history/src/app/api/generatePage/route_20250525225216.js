@@ -11,6 +11,7 @@ export async function POST(req) {
     model: "gpt-4",
   });
   await chat.sendMessage("Ping");
+
   const response = await chat.sendMessage(
     `Generate PL content for pizza theme ranking page. Details: ${data.place}`,
     {
@@ -81,12 +82,8 @@ export async function POST(req) {
       place: data.place,
       createdAt: Date.now(),
     });
-    return NextResponse.json({
-      success: true,
-    });
-  } else {
-    return NextResponse.json({
-      error: "Failed to generate content",
-    });
   }
+  return NextResponse.json({
+    success: true,
+  });
 }

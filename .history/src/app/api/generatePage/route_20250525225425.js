@@ -81,12 +81,6 @@ export async function POST(req) {
       place: data.place,
       createdAt: Date.now(),
     });
-    return NextResponse.json({
-      success: true,
-    });
-  } else {
-    return NextResponse.json({
-      error: "Failed to generate content",
-    });
   }
+  return NextResponse.json({});
 }
