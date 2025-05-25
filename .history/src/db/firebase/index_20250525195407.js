@@ -47,6 +47,7 @@ export async function getDocument(collectionName, uniqueId) {
   if (docSnap.exists()) {
     return { id: docSnap.id, ...docSnap.data() };
   } else {
+    console.log("No such document!");
     return null;
   }
 }

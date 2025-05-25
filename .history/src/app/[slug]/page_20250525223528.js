@@ -49,7 +49,7 @@ export default async function Page({ params }) {
               {page.h1}
             </h1>
 
-            <p className="mt-6 w-[90%] mx-auto text-white drop-shadow-lg">
+            <p className="mt-6 w-[90%] mx-auto lg:w-[80%] text-white drop-shadow-lg">
               {page.introduction}
             </p>
             <div className="flex flex-col mt-6 mx-auto w-max max-w-full">

@@ -37,7 +37,7 @@ export default function ArrayWithPlaces() {
         {places.map((place, index) => (
           <li
             key={index}
-            className="relative flex flex-col w-full sm:w-[calc(50%-1rem)] md:w-[calc(33.333%-1rem)] lg:w-[calc(25%-1rem)]"
+            className="relative flex flex-col w-full sm:w-[calc(50%-1rem)] md:w-[calc(33.333%-1rem)] lg:w-[calc(25%-1rem)] max-w-xs"
           >
             <>
               <Image
