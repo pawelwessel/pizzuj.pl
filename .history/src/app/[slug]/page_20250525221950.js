@@ -1,7 +1,6 @@
 import { FaMagnifyingGlass, FaMessage } from "react-icons/fa6";
 import accent from "../../../public/assets/asset6.png";
 import accent1 from "../../../public/assets/asset7.png";
-import accent2 from "../../../public/assets/asset4.png";
 import Image from "next/image";
 import ArrayWithPlaces from "../../components/ArrayWithPlaces";
 import { createLinkFromText } from "../../lib/createLinkFromText";
@@ -9,7 +8,6 @@ import { getDocument, getDocuments } from "../../db/firebase";
 import { Footer } from "../../components/Footer";
 import CtaButton from "../../components/CtaButton";
 import pizza from "../../../public/assets/pizza.png";
-import { FaCheckCircle } from "react-icons/fa";
 
 const pages = await getDocuments("pages");
 export async function generateStaticParams() {

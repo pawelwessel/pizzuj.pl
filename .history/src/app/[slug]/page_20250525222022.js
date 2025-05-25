@@ -9,7 +9,6 @@ import { getDocument, getDocuments } from "../../db/firebase";
 import { Footer } from "../../components/Footer";
 import CtaButton from "../../components/CtaButton";
 import pizza from "../../../public/assets/pizza.png";
-import { FaCheckCircle } from "react-icons/fa";
 
 const pages = await getDocuments("pages");
 export async function generateStaticParams() {
