@@ -4,13 +4,13 @@ import accent1 from "../../../../public/assets/asset7.png";
 import accent2 from "../../../../public/assets/asset4.png";
 import Image from "next/image";
 import ArrayWithPlaces from "../../../components/ArrayWithPlaces";
-import { createLinkFromText } from "../../../lib/createLinkFromText";
+import { createLinkFromText } from "../../../../lib/createLinkFromText";
 import { getDocument, getDocuments } from "../../../db/firebase";
-import { Footer } from "../../../components/Footer";
-import CtaButton from "../../../components/CtaButton";
+import { Footer } from "../../../../components/Footer";
+import CtaButton from "../../../../components/CtaButton";
 import pizza from "../../../../public/assets/pizza.png";
 import { FaCheckCircle } from "react-icons/fa";
-import Form from "../../../components/Form";
+import Form from "../../../../components/Form";
 
 const pages = await getDocuments("pages");
 export async function generateStaticParams() {
