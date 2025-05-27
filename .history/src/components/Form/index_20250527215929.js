@@ -99,12 +99,7 @@ export default function Form() {
   const handleInputChange = (e) => {
     setSearchTerm(e.target.value);
   };
-  const handleSearch = () => {
-    setIsLoading(true);
-    setLoadingStarted(true);
-    setError(null);
-
-    generatePage(searchTerm).then((res) => res.json());
+  generatePage(searchTerm).then((res) => res.json());
     setIsLoading(false);
     setLoadingTimer(0);
     setLoadingStarted(false);
@@ -112,22 +107,6 @@ export default function Form() {
       setSearchTerm("");
       setError(null);
       // Redirect to the generated page
-      if (response.page) {
-        setIsLoading(false);
-        setSearchTerm("");
-        setError(null);
-        // Redirect to the existing page
-        window.location.href = `/${createLinkFromText(searchTerm)}`;
-        return;
-      }
-      if (!response.success) {
-        setIsLoading(false);
-        setSearchTerm("");
-        setError(
-          "Wystąpił błąd po stronie serwera :). Spróbuj ponownie np. jutro :)."
-        );
-        return;
-      }
       window.location.href = `/${createLinkFromText(searchTerm)}`;
       return;
     }
@@ -137,7 +116,7 @@ export default function Form() {
       return;
     }
     return response;
-  };
+  }
 
   return (
     <div
@@ -182,7 +161,7 @@ export default function Form() {
       <button
         onClick={() => {
           setSearchTerm("");
-          handleSearch();
+          generatePage();
         }}
         className="text-white text-sm goldenShadow p-3 rounded-b-md flex w-max mx-auto max-w-full items-center"
       >

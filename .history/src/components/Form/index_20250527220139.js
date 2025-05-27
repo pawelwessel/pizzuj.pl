@@ -99,7 +99,7 @@ export default function Form() {
   const handleInputChange = (e) => {
     setSearchTerm(e.target.value);
   };
-  const handleSearch = () => {
+  const handleSearch = (e) => {
     setIsLoading(true);
     setLoadingStarted(true);
     setError(null);
@@ -182,7 +182,7 @@ export default function Form() {
       <button
         onClick={() => {
           setSearchTerm("");
-          handleSearch();
+          generatePage();
         }}
         className="text-white text-sm goldenShadow p-3 rounded-b-md flex w-max mx-auto max-w-full items-center"
       >

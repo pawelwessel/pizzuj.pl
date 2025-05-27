@@ -72,9 +72,23 @@ export async function GET(params, req) {
       },
     }
   );
-  await addDocument("generatePage", slug, {
-    id: slug,
-    content: response.content,
+  if (response) {
+    try {
+      await addDocument("pages", slug, {
+        id: slug,
+        page: response.content,
+        place: slug,
+      });
+      return NextResponse.json({
+        success: true,
+        page: response.content,
+        message: "Page content generated successfully",
+      });
+    } catch (dbError) {
+      return NextResponse.json({ error: "Failed to save page content" });
+    }
+  }
+  return NextResponse.json({
+    success: true,
   });
-  return NextResponse.json(response.content);
 }

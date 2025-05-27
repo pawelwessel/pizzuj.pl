@@ -72,9 +72,5 @@ export async function GET(params, req) {
       },
     }
   );
-  await addDocument("generatePage", slug, {
-    id: slug,
-    content: response.content,
-  });
   return NextResponse.json(response.content);
 }
