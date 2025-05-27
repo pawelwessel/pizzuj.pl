@@ -24,7 +24,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/app/api/generatePage/[slug]/route.js"
+    "src/app/api/generatePage/route.js"
   ],
   "exclude": ["node_modules"]
 }

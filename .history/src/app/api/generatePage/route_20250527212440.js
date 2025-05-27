@@ -1,10 +1,23 @@
 import { NextResponse } from "next/server";
 import { createChat } from "completions";
-import { addDocument } from "../../../db/firebase";
+import { addDocument, getDocuments } from "../../../db/firebase";
 // import { db } from "@/firebase";
 // import { doc, getDoc, setDoc } from "firebase/firestore/lite";
+import { fetchUsers } from "@/firebase";
+import { NextResponse } from "next/server";
 
-export async function POST(req) {
+export async function GET(req) {
+  const { slug } = await req.params;
+  const pages = await getDocuments("pages");
+  const page = pages?.find((p) => p?.page.address.includes(slug));
+  return NextResponse.json({
+    ...user,
+    email: "hidden",
+  });
+}
+
+export async function GET(req) {
+  // eg. /api/generatePage/warszawa
   const data = await req.json();
   try {
     const chat = createChat({
