@@ -4,9 +4,6 @@ import { getDocument } from "../../db/firebase";
 import { createLinkFromText } from "../../lib/createLinkFromText";
 import { useState } from "react";
 import { FaLocationArrow } from "react-icons/fa6";
-import loading1 from "../../../public/assets/loading1.png";
-import loading2 from "../../../public/assets/loading2.png";
-import Image from "next/image";
 const loadingTexts = [
   "Szukamy poleceń...",
   "Pytamy właścicieli jakie mają opinie...",
@@ -151,20 +148,9 @@ export default function Form() {
         isLoading ? "opacity-50 pointer-events-none" : ""
       } relative`}
     >
-      <div className="rounded-xl lg:max-w-[500px] w-[90%] sm:w-[80%] py-4 h-max -mt-3 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 px-6 bg-black/50 text-white text-lg items-center justify-center text-center flex flex-col">
-        <div className="z-[100] w-full relative rounded-md overflow-hidden mb-4">
-          <Image
-            src={loading1}
-            alt="Wczytywanie najlepszej pizzy w twoim mieście w-full"
-          />
-          <Image
-            src={loading2}
-            alt="Pizza Warszawa"
-            style={{ transform: "scaleX(-1)" }}
-            className="absolute left-0 top-0 w-full"
-          />
-        </div>
-        <span className="text-sm lg:text-2xl font-bold">{loadingText}</span>
+      <div className="rounded-xl py-12 w-full h-[120%] -mt-3 absolute left-0 top-0 bg-black/50 text-white text-lg items-center justify-center text-center flex flex-col">
+        {loadingText}
+        <br />
         <div className="block">
           {loadingTimer}
           <span className="text-green-500">ms</span>

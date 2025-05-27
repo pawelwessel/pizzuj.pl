@@ -4,9 +4,6 @@ import { getDocument } from "../../db/firebase";
 import { createLinkFromText } from "../../lib/createLinkFromText";
 import { useState } from "react";
 import { FaLocationArrow } from "react-icons/fa6";
-import loading1 from "../../../public/assets/loading1.png";
-import loading2 from "../../../public/assets/loading2.png";
-import Image from "next/image";
 const loadingTexts = [
   "Szukamy poleceń...",
   "Pytamy właścicieli jakie mają opinie...",
@@ -53,6 +50,7 @@ const loadingTexts = [
   "Przygotowujemy do zamówienia przez stronę www...",
   "Pytamy restauratorów od ich zdanie...",
   "Dzwonimy do właścicieli pizzerii...",
+  "Zaraz będziesz mógł zobaczyć swoją stronę...",
 ];
 
 export default function Form() {
@@ -60,48 +58,24 @@ export default function Form() {
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [loadingText, setLoadingText] = useState("Wyszukiwanie...");
-  const [loadingStarted, setLoadingStarted] = useState(true);
-  const [loadingTimer, setLoadingTimer] = useState(0);
-
-  useEffect(() => {
-    let interval;
-    if (loadingStarted) {
-      interval = setInterval(() => {
-        setLoadingTimer((prev) => prev + 100); // increment by 100ms
-      }, 100);
-    } else {
-      setLoadingTimer(0);
-    }
-    return () => clearInterval(interval);
-  }, [loadingStarted]);
-  useEffect(() => {
-    //change the loading text every 3 seconds
-    const interval = setInterval(() => {
-      setLoadingText(
-        loadingTexts[Math.floor(Math.random() * loadingTexts.length)]
-      );
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-  // Format loadingTimer as "seconds,milliseconds"
+  const [loadingStarted, setLoadingStarted] = useState(false);
   useEffect(() => {
     if (isLoading) {
-      const seconds = Math.floor(loadingTimer / 1000);
-      const milliseconds = (loadingTimer % 1000).toString().padStart(3, "0");
-      setLoadingText(
-        `${
-          loadingTexts[Math.floor(loadingTimer / 2000) % loadingTexts.length]
-        } (${seconds},${milliseconds}s)`
-      );
+      const interval = setInterval(() => {
+        const randomIndex = Math.floor(Math.random() * loadingTexts.length);
+        setLoadingText(loadingTexts[randomIndex]);
+      }, 4000); // Change text every 4 seconds
+
+      return () => clearInterval(interval); // Clear interval on unmount
+    } else {
+      setLoadingText("Wyszukiwanie...");
     }
-  }, [loadingTimer, isLoading]);
+  }, [isLoading]);
   const handleInputChange = (e) => {
     setSearchTerm(e.target.value);
   };
   async function generatePage() {
     setIsLoading(true);
-    setLoadingStarted(true);
-    setError(null);
     const existingPage = await getDocument(
       "pages",
       createLinkFromText(searchTerm)
@@ -128,8 +102,6 @@ export default function Form() {
       }
     ).then((res) => res.json());
     setIsLoading(false);
-    setLoadingTimer(0);
-    setLoadingStarted(false);
     if (response.success) {
       setSearchTerm("");
       setError(null);
@@ -151,24 +123,8 @@ export default function Form() {
         isLoading ? "opacity-50 pointer-events-none" : ""
       } relative`}
     >
-      <div className="rounded-xl lg:max-w-[500px] w-[90%] sm:w-[80%] py-4 h-max -mt-3 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 px-6 bg-black/50 text-white text-lg items-center justify-center text-center flex flex-col">
-        <div className="z-[100] w-full relative rounded-md overflow-hidden mb-4">
-          <Image
-            src={loading1}
-            alt="Wczytywanie najlepszej pizzy w twoim mieście w-full"
-          />
-          <Image
-            src={loading2}
-            alt="Pizza Warszawa"
-            style={{ transform: "scaleX(-1)" }}
-            className="absolute left-0 top-0 w-full"
-          />
-        </div>
-        <span className="text-sm lg:text-2xl font-bold">{loadingText}</span>
-        <div className="block">
-          {loadingTimer}
-          <span className="text-green-500">ms</span>
-        </div>
+      <div className="py-12 w-full h-[120%] -mt-3 absolute left-0 top-0 bg-black/50 text-white text-lg items-center justify-center text-center flex">
+        {loadingText}
       </div>
       {error && (
         <div className="text-red-500 text-center mb-4">

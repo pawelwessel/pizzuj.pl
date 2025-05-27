@@ -80,11 +80,11 @@ export async function POST(req) {
       page: response.content,
       place: data.place,
       createdAt: Date.now(),
-    }).then(() => {
+    }).then(() => 
       return NextResponse.json({
         success: true,
       });
-    });
+    )
   } else {
     return NextResponse.json({
       error: "Failed to generate content",

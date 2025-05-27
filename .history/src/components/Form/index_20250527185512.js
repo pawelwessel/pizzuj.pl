@@ -152,7 +152,7 @@ export default function Form() {
       } relative`}
     >
       <div className="rounded-xl lg:max-w-[500px] w-[90%] sm:w-[80%] py-4 h-max -mt-3 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 px-6 bg-black/50 text-white text-lg items-center justify-center text-center flex flex-col">
-        <div className="z-[100] w-full relative rounded-md overflow-hidden mb-4">
+        <div className="w-full relative rounded-md overflow-hidden mb-4 bg-[#ffa920]/20">
           <Image
             src={loading1}
             alt="Wczytywanie najlepszej pizzy w twoim mieście w-full"
@@ -164,7 +164,8 @@ export default function Form() {
             className="absolute left-0 top-0 w-full"
           />
         </div>
-        <span className="text-sm lg:text-2xl font-bold">{loadingText}</span>
+        {loadingText}
+        <br />
         <div className="block">
           {loadingTimer}
           <span className="text-green-500">ms</span>
