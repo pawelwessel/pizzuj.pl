@@ -13,6 +13,8 @@ export async function generatePage(searchTerm) {
     }
   );
 
-  const data = await response.json();
-  return { success: true, page: data };
+  if (response) {
+    const data = await response.json();
+    return { success: true, page: data };
+  }
 }

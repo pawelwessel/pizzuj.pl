@@ -1,5 +1,6 @@
 "use client";
 import { useEffect } from "react";
+import { getDocument } from "../../db/firebase";
 import { createLinkFromText } from "../../lib/createLinkFromText";
 import { useState } from "react";
 import { FaLocationArrow } from "react-icons/fa6";
@@ -7,7 +8,6 @@ import loading1 from "../../../public/assets/loading1.png";
 import loading2 from "../../../public/assets/loading2.png";
 import Image from "next/image";
 import { generatePage } from "../../db/generatePage";
-import { getDocument } from "../../db/firebase";
 const loadingTexts = [
   "Szukamy poleceń...",
   "Pytamy właścicieli jakie mają opinie...",
@@ -100,35 +100,11 @@ export default function Form() {
     setSearchTerm(e.target.value);
   };
   const handleSearch = async () => {
-    if (!searchTerm || searchTerm.trim() === "") {
-      setError("Proszę wpisać miasto.");
-      return;
-    }
-    if (searchTerm.length < 3) {
-      setError("Miasto musi mieć co najmniej 3 znaki.");
-      return;
-    }
     setIsLoading(true);
     setLoadingStarted(true);
     setError(null);
-    const isExistingPage = await getDocument(
-      "pages",
-      createLinkFromText(searchTerm)
-    );
-    if (isExistingPage) {
-      // Redirect to the existing page
-      window.location.href = `/pizzerie-w-miastach/${createLinkFromText(
-        searchTerm
-      )}`;
-      setIsLoading(false);
-      setSearchTerm("");
-      setError(null);
-      setLoadingTimer(0);
-      setLoadingStarted(false);
-      return;
-    }
 
-    const response = await generatePage(searchTerm);
+    const response = await generatePage(searchTerm).then((res) => res.json());
     setIsLoading(false);
     setLoadingTimer(0);
     setLoadingStarted(false);
@@ -141,9 +117,7 @@ export default function Form() {
         setSearchTerm("");
         setError(null);
         // Redirect to the existing page
-        window.location.href = `/pizzerie-w-miastach/${createLinkFromText(
-          searchTerm
-        )}`;
+        window.location.href = `/${createLinkFromText(searchTerm)}`;
         return;
       }
       if (!response.success) {
@@ -154,17 +128,12 @@ export default function Form() {
         );
         return;
       }
-      window.location.href = `/pizzerie-w-miastach/${createLinkFromText(
-        searchTerm
-      )}`;
+      window.location.href = `/${createLinkFromText(searchTerm)}`;
       return;
     }
     if (response.error) {
       setError(response.error);
-      setSearchTerm("");
-      setLoadingTimer(0);
-      setLoadingStarted(false);
-      setIsLoading(false);
+      setLoading(false);
       return;
     }
     return response;
@@ -177,7 +146,7 @@ export default function Form() {
       } relative`}
     >
       {loadingStarted && (
-        <div className="z-[150] rounded-xl lg:max-w-[500px] w-[90%] sm:w-[80%] py-4 h-max -mt-3 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 px-6 bg-black/50 text-white text-lg items-center justify-center text-center flex flex-col">
+        <div className="z-[100] rounded-xl lg:max-w-[500px] w-[90%] sm:w-[80%] py-4 h-max -mt-3 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 px-6 bg-black/50 text-white text-lg items-center justify-center text-center flex flex-col">
           <div className="w-full relative rounded-md overflow-hidden mb-4">
             <Image
               src={loading1}
@@ -199,7 +168,7 @@ export default function Form() {
       )}
       {error && (
         <div className="text-red-500 text-center mb-4">
-          <p>{error}</p>
+          <p>Wystąpił błąd</p>
         </div>
       )}
       <input

@@ -74,12 +74,11 @@ export async function GET(params, req) {
         },
       }
     );
-    await addDocument("pages", slug, {
+    await addDocument("generatePage", slug, {
       id: slug,
-      page: response.content,
-      createdAt: Date.now(),
+      content: response.content,
     });
-    return NextResponse.json({ page: response, success: true });
+    return NextResponse.json({ page: response.content, success: true });
   } catch (error) {
     console.error("Error in GET /generatePage:", error);
     return NextResponse.json(

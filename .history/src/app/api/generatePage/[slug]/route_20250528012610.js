@@ -76,7 +76,7 @@ export async function GET(params, req) {
     );
     await addDocument("pages", slug, {
       id: slug,
-      page: response.content,
+      content: response.content,
       createdAt: Date.now(),
     });
     return NextResponse.json({ page: response, success: true });

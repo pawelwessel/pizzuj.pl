@@ -13,6 +13,7 @@ export async function generatePage(searchTerm) {
     }
   );
 
-  const data = await response.json();
-  return { success: true, page: data };
+  if (!response.success) {
+    return { success: false, error: "Failed to generate page" };
+  }
 }
