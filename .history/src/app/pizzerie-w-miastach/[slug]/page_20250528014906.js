@@ -15,7 +15,7 @@ import Form from "../../../components/Form";
 const pages = await getDocuments("pages");
 export async function generateStaticParams() {
   return pages.map((page) => ({
-    slug: createLinkFromText(page.page.address),
+    slug: createLinkFromText(page.page.page.page.address),
   }));
 }
 

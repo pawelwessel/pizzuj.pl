@@ -47,11 +47,11 @@ export default async function Page({ params }) {
         <div className="relative z-50 mx-auto w-[90%] lg:w-1/2">
           <div className="flex flex-col items-center justify-center text-center">
             <h1 className="text-white text-3xl drop-shadow-lg shadow-black font-bold">
-              {page.page.h1}
+              {page.h1}
             </h1>
 
             <p className="mt-6 w-[90%] mx-auto text-white drop-shadow-lg">
-              {page.page.introduction}
+              {page.introduction}
             </p>
             <div className="flex flex-col mt-8 mx-auto w-max max-w-full">
               <Form />
@@ -61,34 +61,34 @@ export default async function Page({ params }) {
       </div>
       <div className="flex flex-col gap-6 bg-[#ffa920] p-6">
         <div className="p-6 bg-white rounded-md shadow-lg">
-          <h2 className="font-sans font-bold text-3xl">{page.page.h2}</h2>
-          <ArrayWithPlaces command={page.page.h1} />
+          <h2 className="font-sans font-bold text-3xl">{page.h2}</h2>
+          <ArrayWithPlaces command={page.h1} />
           <div className="mt-6">
             <h3 className="text-3xl bg-[#ffa920] block p-3 text-white rounded-md w-max max-w-full">
-              {page.page.testimonialSection}
+              {page.testimonialSection}
             </h3>
             <ul className="grid grid-cols-1 md:grid-cols-2 w-[90%] lg:w-[66%] mt-4 gap-4">
               <li className="text-black p-3 rounded-lg bg-gray-200 flex gap-2">
                 <FaMessage className="opacity-20 min-w-8 min-h-8 mx-2" />
-                <div>&quot;{page.page.opinion1}&quot;</div>
+                <div>&quot;{page.opinion1}&quot;</div>
               </li>
               <li className="text-black p-3 rounded-lg bg-gray-200 flex gap-2">
                 <FaMessage className="opacity-20 min-w-8 min-h-8 mx-2" />
-                <div>&quot;{page.page.opinion2}&quot;</div>
+                <div>&quot;{page.opinion2}&quot;</div>
               </li>
               <li className="text-black p-3 rounded-lg bg-gray-200 flex gap-2">
                 <FaMessage className="opacity-20 min-w-8 min-h-8 mx-2" />
-                <div>&quot;{page.page.opinion3}&quot;</div>
+                <div>&quot;{page.opinion3}&quot;</div>
               </li>
               <li className="text-black p-3 rounded-lg bg-gray-200 flex gap-2">
                 <FaMessage className="opacity-20 min-w-8 min-h-8 mx-2" />
-                <div>&quot;{page.page.opinion4}&quot;</div>
+                <div>&quot;{page.opinion4}&quot;</div>
               </li>
             </ul>
           </div>
         </div>
       </div>
-      {/* <p>{page.page.faqSection}</p> */}
+      {/* <p>{page.faqSection}</p> */}
       <div className="relative px-6 lg:px-12 pb-12 flex flex-col items-center justify-center">
         <Image
           src={pizza}
@@ -166,8 +166,8 @@ export async function generateMetadata({ params }, parent) {
   const previousImages = (await parent).openGraph?.images || [];
 
   return {
-    title: page.page.page.page.googleTitle,
-    description: page.page.page.page.googleDescription,
+    title: page.page.googleTitle,
+    description: page.page.googleDescription,
     openGraph: {
       images: ["/some-specific-page-image.jpg", ...previousImages],
     },
