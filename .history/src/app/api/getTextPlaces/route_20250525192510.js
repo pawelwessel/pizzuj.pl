@@ -44,8 +44,13 @@ export async function POST(req) {
         };
       })
     );
+
     return NextResponse.json(resultsWithCityAndPhoto);
   } catch (error) {
-    return NextResponse.json({ error: "Failed to fetch places data" });
+    console.error("Error fetching Google Places data:", error);
+    return NextResponse.json(
+      { error: "Failed to fetch places data" },
+      { status: 500 }
+    );
   }
 }

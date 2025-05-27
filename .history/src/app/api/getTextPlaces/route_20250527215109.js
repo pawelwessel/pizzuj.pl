@@ -44,8 +44,12 @@ export async function POST(req) {
         };
       })
     );
+
     return NextResponse.json(resultsWithCityAndPhoto);
   } catch (error) {
-    return NextResponse.json({ error: "Failed to fetch places data" });
+    return NextResponse.json(
+      { error: "Failed to fetch places data" },
+      { status: 500 }
+    );
   }
 }

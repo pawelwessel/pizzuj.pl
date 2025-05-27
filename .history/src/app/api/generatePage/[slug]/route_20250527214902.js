@@ -80,23 +80,27 @@ export async function GET(params, req) {
         }
       );
       if (response) {
-        try {
-          await addDocument("pages", slug, {
-            id: slug,
-            page: response.content,
-            place: slug,
-          });
-          return NextResponse.json({
-            success: true,
-            page: response.content,
-            message: "Page content generated successfully",
-          });
-        } catch (dbError) {
-          return NextResponse.json({ error: "Failed to save page content" });
-        }
+        await addDocument("pages", slug, {
+          id: slug,
+          page: response.content,
+          place: slug,
+        });
+        return NextResponse.json({
+          success: true,
+          page: response.content,
+          message: "Page content generated successfully",
+        });
+      } else {
+        return NextResponse.json({
+          error: "Failed to generate content",
+        });
       }
     } catch (error) {
-      return NextResponse.json({ error: "Failed to generate page content" });
+      console.error("Error generating page content:", error);
+      return NextResponse.json(
+        { error: "Failed to generate page content" },
+        { status: 500 }
+      );
     }
   }
   return NextResponse.json({

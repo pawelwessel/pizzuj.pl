@@ -92,10 +92,12 @@ export async function GET(params, req) {
             message: "Page content generated successfully",
           });
         } catch (dbError) {
+          console.error("Error saving page content to database:", dbError);
           return NextResponse.json({ error: "Failed to save page content" });
         }
       }
     } catch (error) {
+      console.error("Error generating page content:");
       return NextResponse.json({ error: "Failed to generate page content" });
     }
   }

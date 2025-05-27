@@ -92,11 +92,19 @@ export async function GET(params, req) {
             message: "Page content generated successfully",
           });
         } catch (dbError) {
-          return NextResponse.json({ error: "Failed to save page content" });
+          console.error("Error saving page content to database:", dbError);
+          return NextResponse.json(
+            { error: "Failed to save page content" },
+            { status: 500 }
+          );
         }
       }
     } catch (error) {
-      return NextResponse.json({ error: "Failed to generate page content" });
+      console.error("Error generating page content:", error);
+      return NextResponse.json(
+        { error: "Failed to generate page content" },
+        { status: 500 }
+      );
     }
   }
   return NextResponse.json({
