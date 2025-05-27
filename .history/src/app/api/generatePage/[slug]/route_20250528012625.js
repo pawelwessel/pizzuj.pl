@@ -79,7 +79,7 @@ export async function GET(params, req) {
       page: response.content,
       createdAt: Date.now(),
     });
-    return NextResponse.json({ page: response. });
+    return NextResponse.json({ page: response, success: true });
   } catch (error) {
     console.error("Error in GET /generatePage:", error);
     return NextResponse.json(

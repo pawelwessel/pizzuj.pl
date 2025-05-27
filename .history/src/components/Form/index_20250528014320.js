@@ -116,6 +116,11 @@ export default function Form() {
       );
       return;
     }
+    window.location.href = `/pizzerie-w-miastach/${createLinkFromText(
+      searchTerm
+    )}`;
+    return;
+
     if (response.error) {
       setError(response.error);
       setSearchTerm("");
@@ -124,12 +129,7 @@ export default function Form() {
       setIsLoading(false);
       return;
     }
-    return (
-      response,
-      (window.location.href = `/pizzerie-w-miastach/${createLinkFromText(
-        searchTerm
-      )}`)
-    );
+    return response;
   };
 
   return (

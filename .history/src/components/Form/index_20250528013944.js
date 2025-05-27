@@ -12,7 +12,13 @@ async function generatePage(searchTerm) {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_LINK}/api/generatePage/${createLinkFromText(
       searchTerm
-    )}`
+    )}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
   );
 
   return { success: true, page: response };
@@ -94,26 +100,31 @@ export default function Form() {
     setIsLoading(false);
     setLoadingTimer(0);
     setLoadingStarted(false);
-
-    setSearchTerm("");
-    setError(null);
-    // Redirect to the generated page
-    if (response.page) {
-      setIsLoading(false);
+    if (response.success) {
       setSearchTerm("");
       setError(null);
-      // Redirect to the existing page
+      // Redirect to the generated page
+      if (response.page) {
+        setIsLoading(false);
+        setSearchTerm("");
+        setError(null);
+        // Redirect to the existing page
+        window.location.href = `/pizzerie-w-miastach/${createLinkFromText(
+          searchTerm
+        )}`;
+        return;
+      }
+      if (!response.success) {
+        setIsLoading(false);
+        setSearchTerm("");
+        setError(
+          "Wystąpił błąd po stronie serwera :). Spróbuj ponownie np. jutro :)."
+        );
+        return;
+      }
       window.location.href = `/pizzerie-w-miastach/${createLinkFromText(
         searchTerm
       )}`;
-      return;
-    }
-    if (!response.success) {
-      setIsLoading(false);
-      setSearchTerm("");
-      setError(
-        "Wystąpił błąd po stronie serwera :). Spróbuj ponownie np. jutro :)."
-      );
       return;
     }
     if (response.error) {
@@ -124,12 +135,7 @@ export default function Form() {
       setIsLoading(false);
       return;
     }
-    return (
-      response,
-      (window.location.href = `/pizzerie-w-miastach/${createLinkFromText(
-        searchTerm
-      )}`)
-    );
+    return response;
   };
 
   return (
