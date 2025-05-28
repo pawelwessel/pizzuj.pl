@@ -9,16 +9,12 @@ import Image from "next/image";
 import { getDocument } from "../../db/firebase";
 async function generatePage(searchTerm) {
   const req = await fetch(`${process.env.NEXT_PUBLIC_LINK}/api/generatePage`, {
-    method: "POST",
+    method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ searchTerm }),
   });
-  console.log(req);
-  if (!req.ok) {
-    throw new Error("Failed to generate page");
-  }
+  return req.json();
 }
 export default function Form() {
   const [isLoading, setIsLoading] = useState(false);

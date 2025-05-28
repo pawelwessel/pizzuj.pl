@@ -15,10 +15,7 @@ async function generatePage(searchTerm) {
     },
     body: JSON.stringify({ searchTerm }),
   });
-  console.log(req);
-  if (!req.ok) {
-    throw new Error("Failed to generate page");
-  }
+  return req.json();
 }
 export default function Form() {
   const [isLoading, setIsLoading] = useState(false);
