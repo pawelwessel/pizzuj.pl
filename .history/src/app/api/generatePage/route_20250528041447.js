@@ -7,7 +7,7 @@ export async function POST(params, req) {
   });
   console.log(req);
   const response = await chat.sendMessage(
-    `Generate POLISH content for pizza theme ranking page. Details:`,
+    `Generate POLISH content for pizza theme ranking page. Details: ${data}`,
     {
       expect: {
         examples: [

@@ -5,9 +5,9 @@ export async function POST(params, req) {
     apiKey: process.env.OPENAI_API_KEY,
     model: "gpt-4",
   });
-  console.log(req);
+  const data = await req.json();
   const response = await chat.sendMessage(
-    `Generate POLISH content for pizza theme ranking page. Details:`,
+    `Generate POLISH content for pizza theme ranking page. Details: ${data}`,
     {
       expect: {
         examples: [

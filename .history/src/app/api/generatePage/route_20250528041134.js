@@ -1,3 +1,4 @@
+"use server";
 import { createChat } from "completions";
 import { NextResponse } from "next/server";
 export async function POST(params, req) {
@@ -5,9 +6,10 @@ export async function POST(params, req) {
     apiKey: process.env.OPENAI_API_KEY,
     model: "gpt-4",
   });
-  console.log(req);
+  const data = await req.json();
+  console.log("Received data:", data);
   const response = await chat.sendMessage(
-    `Generate POLISH content for pizza theme ranking page. Details:`,
+    `Generate POLISH content for pizza theme ranking page. Details: ${data}`,
     {
       expect: {
         examples: [

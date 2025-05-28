@@ -89,7 +89,6 @@ export default function Form() {
         //   page: res.page.content,
         //   createdAt: Date.now(),
         // });
-        console.log(res);
       });
       setIsLoading(false);
       setLoadingTimer(0);
