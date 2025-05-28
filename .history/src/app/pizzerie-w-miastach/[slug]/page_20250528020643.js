@@ -165,5 +165,8 @@ export async function generateMetadata({ params }, parent) {
   return {
     title: page?.page?.googleTitle,
     description: page?.page?.googleDescription,
+    openGraph: {
+      images: ["/some-specific-page-image.jpg", ...previousImages],
+    },
   };
 }

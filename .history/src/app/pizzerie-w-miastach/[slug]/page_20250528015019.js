@@ -15,7 +15,7 @@ import Form from "../../../components/Form";
 const pages = await getDocuments("pages");
 export async function generateStaticParams() {
   return pages.map((page) => ({
-    slug: page?.id,
+    slug: createLinkFromText(page?.page?.address),
   }));
 }
 
@@ -162,8 +162,14 @@ export async function generateMetadata({ params }, parent) {
   // fetch data
   const page = await getDocument("pages", slug);
 
+  // optionally access and extend (rather than replace) parent metadata
+  const previousImages = (await parent).openGraph?.images || [];
+
   return {
-    title: page?.page?.googleTitle,
-    description: page?.page?.googleDescription,
+    title: page?.page?.page?.page?.googleTitle,
+    description: page?.page?.page?.page?.googleDescription,
+    openGraph: {
+      images: ["/some-specific-page-image.jpg", ...previousImages],
+    },
   };
 }

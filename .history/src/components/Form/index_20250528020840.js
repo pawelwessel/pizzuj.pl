@@ -97,19 +97,38 @@ export default function Form() {
             searchTerm
           )}`;
         } else {
-          setError(response.error);
-          setSearchTerm("");
-          setLoadingTimer(0);
-          setLoadingStarted(false);
-          setIsLoading(false);
+          return { success: false, error: "Nie udało się wygenerować strony." };
         }
       }
     );
     setIsLoading(false);
     setLoadingTimer(0);
     setLoadingStarted(false);
+
     setSearchTerm("");
     setError(null);
+    if (!response.success) {
+      setIsLoading(false);
+      setSearchTerm("");
+      setError(
+        "Wystąpił błąd po stronie serwera :). Spróbuj ponownie np. jutro :)."
+      );
+      return;
+    }
+    if (response.error) {
+      setError(response.error);
+      setSearchTerm("");
+      setLoadingTimer(0);
+      setLoadingStarted(false);
+      setIsLoading(false);
+      return;
+    }
+    return (
+      response,
+      (window.location.href = `/pizzerie-w-miastach/${createLinkFromText(
+        searchTerm
+      )}`)
+    );
   };
 
   return (

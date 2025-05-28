@@ -86,30 +86,53 @@ export default function Form() {
         if (res.page) {
           addDocument("pages", createLinkFromText(searchTerm), {
             id: createLinkFromText(searchTerm),
-            page: res.page,
+            page: response.page,
             createdAt: Date.now(),
           });
-          setIsLoading(false);
-          setSearchTerm("");
-          setError(null);
-          // Redirect to the existing page
-          window.location.href = `/pizzerie-w-miastach/${createLinkFromText(
-            searchTerm
-          )}`;
         } else {
-          setError(response.error);
-          setSearchTerm("");
-          setLoadingTimer(0);
-          setLoadingStarted(false);
-          setIsLoading(false);
+          return { success: false, error: "Nie udało się wygenerować strony." };
         }
       }
     );
     setIsLoading(false);
     setLoadingTimer(0);
     setLoadingStarted(false);
+
     setSearchTerm("");
     setError(null);
+    // Redirect to the generated page
+    if (response.page) {
+      setIsLoading(false);
+      setSearchTerm("");
+      setError(null);
+      // Redirect to the existing page
+      window.location.href = `/pizzerie-w-miastach/${createLinkFromText(
+        searchTerm
+      )}`;
+      return;
+    }
+    if (!response.success) {
+      setIsLoading(false);
+      setSearchTerm("");
+      setError(
+        "Wystąpił błąd po stronie serwera :). Spróbuj ponownie np. jutro :)."
+      );
+      return;
+    }
+    if (response.error) {
+      setError(response.error);
+      setSearchTerm("");
+      setLoadingTimer(0);
+      setLoadingStarted(false);
+      setIsLoading(false);
+      return;
+    }
+    return (
+      response,
+      (window.location.href = `/pizzerie-w-miastach/${createLinkFromText(
+        searchTerm
+      )}`)
+    );
   };
 
   return (

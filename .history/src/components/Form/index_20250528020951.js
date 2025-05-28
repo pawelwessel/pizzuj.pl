@@ -97,17 +97,14 @@ export default function Form() {
             searchTerm
           )}`;
         } else {
-          setError(response.error);
-          setSearchTerm("");
-          setLoadingTimer(0);
-          setLoadingStarted(false);
-          setIsLoading(false);
+          return { success: false, error: "Nie udało się wygenerować strony." };
         }
       }
     );
     setIsLoading(false);
     setLoadingTimer(0);
     setLoadingStarted(false);
+
     setSearchTerm("");
     setError(null);
   };
