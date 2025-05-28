@@ -7,19 +7,14 @@ import loading1 from "../../../public/assets/loading1.png";
 import loading2 from "../../../public/assets/loading2.png";
 import Image from "next/image";
 import { getDocument } from "../../db/firebase";
-import { useRouter } from "next/navigation";
 async function generatePage(searchTerm) {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_LINK}/api/generatePage`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ searchTerm }),
-    }
-  );
-  return response;
+  const req = await fetch(`${process.env.NEXT_PUBLIC_LINK}/api/generatePage`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ searchTerm }),
+  });
 }
 export default function Form() {
   const [isLoading, setIsLoading] = useState(false);
@@ -28,7 +23,7 @@ export default function Form() {
   const [loadingText, setLoadingText] = useState("Wyszukiwanie...");
   const [loadingStarted, setLoadingStarted] = useState(false);
   const [loadingTimer, setLoadingTimer] = useState(0);
-  const router = useRouter();
+
   useEffect(() => {
     let interval;
     if (loadingStarted) {
@@ -82,11 +77,18 @@ export default function Form() {
         "pages",
         createLinkFromText(searchTerm)
       );
-      if (isExistingPage) {
-        router.push(`/pizzerie-w-miastach/${createLinkFromText(searchTerm)}`);
-      }
-      await generatePage(createLinkFromText(searchTerm)).then(() => {
-        router.push(`/pizzerie-w-miastach/${createLinkFromText(searchTerm)}`);
+      // if (isExistingPage) {
+      //   window.location.href = `/pizzerie-w-miastach/${createLinkFromText(
+      //     searchTerm
+      //   )}`;
+      // }
+      await generatePage(createLinkFromText(searchTerm)).then((res) => {
+        // addDocument("pages", createLinkFromText(res.page.content.address), {
+        //   id: createLinkFromText(res.page.content.address),
+        //   page: res.page.content,
+        //   createdAt: Date.now(),
+        // });
+        console.log(res);
       });
       setIsLoading(false);
       setLoadingTimer(0);

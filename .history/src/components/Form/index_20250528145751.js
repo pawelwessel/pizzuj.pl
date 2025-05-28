@@ -9,17 +9,13 @@ import Image from "next/image";
 import { getDocument } from "../../db/firebase";
 import { useRouter } from "next/navigation";
 async function generatePage(searchTerm) {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_LINK}/api/generatePage`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ searchTerm }),
-    }
-  );
-  return response;
+  await fetch(`${process.env.NEXT_PUBLIC_LINK}/api/generatePage`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ searchTerm }),
+  });
 }
 export default function Form() {
   const [isLoading, setIsLoading] = useState(false);
@@ -85,8 +81,13 @@ export default function Form() {
       if (isExistingPage) {
         router.push(`/pizzerie-w-miastach/${createLinkFromText(searchTerm)}`);
       }
-      await generatePage(createLinkFromText(searchTerm)).then(() => {
-        router.push(`/pizzerie-w-miastach/${createLinkFromText(searchTerm)}`);
+      await generatePage(createLinkFromText(searchTerm)).then((res) => {
+        // addDocument("pages", createLinkFromText(res.page.content.address), {
+        //   id: createLinkFromText(res.page.content.address),
+        //   page: res.page.content,
+        //   createdAt: Date.now(),
+        // });
+        console.log(res);
       });
       setIsLoading(false);
       setLoadingTimer(0);

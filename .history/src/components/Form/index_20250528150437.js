@@ -85,8 +85,13 @@ export default function Form() {
       if (isExistingPage) {
         router.push(`/pizzerie-w-miastach/${createLinkFromText(searchTerm)}`);
       }
-      await generatePage(createLinkFromText(searchTerm)).then(() => {
-        router.push(`/pizzerie-w-miastach/${createLinkFromText(searchTerm)}`);
+      await generatePage(createLinkFromText(searchTerm)).then((res) => {
+        // addDocument("pages", createLinkFromText(res.page.content.address), {
+        //   id: createLinkFromText(res.page.content.address),
+        //   page: res.page.content,
+        //   createdAt: Date.now(),
+        // });
+        console.log(res);
       });
       setIsLoading(false);
       setLoadingTimer(0);

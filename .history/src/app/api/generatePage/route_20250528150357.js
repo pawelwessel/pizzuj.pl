@@ -77,5 +77,6 @@ export async function POST(req) {
     page: response.content,
     createdAt: Date.now(),
   });
-  return Response.json({ success: true });
+  redirect(307, `/pizzerie-w-miastach/${searchTerm}`);
+  return Response.json(response.content);
 }

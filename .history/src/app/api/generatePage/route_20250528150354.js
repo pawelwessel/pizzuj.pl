@@ -1,4 +1,5 @@
 import { createChat } from "completions";
+import { NextResponse } from "next/server";
 import { addDocument } from "../../../db/firebase";
 import { redirect } from "next/dist/server/api-utils";
 export async function POST(req) {
@@ -77,5 +78,6 @@ export async function POST(req) {
     page: response.content,
     createdAt: Date.now(),
   });
-  return Response.json({ success: true });
+  redirect(307, `/pizzerie-w-miastach/${searchTerm}`);
+  return Response.json(response.content);
 }

@@ -85,7 +85,7 @@ export default function Form() {
       if (isExistingPage) {
         router.push(`/pizzerie-w-miastach/${createLinkFromText(searchTerm)}`);
       }
-      await generatePage(createLinkFromText(searchTerm)).then(() => {
+      await generatePage(createLinkFromText(searchTerm)).then((res) => {
         router.push(`/pizzerie-w-miastach/${createLinkFromText(searchTerm)}`);
       });
       setIsLoading(false);

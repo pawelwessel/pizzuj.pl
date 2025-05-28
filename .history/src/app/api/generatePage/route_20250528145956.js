@@ -1,10 +1,9 @@
 import { createChat } from "completions";
+import { NextResponse } from "next/server";
 import { addDocument } from "../../../db/firebase";
 import { redirect } from "next/dist/server/api-utils";
 export async function POST(req) {
   const { searchTerm } = await req.json();
-  if (process.env.OPENAI_API_KEY) {
-  }
   const chat = createChat({
     apiKey: process.env.OPENAI_API_KEY,
     model: "gpt-4",
@@ -77,5 +76,6 @@ export async function POST(req) {
     page: response.content,
     createdAt: Date.now(),
   });
-  return Response.json({ success: true });
+  redirect(307, `/pizzerie-w-miastach/${searchTerm}`);
+  return NextResponse.json(response.content);
 }

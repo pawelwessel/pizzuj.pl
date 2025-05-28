@@ -77,5 +77,5 @@ export async function POST(req) {
     page: response.content,
     createdAt: Date.now(),
   });
-  return Response.json({ success: true });
+  return Response.json(response.content);
 }

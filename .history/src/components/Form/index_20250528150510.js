@@ -85,8 +85,8 @@ export default function Form() {
       if (isExistingPage) {
         router.push(`/pizzerie-w-miastach/${createLinkFromText(searchTerm)}`);
       }
-      await generatePage(createLinkFromText(searchTerm)).then(() => {
-        router.push(`/pizzerie-w-miastach/${createLinkFromText(searchTerm)}`);
+      await generatePage(createLinkFromText(searchTerm)).then((res) => {
+        console.log(res);
       });
       setIsLoading(false);
       setLoadingTimer(0);
