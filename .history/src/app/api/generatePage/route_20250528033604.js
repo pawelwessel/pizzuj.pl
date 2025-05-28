@@ -1,7 +1,6 @@
 import { createChat } from "completions";
 import { NextResponse } from "next/server";
-import createLinkFromText from "../../../lib/createLinkFromText";
-import { addDocument } from "../../../db/firebase";
+
 export async function POST(req) {
   try {
     const chat = createChat({

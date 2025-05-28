@@ -1,7 +1,6 @@
 import { createChat } from "completions";
 import { NextResponse } from "next/server";
-import createLinkFromText from "../../../lib/createLinkFromText";
-import { addDocument } from "../../../db/firebase";
+
 export async function POST(req) {
   try {
     const chat = createChat({
@@ -73,11 +72,7 @@ export async function POST(req) {
         },
       }
     );
-    await addDocument("pages", createLinkFromText(response.content.address), {
-      id: createLinkFromText(response.content.address),
-      page: response.content,
-      createdAt: Date.now(),
-    });
+
     return NextResponse.json({ page: response.content });
   } catch (error) {
     return NextResponse.json({

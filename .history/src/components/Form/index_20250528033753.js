@@ -91,6 +91,7 @@ export default function Form() {
           searchTerm
         )}`;
       });
+
       setIsLoading(false);
       setLoadingTimer(0);
       setLoadingStarted(false);

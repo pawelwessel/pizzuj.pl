@@ -1,16 +1,19 @@
-import { createChat } from "completions";
 import { NextResponse } from "next/server";
-import createLinkFromText from "../../../lib/createLinkFromText";
-import { addDocument } from "../../../db/firebase";
+import { createChat } from "completions";
+
 export async function POST(req) {
   try {
+    if (!process.env.OPENAI_API_KEY) {
+      return NextResponse.json({ error: "Missing API key" }, { status: 500 });
+    }
+
     const chat = createChat({
       apiKey: process.env.OPENAI_API_KEY,
       model: "gpt-4",
     });
-    const data = await req.json();
+    const { searchTerm } = await req.json();
     const response = await chat.sendMessage(
-      `Generate POLISH content for pizza theme ranking page. Details: ${data.searchTerm}`,
+      `Generate POLISH content for pizza theme ranking page. Details: ${searchTerm}`,
       {
         expect: {
           examples: [
@@ -73,11 +76,7 @@ export async function POST(req) {
         },
       }
     );
-    await addDocument("pages", createLinkFromText(response.content.address), {
-      id: createLinkFromText(response.content.address),
-      page: response.content,
-      createdAt: Date.now(),
-    });
+
     return NextResponse.json({ page: response.content });
   } catch (error) {
     return NextResponse.json({

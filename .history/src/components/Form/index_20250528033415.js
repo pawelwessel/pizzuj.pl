@@ -77,20 +77,32 @@ export default function Form() {
     setError(null);
 
     (async () => {
-      const isExistingPage = await getDocument(
-        "pages",
-        createLinkFromText(searchTerm)
-      );
-      if (isExistingPage) {
+      try {
+        const isExistingPage = await getDocument(
+          "pages",
+          createLinkFromText(searchTerm)
+        );
+        if (isExistingPage) {
+          window.location.href = `/pizzerie-w-miastach/${createLinkFromText(
+            searchTerm
+          )}`;
+        }
+        const data = await generatePage(createLinkFromText(searchTerm)).then(
+          (d) => {
+            return d.json();
+          }
+        );
+        addDocument("pages", createLinkFromText(data.page.address), {
+          id: createLinkFromText(data.page.address),
+          page: data?.page,
+          createdAt: Date.now(),
+        });
         window.location.href = `/pizzerie-w-miastach/${createLinkFromText(
           searchTerm
         )}`;
+      } catch (err) {
+        console.log(err);
       }
-      await generatePage(createLinkFromText(searchTerm)).then(() => {
-        window.location.href = `/pizzerie-w-miastach/${createLinkFromText(
-          searchTerm
-        )}`;
-      });
       setIsLoading(false);
       setLoadingTimer(0);
       setLoadingStarted(false);

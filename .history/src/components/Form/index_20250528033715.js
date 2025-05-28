@@ -77,20 +77,28 @@ export default function Form() {
     setError(null);
 
     (async () => {
-      const isExistingPage = await getDocument(
-        "pages",
-        createLinkFromText(searchTerm)
-      );
-      if (isExistingPage) {
+      try {
+        const isExistingPage = await getDocument(
+          "pages",
+          createLinkFromText(searchTerm)
+        );
+        if (isExistingPage) {
+          window.location.href = `/pizzerie-w-miastach/${createLinkFromText(
+            searchTerm
+          )}`;
+        }
+        const data = await generatePage(createLinkFromText(searchTerm)).then(
+          (d) => {
+            return d.json();
+          }
+        );
+
         window.location.href = `/pizzerie-w-miastach/${createLinkFromText(
           searchTerm
         )}`;
+      } catch (err) {
+        console.log(err);
       }
-      await generatePage(createLinkFromText(searchTerm)).then(() => {
-        window.location.href = `/pizzerie-w-miastach/${createLinkFromText(
-          searchTerm
-        )}`;
-      });
       setIsLoading(false);
       setLoadingTimer(0);
       setLoadingStarted(false);

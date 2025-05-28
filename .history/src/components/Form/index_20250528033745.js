@@ -77,20 +77,22 @@ export default function Form() {
     setError(null);
 
     (async () => {
-      const isExistingPage = await getDocument(
-        "pages",
-        createLinkFromText(searchTerm)
-      );
-      if (isExistingPage) {
-        window.location.href = `/pizzerie-w-miastach/${createLinkFromText(
-          searchTerm
-        )}`;
-      }
-      await generatePage(createLinkFromText(searchTerm)).then(() => {
-        window.location.href = `/pizzerie-w-miastach/${createLinkFromText(
-          searchTerm
-        )}`;
-      });
+      try {
+        const isExistingPage = await getDocument(
+          "pages",
+          createLinkFromText(searchTerm)
+        );
+        if (isExistingPage) {
+          window.location.href = `/pizzerie-w-miastach/${createLinkFromText(
+            searchTerm
+          )}`;
+        }
+        await generatePage(createLinkFromText(searchTerm)).then(() => {
+          window.location.href = `/pizzerie-w-miastach/${createLinkFromText(
+            searchTerm
+          )}`;
+        });
+      } catch (err) {}
       setIsLoading(false);
       setLoadingTimer(0);
       setLoadingStarted(false);
