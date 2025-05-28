@@ -83,10 +83,10 @@ export default function Form() {
           searchTerm
         )}`;
       }
-      await generatePage(createLinkFromText(searchTerm)).then((res) => {
-        addDocument("pages", createLinkFromText(res.page.content.address), {
-          id: createLinkFromText(res.page.content.address),
-          page: res.page.content,
+      await generatePage(createLinkFromText(searchTerm)).then(() => {
+        addDocument("pages", createLinkFromText(response.content.address), {
+          id: createLinkFromText(response.content.address),
+          page: response.content,
           createdAt: Date.now(),
         });
         window.location.href = `/pizzerie-w-miastach/${createLinkFromText(

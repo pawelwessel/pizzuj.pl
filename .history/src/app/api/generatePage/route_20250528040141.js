@@ -72,5 +72,5 @@ export async function POST(req) {
     }
   );
 
-  return NextResponse.json({ page: response });
+  return NextResponse.json({ page: response.content });
 }
