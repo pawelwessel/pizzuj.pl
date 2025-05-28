@@ -84,9 +84,9 @@ export default function Form() {
     const response = await generatePage(createLinkFromText(searchTerm));
 
     if (response) {
-      await addDocument("pages", createLinkFromText(searchTerm), {
+      addDocument("pages", createLinkFromText(searchTerm), {
         id: createLinkFromText(searchTerm),
-        page: response?.page,
+        page: res.page,
         createdAt: Date.now(),
       });
       setIsLoading(false);
@@ -96,8 +96,6 @@ export default function Form() {
       window.location.href = `/pizzerie-w-miastach/${createLinkFromText(
         searchTerm
       )}`;
-    } else {
-      setError("Wystąpił błąd podczas generowania strony. Spróbuj ponownie.");
     }
 
     setIsLoading(false);

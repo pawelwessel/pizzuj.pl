@@ -84,7 +84,7 @@ export default function Form() {
     const response = await generatePage(createLinkFromText(searchTerm));
 
     if (response) {
-      await addDocument("pages", createLinkFromText(searchTerm), {
+      addDocument("pages", createLinkFromText(searchTerm), {
         id: createLinkFromText(searchTerm),
         page: response?.page,
         createdAt: Date.now(),

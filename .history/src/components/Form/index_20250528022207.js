@@ -81,25 +81,22 @@ export default function Form() {
       return;
     }
 
-    const response = await generatePage(createLinkFromText(searchTerm));
-
-    if (response) {
-      await addDocument("pages", createLinkFromText(searchTerm), {
-        id: createLinkFromText(searchTerm),
-        page: response?.page,
-        createdAt: Date.now(),
-      });
-      setIsLoading(false);
-      setSearchTerm("");
-      setError(null);
-      // Redirect to the existing page
-      window.location.href = `/pizzerie-w-miastach/${createLinkFromText(
-        searchTerm
-      )}`;
-    } else {
-      setError("Wystąpił błąd podczas generowania strony. Spróbuj ponownie.");
-    }
-
+    const response = await generatePage(createLinkFromText(searchTerm)).
+        if (res.page) {
+          addDocument("pages", createLinkFromText(searchTerm), {
+            id: createLinkFromText(searchTerm),
+            page: res.page,
+            createdAt: Date.now(),
+          });
+          setIsLoading(false);
+          setSearchTerm("");
+          setError(null);
+          // Redirect to the existing page
+          window.location.href = `/pizzerie-w-miastach/${createLinkFromText(
+            searchTerm
+          )}`;
+        } 
+    
     setIsLoading(false);
     setLoadingTimer(0);
     setLoadingStarted(false);
