@@ -85,8 +85,8 @@ export default function Form() {
             return data.json();
           }
         );
-        addDocument("pages", createLinkFromText(data.page.address), {
-          id: createLinkFromText(data.page.address),
+        addDocument("pages", data.id, {
+          id: createLinkFromText(searchTerm),
           page: data?.page,
           createdAt: Date.now(),
         });
