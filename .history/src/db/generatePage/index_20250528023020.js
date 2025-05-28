@@ -1,6 +1,7 @@
 "use server";
 
 import { createChat } from "completions";
+import { NextResponse } from "next/server";
 
 export async function generatePage(slug) {
   try {
@@ -73,8 +74,8 @@ export async function generatePage(slug) {
         },
       }
     );
-    return { page: response.content, success: true };
+    return NextResponse.json({ page: response.content, success: true });
   } catch (error) {
-    return { error };
+    return NextResponse.json({ error });
   }
 }

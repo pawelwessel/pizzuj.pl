@@ -7,9 +7,10 @@ import loading1 from "../../../public/assets/loading1.png";
 import loading2 from "../../../public/assets/loading2.png";
 import Image from "next/image";
 import { addDocument, getDocument } from "../../db/firebase";
+import { generatePage } from "../../db/generatePage";
 async function generatePage(searchTerm) {
   const req = await fetch(
-    `${process.env.NEXT_PUBLIC_LINK}/api/generatePage?searchTerm=${searchTerm}`
+    `${process.env.NEXT_PUBLIC_URL}/api/generateBlogPost?searchTerm=${searchTerm}`
   );
   return req;
 }
@@ -68,32 +69,41 @@ export default function Form() {
     setIsLoading(true);
     setLoadingStarted(true);
     setError(null);
+    const isExistingPage = getDocument(
+      "pages",
+      createLinkFromText(searchTerm)
+    );
+    if (isExistingPage) {
+      // Redirect to the existing page
+      window.location.href = `/pizzerie-w-miastach/${createLinkFromText(
+        searchTerm
+      )}`;
+      setIsLoading(false);
+      setSearchTerm("");
+      setError(null);
+      setLoadingTimer(0);
+      setLoadingStarted(false);
+      return;
+    }
 
-    (async () => {
-      try {
-        const isExistingPage = await getDocument(
-          "pages",
-          createLinkFromText(searchTerm)
-        );
-        if (isExistingPage) {
-          window.location.href = `/pizzerie-w-miastach/${createLinkFromText(
-            searchTerm
-          )}`;
-        }
-        const data = await generatePage(createLinkFromText(searchTerm)).then(
-          (data) => {
-            return data.json();
-          }
-        );
-        addDocument("pages", createLinkFromText(searchTerm), {
-          id: createLinkFromText(searchTerm),
-          page: data?.page,
-          createdAt: Date.now(),
-        });
-      } catch (err) {
-        console.log(err);
-      }
-    })();
+    const req = await generatePage(createLinkFromText(searchTerm));
+
+    if (req) {
+      await addDocument("pages", createLinkFromText(searchTerm), {
+        id: createLinkFromText(searchTerm),
+        page: req?.page,
+        createdAt: Date.now(),
+      });
+      setIsLoading(false);
+      setSearchTerm("");
+      setError(null);
+      // Redirect to the existing page
+      window.location.href = `/pizzerie-w-miastach/${createLinkFromText(
+        searchTerm
+      )}`;
+    } else {
+      setError("Wystąpił błąd podczas generowania strony. Spróbuj ponownie.");
+    }
 
     setIsLoading(false);
     setLoadingTimer(0);

@@ -7,9 +7,10 @@ import loading1 from "../../../public/assets/loading1.png";
 import loading2 from "../../../public/assets/loading2.png";
 import Image from "next/image";
 import { addDocument, getDocument } from "../../db/firebase";
+import { generatePage } from "../../db/generatePage";
 async function generatePage(searchTerm) {
   const req = await fetch(
-    `${process.env.NEXT_PUBLIC_LINK}/api/generatePage?searchTerm=${searchTerm}`
+    `${process.env.NEXT_PUBLIC_URL}/api/generateBlogPost?searchTerm=${searchTerm}`
   );
   return req;
 }

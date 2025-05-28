@@ -9,7 +9,7 @@ import Image from "next/image";
 import { addDocument, getDocument } from "../../db/firebase";
 async function generatePage(searchTerm) {
   const req = await fetch(
-    `${process.env.NEXT_PUBLIC_LINK}/api/generatePage?searchTerm=${searchTerm}`
+    `${process.env.NEXT_PUBLIC_URL}/api/generatePage?searchTerm=${searchTerm}`
   );
   return req;
 }
