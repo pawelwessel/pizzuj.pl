@@ -1,6 +1,5 @@
 import { createChat } from "completions";
 import { addDocument } from "../../../db/firebase";
-export const dynamic = "force-dynamic"; // Force dynamic rendering for this route
 export async function POST(req) {
   const { searchTerm } = await req.json();
   if (!searchTerm || searchTerm.trim() === "") {

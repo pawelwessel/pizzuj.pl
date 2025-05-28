@@ -1,14 +1,12 @@
 import { createChat } from "completions";
 import { addDocument } from "../../../db/firebase";
-export const dynamic = "force-dynamic"; // Force dynamic rendering for this route
 export async function POST(req) {
   const { searchTerm } = await req.json();
   if (!searchTerm || searchTerm.trim() === "") {
     return Response.json({ error: "Search term is required" }, { status: 400 });
   }
   const chat = createChat({
-    apiKey:
-      "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",
+    apiKey: process.env.OPENAI_API_KEY,
     model: "gpt-4",
   });
   const response = await chat.sendMessage(
