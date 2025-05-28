@@ -15,8 +15,8 @@ async function generatePage(searchTerm) {
     },
     body: JSON.stringify({ searchTerm }),
   });
-  console.log(req.json());
-  if (!req.json().ok) {
+  console.log(req);
+  if (!req.ok) {
     throw new Error("Failed to generate page");
   }
 }
