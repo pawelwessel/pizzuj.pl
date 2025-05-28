@@ -10,7 +10,7 @@ import CtaButton from "../../../components/CtaButton";
 import pizza from "../../../../public/assets/pizza.png";
 import { FaCheckCircle } from "react-icons/fa";
 import Form from "../../../components/Form";
-export const dynamic = "force-dynamic"; // Force dynamic rendering for this page
+
 const pages = await getDocuments("pages");
 export async function generateStaticParams() {
   return pages.map((page) => ({
