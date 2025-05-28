@@ -15,7 +15,7 @@ async function generatePage(searchTerm) {
     },
     body: JSON.stringify(searchTerm),
   });
-  return req.json();
+  return req;
 }
 export default function Form() {
   const [isLoading, setIsLoading] = useState(false);
