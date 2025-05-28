@@ -1,6 +1,7 @@
 import { createChat } from "completions";
 import { addDocument } from "../../../db/firebase";
-export const maxDuration = 300;
+export const dynamic = "force-dynamic"; // Force dynamic rendering for this route
+export const maxDuration = 5; // 5 seconds
 export async function POST(req) {
   const { searchTerm } = await req.json();
   if (!searchTerm || searchTerm.trim() === "") {

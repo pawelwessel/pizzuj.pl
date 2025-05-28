@@ -1,6 +1,6 @@
 import { createChat } from "completions";
 import { addDocument } from "../../../db/firebase";
-export const maxDuration = 300;
+export const maxDuration = 5;
 export async function POST(req) {
   const { searchTerm } = await req.json();
   if (!searchTerm || searchTerm.trim() === "") {
