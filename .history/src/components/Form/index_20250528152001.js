@@ -8,19 +8,7 @@ import loading2 from "../../../public/assets/loading2.png";
 import Image from "next/image";
 import { getDocument } from "../../db/firebase";
 import { useRouter } from "next/navigation";
-async function generatePage(searchTerm) {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_LINK}/api/generatePage`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ searchTerm }),
-    }
-  );
-  return response;
-}
+import { generatePage } from "../../lib/generatePage";
 export default function Form() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -64,7 +52,7 @@ export default function Form() {
   const handleInputChange = (e) => {
     setSearchTerm(e.target.value);
   };
-  const handleSearch = async () => {
+  const handleSearch = () => {
     if (!searchTerm || searchTerm.trim() === "") {
       setError("Proszę wpisać miasto.");
       return;
@@ -77,21 +65,20 @@ export default function Form() {
     setLoadingStarted(true);
     setError(null);
 
-    const isExistingPage = await getDocument(
-      "pages",
-      createLinkFromText(searchTerm)
-    );
-    if (isExistingPage) {
-      router.push(`/pizzerie-w-miastach/${createLinkFromText(searchTerm)}`);
-    }
-    const page = await generatePage(createLinkFromText(searchTerm));
-    if (page) {
-      router.push(`/pizzerie-w-miastach/${createLinkFromText(searchTerm)}`);
+    (async () => {
+      const isExistingPage = await getDocument(
+        "pages",
+        createLinkFromText(searchTerm)
+      );
+      if (isExistingPage) {
+        router.push(`/pizzerie-w-miastach/${createLinkFromText(searchTerm)}`);
+      }
+      await generatePage(createLinkFromText(searchTerm));
       setIsLoading(false);
       setLoadingTimer(0);
       setLoadingStarted(false);
       setError(null);
-    }
+    })();
   };
 
   return (
@@ -135,7 +122,9 @@ export default function Form() {
         placeholder="Wpisz miasto"
       />
       <button
-        onClick={() => handleSearch()}
+        onClick={() => {
+          handleSearch();
+        }}
         className="text-white text-sm goldenShadow p-3 rounded-b-md flex w-max mx-auto max-w-full items-center"
       >
         <FaLocationArrow className="w-7 h-7 mr-2" />

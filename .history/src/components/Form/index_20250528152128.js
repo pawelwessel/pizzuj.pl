@@ -8,19 +8,7 @@ import loading2 from "../../../public/assets/loading2.png";
 import Image from "next/image";
 import { getDocument } from "../../db/firebase";
 import { useRouter } from "next/navigation";
-async function generatePage(searchTerm) {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_LINK}/api/generatePage`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ searchTerm }),
-    }
-  );
-  return response;
-}
+import { generatePage } from "../../lib/generatePage";
 export default function Form() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -85,13 +73,10 @@ export default function Form() {
       router.push(`/pizzerie-w-miastach/${createLinkFromText(searchTerm)}`);
     }
     const page = await generatePage(createLinkFromText(searchTerm));
-    if (page) {
-      router.push(`/pizzerie-w-miastach/${createLinkFromText(searchTerm)}`);
-      setIsLoading(false);
-      setLoadingTimer(0);
-      setLoadingStarted(false);
-      setError(null);
-    }
+    setIsLoading(false);
+    setLoadingTimer(0);
+    setLoadingStarted(false);
+    setError(null);
   };
 
   return (

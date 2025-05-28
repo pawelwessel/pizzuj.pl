@@ -1,5 +1,5 @@
 "use server";
-async function generatePage(searchTerm) {
+export async function generatePage(searchTerm) {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_LINK}/api/generatePage`,
     {
