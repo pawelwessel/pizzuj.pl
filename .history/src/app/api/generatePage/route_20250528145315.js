@@ -1,6 +1,5 @@
 import { createChat } from "completions";
 import { NextResponse } from "next/server";
-import { addDocument } from "../../../db/firebase";
 export async function POST(req) {
   const { searchTerm } = await req.json();
   const chat = createChat({
@@ -70,10 +69,5 @@ export async function POST(req) {
       },
     }
   );
-  await addDocument("pages", searchTerm, {
-    id: searchTerm,
-    page: response.content,
-    createdAt: Date.now(),
-  });
   return NextResponse.json(response.content);
 }
