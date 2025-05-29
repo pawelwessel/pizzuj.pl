@@ -17,6 +17,7 @@ export async function generateStaticParams() {
     slug: page?.id,
   }));
 }
+
 export default async function Page({ params }) {
   const { slug } = await params;
   const page = await getDocument("pages", slug);
@@ -24,6 +25,7 @@ export default async function Page({ params }) {
   if (!page) {
     return <div>Page not found</div>;
   }
+
   return (
     <div>
       <div className="overflow-hidden relative min-h-[35vh] w-full golden pt-24 pb-12">
@@ -43,7 +45,7 @@ export default async function Page({ params }) {
         />
         <div className="relative z-50 mx-auto w-[90%] lg:w-1/2">
           <div className="flex flex-col items-center justify-center text-center">
-            <h1 className="text-white text-xl lg:text-3xl drop-shadow-lg shadow-black font-bold">
+            <h1 className="text-white text-3xl drop-shadow-lg shadow-black font-bold">
               {page?.page?.h1}
             </h1>
 
@@ -58,12 +60,10 @@ export default async function Page({ params }) {
       </div>
       <div className="flex flex-col gap-6 bg-[#ffa920] p-6">
         <div className="p-6 bg-white rounded-md shadow-lg">
-          <h2 className="font-sans font-bold text-xl lg:text-3xl">
-            {page?.page?.h2}
-          </h2>
+          <h2 className="font-sans font-bold text-3xl">{page?.page?.h2}</h2>
           <ArrayWithPlaces command={page?.page?.h1} />
           <div className="mt-6">
-            <h3 className="text-xl lg:text-3xl bg-[#ffa920] block p-3 text-white rounded-md w-max max-w-full">
+            <h3 className="text-3xl bg-[#ffa920] block p-3 text-white rounded-md w-max max-w-full">
               {page?.page?.testimonialSection}
             </h3>
             <ul className="grid grid-cols-1 md:grid-cols-2 w-[90%] lg:w-[66%] mt-4 gap-4">
@@ -97,7 +97,7 @@ export default async function Page({ params }) {
         <span className="block px-8 rounded-b-md py-4 golden text-white w-max">
           Zareklamuj się
         </span>
-        <h2 className="relative z-10 text-xl lg:text-3xl font-bold text-black mt-12">
+        <h2 className="relative z-10 text-3xl font-bold text-black mt-12">
           Zwiększ ruch w swoim lokalu
         </h2>
         <p className="font-light max-w-[90%] lg:max-w-[66%] text-left mt-4 text-black border-l-2 border-[#ffa920] p-4 bg-gray-200">
@@ -114,9 +114,7 @@ export default async function Page({ params }) {
             width={250}
             height={250}
           />
-          <p className="text-left mt-6 text-xl lg:text-3xl">
-            O naszej ofercie...
-          </p>
+          <p className="text-left mt-6 text-3xl">O naszej ofercie...</p>
         </div>
         <div className="h-px w-24 golden mt-2" />
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 lg:gap-12 mt-6">

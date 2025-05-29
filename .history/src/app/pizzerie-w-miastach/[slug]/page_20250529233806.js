@@ -17,6 +17,7 @@ export async function generateStaticParams() {
     slug: page?.id,
   }));
 }
+
 export default async function Page({ params }) {
   const { slug } = await params;
   const page = await getDocument("pages", slug);
@@ -24,6 +25,7 @@ export default async function Page({ params }) {
   if (!page) {
     return <div>Page not found</div>;
   }
+
   return (
     <div>
       <div className="overflow-hidden relative min-h-[35vh] w-full golden pt-24 pb-12">

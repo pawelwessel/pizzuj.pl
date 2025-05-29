@@ -22,19 +22,6 @@ export default function ArrayWithPlaces() {
     ).then((res) => res.json());
     return response;
   }
-  async function getPlaceDetails(id) {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_LINK}/api/getPlaceDetails/`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ place_id: id }), // Extract search term from URL
-      }
-    ).then((res) => res.json());
-    return response;
-  }
 
   useEffect(() => {
     async function fetchPlaces() {
@@ -50,9 +37,6 @@ export default function ArrayWithPlaces() {
         {places.map((place, index) => (
           <li
             key={index}
-            onClick={() => {
-              getPlaceDetails(place.place_id).then((res) => console.log(res));
-            }}
             className="relative flex flex-col w-full sm:w-[calc(50%-1rem)] md:w-[calc(33.333%-1rem)] lg:w-[calc(25%-1rem)]"
           >
             <>

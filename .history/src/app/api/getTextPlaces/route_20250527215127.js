@@ -30,7 +30,7 @@ export async function POST(req) {
       `${PLACES_TEXTSEARCH_URL}?query=pizza ${data.search}&key=${GOOGLE_API_KEY}`
     ).then((res) => res.json());
 
-    const limitedResults = response.results.slice(0, 4);
+    const limitedResults = response.results.slice(0, 20);
 
     const resultsWithCityAndPhoto = await Promise.all(
       limitedResults.map(async (place) => {

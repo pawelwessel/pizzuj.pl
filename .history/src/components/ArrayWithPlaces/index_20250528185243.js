@@ -30,7 +30,7 @@ export default function ArrayWithPlaces() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ place_id: id }), // Extract search term from URL
+        body: JSON.stringify({ placeId: id }), // Extract search term from URL
       }
     ).then((res) => res.json());
     return response;
