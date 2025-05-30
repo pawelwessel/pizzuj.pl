@@ -15,9 +15,6 @@ export const dynamic = "force-dynamic"; // Force dynamic rendering for this page
 export default async function Page({ params }) {
   const { pizzeria } = await params;
   const pizzeriaData = await getDocument("pizzerias", pizzeria || "");
-  const data = await fetch(
-    `${process.env.NEXT_PUBLIC_LINK}/api/getPlaceDetails/${pizzeria}`
-  );
   console.log(pizzeriaData);
   return (
     <>

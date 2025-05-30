@@ -15,14 +15,11 @@ export const dynamic = "force-dynamic"; // Force dynamic rendering for this page
 export default async function Page({ params }) {
   const { pizzeria } = await params;
   const pizzeriaData = await getDocument("pizzerias", pizzeria || "");
-  const data = await fetch(
-    `${process.env.NEXT_PUBLIC_LINK}/api/getPlaceDetails/${pizzeria}`
-  );
-  console.log(pizzeriaData);
+
   return (
     <>
       {(pizzeriaData === null || pizzeriaData === undefined) && (
-        <div className="bg-black text-white fixed left-1/2 -translate-y-1/2 top-0 w-screen h-max text-center justify-center items-center flex">
+        <div className="bg-black text-white fixed left-0 top-0 w-screen h-screen text-center justify-center items-center flex">
           PLEASE WAIT, WE ARE LOADING THE PIZZERIA DATA...
           <div className="w-12 h-12 border-4 border-dashed border-[#ffa920] rounded-full animate-spin mt-4"></div>
         </div>
