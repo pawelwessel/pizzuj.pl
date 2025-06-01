@@ -80,11 +80,11 @@ export default function ArrayWithPlaces({ placesData }) {
                   {place.name}
                 </Link>
                 <p className="flex items-center gap-2">
-                  <FaStar className="text-[#ec7308]" />
+                  <FaStar className="text-yellow-500" />
                   {place.rating}/5
                 </p>
                 <p className="flex items-center gap-2">
-                  <FaLocationArrow className="text-[#ec7308]" />
+                  <FaLocationArrow className="text-yellow-500" />
                   {place.city}
                 </p>
               </div>

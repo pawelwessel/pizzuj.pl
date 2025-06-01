@@ -70,7 +70,7 @@ export default function ArrayWithPlaces({ placesData }) {
                   className="border-[#ffa920] border-b-[6px] lg:border-b-0 lg:border-r-[6px] rounded-t-lg lg:rounded-t-none lg:rounded-l-lg w-full h-60 object-cover"
                 />
               </div>
-              <div className="p-3">
+              <div className="pl-3 p-3">
                 <Link
                   href={`/pizzerie-w-miastach/${createLinkFromText(
                     place.city
@@ -80,11 +80,11 @@ export default function ArrayWithPlaces({ placesData }) {
                   {place.name}
                 </Link>
                 <p className="flex items-center gap-2">
-                  <FaStar className="text-[#ec7308]" />
+                  <FaStar className="text-yellow-500" />
                   {place.rating}/5
                 </p>
                 <p className="flex items-center gap-2">
-                  <FaLocationArrow className="text-[#ec7308]" />
+                  <FaLocationArrow className="text-yellow-500" />
                   {place.city}
                 </p>
               </div>

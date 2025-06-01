@@ -67,7 +67,7 @@ export default function ArrayWithPlaces({ placesData }) {
                   alt={place.name}
                   width={400}
                   height={400}
-                  className="border-[#ffa920] border-b-[6px] lg:border-b-0 lg:border-r-[6px] rounded-t-lg lg:rounded-t-none lg:rounded-l-lg w-full h-60 object-cover"
+                  className="border-[#ec7308] border-b-[6px] lg:border-b-0 lg:border-r-[6px] rounded-t-lg lg:rounded-t-none lg:rounded-l-lg w-full h-60 object-cover"
                 />
               </div>
               <div className="p-3">
@@ -80,11 +80,11 @@ export default function ArrayWithPlaces({ placesData }) {
                   {place.name}
                 </Link>
                 <p className="flex items-center gap-2">
-                  <FaStar className="text-[#ec7308]" />
+                  <FaStar className="text-yellow-500" />
                   {place.rating}/5
                 </p>
                 <p className="flex items-center gap-2">
-                  <FaLocationArrow className="text-[#ec7308]" />
+                  <FaLocationArrow className="text-yellow-500" />
                   {place.city}
                 </p>
               </div>
