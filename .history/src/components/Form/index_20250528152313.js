@@ -82,7 +82,7 @@ export default function Form() {
       createLinkFromText(searchTerm)
     );
     if (isExistingPage) {
-      router.push(`/pizzerie-w-miastach/${createLinkFromText(searchTerm)}`);
+      router.push(`/pizza/${createLinkFromText(searchTerm)}`);
     }
     const page = await generatePage(createLinkFromText(searchTerm));
     setIsLoading(false);
