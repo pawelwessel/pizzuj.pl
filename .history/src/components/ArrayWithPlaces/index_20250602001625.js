@@ -67,7 +67,7 @@ export default function ArrayWithPlaces({ placesData }) {
                   alt={place.name}
                   width={400}
                   height={400}
-                  className="border-[#ffa920] border-b-[6px] xl:border-b-0 xl:border-r-[6px] rounded-t-lg xl:rounded-t-none xl:rounded-l-lg w-full h-60 sm:h-[400px] xl:h-60 object-cover"
+                  className="border-[#ffa920] border-b-[6px] xl:border-b-0 xl:border-r-[6px] rounded-t-lg xl:rounded-t-none xl:rounded-l-lg w-full h-60 sm:h-[400px] xl:h-72 object-cover"
                 />
               </div>
               <div className="p-3 w-full">

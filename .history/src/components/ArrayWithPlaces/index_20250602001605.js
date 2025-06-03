@@ -71,7 +71,7 @@ export default function ArrayWithPlaces({ placesData }) {
                 />
               </div>
               <div className="p-3 w-full">
-                <div className="flex flex-col lg:flex-row w-full justify-between items-start gap-3">
+                <div className="flex flex-col lg:flex-row w-full justify-between items-start">
                   <Link
                     href={`/pizzerie-w-miastach/${createLinkFromText(
                       place.city
