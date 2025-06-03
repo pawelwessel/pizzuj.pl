@@ -79,9 +79,7 @@ export default function Form() {
         createLinkFromText(searchTerm)
       );
       if (isExistingPage) {
-        window.location.href = `/pizzerie-w-miastach/${createLinkFromText(
-          searchTerm
-        )}`;
+        window.location.href = `/pizza/${createLinkFromText(searchTerm)}`;
       }
       await generatePage(createLinkFromText(searchTerm)).then(() => {
         addDocument("pages", createLinkFromText(response.content.address), {
@@ -89,9 +87,7 @@ export default function Form() {
           page: response.content,
           createdAt: Date.now(),
         });
-        window.location.href = `/pizzerie-w-miastach/${createLinkFromText(
-          searchTerm
-        )}`;
+        window.location.href = `/pizza/${createLinkFromText(searchTerm)}`;
       });
       setIsLoading(false);
       setLoadingTimer(0);

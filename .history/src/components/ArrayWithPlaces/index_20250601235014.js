@@ -72,7 +72,7 @@ export default function ArrayWithPlaces({ placesData }) {
               </div>
               <div className="pl-3 lg:pl-0">
                 <Link
-                  href={`/pizzerie-w-miastach/${createLinkFromText(
+                  href={`/pizza/${createLinkFromText(
                     place.city
                   )}/${createLinkFromText(place.name)}`}
                   className="text-left block text-lg font-bold"

@@ -43,7 +43,7 @@ export default function Page() {
         </div>
         <div className="mt-24 relative flex overflow-x-auto lg:justify-center items-center w-full gap-4 lg:gap-12 !text-sm z-50">
           <Link
-            href="pizzerie-w-miastach/warszawa"
+            href="pizza/warszawa"
             className="group text-white bg-[#333] px-6 py-3 uppercase rounded-t-lg z-10 duration-300 text-center w-max items-center flex"
           >
             <p className="group-hover:animate-bounce drop-shadow-lg shadow-black">
@@ -51,7 +51,7 @@ export default function Page() {
             </p>
           </Link>
           <Link
-            href="pizzerie-w-miastach/grudziadz"
+            href="pizza/grudziadz"
             className="group text-white bg-[#333] px-6 py-3 uppercase rounded-t-lg z-10 duration-300 text-center w-max items-center flex"
           >
             <p className="group-hover:animate-bounce drop-shadow-lg shadow-black">
@@ -59,7 +59,7 @@ export default function Page() {
             </p>
           </Link>
           <Link
-            href="pizzerie-w-miastach/bydgoszcz"
+            href="pizza/bydgoszcz"
             className="group text-white bg-[#333] px-6 py-3 uppercase rounded-t-lg z-10 duration-300 text-center w-max items-center flex"
           >
             <p className="group-hover:animate-bounce drop-shadow-lg shadow-black">
@@ -67,7 +67,7 @@ export default function Page() {
             </p>
           </Link>
           <Link
-            href="pizzerie-w-miastach/poznan"
+            href="pizza/poznan"
             className="group text-white bg-[#333] px-6 py-3 uppercase rounded-t-lg z-10 duration-300 text-center w-max items-center flex"
           >
             <p className="group-hover:animate-bounce drop-shadow-lg shadow-black">
@@ -75,7 +75,7 @@ export default function Page() {
             </p>
           </Link>
           <Link
-            href="pizzerie-w-miastach/gniezno"
+            href="pizza/gniezno"
             className="group text-white bg-[#333] px-6 py-3 uppercase rounded-t-lg z-10 duration-300 text-center w-max items-center flex"
           >
             <p className="group-hover:animate-bounce drop-shadow-lg shadow-black">
@@ -83,7 +83,7 @@ export default function Page() {
             </p>
           </Link>
           <Link
-            href="pizzerie-w-miastach/krakow"
+            href="pizza/krakow"
             className="group text-white bg-[#333] px-6 py-3 uppercase rounded-t-lg z-10 duration-300 text-center w-max items-center flex"
           >
             <p className="group-hover:animate-bounce drop-shadow-lg shadow-black">
@@ -91,7 +91,7 @@ export default function Page() {
             </p>
           </Link>
           <Link
-            href="pizzerie-w-miastach/torun"
+            href="pizza/torun"
             className="group text-white bg-[#333] px-6 py-3 uppercase rounded-t-lg z-10 duration-300 text-center w-max items-center flex"
           >
             <p className="group-hover:animate-bounce drop-shadow-lg shadow-black">

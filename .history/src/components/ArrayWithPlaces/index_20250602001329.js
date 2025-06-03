@@ -73,7 +73,7 @@ export default function ArrayWithPlaces({ placesData }) {
               <div className="p-3">
                 <div className="flex flex-col lg:flex-row w-full justify-between">
                   <Link
-                    href={`/pizzerie-w-miastach/${createLinkFromText(
+                    href={`/pizza/${createLinkFromText(
                       place.city
                     )}/${createLinkFromText(place.name)}`}
                     className="text-left block text-lg font-bold"

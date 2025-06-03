@@ -68,7 +68,7 @@ export default function ArrayWithPlaces({ placesData }) {
               />
               <div className="w-full flex justify-between items-end">
                 <Link
-                  href={`/pizzerie-w-miastach/${createLinkFromText(
+                  href={`/pizza/${createLinkFromText(
                     place.city
                   )}/${createLinkFromText(place.name)}`}
                   className="p-3 drop-shadow-lg rounded-sm shadow-black text-white block w-max max-w-full truncate"

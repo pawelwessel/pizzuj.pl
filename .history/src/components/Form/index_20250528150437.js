@@ -83,7 +83,7 @@ export default function Form() {
         createLinkFromText(searchTerm)
       );
       if (isExistingPage) {
-        router.push(`/pizzerie-w-miastach/${createLinkFromText(searchTerm)}`);
+        router.push(`/pizza/${createLinkFromText(searchTerm)}`);
       }
       await generatePage(createLinkFromText(searchTerm)).then((res) => {
         // addDocument("pages", createLinkFromText(res.page.content.address), {

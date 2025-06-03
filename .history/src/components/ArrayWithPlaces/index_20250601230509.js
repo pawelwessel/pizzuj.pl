@@ -67,7 +67,7 @@ export default function ArrayWithPlaces({ placesData }) {
               />
               <div className="w-full h-max left-0 bottom-0 rounded-b-md absolute flex justify-between items-end bg-gradient-to-t from-black/70 via-black/30 to-transparent">
                 <Link
-                  href={`/pizzerie-w-miastach/${createLinkFromText(
+                  href={`/pizza/${createLinkFromText(
                     place.city
                   )}/${createLinkFromText(place.name)}`}
                   className="bg-black/50 p-3 drop-shadow-lg rounded-sm shadow-black text-white block w-max max-w-full truncate"

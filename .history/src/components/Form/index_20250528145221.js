@@ -79,7 +79,7 @@ export default function Form() {
         createLinkFromText(searchTerm)
       );
       // if (isExistingPage) {
-      //   window.location.href = `/pizzerie-w-miastach/${createLinkFromText(
+      //   window.location.href = `/pizza/${createLinkFromText(
       //     searchTerm
       //   )}`;
       // }
