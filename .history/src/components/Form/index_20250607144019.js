@@ -101,7 +101,7 @@ export default function Form() {
   return (
     <>
       {loadingStarted && (
-        <div className="z-[150] rounded-xl lg:max-w-[500px] w-[90%] sm:w-[80%] py-4 h-max -mt-3 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 px-6 bg-black/60 text-white text-lg items-center justify-center text-center flex flex-col">
+        <div className="z-[150] rounded-xl lg:max-w-[500px] w-[90%] sm:w-[80%] py-4 h-max -mt-3 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 px-6 bg-black/70 text-white text-lg items-center justify-center text-center flex flex-col">
           <div className="w-full relative rounded-md overflow-hidden mb-4">
             <Image
               src={loading1}

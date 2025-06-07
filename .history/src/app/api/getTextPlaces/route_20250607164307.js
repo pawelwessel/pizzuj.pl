@@ -25,6 +25,7 @@ function getPhotoUrls(photos = [], maxwidth = 1024) {
   });
 }
 
+// Fetch full place details
 async function getPlaceDetails(placeId) {
   const fields = [
     "name",
@@ -40,11 +41,12 @@ async function getPlaceDetails(placeId) {
   ].join(",");
 
   const res = await fetch(
-    `${PLACE_DETAILS_URL}?place_id=${placeId}&fields=${fields}&language=pl&key=${GOOGLE_API_KEY}`
+    `${PLACE_DETAILS_URL}?place_id=${placeId}&fields=${fields}&key=${GOOGLE_API_KEY}`
   );
   const data = await res.json();
   return data.result;
 }
+
 export async function POST(req) {
   try {
     const { search } = await req.json();

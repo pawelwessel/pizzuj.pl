@@ -41,7 +41,7 @@ export const Footer = () => {
         />
         <p className="text-white font-light text-xs">+48 721 417 154</p>
         <p className="text-white font-light text-xs">wesiudev@gmail.com</p>
-        <p className="mt-12 uppercase text-white text-sm">
+        <p className="mt-24 uppercase text-white text-sm">
           &copy; 2025 Pizzuj.pl <br /> Wszelkie prawa zastrzeżone
         </p>
       </div>

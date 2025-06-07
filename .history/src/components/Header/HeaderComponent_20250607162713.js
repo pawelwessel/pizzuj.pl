@@ -17,7 +17,7 @@ export default function HeaderComponent({
 }) {
   return (
     <>
-      <div className="w-full h-[65px] lg:h-[84px]"></div>
+      <div className="w-full h-[65px] lg:h-[100px]"></div>
       <div
         style={{ boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)" }}
         className={`fixed left-0 top-0 z-[10000] px-4 bg-white flex flex-row items-center justify-center w-full ${

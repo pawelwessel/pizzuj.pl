@@ -2,20 +2,42 @@
 import Image from "next/image";
 import { createLinkFromText } from "../../lib/createLinkFromText";
 import Link from "next/link";
-import { useState } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { FaLocationArrow, FaStar } from "react-icons/fa6";
 import pizza from "../../../public/assets/pizza.png";
 export default function ArrayWithPlaces({ placesData }) {
-  console.log(placesData);
+  const [places, setPlaces] = useState(placesData || []);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    async function fetchPlaces() {
+      const response = await getPlace(pathname); // Extract search term from URL
+      setPlaces(response.sort((a, b) => b.rating - a.rating)); // Assuming each place has a `rating` property
+    }
+    if (!placesData) {
+      fetchPlaces();
+      console.log("fetched");
+    }
+  }, []);
+
   return (
     <div className="w-full">
       <ul className="w-full grid grid-cols-1 md:grid-cols-2 gap-8 xl:gap-12 mx-auto mt-12">
-        {placesData?.map((place, index) => (
-          <li key={index} className={`bg-gray-200 rounded-xl relative w-full`}>
+        {places?.map((place, index) => (
+          <li
+            key={index}
+            onClick={() => {
+              getPlaceDetails(place.place_id).then((res) => console.log(res));
+            }}
+            className={`bg-gray-200 rounded-xl relative w-full ${
+              !place.photoUrl ? "hidden" : ""
+            }`}
+          >
             <div className="flex flex-col xl:flex-row w-full">
               <div className="w-full lg:min-w-60">
                 <Image
-                  src={place.photos[0]}
+                  src={place.photoUrl || pizza}
                   alt={place.name}
                   width={400}
                   height={400}
@@ -37,8 +59,9 @@ export default function ArrayWithPlaces({ placesData }) {
                     {place.city}
                   </p>
                 </div>
-                <p className="flex items-center gap-2 font-sans font-light text-sm mb-6">
-                  {place.address}
+                <p className="flex items-center gap-2">
+                  <FaStar className="text-[#ec7308]" />
+                  {place.rating}/5
                 </p>
               </div>
             </div>

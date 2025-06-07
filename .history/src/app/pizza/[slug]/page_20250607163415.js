@@ -50,9 +50,9 @@ export default async function Page({ params }) {
             <p className="mt-3 lg:mt-6 w-[90%] mx-auto text-white drop-shadow-lg font-sans text-sm sm:text-base">
               {page?.page?.introduction}
             </p>
-            <div className="flex flex-col mt-4 lg:mt-8 mx-auto w-max max-w-full">
+            {/* <div className="flex flex-col mt-4 lg:mt-8 mx-auto w-max max-w-full">
               <Form />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

@@ -24,6 +24,7 @@ export default async function Page({ params }) {
   if (!page) {
     return <div>Page not found</div>;
   }
+  console.log(page);
   return (
     <div>
       <div className="overflow-hidden relative min-h-[35vh] w-full golden pt-12 lg:pt-24 pb-12">
@@ -58,7 +59,7 @@ export default async function Page({ params }) {
       </div>
       <div className="flex flex-col gap-6 bg-[#ffa920] p-6 relative">
         <p className="w-max p-4 rounded-xl absolute top-0 -translate-y-[10%] left-1/2 -translate-x-1/2 bg-white text-black border-[#ffa920] border-2 z-0">
-          {page?.page?.businessName}
+          {page?.page?.name}
         </p>
         <div className="p-6 pt-16 text-center bg-white rounded-xl shadow-lg">
           <h2 className="font-sans font-bold text-xl lg:text-3xl">

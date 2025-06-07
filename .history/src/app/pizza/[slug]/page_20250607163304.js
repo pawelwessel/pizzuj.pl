@@ -42,12 +42,12 @@ export default async function Page({ params }) {
           height={300}
         />
         <div className="relative z-50 mx-auto w-[90%] lg:w-2/3 xl:w-1/2">
-          <div className="flex flex-col items-center justify-center text-center bg-black/50 rounded-xl p-3 sm:p-6 !py-24">
-            <h1 className="text-white text-lg lg:text-3xl drop-shadow-lg shadow-black font-bold">
+          <div className="flex flex-col items-center justify-center text-center bg-white/30 rounded-xl p-3 sm:p-6 py-24">
+            <h1 className="text-black text-lg lg:text-3xl drop-shadow-lg shadow-black font-bold">
               {page?.page?.h2}
             </h1>
 
-            <p className="mt-3 lg:mt-6 w-[90%] mx-auto text-white drop-shadow-lg font-sans text-sm sm:text-base">
+            <p className="mt-3 lg:mt-6 w-[90%] mx-auto text-black drop-shadow-lg font-sans text-sm sm:text-base">
               {page?.page?.introduction}
             </p>
             <div className="flex flex-col mt-4 lg:mt-8 mx-auto w-max max-w-full">

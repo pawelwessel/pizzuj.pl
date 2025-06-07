@@ -37,8 +37,12 @@ export default function ArrayWithPlaces({ placesData }) {
                     {place.city}
                   </p>
                 </div>
-                <p className="flex items-center gap-2 font-sans font-light text-sm mb-6">
+                <p className="flex items-center gap-2 font-sans font-light text-sm">
                   {place.address}
+                </p>
+                <p className="flex items-center gap-2">
+                  <FaStar className="text-[#ec7308]" />
+                  {place.rating}/5
                 </p>
               </div>
             </div>

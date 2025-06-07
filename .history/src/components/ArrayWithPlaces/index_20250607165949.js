@@ -15,7 +15,7 @@ export default function ArrayWithPlaces({ placesData }) {
             <div className="flex flex-col xl:flex-row w-full">
               <div className="w-full lg:min-w-60">
                 <Image
-                  src={place.photos[0]}
+                  src={place.photoUrl || pizza}
                   alt={place.name}
                   width={400}
                   height={400}
@@ -37,8 +37,9 @@ export default function ArrayWithPlaces({ placesData }) {
                     {place.city}
                   </p>
                 </div>
-                <p className="flex items-center gap-2 font-sans font-light text-sm mb-6">
-                  {place.address}
+                <p className="flex items-center gap-2">
+                  <FaStar className="text-[#ec7308]" />
+                  {place.rating}/5
                 </p>
               </div>
             </div>

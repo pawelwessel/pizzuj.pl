@@ -42,7 +42,7 @@ export default async function Page({ params }) {
           height={300}
         />
         <div className="relative z-50 mx-auto w-[90%] lg:w-2/3 xl:w-1/2">
-          <div className="flex flex-col items-center justify-center text-center bg-black/50 rounded-xl p-3 sm:p-6 !py-24">
+          <div className="flex flex-col items-center justify-center text-center bg-black/50 rounded-xl p-3 sm:p-6 py-24">
             <h1 className="text-white text-lg lg:text-3xl drop-shadow-lg shadow-black font-bold">
               {page?.page?.h2}
             </h1>

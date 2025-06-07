@@ -17,19 +17,22 @@ export default function Page() {
         <Image
           src={accent}
           alt="Pizza"
-          className="absolute h-36 lg:h-[30%] xl:h-[55%] 2xl:h-[70%] w-auto opacity-15 lg:opacity-15 left-3 lg:left-16 xl:left-36 top-12 lg:top-1/3 xl:top-1/2 lg:-translate-y-1/2 z-0"
+          className="absolute h-36 lg:h-[120%] w-auto opacity-15 lg:opacity-5 left-3 lg:left-16 xl:left-36 top-12 lg:top-1/2 lg:-translate-y-1/2 z-0"
           width={300}
           height={300}
         />
         <Image
           src={accent1}
           alt="Pizza"
-          className="absolute h-24 lg:h-[30%] xl:h-[55%] 2xl:h-[70%] w-auto opacity-20 lg:opacity-15 right-6 lg:right-16 xl:right-36 bottom-6 xl:bottom-auto lg:bottom-1/4 xl:top-1/2 xl:-translate-y-1/2 z-0"
+          className="absolute h-24 lg:h-[120%] w-auto opacity-20 lg:opacity-5 right-6 lg:right-16 xl:right-36 bottom-6 lg:bottom-auto lg:top-1/2 lg:-translate-y-1/2 z-0"
           width={300}
           height={300}
         />
         <div className="relative z-50 mx-auto w-[90%] lg:w-1/2">
           <div className="flex flex-col items-center justify-center bg-black/60 p-6 rounded-xl py-24">
+            <span className="font-sans text-white font-light text-xs">
+              Pizzuj.pl - najlepsze pizzerie w mieście
+            </span>
             <h1 className="text-center text-white drop-shadow-lg shadow-black text-2xl lg:text-3xl">
               Najlepsze pizzerie w mieście
             </h1>

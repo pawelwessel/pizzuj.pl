@@ -24,6 +24,7 @@ export default async function Page({ params }) {
   if (!page) {
     return <div>Page not found</div>;
   }
+  console.log(page);
   return (
     <div>
       <div className="overflow-hidden relative min-h-[35vh] w-full golden pt-12 lg:pt-24 pb-12">

@@ -39,11 +39,11 @@ export const Footer = () => {
           height={50}
           className="w-[200px]"
         />
-        <p className="text-white font-light text-xs">+48 721 417 154</p>
-        <p className="text-white font-light text-xs">wesiudev@gmail.com</p>
-        <p className="mt-12 uppercase text-white text-sm">
+        <p className="uppercase font-bold text-white text-sm">
           &copy; 2025 Pizzuj.pl <br /> Wszelkie prawa zastrzeżone
         </p>
+        <p className="text-white font-light text-xs">+48 721 417 154</p>
+        <p className="text-white font-light text-xs">wesiudev@gmail.com</p>
       </div>
       <div className="flex space-x-4 flex-col">
         <h3 className="text-[#ffa920] text-2xl">Linki</h3>
