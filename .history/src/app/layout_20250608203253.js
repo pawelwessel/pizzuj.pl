@@ -12,8 +12,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${gothic.variable} antialiased`}>
-        <div className="fixed left-0 top-0 w-screen h-screen bg-black/70 text-white font-bold text-4xl lg:text-5xl flex items-center justify-center">
-          Pizzuj.pl - zapraszamy już wkrótce
+        <div className="fixed left-0 top-0 w-screen h-screen bg-black/70 text-white font-bold text-4xl lg:text-5xl">
+          Przerwa techniczna
         </div>
         <Header />
         {children}
