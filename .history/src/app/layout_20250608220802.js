@@ -1,18 +1,12 @@
 import Header from "../components/Header";
 import "./globals.css";
-import logo from "../../public/assets/pizzuj.png";
 import localFont from "next/font/local";
-import Image from "next/image";
+import logo from "../../public/logo.png";
 
 export const metadata = {
   title: "Pizzuj.pl",
   description: "Pizzuj.pl - Twoja ulubiona pizzeria",
 };
-
-const gothic = localFont({
-  src: "../../public/gothic.ttf",
-  variable: "--font-gothic",
-});
 
 export default function RootLayout({ children }) {
   return (
@@ -22,11 +16,11 @@ export default function RootLayout({ children }) {
           <Image
             src={logo}
             alt="Pizzuj.pl"
-            width={1000}
-            height={1000}
-            className="w-[25vw] rounded-lg"
+            width={100}
+            height={100}
+            className="w-10 h-10"
           />
-          <div className="mt-10">
+          <div className="">
             Pizzuj.pl - zapraszamy już{" "}
             <span className="text-yellow-500">wkrótce!</span>
           </div>

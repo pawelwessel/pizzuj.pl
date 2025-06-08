@@ -24,9 +24,9 @@ export default function RootLayout({ children }) {
             alt="Pizzuj.pl"
             width={1000}
             height={1000}
-            className="w-[25vw] rounded-lg"
+            className="w-[25vw]"
           />
-          <div className="mt-10">
+          <div className="">
             Pizzuj.pl - zapraszamy już{" "}
             <span className="text-yellow-500">wkrótce!</span>
           </div>

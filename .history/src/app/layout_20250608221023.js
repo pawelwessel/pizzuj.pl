@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
             height={1000}
             className="w-[25vw] rounded-lg"
           />
-          <div className="mt-10">
+          <div className="">
             Pizzuj.pl - zapraszamy już{" "}
             <span className="text-yellow-500">wkrótce!</span>
           </div>
