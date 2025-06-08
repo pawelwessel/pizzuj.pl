@@ -133,21 +133,16 @@ export default function Form() {
           </div>
         )}
         <div className="relative">
-          <div className="absolute left-7 rounded-l-full goldenShadow top-0 h-full aspect-square flex items-center justify-center">
-            <FaLocationPin className="w-6 h-6 text-white" />
+          <div className="absolute left-0 top-0 h-full aspect-square flex items-center justify-center">
+            <FaLocationPin className="w-6 h-6" />
           </div>
           <input
             onChange={handleInputChange}
             value={searchTerm}
             type="text"
             name="search"
-            className="py-4 px-8 !pl-12 rounded-xl bg-white/50 text-black w-[550px] max-w-[80%] mx-auto block"
+            className="py-4 px-8 rounded-xl bg-white/50 text-black w-[550px] max-w-[80%] mx-auto block"
             placeholder="Wpisz miasto"
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                handleSearch();
-              }
-            }}
           />
         </div>
         <button

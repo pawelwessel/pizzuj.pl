@@ -5,7 +5,6 @@ import { useState } from "react";
 import {
   FaChevronRight,
   FaLocationArrow,
-  FaLocationPin,
   FaMagnifyingGlass,
 } from "react-icons/fa6";
 import loading1 from "../../../public/assets/loading1.png";
@@ -132,27 +131,17 @@ export default function Form() {
             <p>{error}</p>
           </div>
         )}
-        <div className="relative">
-          <div className="absolute left-7 rounded-l-full goldenShadow top-0 h-full aspect-square flex items-center justify-center">
-            <FaLocationPin className="w-6 h-6 text-white" />
-          </div>
-          <input
-            onChange={handleInputChange}
-            value={searchTerm}
-            type="text"
-            name="search"
-            className="py-4 px-8 !pl-12 rounded-xl bg-white/50 text-black w-[550px] max-w-[80%] mx-auto block"
-            placeholder="Wpisz miasto"
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                handleSearch();
-              }
-            }}
-          />
-        </div>
+        <input
+          onChange={handleInputChange}
+          value={searchTerm}
+          type="text"
+          name="search"
+          className="p-3 rounded-t-xl bg-white/50 text-black w-[550px] max-w-[80%] mx-auto block"
+          placeholder="Wpisz miasto"
+        />
         <button
           onClick={async () => await handleSearch()}
-          className="text-white text-sm goldenShadow py-4 rounded-b-lg flex w-max mx-auto max-w-full items-center px-8"
+          className="absolute -bottom-[100%] left-1/2 -translate-x-1/2 w-full text-white text-sm goldenShadow p-3 rounded-b-xl flex w-max mx-auto max-w-full items-center"
         >
           <FaMagnifyingGlass className="w-6 h-6 mr-1" />
           Wyszukaj
