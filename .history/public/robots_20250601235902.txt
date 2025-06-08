@@ -1,6 +1,0 @@
-# Allow main domain
-User-agent: *
-Allow: /
-
-# Disallow all subdomains
-Host: pizzuj.pl
