@@ -1,0 +1,87 @@
+import Link from "next/link";
+import Opinions from "../components/Opinions";
+import { Footer } from "../components/Footer";
+import Image from "next/image";
+import pizza from "../../public/assets/pizza.png";
+import accent from "../../public/assets/asset6.png";
+import accent1 from "../../public/assets/asset7.png";
+import accent2 from "../../public/assets/asset4.png";
+import CtaButton from "../components/CtaButton";
+import { FaCheckCircle } from "react-icons/fa";
+import Form from "../components/Form";
+import { getDocument } from "../db/firebase";
+import HeroSectionForHomePage from "@/components/HeroSectionForHomePage";
+
+export default async function Page() {
+  const warsaw = await getDocument("pages", "warszawa");
+  console.log(warsaw);
+  return (
+    <div>
+      <HeroSectionForHomePage />
+
+      <Opinions />
+      <div className="relative px-6 lg:px-12 pb-12 flex flex-col items-center justify-center">
+        <Image
+          src={pizza}
+          alt="Promuj swój lokal z pizzą"
+          className="w-20 lg:w-32 xl:w-36 2xl:w-40 lg:top-12 xl:top-24 h-auto absolute z-0 left-4 top-4"
+        />
+        <span className="block px-8 rounded-b-md py-4 golden text-white w-max">
+          Zareklamuj się
+        </span>
+        <h2 className="relative z-10 text-3xl font-bold text-black mt-12">
+          Zwiększ ruch w swoim lokalu
+        </h2>
+        <p className="font-light max-w-[90%] lg:max-w-[66%] text-left mt-4 text-black border-l-2 border-[#ffa920] p-4 bg-gray-200">
+          Dzięki współpracy z nami rozszerzysz obecność swojej restauracji w
+          internecie. Wyróżnimy Twoją pizzerię w Pizzuj.pl oraz w wyszukiwarce
+          Google. Zyskasz więcej opinii, nowych klientów i zwiększysz ilość
+          zamówień przez internet.
+        </p>
+        <div className="relative mt-12 mb-6">
+          <Image
+            src={accent2}
+            alt="Promuj swój lokal z pizzą"
+            className="w-20 lg:w-32 xl:w-36 2xl:w-40 lg:-top-8 xl:top-0 h-auto absolute z-0 -right-12 lg:-right-60 xl:-right-96 top-16 opacity-20"
+            width={250}
+            height={250}
+          />
+          <p className="text-left mt-6 text-3xl">O naszej ofercie...</p>
+        </div>
+        <div className="h-px w-24 golden mt-2" />
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 lg:gap-12 mt-6">
+          <div className="flex w-full mt-4 items-center lg:justify-center lg:flex-col">
+            <FaCheckCircle className="text-[#ffa920] w-9 h-9 lg:w-24 lg:h-24" />
+            <p className="font-light text-left text-black ml-2 w-[80%] lg:text-center mt-4">
+              Wyróżnienie Twojej restauracji w Pizzuj.pl
+            </p>
+          </div>
+          <div className="flex w-full mt-4 items-center lg:justify-center lg:flex-col">
+            <FaCheckCircle className="text-[#ffa920] w-9 h-9 lg:w-24 lg:h-24" />
+
+            <p className="font-light text-left text-black ml-2 w-[80%] lg:text-center mt-4">
+              Reklama w Google i innych wyszukiwarkach
+            </p>
+          </div>
+          <div className="flex w-full mt-4 items-center lg:justify-center lg:flex-col">
+            <FaCheckCircle className="text-[#ffa920] w-9 h-9 lg:w-24 lg:h-24" />
+
+            <p className="font-light text-left text-black ml-2 w-[80%] lg:text-center mt-4">
+              Polecenia poprzez kanały social media
+            </p>
+          </div>
+          <div className="flex w-full mt-4 items-center lg:justify-center lg:flex-col">
+            <FaCheckCircle className="text-[#ffa920] w-9 h-9 lg:w-24 lg:h-24" />
+
+            <p className="font-light text-left text-black ml-2 w-[80%] lg:text-center mt-4">
+              Promowany wpis na blogu Pizzuj.pl
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <CtaButton />
+      <Footer />
+    </div>
+  );
+}
