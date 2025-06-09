@@ -27,8 +27,8 @@ export default async function Page() {
           Dołącz do pizzuj
         </h2>
         <p className="text-center text-sm lg:text-base font-sans">
-          Dołącz do naszej sieci i zyskaj nowych klientów. Wspólnie <br />{" "}
-          zbudujemy najlepszą sieć pizz w Polsce.
+          Dołącz do naszej sieci i zyskaj nowych klientów. Wspólnie zbudujemy
+          najlepszą sieć pizz w Polsce.
         </p>
         <p className="text-center text-sm lg:text-base font-sans font-light text-gray-700 mb-12 mt-4">
           Poniżej przykładowe lokale z pozyskanych <br /> informacji od{" "}
