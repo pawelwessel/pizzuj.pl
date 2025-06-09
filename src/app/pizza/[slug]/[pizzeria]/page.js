@@ -96,7 +96,7 @@ export default async function Page({ params }) {
           <Image
             src={pizza}
             alt="Promuj swój lokal z pizzą"
-            className="w-20 lg:w-32 xl:w-36 2xl:w-40 lg:top-12 xl:top-24 h-auto absolute z-0 left-4 top-4"
+            className="w-12 lg:w-32 xl:w-36 2xl:w-40 lg:top-12 xl:top-24 h-auto absolute z-0 left-3 top-4"
           />
           <span className="block px-8 rounded-b-md py-4 golden text-white w-max">
             Zareklamuj się
