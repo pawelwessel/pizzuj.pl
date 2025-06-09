@@ -19,7 +19,7 @@ export default async function Page() {
         <Image
           src={accent3}
           alt="Promuj swój lokal z pizzą"
-          className="w-24 lg:w-40 top-3 h-auto absolute z-0 right-24 opacity-50"
+          className="w-12 lg:w-32 xl:w-36 2xl:w-40 top-3 h-auto absolute z-0 right-24 opacity-50"
           width={250}
           height={250}
         />

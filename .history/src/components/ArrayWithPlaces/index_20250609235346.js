@@ -67,20 +67,13 @@ export default function ArrayWithPlaces({ placesData }) {
             >
               <div className="flex flex-col xl:flex-row w-full">
                 <div className="w-full lg:min-w-60">
-                  <Link
-                    href={`/pizza/${createLinkFromText(
-                      place.city
-                    )}/${createLinkFromText(place.name)}`}
-                    className="text-left block font-sans text-lg font-bold"
-                  >
-                    <Image
-                      src={place.photos[0]}
-                      alt={place.name}
-                      width={400}
-                      height={400}
-                      className="rounded-xl w-full h-60 sm:h-[400px] xl:h-60 object-cover"
-                    />
-                  </Link>
+                  <Image
+                    src={place.photos[0]}
+                    alt={place.name}
+                    width={400}
+                    height={400}
+                    className="rounded-xl w-full h-60 sm:h-[400px] xl:h-60 object-cover"
+                  />
                 </div>
                 <div className="pt-3 w-full lg:px-3">
                   <div className="flex items-start justify-between">
@@ -90,9 +83,7 @@ export default function ArrayWithPlaces({ placesData }) {
                       )}/${createLinkFromText(place.name)}`}
                       className="text-left block font-sans text-lg font-bold"
                     >
-                      <span className="text-left block font-sans text-lg font-bold pr-1">
-                        {place.name}
-                      </span>
+                      {place.name}
                     </Link>
                     <span
                       className={`text-sm px-3 py-1 border rounded-full ${
@@ -112,11 +103,11 @@ export default function ArrayWithPlaces({ placesData }) {
                   <div className="flex">
                     <button
                       onClick={() => setSelectedPlace(place)}
-                      className="cursor-pointer block text-nowrap !w-max mt-1 golden h-full p-2 rounded-tl-xl rounded-br-xl text-white text-sm px-3 hover:bg-[#ec7308] transition-colors"
+                      className="block text-nowrap !w-max mt-1 golden h-full p-2 rounded-tl-xl rounded-br-xl text-white text-sm px-3 hover:bg-[#ec7308] transition-colors"
                     >
                       Idź do
                     </button>
-                    <div className="pl-3 text-left">
+                    <div className="pl-2 text-left">
                       <p className="flex items-center gap-2">{place.city}</p>
                       <p className="flex items-center gap-2 font-sans font-light text-sm mb-6">
                         {place.address}

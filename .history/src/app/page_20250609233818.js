@@ -3,7 +3,7 @@ import { Footer } from "../components/Footer";
 import Image from "next/image";
 import pizza from "../../public/assets/pizza.png";
 import accent2 from "../../public/assets/asset4.png";
-import accent3 from "../../public/assets/asset5.png";
+import accent3 from "../../public/assets/asset8.png";
 import CtaButton from "../components/CtaButton";
 import { FaCheckCircle } from "react-icons/fa";
 import { getDocument } from "../db/firebase";
@@ -15,33 +15,18 @@ export default async function Page() {
   return (
     <div>
       <HeroSectionForHomePage />
-      <div className="relative w-full pt-12">
+      <div className="relative">
         <Image
           src={accent3}
           alt="Promuj swój lokal z pizzą"
-          className="w-24 lg:w-40 top-3 h-auto absolute z-0 right-24 opacity-50"
+          className="w-12 lg:w-32 xl:w-36 2xl:w-40 lg:-top-8 xl:top-0 h-auto absolute z-0 -right-12 lg:-right-60 xl:-right-96 top-16 opacity-20"
           width={250}
           height={250}
         />
-        <h2 className="pl-6 lg:pl-12 text-2xl font-bold pt-12 pb-6 text-center">
+        <h2 className="pl-6 lg:pl-12 text-2xl font-bold pt-12 pb-6">
           Dołącz do pizzuj
         </h2>
-        <p className="text-center text-sm lg:text-base font-sans">
-          Dołącz do naszej sieci i zyskaj nowych klientów. Wspólnie zbudujemy
-          najlepszą sieć pizz w Polsce.
-        </p>
-        <p className="text-center text-sm lg:text-base font-sans font-light text-gray-700 mb-12">
-          Poniżej przykładowe lokale z pozyskanych informacji od{" "}
-          <span
-            className="font-bold text-yellow-500"
-            title="Pozyskujemy adresy i nazwy lokali z tego samego miejsca co Google"
-          >
-            Google Maps
-          </span>
-          .
-        </p>
       </div>
-
       <WarsawSection placesData={warsaw.places} />
       <Opinions />
       <div className="relative px-6 lg:px-12 pb-12 flex flex-col items-center justify-center">

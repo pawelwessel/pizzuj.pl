@@ -19,7 +19,7 @@ export default async function Page() {
         <Image
           src={accent3}
           alt="Promuj swój lokal z pizzą"
-          className="w-24 lg:w-40 top-3 h-auto absolute z-0 right-24 opacity-50"
+          className="w-12 lg:w-32 xl:w-36 2xl:w-40 top-3 h-auto absolute z-0 right-24 opacity-50"
           width={250}
           height={250}
         />
@@ -32,13 +32,7 @@ export default async function Page() {
         </p>
         <p className="text-center text-sm lg:text-base font-sans font-light text-gray-700 mb-12">
           Poniżej przykładowe lokale z pozyskanych informacji od{" "}
-          <span
-            className="font-bold text-yellow-500"
-            title="Pozyskujemy adresy i nazwy lokali z tego samego miejsca co Google"
-          >
-            Google Maps
-          </span>
-          .
+          <span className="font-bold text-yellow-500">Google Maps</span>.
         </p>
       </div>
 

@@ -19,29 +19,21 @@ export default async function Page() {
         <Image
           src={accent3}
           alt="Promuj swój lokal z pizzą"
-          className="w-24 lg:w-40 top-3 h-auto absolute z-0 right-24 opacity-50"
+          className="w-12 lg:w-32 xl:w-36 2xl:w-40 top-3 h-auto absolute z-0 right-24 opacity-50"
           width={250}
           height={250}
         />
         <h2 className="pl-6 lg:pl-12 text-2xl font-bold pt-12 pb-6 text-center">
           Dołącz do pizzuj
         </h2>
-        <p className="text-center text-sm lg:text-base font-sans">
+        <p className="text-center text-sm lg:text-base">
           Dołącz do naszej sieci i zyskaj nowych klientów. Wspólnie zbudujemy
           najlepszą sieć pizz w Polsce.
         </p>
-        <p className="text-center text-sm lg:text-base font-sans font-light text-gray-700 mb-12">
-          Poniżej przykładowe lokale z pozyskanych informacji od{" "}
-          <span
-            className="font-bold text-yellow-500"
-            title="Pozyskujemy adresy i nazwy lokali z tego samego miejsca co Google"
-          >
-            Google Maps
-          </span>
-          .
-        </p>
+        <div className="flex justify-center">
+          <CtaButton />
+        </div>
       </div>
-
       <WarsawSection placesData={warsaw.places} />
       <Opinions />
       <div className="relative px-6 lg:px-12 pb-12 flex flex-col items-center justify-center">

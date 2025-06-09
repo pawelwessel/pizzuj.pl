@@ -116,7 +116,7 @@ export default function ArrayWithPlaces({ placesData }) {
                     >
                       Idź do
                     </button>
-                    <div className="pl-3 text-left">
+                    <div className="pl-2 text-left">
                       <p className="flex items-center gap-2">{place.city}</p>
                       <p className="flex items-center gap-2 font-sans font-light text-sm mb-6">
                         {place.address}

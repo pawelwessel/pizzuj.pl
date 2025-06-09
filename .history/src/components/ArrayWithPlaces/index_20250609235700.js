@@ -112,11 +112,11 @@ export default function ArrayWithPlaces({ placesData }) {
                   <div className="flex">
                     <button
                       onClick={() => setSelectedPlace(place)}
-                      className="cursor-pointer block text-nowrap !w-max mt-1 golden h-full p-2 rounded-tl-xl rounded-br-xl text-white text-sm px-3 hover:bg-[#ec7308] transition-colors"
+                      className="block text-nowrap !w-max mt-1 golden h-full p-2 rounded-tl-xl rounded-br-xl text-white text-sm px-3 hover:bg-[#ec7308] transition-colors"
                     >
                       Idź do
                     </button>
-                    <div className="pl-3 text-left">
+                    <div className="pl-2 text-left">
                       <p className="flex items-center gap-2">{place.city}</p>
                       <p className="flex items-center gap-2 font-sans font-light text-sm mb-6">
                         {place.address}
