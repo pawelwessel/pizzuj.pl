@@ -37,7 +37,13 @@ export default function ProductsMobile({
           >
             Marketplace
           </Link>
-
+          <Link
+            onClick={resetHeader}
+            href="/contact"
+            className="bg-gradient-to-b from-primaryHoverStart to-primaryHoverEnd text-white p-2 text-center text-sm rounded"
+          >
+            Kontakt
+          </Link>
           <Link
             onClick={resetHeader}
             href="/praca-zdalna"

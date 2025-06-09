@@ -15,7 +15,7 @@ export default async function Page() {
   return (
     <div>
       <HeroSectionForHomePage />
-      <div className="relative w-full pb-12">
+      <div className="relative w-full py-12">
         <Image
           src={accent3}
           alt="Promuj swój lokal z pizzą"
@@ -23,22 +23,22 @@ export default async function Page() {
           width={250}
           height={250}
         />
-        <h2 className="z-50 relative rounded-b-xl golden text-white border-x border-yellow-500 mb-12 block w-max max-w-full mx-auto text-2xl font-bold pt-6 pb-6 px-12 text-center">
+        <h2 className="text-2xl font-bold pt-12 pb-6 text-center">
           Dołącz do pizzuj
         </h2>
-        <p className="py-3 border-x rounded-xl bg-yellow-100 border-yellow-500 px-3 block w-max max-w-full mx-auto text-center text-sm lg:text-base font-sans">
+        <p className="text-center text-sm lg:text-base font-sans">
           Dołącz do naszej sieci i zyskaj nowych klientów. Wspólnie <br />{" "}
           zbudujemy najlepszą sieć pizz w Polsce.
         </p>
-        <p className="text-gray-500 block w-max max-w-full mx-auto text-center text-xs lg:text-base font-sans font-light mt-6">
-          Przykładowe lokale z{" "}
+        <p className="text-center text-sm lg:text-base font-sans font-light text-gray-700 mb-12 mt-4">
+          Poniżej przykładowe lokale z pozyskanych <br /> informacji od{" "}
           <span
             className="font-bold text-yellow-500"
             title="Pozyskujemy adresy i nazwy lokali z tego samego miejsca co Google"
           >
-            Mapy Google
+            Google Maps
           </span>
-          :
+          .
         </p>
       </div>
 

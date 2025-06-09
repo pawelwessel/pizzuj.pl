@@ -83,16 +83,17 @@ export default function HeaderComponent({
               Cennik
             </Link>
             <Link
-              href="/about"
-              className="rounded-md text-base drop-shadow-sm shadow-black text-black px-2 py-1 hover:text-yellow-500 "
-            >
-              O nas
-            </Link>
-            <Link
               href="/blog"
               className="rounded-md group text-base drop-shadow-sm shadow-black text-black px-2 py-1 hover:text-yellow-500 relative"
             >
               Blog
+            </Link>
+
+            <Link
+              href="/about"
+              className="rounded-md text-base drop-shadow-sm shadow-black text-black px-2 py-1 hover:text-yellow-500 "
+            >
+              O nas
             </Link>
           </div>
           <Link

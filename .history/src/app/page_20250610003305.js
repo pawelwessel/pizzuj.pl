@@ -15,7 +15,7 @@ export default async function Page() {
   return (
     <div>
       <HeroSectionForHomePage />
-      <div className="relative w-full pb-12">
+      <div className="relative w-full pb-6">
         <Image
           src={accent3}
           alt="Promuj swój lokal z pizzą"

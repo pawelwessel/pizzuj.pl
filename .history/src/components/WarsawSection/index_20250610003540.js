@@ -35,7 +35,7 @@ export default function WarsawSection({ placesData }) {
   };
 
   return (
-    <div className="w-full px-12 lg:px-16 2xl:px-24 mb-12">
+    <div className="w-full px-4 lg:px-12 mb-12">
       <Slider {...settings}>
         {placesData?.map((place, index) => (
           <div key={index} className="px-2">

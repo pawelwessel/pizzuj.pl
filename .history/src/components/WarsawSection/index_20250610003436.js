@@ -35,7 +35,7 @@ export default function WarsawSection({ placesData }) {
   };
 
   return (
-    <div className="w-full px-12 lg:px-16 2xl:px-24 mb-12">
+    <div className="w-full px-4 lg:px-12 mb-12">
       <Slider {...settings}>
         {placesData?.map((place, index) => (
           <div key={index} className="px-2">
@@ -57,10 +57,10 @@ export default function WarsawSection({ placesData }) {
                     />
                   </div>
                   <div className="pt-2 xl:pt-0 w-full pl-0 xl:pl-4">
-                    <div className="flex flex-col gap-1.5 duration-300">
-                      <p className="group-hover:text-[#ffa920]">{place.name}</p>
-                      <p className="flex items-center gap-2 text-sm">
-                        <FaLocationArrow className="text-xl text-[#ec7308] duration-300" />
+                    <div className="flex flex-col gap-1.5">
+                      {place.name}
+                      <p className="flex items-center gap-2 text-sm group=hover:text-[#ffa920]">
+                        <FaLocationArrow className="text-xl text-[#ec7308]" />
                         {place.city}
                       </p>
                     </div>

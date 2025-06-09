@@ -4,15 +4,15 @@ import pizzuj from "../../public/assets/pizzuj2.png";
 import { createLinkFromText } from "../lib/createLinkFromText";
 export const Footer = () => {
   const links = [
+    { title: "Blog", href: "/blog" },
     {
-      title: "Cennik",
+      title: "Cennik Reklam",
       href: "/advertise",
     },
     {
       title: "Regulamin",
       href: "/terms",
     },
-    { title: "Blog", href: "/blog" },
   ];
   const links2 = [
     {
@@ -23,7 +23,7 @@ export const Footer = () => {
       title: "Facebook",
       href: "https://www.facebook.com/pizzujpl",
     },
-    { title: "O nas", href: "/about" },
+    { title: "O mnie", href: "/about" },
   ];
   return (
     <footer className="flex flex-wrap gap-8 justify-between mt-10 bg-[#313131] px-6 md:px-12 py-24 text-black">

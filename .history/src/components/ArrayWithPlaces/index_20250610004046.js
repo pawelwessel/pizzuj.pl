@@ -63,7 +63,7 @@ export default function ArrayWithPlaces({ placesData }) {
               key={index}
               className={`${
                 place.photos && place.phone ? "" : "hidden"
-              } rounded-2xl relative w-full p-3 group hover:border-yellow-500 border-transparent border-2 duration-300`}
+              } cursor-pointer rounded-2xl relative w-full p-3 group hover:border-yellow-500 border-transparent border-2 duration-300`}
             >
               <div className="flex flex-col xl:flex-row w-full">
                 <div className="w-full lg:min-w-60">
@@ -78,7 +78,7 @@ export default function ArrayWithPlaces({ placesData }) {
                       alt={place.name}
                       width={400}
                       height={400}
-                      className="group-hover:scale-[1.02] duration-300 rounded-xl w-full h-60 sm:h-[400px] xl:h-60 object-cover"
+                      className="group-hover:scale-[1.01] duration-300 rounded-xl w-full h-60 sm:h-[400px] xl:h-60 object-cover"
                     />
                   </Link>
                 </div>

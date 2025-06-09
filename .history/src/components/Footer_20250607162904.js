@@ -4,15 +4,19 @@ import pizzuj from "../../public/assets/pizzuj2.png";
 import { createLinkFromText } from "../lib/createLinkFromText";
 export const Footer = () => {
   const links = [
+    { title: "Blog", href: "/blog" },
     {
-      title: "Cennik",
+      title: "Cennik Reklam",
       href: "/advertise",
+    },
+    {
+      title: "Kontakt",
+      href: "/contact",
     },
     {
       title: "Regulamin",
       href: "/terms",
     },
-    { title: "Blog", href: "/blog" },
   ];
   const links2 = [
     {
@@ -23,7 +27,7 @@ export const Footer = () => {
       title: "Facebook",
       href: "https://www.facebook.com/pizzujpl",
     },
-    { title: "O nas", href: "/about" },
+    { title: "O mnie", href: "/about" },
   ];
   return (
     <footer className="flex flex-wrap gap-8 justify-between mt-10 bg-[#313131] px-6 md:px-12 py-24 text-black">
@@ -47,7 +51,7 @@ export const Footer = () => {
           <Link
             key={link.title}
             href={link.href}
-            className="text-white font-light font-sans py-2 rounded-full transition duration-300 ease-in-out"
+            className="text-white font-light px-4 py-2 rounded-full transition duration-300 ease-in-out"
           >
             {link.title}
           </Link>
@@ -59,7 +63,7 @@ export const Footer = () => {
           <Link
             key={link.title}
             href={link.href}
-            className="text-white font-light font-sans py-2 rounded-full transition duration-300 ease-in-out"
+            className="text-white font-light px-4 py-2 rounded-full transition duration-300 ease-in-out"
           >
             {link.title}
           </Link>

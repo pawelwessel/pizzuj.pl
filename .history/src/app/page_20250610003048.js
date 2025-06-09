@@ -23,10 +23,10 @@ export default async function Page() {
           width={250}
           height={250}
         />
-        <h2 className="z-50 relative rounded-b-xl golden text-white border-x border-yellow-500 mb-12 block w-max max-w-full mx-auto text-2xl font-bold pt-6 pb-6 px-12 text-center">
+        <h2 className="z-50 rounded-b-xl golden text-white border-x border-yellow-500 mb-12 block w-max max-w-full mx-auto text-2xl font-bold pt-6 pb-6 px-12 text-center">
           Dołącz do pizzuj
         </h2>
-        <p className="py-3 border-x rounded-xl bg-yellow-100 border-yellow-500 px-3 block w-max max-w-full mx-auto text-center text-sm lg:text-base font-sans">
+        <p className="py-3 border-x border-yellow-500 px-3 block w-max max-w-full mx-auto text-center text-sm lg:text-base font-sans">
           Dołącz do naszej sieci i zyskaj nowych klientów. Wspólnie <br />{" "}
           zbudujemy najlepszą sieć pizz w Polsce.
         </p>
