@@ -37,9 +37,6 @@ export default function WarsawSection({ placesData }) {
 
   return (
     <div className="golden py-12 w-full px-12 lg:px-16 2xl:px-24">
-      <h2 className="text-2xl font-bold text-center mb-12 text-white">
-        Hmm... a może Pizzuj?
-      </h2>
       <Slider {...settings}>
         {placesData?.map((place, index) => (
           <div
