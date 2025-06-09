@@ -35,20 +35,17 @@ export default function WarsawSection({ placesData }) {
   };
 
   return (
-    <div className="golden py-12 w-full px-12 lg:px-16 2xl:px-24">
+    <div className="golden py-12 w-full px-12 lg:px-16 2xl:px-24 mb-12">
       <Slider {...settings}>
         {placesData?.map((place, index) => (
-          <div
-            key={index}
-            className={`${!place.photos[0] ? "hidden" : ""} px-2`}
-          >
+          <div key={index} className="px-2">
             <Link
               href={`/pizza/${createLinkFromText(
                 place.city
               )}/${createLinkFromText(place.name)}`}
-              className={`bg-white rounded-xl p-2 text-left block text-lg font-bold group transition-colors`}
+              className="bg-white rounded-xl p-2 text-left block text-lg font-bold group transition-colors"
             >
-              <div className="rounded-2xl relative h-full">
+              <div className="rounded-xl relative h-full">
                 <div className="flex flex-col xl:flex-row">
                   <div className="w-full">
                     <Image
