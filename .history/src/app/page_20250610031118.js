@@ -53,10 +53,10 @@ export default async function Page() {
         <span className="block px-8 rounded-b-md py-4 golden text-white w-max">
           Zareklamuj się
         </span>
-        <h2 className="relative z-10 text-3xl font-bold text-black mt-12">
+        <h2 className="text-left relative z-10 text-3xl font-bold text-black mt-12">
           Zwiększ ruch w swoim lokalu
         </h2>
-        <p className="w-full lg:max-w-[70%] font-sans text-left mt-12 text-black border-l-2 border-[#ffa920] p-4 bg-gray-200">
+        <p className="w-full lg:max-w-[70%] font-sans text-left mt-4 text-black border-l-2 border-[#ffa920] p-4 bg-gray-200">
           Dzięki współpracy z nami rozszerzysz obecność swojej restauracji w
           internecie. Wyróżnimy Twoją pizzerię w Pizzuj.pl oraz w wyszukiwarce
           Google. Zyskasz więcej opinii, nowych klientów i zwiększysz ilość
