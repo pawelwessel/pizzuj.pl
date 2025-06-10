@@ -36,7 +36,7 @@ export default function WarsawSection({ placesData }) {
   };
 
   return (
-    <div className="golden py-12 w-full px-2 lg:px-16 2xl:px-24">
+    <div className="golden py-12 w-full px-12 lg:px-16 2xl:px-24">
       <Slider {...settings}>
         {placesData?.map((place, index) => (
           <div

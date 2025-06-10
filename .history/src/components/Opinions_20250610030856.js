@@ -14,7 +14,7 @@ export default function Opinions() {
         <div className="bg-white/50 h-px w-4/5 sm:w-1/2 lg:w-1/5 mx-auto" />
       </div>
       <div className="flex flex-col lg:flex-row items-center justify-center">
-        <div className="w-[97.5%] lg:w-max rounded-md bg-[#a0a0a0]/20 p-4 lg:p-8 h-[60vh] flex overflow-hidden">
+        <div className="w-[80%] lg:w-max rounded-md bg-[#a0a0a0]/20 p-4 lg:p-8 h-[60vh] flex overflow-hidden">
           <div className="animate-from-top-to-bottom w-full">
             <div className="flex flex-col items-center w-full">
               {reviews.map((review, index) => (

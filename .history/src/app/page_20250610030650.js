@@ -44,7 +44,7 @@ export default async function Page() {
 
       <WarsawSection placesData={warsaw.places} />
       <Opinions />
-      <div className="relative px-6 lg:px-12 pb-12 flex flex-col items-center">
+      <div className="relative px-6 lg:px-12 pb-12 flex flex-col">
         <Image
           src={pizza}
           alt="Promuj swój lokal z pizzą"
@@ -56,7 +56,7 @@ export default async function Page() {
         <h2 className="relative z-10 text-3xl font-bold text-black mt-12">
           Zwiększ ruch w swoim lokalu
         </h2>
-        <p className="font-sans text-left mt-4 text-black border-l-2 border-[#ffa920] p-4 bg-gray-200">
+        <p className="font-sans max-w-[90%] lg:max-w-[66%] text-left mt-4 text-black border-l-2 border-[#ffa920] p-4 bg-gray-200">
           Dzięki współpracy z nami rozszerzysz obecność swojej restauracji w
           internecie. Wyróżnimy Twoją pizzerię w Pizzuj.pl oraz w wyszukiwarce
           Google. Zyskasz więcej opinii, nowych klientów i zwiększysz ilość

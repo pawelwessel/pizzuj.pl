@@ -5,18 +5,18 @@ import Image from "next/image";
 import Link from "next/link";
 export default function Opinions() {
   return (
-    <main className="overflow-hidden bg-[#333333] text-gray-300 h-max relative px-6 md:px-12 pb-12 w-full">
+    <main className="overflow-hidden bg-[#333333] text-gray-300 h-max relative md:px-12 pb-12 w-full">
       <div className="text-center gap-4 flex flex-col my-12">
         <p className="font-normal text-yellow-600 text-sm">PIZZUJ.PL</p>
         <h2 className="text-xl md:text-2xl font-bold uppercase">
           Opinie o pizzeriach
         </h2>
-        <div className="bg-white/50 h-px w-4/5 sm:w-1/2 lg:w-1/5 mx-auto" />
+        <div className="bg-white/50 h-px w-1/2 lg:w-1/5 mx-auto" />
       </div>
       <div className="flex flex-col lg:flex-row items-center justify-center">
-        <div className="w-[97.5%] lg:w-max rounded-md bg-[#a0a0a0]/20 p-4 lg:p-8 h-[60vh] flex overflow-hidden">
-          <div className="animate-from-top-to-bottom w-full">
-            <div className="flex flex-col items-center w-full">
+        <div className="rounded-md bg-[#a0a0a0]/20 p-4 lg:p-8 h-[60vh] flex overflow-hidden">
+          <div className="animate-from-top-to-bottom">
+            <div className="flex flex-col items-center ">
               {reviews.map((review, index) => (
                 <ReviewCard
                   key={index}

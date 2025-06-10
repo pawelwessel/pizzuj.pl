@@ -37,6 +37,16 @@ export default function WarsawSection({ placesData }) {
 
   return (
     <div className="golden py-12 w-full px-2 lg:px-16 2xl:px-24">
+      <p className="text-gray-500 block w-max max-w-full mx-auto text-center text-xs lg:text-base font-sans font-light mt-6">
+        Przykładowe lokale z{" "}
+        <span
+          className="font-bold text-yellow-500"
+          title="Pozyskujemy adresy i nazwy lokali z tego samego miejsca co Google"
+        >
+          Mapy Google
+        </span>
+        :
+      </p>
       <Slider {...settings}>
         {placesData?.map((place, index) => (
           <div

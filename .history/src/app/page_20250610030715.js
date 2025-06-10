@@ -44,7 +44,7 @@ export default async function Page() {
 
       <WarsawSection placesData={warsaw.places} />
       <Opinions />
-      <div className="relative px-6 lg:px-12 pb-12 flex flex-col items-center">
+      <div className="relative px-6 lg:px-12 pb-12 flex flex-col">
         <Image
           src={pizza}
           alt="Promuj swój lokal z pizzą"

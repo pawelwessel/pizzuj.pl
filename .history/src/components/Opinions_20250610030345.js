@@ -11,12 +11,12 @@ export default function Opinions() {
         <h2 className="text-xl md:text-2xl font-bold uppercase">
           Opinie o pizzeriach
         </h2>
-        <div className="bg-white/50 h-px w-4/5 sm:w-1/2 lg:w-1/5 mx-auto" />
+        <div className="bg-white/50 h-px w-2/3 sm:w-1/2 lg:w-1/5 mx-auto" />
       </div>
       <div className="flex flex-col lg:flex-row items-center justify-center">
-        <div className="w-[97.5%] lg:w-max rounded-md bg-[#a0a0a0]/20 p-4 lg:p-8 h-[60vh] flex overflow-hidden">
-          <div className="animate-from-top-to-bottom w-full">
-            <div className="flex flex-col items-center w-full">
+        <div className="w-[80%] rounded-md bg-[#a0a0a0]/20 p-4 lg:p-8 h-[60vh] flex overflow-hidden">
+          <div className="animate-from-top-to-bottom">
+            <div className="flex flex-col items-center ">
               {reviews.map((review, index) => (
                 <ReviewCard
                   key={index}
@@ -58,7 +58,7 @@ export default function Opinions() {
   );
 }
 export const ReviewCard = ({ author, comment, restaurant, favoritePizza }) => (
-  <div className="animate-from-top-to-bottom-and-forwards w-full sm:w-[500px] lg:w-[600px] flex items-start justify-between border-b border-gray-600 py-4">
+  <div className="animate-from-top-to-bottom-and-forwards w-[300px] sm:w-[500px] lg:w-[600px] flex items-start justify-between border-b border-gray-600 py-4">
     <div className="text-sm w-full">
       <div className="flex items-center w-full justify-between">
         <p className="font-bold uppercase">{author}</p>
