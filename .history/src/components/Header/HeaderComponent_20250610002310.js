@@ -29,7 +29,7 @@ export default function HeaderComponent({
         {/* Header Content */}
         <div className="flex w-full items-center justify-between">
           <div className="flex items-center">
-            <div className={`w-max group lg:hidden`}>
+            <div className={`mr-1 w-max group lg:hidden`}>
               <button
                 onClick={() => {
                   if (!menuShow) {

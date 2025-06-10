@@ -16,7 +16,7 @@ export default function ProductsMobile({
   return (
     <div className="">
       <div
-        className={`fixed w-full h-full overflow-y-scroll left-0 bg-white xl:space-x-3 xl:-ml-3 font-semibold shadow-black ${
+        className={`fixed w-screen h-full overflow-y-scroll left-0 bg-white xl:space-x-3 xl:-ml-3 font-semibold shadow-black ${
           productsOpen
             ? "pt-[65px] opacity-100 z-[500]"
             : "hidden z-[-10] opacity-0"
@@ -118,7 +118,7 @@ export default function ProductsMobile({
         </div>
       </div>
       <div
-        className={`fixed w-full h-screen overflow-y-scroll top-[0px] left-0 bg-white xl:space-x-3 xl:-ml-3 font-semibold shadow-black ${
+        className={`fixed w-screen h-screen overflow-y-scroll top-[0px] left-0 bg-white xl:space-x-3 xl:-ml-3 font-semibold shadow-black ${
           menuShow ? "pt-[65px] opacity-100 z-[500]" : "z-[-10] opacity-0"
         }  pb-7 scrollbar xl:hidden`}
       >

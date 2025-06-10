@@ -14,7 +14,7 @@ const gothic = localFont({
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="overflow-x-hidden">
+    <html lang="en">
       <body
         className={`${gothic.variable} antialiased overflow-x-hidden w-full`}
       >
