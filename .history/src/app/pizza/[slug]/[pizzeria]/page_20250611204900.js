@@ -161,6 +161,6 @@ export async function generateMetadata({ params }, parent) {
 
   return {
     title: `Zobacz Lokal ${pizzeriaData.name} | Pizzuj.pl `,
-    description: `Sprawdź opinie i informacje kontaktowe ${pizzeriaData.name}. Zamów online lub odwiedź lokal!`,
+    description: `Sprawdź opinie, menu i informacje kontaktowe ${pizzeriaData.name}. Zamów online lub odwiedź lokal!`,
   };
 }

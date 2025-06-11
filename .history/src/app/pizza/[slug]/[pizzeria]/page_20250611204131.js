@@ -26,6 +26,7 @@ export default async function Page({ params }) {
   const pizzeriaData = await fetch(
     `${process.env.NEXT_PUBLIC_LINK}/api/pizzeria/${pizzeria}`
   ).then((res) => res.json());
+  console.log(pizzeriaData);
   return (
     <div>
       <div className="overflow-hidden relative min-h-[35vh] w-full golden pt-24 pb-12">
@@ -151,16 +152,13 @@ export default async function Page({ params }) {
 
 export async function generateMetadata({ params }, parent) {
   // read route params
-  const { pizzeria } = await params;
+  const { slug } = await params;
 
-  const pizzeriaData = await fetch(
-    `${process.env.NEXT_PUBLIC_LINK}/api/pizzeria/${pizzeria}`
-  ).then((res) => res.json());
-
-  console.log(pizzeriaData);
+  // fetch data
+  const page = await getDocument("pages", slug);
 
   return {
-    title: `Zobacz Lokal ${pizzeriaData.name} | Pizzuj.pl `,
-    description: `Sprawdź opinie i informacje kontaktowe ${pizzeriaData.name}. Zamów online lub odwiedź lokal!`,
+    title: page?.page?.googleTitle,
+    description: page?.page?.googleDescription,
   };
 }

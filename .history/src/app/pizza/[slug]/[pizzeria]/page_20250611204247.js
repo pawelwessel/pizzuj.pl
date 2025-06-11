@@ -153,14 +153,14 @@ export async function generateMetadata({ params }, parent) {
   // read route params
   const { pizzeria } = await params;
 
-  const pizzeriaData = await fetch(
+  const page = await fetch(
     `${process.env.NEXT_PUBLIC_LINK}/api/pizzeria/${pizzeria}`
   ).then((res) => res.json());
 
-  console.log(pizzeriaData);
+  console.log(page);
 
   return {
-    title: `Zobacz Lokal ${pizzeriaData.name} | Pizzuj.pl `,
-    description: `Sprawdź opinie i informacje kontaktowe ${pizzeriaData.name}. Zamów online lub odwiedź lokal!`,
+    title: `Zobacz Lokal`,
+    description: `Opis lokalu`,
   };
 }
