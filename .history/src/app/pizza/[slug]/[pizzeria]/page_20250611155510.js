@@ -19,13 +19,13 @@ import Form from "../../../../components/Form";
 import { loadingTexts } from "../../../../db/data/loadingTexts";
 import Link from "next/link";
 export const dynamic = "force-dynamic";
+const pizzeriaData = await fetch(
+  `${process.env.NEXT_PUBLIC_LINK}/api/pizzeria/${pizzeria}`
+);
 
 export default async function Page({ params }) {
   const { pizzeria } = await params;
-  const pizzeriaData = await fetch(
-    `${process.env.NEXT_PUBLIC_LINK}/api/pizzeria/${pizzeria}`
-  ).then((res) => res.json());
-  console.log(pizzeriaData);
+
   return (
     <div>
       <div className="overflow-hidden relative min-h-[35vh] w-full golden pt-24 pb-12">
@@ -93,24 +93,6 @@ export default async function Page({ params }) {
       <div className="flex flex-col gap-6 bg-[#ffa920] p-6">
         <div className="p-6 bg-white rounded-xl shadow-lg">
           <h2 className="font-sans font-bold text-xl lg:text-3xl mb-8">
-            Galeria
-          </h2>
-          <div className="columns-1 md:columns-2 lg:columns-3 gap-4">
-            {pizzeriaData.photos?.map((photo, index) => (
-              <div key={index} className="break-inside-avoid mb-4">
-                <Image
-                  src={photo}
-                  alt={`Zdjęcie ${index + 1} z ${pizzeriaData.name}`}
-                  width={400}
-                  height={300}
-                  className="rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 w-full h-auto"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="p-6 bg-white rounded-xl shadow-lg">
-          <h2 className="font-sans font-bold text-xl lg:text-3xl mb-8">
             Opinie klientów
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -171,16 +153,17 @@ export default async function Page({ params }) {
   );
 }
 
-// export async function generateMetadata({ params }) {
-//   const { pizzeria } = params;
-//   const pizzeriaData = await fetch(
-//     `${process.env.NEXT_PUBLIC_LINK}/api/pizzeria/${pizzeria}`
-//   ).then((res) => res.json());
+export async function generateMetadata({ params }) {
+  const { pizzeria } = params;
+  const pizzeriaData = await fetch(
+    `${process.env.NEXT_PUBLIC_LINK}/api/pizzeria/${pizzeria}`
+  );
+  const data = await pizzeriaData.json();
 
-//   return {
-//     title: `${pizzeriaData?.name || "Pizzeria"} - Pizzuj.pl`,
-//     description: `Sprawdź opinie, menu i informacje kontaktowe ${
-//       pizzeriaData?.name || "pizzerii"
-//     }. Zamów online lub odwiedź lokal!`,
-//   };
-// }
+  return {
+    title: `${pizzeriaData?.name || "Pizzeria"} - Pizzuj.pl`,
+    description: `Sprawdź opinie, menu i informacje kontaktowe ${
+      pizzeriaData?.name || "pizzerii"
+    }. Zamów online lub odwiedź lokal!`,
+  };
+}

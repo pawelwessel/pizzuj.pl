@@ -22,10 +22,25 @@ export const dynamic = "force-dynamic";
 
 export default async function Page({ params }) {
   const { pizzeria } = await params;
-  const pizzeriaData = await fetch(
-    `${process.env.NEXT_PUBLIC_LINK}/api/pizzeria/${pizzeria}`
-  ).then((res) => res.json());
-  console.log(pizzeriaData);
+  const pizzeriaData = await getDocument("pizzerias", pizzeria || "");
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_LINK}/api/getPlaceDetails/${pizzeria}`
+  );
+  const data = await response.json();
+
+  if (!pizzeriaData) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold mb-4">Pizzeria nie znaleziona</h1>
+          <Link href="/" className="text-[#ffa920] hover:text-[#ec7308]">
+            Wróć do strony głównej
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div>
       <div className="overflow-hidden relative min-h-[35vh] w-full golden pt-24 pb-12">
@@ -93,24 +108,6 @@ export default async function Page({ params }) {
       <div className="flex flex-col gap-6 bg-[#ffa920] p-6">
         <div className="p-6 bg-white rounded-xl shadow-lg">
           <h2 className="font-sans font-bold text-xl lg:text-3xl mb-8">
-            Galeria
-          </h2>
-          <div className="columns-1 md:columns-2 lg:columns-3 gap-4">
-            {pizzeriaData.photos?.map((photo, index) => (
-              <div key={index} className="break-inside-avoid mb-4">
-                <Image
-                  src={photo}
-                  alt={`Zdjęcie ${index + 1} z ${pizzeriaData.name}`}
-                  width={400}
-                  height={300}
-                  className="rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 w-full h-auto"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="p-6 bg-white rounded-xl shadow-lg">
-          <h2 className="font-sans font-bold text-xl lg:text-3xl mb-8">
             Opinie klientów
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -171,16 +168,14 @@ export default async function Page({ params }) {
   );
 }
 
-// export async function generateMetadata({ params }) {
-//   const { pizzeria } = params;
-//   const pizzeriaData = await fetch(
-//     `${process.env.NEXT_PUBLIC_LINK}/api/pizzeria/${pizzeria}`
-//   ).then((res) => res.json());
+export async function generateMetadata({ params }) {
+  const { pizzeria } = params;
+  const pizzeriaData = await getDocument("pizzerias", pizzeria || "");
 
-//   return {
-//     title: `${pizzeriaData?.name || "Pizzeria"} - Pizzuj.pl`,
-//     description: `Sprawdź opinie, menu i informacje kontaktowe ${
-//       pizzeriaData?.name || "pizzerii"
-//     }. Zamów online lub odwiedź lokal!`,
-//   };
-// }
+  return {
+    title: `${pizzeriaData?.name || "Pizzeria"} - Pizzuj.pl`,
+    description: `Sprawdź opinie, menu i informacje kontaktowe ${
+      pizzeriaData?.name || "pizzerii"
+    }. Zamów online lub odwiedź lokal!`,
+  };
+}

@@ -93,24 +93,6 @@ export default async function Page({ params }) {
       <div className="flex flex-col gap-6 bg-[#ffa920] p-6">
         <div className="p-6 bg-white rounded-xl shadow-lg">
           <h2 className="font-sans font-bold text-xl lg:text-3xl mb-8">
-            Galeria
-          </h2>
-          <div className="columns-1 md:columns-2 lg:columns-3 gap-4">
-            {pizzeriaData.photos?.map((photo, index) => (
-              <div key={index} className="break-inside-avoid mb-4">
-                <Image
-                  src={photo}
-                  alt={`Zdjęcie ${index + 1} z ${pizzeriaData.name}`}
-                  width={400}
-                  height={300}
-                  className="rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 w-full h-auto"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="p-6 bg-white rounded-xl shadow-lg">
-          <h2 className="font-sans font-bold text-xl lg:text-3xl mb-8">
             Opinie klientów
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
