@@ -9,7 +9,7 @@ import { FaCheckCircle } from "react-icons/fa";
 import { getDocument } from "../db/firebase";
 import HeroSectionForHomePage from "../components/HeroSectionForHomePage";
 import WarsawSection from "../components/WarsawSection";
-import AdvertiseYourself from "../components/AdvertiseYourself";
+import AdvertiseYourself from "../../components/AdvertiseYourself";
 
 export default async function Page() {
   const warsaw = await getDocument("pages", "warszawa");

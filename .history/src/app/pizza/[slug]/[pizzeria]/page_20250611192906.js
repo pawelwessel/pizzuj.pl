@@ -18,7 +18,6 @@ import { FaCheckCircle } from "react-icons/fa";
 import Form from "../../../../components/Form";
 import { loadingTexts } from "../../../../db/data/loadingTexts";
 import Link from "next/link";
-import AdvertiseYourself from "../../../../components/AdvertiseYourself";
 export const dynamic = "force-dynamic";
 
 export default async function Page({ params }) {

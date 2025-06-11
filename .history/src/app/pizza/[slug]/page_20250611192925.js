@@ -11,7 +11,6 @@ import pizza from "../../../../public/assets/pizza.png";
 import { FaCheckCircle } from "react-icons/fa";
 import Form from "../../../components/Form";
 import { loadingTexts } from "../../../db/data/loadingTexts";
-import AdvertiseYourself from "../../../components/AdvertiseYourself";
 export const dynamic = "force-dynamic";
 const pages = await getDocuments("pages");
 export async function generateStaticParams() {
@@ -97,6 +96,7 @@ export default async function Page({ params }) {
       </div>
       {/* <p>{page?.page?.faqSection}</p> */}
       <AdvertiseYourself />
+
       <CtaButton />
     </div>
   );

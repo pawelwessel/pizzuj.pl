@@ -39,34 +39,25 @@ export default function ProductsMobile({
           >
             Cennik
           </Link>
-          <Link
-            href="/terms"
-            className="text-white text-base hover:text-yellow-500"
-          >
+          <Link href="/" className="text-white text-base hover:text-yellow-500">
             Regulamin
           </Link>
-          <Link
-            href="/blog"
-            className="text-white text-base hover:text-yellow-500"
-          >
+          <Link href="/" className="text-white text-base hover:text-yellow-500">
             Blog
           </Link>
           <h2 className="text-[#ffa920] text-2xl font-bold mb-3 mt-6">
             Więcej linków
           </h2>
-          <Link
-            href="/privacy"
-            className="text-white text-base hover:text-yellow-500"
-          >
+          <Link href="/" className="text-white text-base hover:text-yellow-500">
             Polityka prywatności
           </Link>
           <Link
             href="https://www.facebook.com/pizzuj"
-            target="_blank"
             className="text-white text-base hover:text-yellow-500"
           >
             Facebook
           </Link>
+
           <Link
             href="/about"
             className="text-white text-base hover:text-yellow-500"

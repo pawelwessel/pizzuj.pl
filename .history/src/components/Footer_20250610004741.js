@@ -21,7 +21,7 @@ export const Footer = () => {
     },
     {
       title: "Facebook",
-      href: "https://www.facebook.com/pizzuj",
+      href: "https://www.facebook.com/pizzujpl",
     },
     { title: "O nas", href: "/about" },
   ];
