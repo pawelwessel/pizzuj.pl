@@ -19,15 +19,13 @@ export default function RootLayout({ children }) {
       >
         <Header />
         {children}
-        <div className="flex flex-col items-center justify-center gap-4 text-black px-4 pb-12 rounded-full mt-12">
+        <div className="flex flex-col items-center justify-center gap-4 text-black px-4 py-24 rounded-full">
           <div className="mb-4 scale-150 flex flex-row items-center">
             <FaCrown className="text-yellow-400 text-2xl" />
             <FaCrown className="text-yellow-400 text-4xl" />
             <FaCrown className="text-yellow-400 text-2xl" />
           </div>
-          <h2 className="text-2xl font-bold text-center">
-            Dołącz teraz i zdobądź odznakę
-          </h2>
+          <h2 className="text-2xl font-bold">Dołącz teraz i zdobądź odznakę</h2>
           <AchievmentsList achievements={["Pionier"]} />
 
           <Link

@@ -92,7 +92,7 @@ export const metadata = {
       type: "image/png",
     },
     {
-      url: "../../public/favicon.ico",
+      url: "../../public/favicons/favicon.ico",
       sizes: "48x48",
       type: "image/x-icon",
     },

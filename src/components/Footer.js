@@ -5,7 +5,7 @@ import { createLinkFromText } from "../lib/createLinkFromText";
 export const Footer = () => {
   const links = [
     {
-      title: "Cennik",
+      title: "Pakiety premium",
       href: "/advertise",
     },
     {

@@ -1,6 +1,11 @@
 "use client";
 import React from "react";
-import { createUser, getDocument, provider } from "../../db/firebase";
+import {
+  createUser,
+  getDocument,
+  provider,
+  getDocuments,
+} from "../../db/firebase";
 import { signInWithPopup, getAuth, GoogleAuthProvider } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { errorCatcher } from "../../lib/errorCatcher";
@@ -21,6 +26,10 @@ export default function GoogleAuthButton() {
       const user = result.user;
       const existingUser = await getDocument("users", user?.uid);
       if (!existingUser) {
+        // Get total user count
+        const users = await getDocuments("users");
+        const isPioneer = users.length < 100;
+
         await createUser({
           uid: user?.uid,
           name: user?.displayName,
@@ -28,6 +37,8 @@ export default function GoogleAuthButton() {
           photoURL: user?.photoURL,
           isPremium: false,
           emailVerified: false,
+          achievements: isPioneer ? ["pioneer"] : [],
+          joinDate: new Date().toISOString(),
         });
         await sendVerificationEmail(user?.email, user?.uid);
       }

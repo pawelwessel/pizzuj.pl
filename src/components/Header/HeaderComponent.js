@@ -80,7 +80,7 @@ export default function HeaderComponent({
               href="/advertise"
               className="rounded-md text-base drop-shadow-sm shadow-black text-black px-2 py-1 hover:text-yellow-500 "
             >
-              Cennik
+              Dla restauracji
             </Link>
             <Link
               href="/about"

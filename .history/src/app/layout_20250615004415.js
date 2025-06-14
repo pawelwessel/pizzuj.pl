@@ -25,9 +25,7 @@ export default function RootLayout({ children }) {
             <FaCrown className="text-yellow-400 text-4xl" />
             <FaCrown className="text-yellow-400 text-2xl" />
           </div>
-          <h2 className="text-2xl font-bold text-center">
-            Dołącz teraz i zdobądź odznakę
-          </h2>
+          <h2 className="text-2xl font-bold">Dołącz teraz i zdobądź odznakę</h2>
           <AchievmentsList achievements={["Pionier"]} />
 
           <Link

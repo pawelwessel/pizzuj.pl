@@ -133,14 +133,14 @@ export const metadata = {
   themeColor: "#ffffff",
   manifest: "/manifest.json",
   title:
-    "Pakiety reklamowe | Wypróbuj bazę pizzerii Pizzuj.pl – najlepsze pizzerie w Polsce",
+    "Pakiety reklamowe | Dołącz od sieci! Pizzuj.pl – najlepsze pizzerie w Polsce",
   description:
     "To nie są ćwiczenia – jeśli kochasz pizzę, musisz poznać Pizzuj.pl. Pizzerie w Polsce – szybko, smacznie, bez kompromisów.",
   openGraph: {
     type: "website",
     url: "https://pizzuj.pl",
     title:
-      "Pakiety reklamowe | Wypróbuj bazę pizzerii Pizzuj.pl – najlepsze pizzerie w Polsce",
+      "Pakiety reklamowe | Dołącz od sieci! Pizzuj.pl – najlepsze pizzerie w Polsce",
     description:
       "To nie są ćwiczenia – jeśli kochasz pizzę, musisz poznać Pizzuj.pl. Pizzerie w Polsce – szybko, smacznie, bez kompromisów.",
     siteName: "Pizzuj",

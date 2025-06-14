@@ -37,7 +37,7 @@ export default function ProductsMobile({
             href="/advertise"
             className="text-white text-base hover:text-yellow-500"
           >
-            Cennik
+            Pakiety premium
           </Link>
           <Link
             href="/terms"
