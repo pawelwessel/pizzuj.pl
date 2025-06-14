@@ -30,15 +30,14 @@ export default async function Page({ params }) {
 
   return (
     <div>
-      <div className="overflow-hidden relative min-h-[35vh] w-full golden py-24">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/20 z-20">
+      <div className="overflow-hidden relative min-h-[35vh] w-full golden pt-24 pb-12">
+        <div className="absolute inset-0 bg-gradient-to-b z-10">
           <Image
             src={pizzeriaData.photos[0] || "/assets/pizza.png"}
             alt="Pizza"
-            className="absolute w-full h-full object-cover -z-10"
-            fill
-            sizes="100vw"
-            priority
+            className="absolute h-36 w-full left-3 lg:left-16 xl:left-36 top-12 lg:top-1/2 lg:-translate-y-1/2 z-0"
+            width={300}
+            height={300}
           />
         </div>
         <Image
@@ -56,7 +55,7 @@ export default async function Page({ params }) {
           height={300}
         />
         <div className="relative z-50 mx-auto w-[90%] lg:w-1/2">
-          <div className="flex flex-col items-center justify-center text-center bg-black/70 rounded-xl p-6 z-20 py-24">
+          <div className="flex flex-col items-center justify-center text-center bg-black/50 rounded-xl p-6 z-20 py-24">
             <h1 className="text-white text-xl lg:text-3xl drop-shadow-lg shadow-black font-bold">
               {pizzeriaData.name}
             </h1>

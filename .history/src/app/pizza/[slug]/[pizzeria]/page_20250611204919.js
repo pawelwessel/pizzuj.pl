@@ -19,7 +19,6 @@ import Form from "../../../../components/Form";
 import { loadingTexts } from "../../../../db/data/loadingTexts";
 import Link from "next/link";
 import AdvertiseYourself from "../../../../components/AdvertiseYourself";
-import PizzeriaSlugSlider from "../../../../components/PizzeriaSlugSlider";
 export const dynamic = "force-dynamic";
 
 export default async function Page({ params }) {
@@ -27,20 +26,9 @@ export default async function Page({ params }) {
   const pizzeriaData = await fetch(
     `${process.env.NEXT_PUBLIC_LINK}/api/pizzeria/${pizzeria}`
   ).then((res) => res.json());
-
   return (
     <div>
-      <div className="overflow-hidden relative min-h-[35vh] w-full golden py-24">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/20 z-20">
-          <Image
-            src={pizzeriaData.photos[0] || "/assets/pizza.png"}
-            alt="Pizza"
-            className="absolute w-full h-full object-cover -z-10"
-            fill
-            sizes="100vw"
-            priority
-          />
-        </div>
+      <div className="overflow-hidden relative min-h-[35vh] w-full golden pt-24 pb-12">
         <Image
           src={accent}
           alt="Pizza"
@@ -56,11 +44,11 @@ export default async function Page({ params }) {
           height={300}
         />
         <div className="relative z-50 mx-auto w-[90%] lg:w-1/2">
-          <div className="flex flex-col items-center justify-center text-center bg-black/70 rounded-xl p-6 z-20 py-24">
+          <div className="flex flex-col items-center justify-center text-center bg-black/50 rounded-xl p-6">
             <h1 className="text-white text-xl lg:text-3xl drop-shadow-lg shadow-black font-bold">
               {pizzeriaData.name}
             </h1>
-            <div className="flex items-center gap-2 mt-4 flex-col justify-center">
+            <div className="flex items-center gap-2 mt-4">
               <div className="flex items-center gap-1">
                 {Array.from({
                   length: Math.round(pizzeriaData.rating || 0),
@@ -107,7 +95,19 @@ export default async function Page({ params }) {
           <h2 className="font-sans font-bold text-xl lg:text-3xl mb-8">
             Galeria
           </h2>
-          <PizzeriaSlugSlider pizzeriaData={pizzeriaData} />
+          <div className="columns-1 md:columns-2 lg:columns-3 gap-4">
+            {pizzeriaData.photos?.map((photo, index) => (
+              <div key={index} className="break-inside-avoid mb-4">
+                <Image
+                  src={photo}
+                  alt={`Zdjęcie ${index + 1} z ${pizzeriaData.name}`}
+                  width={400}
+                  height={300}
+                  className="rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 w-full h-auto"
+                />
+              </div>
+            ))}
+          </div>
         </div>
         <div className="p-6 bg-white rounded-xl shadow-lg">
           <h2 className="font-sans font-bold text-xl lg:text-3xl mb-8">
