@@ -70,7 +70,7 @@ const PricingCard = ({
   showCta,
 }) => (
   <div
-    className={`flex flex-col items-center justify-center text-center w-full rounded-xl shadow-lg hover:shadow-xl hover:border-[#ffa920] transition-all duration-300 group relative`}
+    className={`flex flex-col mt-12 items-center justify-center text-center w-full rounded-xl shadow-lg hover:shadow-xl hover:border-[#ffa920] transition-all duration-300 group relative`}
   >
     <div className="absolute top-0 left-0 w-full h-full bg-black/50 z-0 rounded-xl overflow-hidden">
       <div className="relative h-full w-full overflow-hidden">
@@ -102,6 +102,9 @@ const PricingCard = ({
         <p className="text-center w-full lg:max-w-[70%] font-sans mt-3 text-white rounded-xl shadow-inner">
           {description}
         </p>
+      </div>
+      <div className="absolute left-0 bottom-0 w-full">
+        {featured && <CtaButton />}
       </div>
     </div>
   </div>

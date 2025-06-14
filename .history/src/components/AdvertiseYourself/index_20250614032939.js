@@ -70,7 +70,7 @@ const PricingCard = ({
   showCta,
 }) => (
   <div
-    className={`flex flex-col items-center justify-center text-center w-full rounded-xl shadow-lg hover:shadow-xl hover:border-[#ffa920] transition-all duration-300 group relative`}
+    className={`flex flex-col mt-12 items-center justify-center text-center w-full rounded-xl shadow-lg hover:shadow-xl hover:border-[#ffa920] transition-all duration-300 group relative`}
   >
     <div className="absolute top-0 left-0 w-full h-full bg-black/50 z-0 rounded-xl overflow-hidden">
       <div className="relative h-full w-full overflow-hidden">
@@ -150,7 +150,7 @@ export default function AdvertiseYourself() {
         ))}
       </div>
 
-      <div className="flex flex-col lg:grid sm:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-12 mt-6">
+      <div className="flex flex-col lg:grid md:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-12 mt-6">
         {pricingPlans.map((plan, index) => (
           <PricingCard key={index} {...plan} />
         ))}
