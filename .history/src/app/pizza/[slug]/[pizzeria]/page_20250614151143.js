@@ -104,10 +104,10 @@ export default async function Page({ params }) {
 
       <div className="flex flex-col gap-6 bg-[#ffa920] p-6">
         <div className="p-6 bg-white rounded-xl shadow-lg">
-          <h2 className="font-sans font-bold text-xl lg:text-3xl mb-4">
+          <h2 className="font-sans font-bold text-xl lg:text-3xl mb-8">
             Galeria
           </h2>
-          <p className="text-gray-600 text-sm mb-12 font-sans">
+          <p className="text-gray-600 text-sm mb-8 font-cocosharpsans">
             Zobacz zdjęcia od Google Maps z lokalu {pizzeriaData.name}
           </p>
           <PizzeriaSlugSlider pizzeriaData={pizzeriaData} />
