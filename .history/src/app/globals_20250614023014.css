@@ -2,22 +2,8 @@
 
 @font-face {
   font-family: "Cocosharp";
-  src: url("../../public/fonts/Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Cocosharp";
-  src: url("../../public/fonts/Bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Cocosharp";
-  src: url("../../public/fonts/Light.ttf") format("truetype");
-  font-weight: 300;
+  src: url("../../public/fonts/Cocosharp.ttf") format("truetype");
+  font-weight: normal;
   font-style: normal;
 }
 

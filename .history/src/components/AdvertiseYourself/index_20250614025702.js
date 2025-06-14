@@ -90,19 +90,20 @@ const PricingCard = ({
         Polecane
       </div>
     )}
-    <div className="relative flex flex-col flex-1 p-6 py-24 items-center justify-center">
-      <div className="flex flex-col items-center justify-center rounded-lg bg-black/50 p-3">
-        <div className="text-2xl font-light text-white font-cocosharp italic">
+    <div className="relative flex flex-col flex-1 justify-between p-6">
+      <div>
+        <div className="text-2xl font-light text-black font-cocosharp italic">
           {price}
         </div>
-        <h2 className="text-3xl font-bold mt-6 text-[#ffa920] transition-colors duration-300">
+        <h2 className="text-3xl font-bold text-black mt-12 group-hover:text-[#ffa920] transition-colors duration-300">
           {title}
         </h2>
-        <div className="h-1 w-16 bg-white mt-4 mx-auto rounded-full " />
-        <p className="text-center w-full lg:max-w-[70%] font-sans mt-3 text-white rounded-xl shadow-inner">
-          {description}
-        </p>
+        <div className="h-1 w-16 bg-[#ffa920] mt-4 mx-auto rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
+      <p className="w-full lg:max-w-[70%] font-sans text-left mt-12 text-black border-l-2 border-[#ffa920] p-4 bg-gray-100 rounded-r-xl shadow-inner">
+        {description}
+      </p>
+      {showCta && <CtaButton />}
     </div>
   </div>
 );

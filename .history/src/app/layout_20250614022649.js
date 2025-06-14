@@ -27,49 +27,50 @@ export const metadata = {
   themeColor: "#ffffff",
   manifest: "/manifest.json",
   title:
-    "Kochasz pizzę? Dołącz od sieci! Pizzuj.pl – najlepsze pizzerie w Polsce",
+    "Hexon Group | Dofinansowanie na termomodernizacje budynków | Czyste Powietrze",
   description:
-    "To nie są ćwiczenia – jeśli kochasz pizzę, musisz poznać Pizzuj.pl. Pizzerie w Polsce – szybko, smacznie, bez kompromisów.",
+    "Kompleksowa termomodernizacja budynków. Fotowoltaika, pompy ciepła. Specjaliści od dofinansowań. Zyskaj do 136200zł dofinansowania",
   openGraph: {
     type: "website",
-    url: "https://pizzuj.pl",
+    url: "https://hexon.work",
     title:
-      "Kochasz pizzę? Dołącz od sieci! Pizzuj.pl – najlepsze pizzerie w Polsce",
+      "Hexon Group | Dofinansowanie na termomodernizacje budynków | Czyste Powietrze",
     description:
-      "To nie są ćwiczenia – jeśli kochasz pizzę, musisz poznać Pizzuj.pl. Pizzerie w Polsce – szybko, smacznie, bez kompromisów.",
-    siteName: "Pizzuj",
+      "Kompleksowa termomodernizacja budynków. Fotowoltaika, pompy ciepła. Specjaliści od dofinansowań. Zyskaj do 136200zł dofinansowania",
+    siteName: "Hexon",
   },
-  authors: [{ name: "pizzuj.pl", url: "https://pizzuj.pl" }],
+  authors: [{ name: "wesiu.dev", url: "https://wesiudev.netlify.app" }],
   publisher: "wesiu.dev",
-  keywords: "pizza, pizza warszawa najlepsza pizza w miescie",
+  keywords:
+    "dotacje, finansowanie, termomodernizacja, remont, modernizacja energetyczna, oszczędność energii, efektywność energetyczna, wsparcie finansowe, programy rządowe, fundusze unijne, poprawa izolacji, renowacja budynków, energooszczędność, zrównoważony rozwój, dotacje unijne",
   icons: [
     {
-      url: "../../public/favicons/apple-touch-icon.png",
+      url: "/favicons/apple-touch-icon.png",
       sizes: "180x180",
       type: "image/png",
     },
     {
-      url: "../../public/favicons/android-chrome-16x16.png",
+      url: "/favicons/android-chrome-16x16.png",
       sizes: "16x16",
       type: "image/png",
     },
     {
-      url: "../../public/favicons/android-chrome-512x512.png",
+      url: "/favicons/android-chrome-512x512.png",
       sizes: "512x512",
       type: "image/png",
     },
     {
-      url: "../../public/favicons/android-chrome-192x192.png",
+      url: "/favicons/android-chrome-192x192.png",
       sizes: "192x192",
       type: "image/png",
     },
     {
-      url: "../../public/favicons/favicon-32x32.png",
+      url: "/favicons/favicon-32x32.png",
       sizes: "32x32",
       type: "image/png",
     },
     {
-      url: "../../public/favicons/favicon.ico",
+      url: "/favicons/favicon.ico",
       sizes: "48x48",
       type: "image/x-icon",
     },

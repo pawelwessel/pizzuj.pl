@@ -98,7 +98,7 @@ const PricingCard = ({
         <h2 className="text-3xl font-bold mt-6 text-[#ffa920] transition-colors duration-300">
           {title}
         </h2>
-        <div className="h-1 w-16 bg-white mt-4 mx-auto rounded-full " />
+        <div className="h-1 w-16 bg-[#ffa920] mt-4 mx-auto rounded-full " />
         <p className="text-center w-full lg:max-w-[70%] font-sans mt-3 text-white rounded-xl shadow-inner">
           {description}
         </p>

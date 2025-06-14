@@ -77,7 +77,7 @@ export default async function Page() {
           <div className="flex w-full mt-4 items-center lg:justify-center lg:flex-col">
             <FaCheckCircle className="text-[#ffa920] w-9 h-9 lg:w-24 lg:h-24" />
             <p className="font-light text-left text-black ml-2 w-[80%] lg:text-center mt-4">
-              Wyróżnienie Twojej restauracji w Pizzuj.pl
+              Dodaj swoją pizzerię do naszej bazy danych ·
             </p>
           </div>
           <div className="flex w-full mt-4 items-center lg:justify-center lg:flex-col">
