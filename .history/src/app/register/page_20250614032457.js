@@ -103,7 +103,7 @@ export default function Register() {
                 onChange={(e) =>
                   setUserData({ ...userData, name: e.target.value })
                 }
-                className="input-lg bg-white border border-gray-300 text-black p-3 text-lg mb-3 font-light rounded-xl"
+                className="input-lg bg-white text-black p-3 text-lg mb-3 font-light rounded-xl"
               />
             </div>
             <div className="flex flex-col">
@@ -122,7 +122,7 @@ export default function Register() {
                 onChange={(e) =>
                   setUserData({ ...userData, email: e.target.value })
                 }
-                className="input-lg bg-white border border-gray-300 text-black p-3 text-lg mb-3 font-light rounded-xl"
+                className="input-lg bg-white text-black p-3 text-lg mb-3 font-light rounded-xl"
               />
             </div>
             <div className="flex flex-col">
