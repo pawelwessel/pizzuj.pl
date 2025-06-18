@@ -34,6 +34,7 @@ export const provider = new GoogleAuthProvider();
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 const db = getFirestore(app);
+
 export async function addDocument(collectionName, uniqueId, data) {
   await setDoc(doc(db, collectionName, uniqueId), data);
 }
@@ -56,4 +57,47 @@ export async function getDocument(collectionName, uniqueId) {
   } else {
     return null;
   }
+}
+
+// Pizzeria management functions
+export async function createPizzeria(userId, pizzeriaData) {
+  const pizzeriaId = `${userId}_${Date.now()}`;
+  const pizzeria = {
+    id: pizzeriaId,
+    ownerId: userId,
+    ...pizzeriaData,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  };
+  await setDoc(doc(db, "user_pizzerias", pizzeriaId), pizzeria);
+  return pizzeria;
+}
+
+export async function updatePizzeria(pizzeriaId, updateData) {
+  const pizzeriaRef = doc(db, "user_pizzerias", pizzeriaId);
+  await updateDoc(pizzeriaRef, {
+    ...updateData,
+    updatedAt: new Date().toISOString(),
+  });
+}
+
+export async function getUserPizzerias(userId) {
+  const q = query(
+    collection(db, "user_pizzerias"),
+    where("ownerId", "==", userId)
+  );
+  const snapshot = await getDocs(q);
+  return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+}
+
+export async function deletePizzeria(pizzeriaId) {
+  await deleteDoc(doc(db, "user_pizzerias", pizzeriaId));
+}
+
+export async function updateUserProfile(userId, updateData) {
+  const userRef = doc(db, "users", userId);
+  await updateDoc(userRef, {
+    ...updateData,
+    updatedAt: new Date().toISOString(),
+  });
 }
