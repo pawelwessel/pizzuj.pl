@@ -31,25 +31,20 @@ export default function Login() {
 
     (async () => {
       try {
-        const userCredential = await signInWithEmailAndPassword(
+        await signInWithEmailAndPassword(
           auth,
           userData.email,
           userData.password
-        );
-
-        const displayName =
-          userCredential.user.displayName ||
-          userCredential.user.email.split("@")[0] ||
-          "User";
-
-        toast.update(id, {
-          render: `Hello ${displayName}! Zalogowano pomyślnie!`,
-          type: "success",
-          isLoading: false,
-          autoClose: 3000,
+        ).then(() => {
+          toast.update(id, {
+            render: "Zalogowano pomyślnie!",
+            type: "success",
+            isLoading: false,
+            autoClose: 3000,
+          });
+          setThinking(false);
+          router.push("/user");
         });
-        setThinking(false);
-        router.push("/user");
       } catch (err) {
         const errorMsg = errorCatcher(err);
         toast.update(id, {
@@ -74,9 +69,9 @@ export default function Login() {
         priority
       />
       <div className="w-full mx-auto md:w-[67vw] lg:w-[50vw] sm:px-2 sm:p-4 lg:p-6 h-full flex items-center justify-center">
-        <div className="w-full p-6 2xl:px-12 bg-white md:mx-6 2xl:mx-12">
+        <div className="w-full p-6 2xl:px-12 bg-gradient-to-b from-[#ffa920] via-white to-white rounded-br-xl rounded-tl-xl md:mx-6 2xl:mx-12">
           <h2
-            className={`text-black py-3 pr-3 font-bold text-2xl lg:text-3xl drop-shadow-xl shadow-black mb-6 flex flex-row items-center`}
+            className={`justify-center text-zinc-700 py-3 pr-3 font-bold text-2xl lg:text-3xl drop-shadow-xl shadow-black mb-6 flex flex-row items-center text-shadow`}
           >
             Zaloguj się na swoje konto
           </h2>
@@ -123,7 +118,7 @@ export default function Login() {
             </div>
           </div>{" "}
           <div className="md:mt-6 grid grid-cols-1 gap-3 w-full">
-            <div className="flex flex-col md:flex-row items-center gap-3">
+            <div className="flex flex-col items-center gap-3">
               <button
                 disabled={isThinking}
                 onClick={signIn}

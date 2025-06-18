@@ -2,12 +2,7 @@
 import pizzuj from "../../../public/assets/pizzuj.png";
 import Image from "next/image";
 import Link from "next/link";
-import { FaChevronDown, FaUser, FaSignOutAlt } from "react-icons/fa";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../../db/firebase";
-import { signOut } from "firebase/auth";
-import { useState, useEffect, useRef } from "react";
-
+import { FaChevronDown } from "react-icons/fa";
 export default function HeaderComponent({
   showHeader,
   menuShow,
@@ -20,46 +15,6 @@ export default function HeaderComponent({
   setMenuShow,
   setHovered,
 }) {
-  const [user] = useAuthState(auth);
-  const [userMenuOpen, setUserMenuOpen] = useState(false);
-  const userMenuRef = useRef(null);
-
-  // Close user menu when clicking outside
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (userMenuRef.current && !userMenuRef.current.contains(event.target)) {
-        setUserMenuOpen(false);
-      }
-    }
-
-    if (userMenuOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [userMenuOpen]);
-
-  const handleSignOut = async () => {
-    try {
-      await signOut(auth);
-      setUserMenuOpen(false);
-    } catch (error) {
-      console.error("Error signing out:", error);
-    }
-  };
-
-  const getUserDisplayName = () => {
-    if (user?.displayName) {
-      return user.displayName;
-    }
-    if (user?.email) {
-      return user.email.split("@")[0];
-    }
-    return "User";
-  };
-
   return (
     <>
       <div className="w-full h-[65px] lg:h-[84px]"></div>
@@ -140,52 +95,12 @@ export default function HeaderComponent({
               Blog
             </Link>
           </div>
-
-          {/* User Authentication Section */}
-          {user ? (
-            <div className="relative" ref={userMenuRef}>
-              <button
-                onClick={() => setUserMenuOpen(!userMenuOpen)}
-                className="flex items-center gap-2 py-3 px-4 text-lg golden hover:scale-105 duration-200 rounded-md text-white cursor-pointer"
-              >
-                <span className="drop-shadow-lg shadow-black">
-                  Hello, {getUserDisplayName()}
-                </span>
-                <FaChevronDown
-                  className={`transform duration-200 ${
-                    userMenuOpen ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-
-              {userMenuOpen && (
-                <div className="absolute right-0 top-full mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200 py-2 z-50">
-                  <Link
-                    href="/user"
-                    className="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100 duration-150"
-                    onClick={() => setUserMenuOpen(false)}
-                  >
-                    <FaUser className="text-sm" />
-                    Profile
-                  </Link>
-                  <button
-                    onClick={handleSignOut}
-                    className="flex items-center gap-2 w-full px-4 py-2 text-gray-700 hover:bg-gray-100 duration-150 text-left"
-                  >
-                    <FaSignOutAlt className="text-sm" />
-                    Wyloguj się
-                  </button>
-                </div>
-              )}
-            </div>
-          ) : (
-            <Link
-              href="/login"
-              className={`text-nowrap py-3 px-6 text-lg text-center golden hover:scale-105 duration-200 rounded-md text-white cursor-pointer `}
-            >
-              <span className="drop-shadow-lg shadow-black">ZALOGUJ</span>
-            </Link>
-          )}
+          <Link
+            href="/login"
+            className={`text-nowrap py-3 px-6 text-lg text-center golden hover:scale-105 duration-200 rounded-md text-white cursor-pointer `}
+          >
+            <span className="drop-shadow-lg shadow-black">ZALOGUJ</span>
+          </Link>
         </div>
       </div>
     </>

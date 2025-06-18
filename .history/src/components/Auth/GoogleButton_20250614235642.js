@@ -9,8 +9,6 @@ import {
 import { signInWithPopup, getAuth, GoogleAuthProvider } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { errorCatcher } from "../../lib/errorCatcher";
-import { toast } from "react-toastify";
-
 async function sendVerificationEmail(email, verificationCode) {
   const data = await fetch(
     `${process.env.NEXT_PUBLIC_URL}/api/sendVerificationEmail?email=${email}&verificationCode=${verificationCode}`
@@ -22,19 +20,11 @@ export default function GoogleAuthButton() {
   const router = useRouter();
   async function googleHandler() {
     const auth = getAuth();
-    const loadingToast = toast.loading("Loguję z Google...", {
-      position: "top-right",
-    });
-
     try {
       const result = await signInWithPopup(auth, provider);
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const user = result.user;
       const existingUser = await getDocument("users", user?.uid);
-
-      const displayName =
-        user?.displayName || user?.email?.split("@")[0] || "User";
-
       if (!existingUser) {
         // Get total user count
         const users = await getDocuments("users");
@@ -51,30 +41,10 @@ export default function GoogleAuthButton() {
           joinDate: new Date().toISOString(),
         });
         await sendVerificationEmail(user?.email, user?.uid);
-
-        toast.update(loadingToast, {
-          render: `Hello ${displayName}! Konto utworzone pomyślnie!`,
-          type: "success",
-          isLoading: false,
-          autoClose: 3000,
-        });
-      } else {
-        toast.update(loadingToast, {
-          render: `Hello ${displayName}! Zalogowano pomyślnie!`,
-          type: "success",
-          isLoading: false,
-          autoClose: 3000,
-        });
       }
-
       router.push(`${process.env.NEXT_PUBLIC_URL}/user`);
     } catch (error) {
-      toast.update(loadingToast, {
-        render: errorCatcher(error),
-        type: "error",
-        isLoading: false,
-        autoClose: 3000,
-      });
+      errorCatcher(error);
     }
   }
   return (

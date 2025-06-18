@@ -31,25 +31,20 @@ export default function Login() {
 
     (async () => {
       try {
-        const userCredential = await signInWithEmailAndPassword(
+        await signInWithEmailAndPassword(
           auth,
           userData.email,
           userData.password
-        );
-
-        const displayName =
-          userCredential.user.displayName ||
-          userCredential.user.email.split("@")[0] ||
-          "User";
-
-        toast.update(id, {
-          render: `Hello ${displayName}! Zalogowano pomyślnie!`,
-          type: "success",
-          isLoading: false,
-          autoClose: 3000,
+        ).then(() => {
+          toast.update(id, {
+            render: "Zalogowano pomyślnie!",
+            type: "success",
+            isLoading: false,
+            autoClose: 3000,
+          });
+          setThinking(false);
+          router.push("/user");
         });
-        setThinking(false);
-        router.push("/user");
       } catch (err) {
         const errorMsg = errorCatcher(err);
         toast.update(id, {
@@ -123,7 +118,7 @@ export default function Login() {
             </div>
           </div>{" "}
           <div className="md:mt-6 grid grid-cols-1 gap-3 w-full">
-            <div className="flex flex-col md:flex-row items-center gap-3">
+            <div className="flex flex-col items-center gap-3">
               <button
                 disabled={isThinking}
                 onClick={signIn}
