@@ -27,7 +27,7 @@ export default function HeroSectionForHomePage() {
           <h1 className="text-center text-white drop-shadow-lg shadow-black text-2xl lg:text-3xl lg:px-12">
             Najlepsze pizzerie w Twoim mieście
           </h1>
-          <p className="text-white font-sans mt-4 text-center text-sm">
+          <p className="text-white font-cocosharp mt-4 text-center text-sm">
             Wybierz najlepszą dla siebie restaurację i{" "}
             <Link href="/advertise">
               <span className="text-yellow-500 underline animate-pulse">
@@ -38,7 +38,7 @@ export default function HeroSectionForHomePage() {
           <div className="flex flex-col mt-8 mx-auto w-max max-w-full">
             <Form loadingTexts={loadingTexts} />
           </div>
-          <h2 className="text-white font-sans mt-8 text-center">
+          <h2 className="text-white font-cocosharp mt-8 text-center">
             Często wyszukiwane
           </h2>
           <div className="h-px w-24 golden mt-2" />

@@ -75,7 +75,7 @@ export default function HeaderComponent({
               />
             </Link>
           </div>
-          <div className="font-sans text-lg lg:flex items-center justify-center w-full hidden">
+          <div className="font-gotham text-lg lg:flex items-center justify-center w-full hidden">
             <Link
               href="/advertise"
               className="rounded-md text-base drop-shadow-sm shadow-black text-black px-2 py-1 hover:text-yellow-500 "

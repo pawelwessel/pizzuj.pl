@@ -59,7 +59,7 @@ export default function Login() {
   }
 
   return (
-    <div className="py-12 px-6 font-sans min-h-screen w-full bg-slug bg-cover bg-center mx-auto relative flex flex-col-reverse md:flex-row items-center justify-center">
+    <div className="py-12 px-6 font-gotham min-h-screen w-full bg-slug bg-cover bg-center mx-auto relative flex flex-col-reverse md:flex-row items-center justify-center">
       <Image
         src={loginImage}
         className="w-full md:w-[33vw] lg:w-[50vw] h-full object-cover rounded-xl mt-6 md:mt-0"

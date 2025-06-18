@@ -143,7 +143,7 @@ export default function Form(loadingTexts) {
             value={searchTerm}
             type="text"
             name="search"
-            className="rounded-l-xl font-sans placeholder:text-black/50 text-lg py-4 h-12 pl-4 bg-white/50 text-black w-[200px] lg:w-[250px] mx-auto"
+            className="rounded-l-xl font-gotham placeholder:text-black/50 text-lg py-4 h-12 pl-4 bg-white/50 text-black w-[200px] lg:w-[250px] mx-auto"
             placeholder="Wpisz miasto"
             onKeyDown={(e) => {
               if (e.key === "Enter") {

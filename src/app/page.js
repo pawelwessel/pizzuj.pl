@@ -22,11 +22,11 @@ export default async function Page() {
         <h2 className="z-50 relative rounded-b-xl golden text-white border-x border-yellow-500 mb-12 block w-max max-w-full mx-auto text-2xl font-bold pt-6 pb-6 px-12 text-center">
           Dołącz do pizzuj
         </h2>
-        <p className="p-6 border-x border-yellow-500 block w-max max-w-full mx-auto text-center text-sm lg:text-base font-sans">
+        <p className="p-6 border-x border-yellow-500 block w-max max-w-full mx-auto text-center text-sm lg:text-base font-cocosharp">
           Dołącz do naszej sieci i zyskaj nowych klientów. Wspólnie <br />{" "}
           zbudujemy najlepszą sieć pizz w Polsce.
         </p>
-        <p className="text-gray-500 block w-max max-w-full mx-auto text-center text-xs lg:text-base font-sans font-light mt-6">
+        <p className="text-gray-500 block w-max max-w-full mx-auto text-center text-xs lg:text-base font-cocosharp font-light mt-6">
           Przykładowe lokale z{" "}
           <span
             className="font-bold text-yellow-500"

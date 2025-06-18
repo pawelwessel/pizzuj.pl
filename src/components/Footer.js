@@ -47,7 +47,7 @@ export const Footer = () => {
           <Link
             key={link.title}
             href={link.href}
-            className="text-white font-light font-sans py-2 rounded-full transition duration-300 ease-in-out"
+            className="text-white font-light font-gotham py-2 rounded-full transition duration-300 ease-in-out"
           >
             {link.title}
           </Link>
@@ -59,7 +59,7 @@ export const Footer = () => {
           <Link
             key={link.title}
             href={link.href}
-            className="text-white font-light font-sans py-2 rounded-full transition duration-300 ease-in-out"
+            className="text-white font-light font-gotham py-2 rounded-full transition duration-300 ease-in-out"
           >
             {link.title}
           </Link>

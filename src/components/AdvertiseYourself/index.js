@@ -99,7 +99,7 @@ const PricingCard = ({
           {title}
         </h2>
         <div className="h-1 w-16 bg-white mt-4 mx-auto rounded-full " />
-        <p className="text-center w-full lg:max-w-[70%] font-sans mt-3 text-white rounded-xl shadow-inner">
+        <p className="text-center w-full lg:max-w-[70%] font-cocosharp mt-3 text-white rounded-xl shadow-inner">
           {description}
         </p>
       </div>
@@ -124,7 +124,7 @@ export default function AdvertiseYourself() {
         Zwiększ ruch w swoim lokalu
       </h2>
 
-      <p className="w-full lg:max-w-[70%] font-sans text-left mt-12 text-black border-l-2 border-[#ffa920] p-4 bg-gray-200">
+      <p className="w-full lg:max-w-[70%] font-cocosharp text-left mt-12 text-black border-l-2 border-[#ffa920] p-4 bg-gray-200">
         Dzięki współpracy z nami rozszerzysz obecność swojej restauracji w
         internecie. Wyróżnimy Twoją pizzerię w Pizzuj.pl oraz w wyszukiwarce
         Google. Zyskasz więcej opinii, nowych klientów i zwiększysz ilość

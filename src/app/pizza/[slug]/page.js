@@ -49,7 +49,7 @@ export default async function Page({ params }) {
               {page?.page?.h2}
             </h1>
 
-            <p className="mt-3 lg:mt-6 w-[90%] mx-auto text-white drop-shadow-lg font-sans text-sm sm:text-base">
+            <p className="mt-3 lg:mt-6 w-[90%] mx-auto text-white drop-shadow-lg font-cocosharp text-sm sm:text-base">
               {page?.page?.introduction}
             </p>
             <div className="flex flex-col mt-4 lg:mt-8 mx-auto w-max max-w-full">
@@ -63,10 +63,10 @@ export default async function Page({ params }) {
           {page?.page?.businessName}
         </p>
         <div className="p-6 pt-16 text-center bg-white rounded-xl shadow-lg">
-          <h2 className="font-sans font-bold text-xl lg:text-3xl">
+          <h2 className="font-cocosharp font-bold text-xl lg:text-3xl">
             {page?.page?.h1}
           </h2>
-          <p className="text-black mt-3 text-center font-sans">
+          <p className="text-black mt-3 text-center font-cocosharp">
             {page?.page?.rankingSection}
           </p>
           <ArrayWithPlaces placesData={page?.places} />

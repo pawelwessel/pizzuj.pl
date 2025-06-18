@@ -71,7 +71,7 @@ export default function ArrayWithPlaces({ placesData }) {
                     href={`/pizza/${createLinkFromText(
                       place.city
                     )}/${createLinkFromText(place.name)}`}
-                    className="text-left block font-sans text-lg font-bold"
+                    className="text-left block font-cocosharp text-lg font-bold"
                   >
                     <Image
                       src={place.photos[0]}
@@ -88,9 +88,9 @@ export default function ArrayWithPlaces({ placesData }) {
                       href={`/pizza/${createLinkFromText(
                         place.city
                       )}/${createLinkFromText(place.name)}`}
-                      className="text-left block font-sans text-lg font-bold"
+                      className="text-left block font-cocosharp text-lg font-bold"
                     >
-                      <span className="text-left block font-sans text-lg font-bold pr-1">
+                      <span className="text-left block font-cocosharp text-lg font-bold pr-1">
                         {place.name}
                       </span>
                     </Link>
@@ -118,7 +118,7 @@ export default function ArrayWithPlaces({ placesData }) {
                     </button>
                     <div className="pl-3 text-left">
                       <p className="flex items-center gap-2">{place.city}</p>
-                      <p className="flex items-center gap-2 font-sans font-light text-sm mb-6">
+                      <p className="flex items-center gap-2 font-cocosharp font-light text-sm mb-6">
                         {place.address}
                       </p>
                     </div>
