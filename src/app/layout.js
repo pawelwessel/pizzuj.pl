@@ -15,115 +15,146 @@ export default function RootLayout({ children }) {
   return (
     <html lang="pl" className="overflow-x-hidden">
       <body
-        className={`${gothic.variable} antialiased overflow-x-hidden w-full`}
+        className={`${gothic.variable} antialiased overflow-x-hidden w-full font-sans`}
       >
-        {/* Fixed geometric shapes */}
+        {/* Enhanced geometric background shapes */}
         <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-          {/* Large circle - top left */}
+          {/* Animated floating shapes */}
           <div 
-            className="absolute -top-20 -left-20 w-40 h-40 rounded-full opacity-20"
-            style={{ backgroundColor: '#ffa920' }}
+            className="absolute -top-24 -left-24 w-48 h-48 rounded-full opacity-10 animate-bounce-gentle"
+            style={{ 
+              background: 'linear-gradient(135deg, #ffa920 0%, #ff8f00 100%)',
+              animationDelay: '0s'
+            }}
           ></div>
           
-          {/* Square - top right */}
           <div 
-            className="absolute top-10 right-10 w-24 h-24 opacity-15"
-            style={{ backgroundColor: '#ffa920' }}
+            className="absolute top-8 right-8 w-32 h-32 opacity-8 rotate-45 animate-bounce-gentle"
+            style={{ 
+              background: 'linear-gradient(135deg, #ffca28 0%, #ffa920 100%)',
+              animationDelay: '1s'
+            }}
           ></div>
           
-          {/* Medium circle - right side */}
           <div 
-            className="absolute top-1/3 -right-16 w-32 h-32 rounded-full opacity-25"
-            style={{ backgroundColor: '#ffa920' }}
+            className="absolute top-1/4 -right-20 w-40 h-40 rounded-full opacity-12 animate-bounce-gentle"
+            style={{ 
+              background: 'linear-gradient(135deg, #ff8f00 0%, #ec7308 100%)',
+              animationDelay: '0.5s'
+            }}
           ></div>
           
-          {/* Small square - left middle */}
           <div 
-            className="absolute top-1/2 -left-8 w-16 h-16 opacity-20"
-            style={{ backgroundColor: '#ffa920' }}
+            className="absolute top-1/2 -left-12 w-24 h-24 opacity-15 rotate-12 animate-bounce-gentle"
+            style={{ 
+              background: 'linear-gradient(135deg, #ffa920 0%, #ffca28 100%)',
+              animationDelay: '1.5s'
+            }}
           ></div>
           
-          {/* Large square - bottom left */}
           <div 
-            className="absolute -bottom-12 -left-12 w-36 h-36 opacity-15"
-            style={{ backgroundColor: '#ffa920' }}
+            className="absolute -bottom-16 -left-16 w-44 h-44 opacity-10 rotate-45 animate-bounce-gentle"
+            style={{ 
+              background: 'linear-gradient(135deg, #ff6f00 0%, #ffa920 100%)',
+              animationDelay: '2s'
+            }}
           ></div>
           
-          {/* Circle - bottom right */}
           <div 
-            className="absolute bottom-20 right-20 w-28 h-28 rounded-full opacity-20"
-            style={{ backgroundColor: '#ffa920' }}
+            className="absolute bottom-16 right-16 w-36 h-36 rounded-full opacity-12 animate-bounce-gentle"
+            style={{ 
+              background: 'linear-gradient(135deg, #ffca28 0%, #ff8f00 100%)',
+              animationDelay: '0.75s'
+            }}
           ></div>
           
-          {/* Small circle - top center */}
           <div 
-            className="absolute top-16 left-1/2 transform -translate-x-1/2 w-20 h-20 rounded-full opacity-25"
-            style={{ backgroundColor: '#ffa920' }}
+            className="absolute top-20 left-1/2 transform -translate-x-1/2 w-28 h-28 rounded-full opacity-8 animate-bounce-gentle"
+            style={{ 
+              background: 'linear-gradient(135deg, #ffa920 0%, #ec7308 100%)',
+              animationDelay: '1.25s'
+            }}
+          ></div>
+          
+          {/* Additional subtle shapes for depth */}
+          <div 
+            className="absolute bottom-1/4 left-1/4 w-20 h-20 rounded-full opacity-5 animate-bounce-gentle"
+            style={{ 
+              background: 'linear-gradient(135deg, #ff8f00 0%, #ffa920 100%)',
+              animationDelay: '3s'
+            }}
           ></div>
         </div>
 
-        {/* Main content with higher z-index */}
+        {/* Main content with enhanced z-index */}
         <div className="relative z-10">
           <Header />
           {children}
-          <div className="flex flex-col items-center justify-center gap-6 text-black px-8 pb-16 pt-12 mx-4 my-16 relative">
-            {/* Background with gradient and glass effect */}
-            <div className="absolute inset-0 bg-gradient-to-br from-yellow-50/80 via-orange-50/60 to-yellow-100/80 backdrop-blur-sm rounded-3xl shadow-2xl border border-yellow-200/30"></div>
+          
+          {/* Enhanced Call-to-Action section with glassmorphism */}
+          <section className="relative px-4 sm:px-8 lg:px-16 py-16 lg:py-24 mx-4 lg:mx-8 my-16 lg:my-24">
+            {/* Enhanced glass background with better gradients */}
+            <div className="absolute inset-0 glass rounded-3xl lg:rounded-5xl shadow-large border border-primary-200/40 backdrop-blur-xl bg-gradient-to-br from-white/20 via-primary-50/30 to-primary-100/20"></div>
             
-            {/* Decorative elements */}
-            <div className="absolute top-4 left-4 w-12 h-12 bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full opacity-20 animate-pulse"></div>
-            <div className="absolute bottom-4 right-4 w-8 h-8 bg-gradient-to-br from-orange-300 to-yellow-400 rounded-full opacity-30 animate-pulse delay-1000"></div>
-            <div className="absolute top-8 right-8 w-6 h-6 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-25 animate-bounce delay-500"></div>
+            {/* Enhanced floating decorative elements */}
+            <div className="absolute top-6 left-6 w-16 h-16 bg-gradient-to-br from-primary-300 to-primary-500 rounded-full opacity-20 animate-bounce-gentle shadow-golden"></div>
+            <div className="absolute bottom-6 right-6 w-12 h-12 bg-gradient-to-br from-primary-400 to-primary-600 rounded-full opacity-25 animate-bounce-gentle shadow-golden" style={{ animationDelay: '1s' }}></div>
+            <div className="absolute top-12 right-12 w-8 h-8 bg-gradient-to-br from-primary-500 to-primary-700 rounded-full opacity-30 animate-bounce-gentle" style={{ animationDelay: '0.5s' }}></div>
+            <div className="absolute bottom-12 left-12 w-10 h-10 bg-gradient-to-br from-primary-300 to-primary-500 rounded-full opacity-20 animate-bounce-gentle" style={{ animationDelay: '1.5s' }}></div>
             
-            {/* Content with higher z-index */}
-            <div className="relative z-10 flex flex-col items-center gap-6">
-              {/* Enhanced crown section */}
+            {/* Main content container */}
+            <div className="relative z-10 flex flex-col items-center gap-8 lg:gap-12 text-center max-w-4xl mx-auto">
+              {/* Enhanced crown section with sparkles */}
               <div className="relative">
-                <div className="mb-6 scale-150 flex flex-row items-center gap-1 filter drop-shadow-lg">
-                  <FaCrown className="text-yellow-500 text-2xl animate-pulse delay-100" />
-                  <FaCrown className="text-yellow-400 text-4xl animate-pulse delay-300 drop-shadow-md" />
-                  <FaCrown className="text-yellow-500 text-2xl animate-pulse delay-500" />
+                <div className="flex items-center justify-center gap-2 scale-125 lg:scale-150 filter drop-shadow-xl">
+                  <FaCrown className="text-primary-500 text-2xl lg:text-3xl animate-bounce-gentle" style={{ animationDelay: '0.1s' }} />
+                  <FaCrown className="text-primary-400 text-4xl lg:text-5xl animate-bounce-gentle drop-shadow-lg" style={{ animationDelay: '0.3s' }} />
+                  <FaCrown className="text-primary-500 text-2xl lg:text-3xl animate-bounce-gentle" style={{ animationDelay: '0.5s' }} />
                 </div>
-                {/* Sparkle effects around crowns */}
-                <div className="absolute -top-2 -left-2 w-2 h-2 bg-yellow-300 rounded-full animate-ping"></div>
-                <div className="absolute -top-1 right-2 w-1 h-1 bg-yellow-400 rounded-full animate-ping delay-700"></div>
-                <div className="absolute top-4 -right-3 w-1.5 h-1.5 bg-yellow-500 rounded-full animate-ping delay-1000"></div>
+                
+                {/* Enhanced sparkle effects */}
+                <div className="absolute -top-3 -left-3 w-3 h-3 bg-primary-300 rounded-full animate-ping opacity-60"></div>
+                <div className="absolute -top-2 right-2 w-2 h-2 bg-primary-400 rounded-full animate-ping opacity-70" style={{ animationDelay: '0.7s' }}></div>
+                <div className="absolute top-6 -right-4 w-2.5 h-2.5 bg-primary-500 rounded-full animate-ping opacity-80" style={{ animationDelay: '1s' }}></div>
+                <div className="absolute -bottom-2 left-4 w-1.5 h-1.5 bg-primary-300 rounded-full animate-ping opacity-60" style={{ animationDelay: '0.4s' }}></div>
               </div>
 
-              {/* Enhanced heading */}
-              <div className="text-center relative">
-                <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-800 via-gray-700 to-gray-900 bg-clip-text text-transparent leading-tight">
+              {/* Enhanced heading with better typography */}
+              <div className="space-y-4">
+                <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold bg-gradient-to-r from-gray-800 via-gray-700 to-gray-900 bg-clip-text text-transparent leading-tight">
                   Dołącz teraz i zdobądź odznakę
                 </h2>
-                <div className="mt-2 w-24 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full mx-auto"></div>
+                <div className="w-32 lg:w-40 h-1.5 bg-gradient-to-r from-primary-400 via-primary-500 to-primary-600 rounded-full mx-auto shadow-golden"></div>
+                <p className="font-body text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto mt-6">
+                  Stań się częścią społeczności miłośników pizzy i otrzymaj ekskluzywną odznakę Pioneer
+                </p>
               </div>
 
-              {/* Achievements with enhanced container */}
-              <div className="relative">
-                <div className="absolute inset-0 bg-white/50 rounded-2xl blur-sm"></div>
-                <div className="relative bg-white/70 rounded-2xl p-4 shadow-lg border border-yellow-200/50">
+              {/* Enhanced achievements container */}
+              <div className="relative w-full max-w-md">
+                <div className="absolute inset-0 bg-white/60 rounded-3xl blur-sm shadow-medium"></div>
+                <div className="relative bg-white/80 rounded-3xl p-6 lg:p-8 shadow-large border border-primary-200/60 backdrop-blur-sm">
                   <AchievmentsList achievements={["Pioneer"]} />
                 </div>
               </div>
 
-              {/* Enhanced login link */}
+              {/* Enhanced login button with better interactions */}
               <div className="group relative">
                 <Link
                   href="/login"
-                  className="relative px-8 py-4 bg-gradient-to-r from-yellow-400 via-orange-400 to-yellow-500 hover:from-yellow-500 hover:via-orange-500 hover:to-yellow-600 text-white font-semibold rounded-full transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl flex items-center gap-3 shadow-lg"
+                  className="relative inline-flex items-center gap-4 px-8 lg:px-12 py-4 lg:py-5 bg-gradient-to-r from-primary-400 via-primary-500 to-primary-600 hover:from-primary-500 hover:via-primary-600 hover:to-primary-700 text-white font-heading font-semibold text-lg lg:text-xl rounded-full transition-all duration-300 ease-out transform hover:scale-105 hover:shadow-golden-lg shadow-golden"
                 >
                   <span className="relative z-10">Zaloguj się</span>
-                  <FaArrowRight className="text-lg transition-transform duration-300 group-hover:translate-x-1" />
+                  <FaArrowRight className="text-lg lg:text-xl transition-transform duration-300 group-hover:translate-x-1" />
                   
-                  {/* Button glow effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl"></div>
+                  {/* Enhanced button effects */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary-400 to-primary-600 rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-300 blur-xl"></div>
+                  <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent rounded-full pointer-events-none"></div>
                 </Link>
-                
-                {/* Button reflection */}
-                <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent rounded-full pointer-events-none"></div>
               </div>
             </div>
-          </div>
+          </section>
+          
           <Footer />
         </div>
       </body>

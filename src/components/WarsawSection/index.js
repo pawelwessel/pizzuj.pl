@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { FaLocationArrow } from "react-icons/fa6";
+import { FaLocationArrow, FaStar } from "react-icons/fa6";
 import { createLinkFromText } from "../../lib/createLinkFromText";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -15,8 +15,10 @@ export default function WarsawSection({ placesData }) {
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 4000,
     pauseOnHover: true,
+    arrows: true,
+    dots: true,
     responsive: [
       {
         breakpoint: 1280,
@@ -30,51 +32,118 @@ export default function WarsawSection({ placesData }) {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          arrows: false,
         },
       },
     ],
   };
 
   return (
-    <div className="golden py-12 w-full px-2 lg:px-16 2xl:px-24">
-      <Slider {...settings}>
-        {placesData?.map((place, index) => (
-          <div
-            key={index}
-            className={`${!place.photos[0] ? "hidden" : ""} px-2`}
-          >
-            <Link
-              href={`/pizza/${createLinkFromText(
-                place.city
-              )}/${createLinkFromText(place.name)}`}
-              className={`bg-white rounded-xl p-2 text-left block text-lg font-bold group transition-colors`}
+    <section className="bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700 py-16 lg:py-24 w-full px-4 lg:px-8 xl:px-16 2xl:px-24 relative overflow-hidden">
+      {/* Background decorations */}
+      <div className="absolute inset-0 pointer-events-none opacity-10">
+        <div className="absolute top-8 left-8 w-32 h-32 bg-white rounded-full blur-3xl"></div>
+        <div className="absolute bottom-8 right-8 w-24 h-24 bg-white rounded-full blur-2xl"></div>
+      </div>
+      
+      {/* Section header */}
+      <div className="relative z-10 text-center mb-12 lg:mb-16">
+        <h2 className="font-heading text-white text-3xl lg:text-4xl xl:text-5xl font-bold mb-4">
+          Popularne pizzerie
+        </h2>
+        <p className="font-body text-primary-100 text-lg lg:text-xl max-w-2xl mx-auto">
+          Odkryj najlepsze miejsca polecane przez naszą społeczność
+        </p>
+        <div className="w-24 h-1 bg-gradient-to-r from-primary-200 to-white rounded-full mx-auto mt-6"></div>
+      </div>
+      
+      <div className="relative z-10 max-w-7xl mx-auto">
+        <Slider {...settings}>
+          {placesData?.map((place, index) => (
+            <div
+              key={index}
+              className={`${!place.photos[0] ? "hidden" : ""} px-3 lg:px-4`}
             >
-              <div className="rounded-2xl relative h-full">
-                <div className="flex flex-col xl:flex-row">
-                  <div className="w-full">
+              <Link
+                href={`/pizza/${createLinkFromText(
+                  place.city
+                )}/${createLinkFromText(place.name)}`}
+                className="block group"
+              >
+                <div className="card-hover bg-white rounded-2xl lg:rounded-3xl overflow-hidden shadow-large hover:shadow-golden-lg border border-white/20 transition-all duration-300 group-hover:scale-[1.02]">
+                  {/* Image container */}
+                  <div className="relative overflow-hidden">
                     <Image
                       src={place.photos[0] || "/assets/pizza.png"}
-                      alt={place.name}
+                      alt={`${place.name} - pizzeria`}
                       width={400}
-                      height={400}
-                      className="border-[#ffa920] rounded-xl w-full h-60 object-cover"
+                      height={300}
+                      className="w-full h-48 lg:h-56 object-cover transition-transform duration-500 group-hover:scale-110"
                     />
+                    
+                    {/* Image overlay gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    
+                    {/* Rating badge (if available) */}
+                    {place.rating && (
+                      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 flex items-center gap-1 shadow-medium">
+                        <FaStar className="text-yellow-500 text-sm" />
+                        <span className="font-heading text-sm font-semibold text-gray-800">
+                          {place.rating}
+                        </span>
+                      </div>
+                    )}
                   </div>
-                  <div className="pt-2 xl:pt-0 w-full pl-0 xl:pl-4">
-                    <div className="flex flex-col gap-1.5 duration-300">
-                      <p className="group-hover:text-[#ffa920]">{place.name}</p>
-                      <p className="flex items-center gap-2 text-base font-sans">
-                        <MdLocationPin className="w-8 h-8 text-[#ec7308] duration-300" />
-                        {place.city}
-                      </p>
+                  
+                  {/* Content container */}
+                  <div className="p-6 lg:p-8">
+                    <div className="space-y-4">
+                      {/* Restaurant name */}
+                      <h3 className="font-heading text-xl lg:text-2xl font-bold text-gray-800 group-hover:text-primary-600 transition-colors duration-300 line-clamp-2">
+                        {place.name}
+                      </h3>
+                      
+                      {/* Location */}
+                      <div className="flex items-center gap-3 text-gray-600">
+                        <MdLocationPin className="w-5 h-5 text-primary-500 flex-shrink-0" />
+                        <span className="font-body text-base lg:text-lg">
+                          {place.city}
+                        </span>
+                      </div>
+                      
+                      {/* Additional info if available */}
+                      {place.description && (
+                        <p className="font-body text-gray-600 text-sm lg:text-base line-clamp-2">
+                          {place.description}
+                        </p>
+                      )}
+                      
+                      {/* CTA indicator */}
+                      <div className="flex items-center justify-between pt-2">
+                        <span className="font-body text-primary-600 font-medium group-hover:text-primary-700 transition-colors duration-300">
+                          Zobacz szczegóły
+                        </span>
+                        <FaLocationArrow className="w-4 h-4 text-primary-500 group-hover:text-primary-600 group-hover:translate-x-1 transition-all duration-300" />
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </Link>
-          </div>
-        ))}
-      </Slider>
-    </div>
+              </Link>
+            </div>
+          ))}
+        </Slider>
+      </div>
+      
+      {/* Bottom section with CTA */}
+      <div className="relative z-10 text-center mt-12 lg:mt-16">
+        <Link
+          href="/pizza"
+          className="inline-flex items-center gap-3 px-8 lg:px-10 py-4 lg:py-5 bg-white text-primary-600 hover:text-primary-700 font-heading font-semibold text-lg lg:text-xl rounded-full transition-all duration-300 hover:scale-105 shadow-large hover:shadow-xl group"
+        >
+          <span>Zobacz wszystkie pizzerie</span>
+          <FaLocationArrow className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+        </Link>
+      </div>
+    </section>
   );
 }

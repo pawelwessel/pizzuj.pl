@@ -9,55 +9,130 @@ import AdvertiseYourself from "../components/AdvertiseYourself";
 export default async function Page() {
   const warsaw = await getDocument("pages", "warszawa");
   return (
-    <div>
+    <main className="min-h-screen">
       <HeroSectionForHomePage />
-      <div className="relative w-full pb-12">
-        <Image
-          src={accent3}
-          alt="Promuj swój lokal z pizzą"
-          className="w-24 lg:w-40 top-3 h-auto absolute z-0 right-24 opacity-50"
-          width={250}
-          height={250}
-        />
-        <h2 className="z-50 relative rounded-b-xl golden text-white border-x border-yellow-500 mb-12 block w-max max-w-full mx-auto text-2xl font-bold pt-6 pb-6 px-12 text-center">
-          Dołącz do pizzuj
-        </h2>
-        <p className="p-6 border-x border-yellow-500 block w-max max-w-full mx-auto text-center text-sm lg:text-base font-sans">
-          Dołącz do naszej sieci i zyskaj nowych klientów. Wspólnie <br />{" "}
-          zbudujemy najlepszą sieć pizz w Polsce.
-        </p>
-        <p className="text-gray-500 block w-max max-w-full mx-auto text-center text-xs lg:text-base font-sans font-light mt-6">
-          Przykładowe lokale z{" "}
-          <span
-            className="font-bold text-yellow-500"
-            title="Pozyskujemy adresy i nazwy lokali z tego samego miejsca co Google"
-          >
-            Mapy Google
-          </span>
-          :
-        </p>
-      </div>
+      
+      {/* Enhanced CTA Section */}
+      <section className="relative py-16 lg:py-24 bg-gradient-to-br from-gray-50 via-white to-primary-50 overflow-hidden">
+        {/* Decorative background image */}
+        <div className="absolute inset-0 pointer-events-none">
+          <Image
+            src={accent3}
+            alt="Pizza decoration"
+            className="absolute w-24 sm:w-32 lg:w-40 xl:w-48 h-auto top-8 right-8 lg:right-24 opacity-20 lg:opacity-30 animate-bounce-gentle"
+            width={250}
+            height={250}
+            style={{ animationDelay: '0.5s' }}
+          />
+        </div>
+        
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-8 lg:px-16">
+          <div className="text-center space-y-8 lg:space-y-12">
+            
+            {/* Enhanced main heading */}
+            <div className="space-y-6">
+              <div className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-heading font-semibold text-lg lg:text-xl rounded-full shadow-golden">
+                Dołącz do Pizzuj
+              </div>
+              
+              <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-800 leading-tight">
+                Zostań częścią{" "}
+                <span className="bg-gradient-to-r from-primary-500 to-primary-700 bg-clip-text text-transparent">
+                  naszej sieci
+                </span>
+              </h2>
+            </div>
+            
+            {/* Enhanced description */}
+            <div className="max-w-4xl mx-auto space-y-6">
+              <p className="font-body text-lg lg:text-xl text-gray-600 leading-relaxed">
+                Dołącz do naszej sieci i zyskaj nowych klientów. Wspólnie 
+                zbudujemy najlepszą sieć pizz w Polsce.
+              </p>
+              
+              <div className="glass bg-white/60 border border-primary-200/30 rounded-2xl lg:rounded-3xl p-6 lg:p-8 backdrop-blur-sm shadow-medium">
+                <p className="font-body text-base lg:text-lg text-gray-500 mb-4">
+                  Przykładowe lokale z{" "}
+                  <span
+                    className="font-semibold text-primary-600 cursor-help hover:text-primary-700 transition-colors duration-200"
+                    title="Pozyskujemy adresy i nazwy lokali z tego samego miejsca co Google"
+                  >
+                    Google Maps
+                  </span>
+                  :
+                </p>
+                
+                {/* Benefits list */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 mt-6">
+                  <div className="flex items-center gap-3 p-4 bg-white/50 rounded-xl border border-primary-100">
+                    <div className="w-8 h-8 bg-primary-500 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-white text-sm font-bold">✓</span>
+                    </div>
+                    <span className="font-body text-gray-700 font-medium">Zwiększ widoczność</span>
+                  </div>
+                  
+                  <div className="flex items-center gap-3 p-4 bg-white/50 rounded-xl border border-primary-100">
+                    <div className="w-8 h-8 bg-primary-500 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-white text-sm font-bold">✓</span>
+                    </div>
+                    <span className="font-body text-gray-700 font-medium">Zyskaj klientów</span>
+                  </div>
+                  
+                  <div className="flex items-center gap-3 p-4 bg-white/50 rounded-xl border border-primary-100">
+                    <div className="w-8 h-8 bg-primary-500 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-white text-sm font-bold">✓</span>
+                    </div>
+                    <span className="font-body text-gray-700 font-medium">Rozwijaj biznes</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
+      {/* Pizza places section */}
       <WarsawSection placesData={warsaw.places} />
-      <Opinions />
-      <AdvertiseYourself />
-    </div>
+      
+      {/* Reviews section */}
+      <section className="py-16 lg:py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16">
+          <div className="text-center mb-12 lg:mb-16">
+            <h2 className="font-heading text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-800 mb-4">
+              Co mówią o nas klienci
+            </h2>
+            <p className="font-body text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto">
+              Przeczytaj opinie zadowolonych użytkowników naszej platformy
+            </p>
+            <div className="w-24 h-1 bg-gradient-to-r from-primary-400 to-primary-600 rounded-full mx-auto mt-6"></div>
+          </div>
+          <Opinions />
+        </div>
+      </section>
+      
+      {/* Business CTA section */}
+      <section className="py-16 lg:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16">
+          <AdvertiseYourself />
+        </div>
+      </section>
+    </main>
   );
 }
 
 export const metadata = {
   viewport: "width=device-width, initial-scale=1",
-  themeColor: "#ffffff",
+  themeColor: "#ffa920",
   manifest: "/manifest.json",
   title:
-    "Kochasz pizzę? Dołącz od sieci! Pizzuj.pl – najlepsze pizzerie w Polsce",
+    "Kochasz pizzę? Dołącz do sieci! Pizzuj.pl – najlepsze pizzerie w Polsce",
   description:
     "To nie są ćwiczenia – jeśli kochasz pizzę, musisz poznać Pizzuj.pl. Pizzerie w Polsce – szybko, smacznie, bez kompromisów.",
   openGraph: {
     type: "website",
     url: "https://pizzuj.pl",
     title:
-      "Kochasz pizzę? Dołącz od sieci! Pizzuj.pl – najlepsze pizzerie w Polsce",
+      "Kochasz pizzę? Dołącz do sieci! Pizzuj.pl – najlepsze pizzerie w Polsce",
     description:
       "To nie są ćwiczenia – jeśli kochasz pizzę, musisz poznać Pizzuj.pl. Pizzerie w Polsce – szybko, smacznie, bez kompromisów.",
     siteName: "Pizzuj",
