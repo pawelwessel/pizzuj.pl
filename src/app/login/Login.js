@@ -31,20 +31,24 @@ export default function Login() {
 
     (async () => {
       try {
-        await signInWithEmailAndPassword(
+        const userCredential = await signInWithEmailAndPassword(
           auth,
           userData.email,
           userData.password
-        ).then(() => {
-          toast.update(id, {
-            render: "Zalogowano pomyślnie!",
-            type: "success",
-            isLoading: false,
-            autoClose: 3000,
-          });
-          setThinking(false);
-          router.push("/user");
+        );
+        
+        const displayName = userCredential.user.displayName || 
+                           userCredential.user.email.split('@')[0] || 
+                           'User';
+        
+        toast.update(id, {
+          render: `Hello ${displayName}! Zalogowano pomyślnie!`,
+          type: "success",
+          isLoading: false,
+          autoClose: 3000,
         });
+        setThinking(false);
+        router.push("/user");
       } catch (err) {
         const errorMsg = errorCatcher(err);
         toast.update(id, {

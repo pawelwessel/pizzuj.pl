@@ -49,7 +49,7 @@ export default function Register() {
         });
 
         toast.update(id, {
-          render: "Zarejestrowano pomyślnie!",
+          render: `Hello ${userData.name}! Zarejestrowano pomyślnie!`,
           type: "success",
           isLoading: false,
           autoClose: 3000,
