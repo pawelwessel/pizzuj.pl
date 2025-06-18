@@ -25,6 +25,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  position: relative;
 }
 
 @font-face {
@@ -37,6 +38,132 @@ body {
 
 body {
   font-family: "Gothic", Arial, Helvetica, sans-serif;
+}
+
+/* Geometric Design Accents */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Top-left triangle */
+body::before {
+  top: 15vh;
+  left: 5vw;
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 43px solid rgba(255, 169, 32, 0.1);
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Bottom-right square */
+body::after {
+  bottom: 20vh;
+  right: 8vw;
+  width: 30px;
+  height: 30px;
+  background-color: rgba(236, 115, 8, 0.15);
+  transform: rotate(45deg);
+  animation: rotate 8s linear infinite;
+}
+
+.geometric-accent-circle-1 {
+  position: fixed;
+  top: 60vh;
+  left: 10vw;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(255, 169, 32, 0.2);
+  border-radius: 50%;
+  z-index: -1;
+  pointer-events: none;
+  animation: pulse 4s ease-in-out infinite;
+}
+
+.geometric-accent-circle-2 {
+  position: fixed;
+  top: 30vh;
+  right: 15vw;
+  width: 15px;
+  height: 15px;
+  background-color: rgba(236, 115, 8, 0.1);
+  border-radius: 50%;
+  z-index: -1;
+  pointer-events: none;
+  animation: float 5s ease-in-out infinite reverse;
+}
+
+.geometric-accent-triangle-2 {
+  position: fixed;
+  bottom: 40vh;
+  left: 15vw;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 26px solid rgba(255, 169, 32, 0.08);
+  z-index: -1;
+  pointer-events: none;
+  animation: float 7s ease-in-out infinite;
+}
+
+.geometric-accent-square-2 {
+  position: fixed;
+  top: 80vh;
+  right: 25vw;
+  width: 18px;
+  height: 18px;
+  background-color: rgba(236, 115, 8, 0.12);
+  z-index: -1;
+  pointer-events: none;
+  animation: rotate 10s linear infinite reverse;
+}
+
+/* Animations for geometric accents */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.2;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.4;
+  }
+}
+
+/* Hide accents on very small screens */
+@media (max-width: 480px) {
+  body::before,
+  body::after,
+  .geometric-accent-circle-1,
+  .geometric-accent-circle-2,
+  .geometric-accent-triangle-2,
+  .geometric-accent-square-2 {
+    display: none;
+  }
 }
 
 .animate-from-top-to-bottom {

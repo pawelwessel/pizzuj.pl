@@ -17,6 +17,12 @@ export default function RootLayout({ children }) {
       <body
         className={`${gothic.variable} antialiased overflow-x-hidden w-full`}
       >
+        {/* Geometric Design Accents */}
+        <div className="geometric-accent-circle-1"></div>
+        <div className="geometric-accent-circle-2"></div>
+        <div className="geometric-accent-triangle-2"></div>
+        <div className="geometric-accent-square-2"></div>
+        
         <Header />
         {children}
         <div className="flex flex-col items-center justify-center gap-4 text-black px-4 pb-12 rounded-full mt-12">
@@ -28,7 +34,7 @@ export default function RootLayout({ children }) {
           <h2 className="text-2xl font-bold text-center">
             Dołącz teraz i zdobądź odznakę
           </h2>
-          <AchievmentsList achievements={["Pionier"]} />
+          <AchievmentsList achievements={["Pioneer"]} />
 
           <Link
             href="/login"
