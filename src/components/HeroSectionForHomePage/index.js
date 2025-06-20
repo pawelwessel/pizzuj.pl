@@ -46,17 +46,17 @@ export default async function HeroSectionForHomePage() {
         <div className="glass bg-black/50 backdrop-blur-xl p-6 sm:p-8 lg:p-12 rounded-2xl lg:rounded-3xl border border-white/30 shadow-large">
           {/* Enhanced hero heading */}
           <div className="text-center mb-8 lg:mb-12 flex flex-col items-center justify-center">
-            <h1 className="font-heading text-zinc-800 text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight mb-4 lg:mb-6">
+            <h1 className="font-cocosharp-bold-italic text-white text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight mb-4 lg:mb-6 drop-shadow-lg">
               Najlepsze pizzerie w <br />
-              <span className="text-[#ffa920]">Twoim mieście</span>
+              <span className="text-[#ffa920] font-cocosharp-bold-italic">Twoim mieście</span>
             </h1>
-            <p className="font-gotham text-zinc-700 text-base sm:text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed">
+            <p className="font-gotham text-white/90 text-base sm:text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed">
               Wybierz najlepszą dla siebie restaurację i{" "}
               <Link
                 href="/advertise"
                 className="group inline-flex items-center"
               >
-                <span className="font-semibold underline decoration-primary-200 hover:decoration-white transition-colors duration-200 animate-pulse group-hover:animate-none">
+                <span className="font-cocosharp-italic font-semibold underline decoration-primary-200 hover:decoration-white transition-colors duration-200 animate-pulse group-hover:animate-none">
                   zamów online
                 </span>
               </Link>
@@ -74,7 +74,7 @@ export default async function HeroSectionForHomePage() {
           {/* Enhanced popular cities section */}
           <div className="text-center">
             <div className="inline-flex items-center gap-4 mb-6">
-              <h2 className="font-heading text-zinc-800 text-lg lg:text-xl font-semibold">
+              <h2 className="font-cocosharp-italic text-white text-lg lg:text-xl font-semibold">
                 Często wyszukiwane
               </h2>
               <div className="h-px w-16 lg:w-24 bg-gradient-to-r from-white to-white/70 rounded-full"></div>

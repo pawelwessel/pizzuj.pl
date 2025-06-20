@@ -32,9 +32,9 @@ export default async function Page() {
                 Dołącz do Pizzuj
               </div>
 
-              <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-800 leading-tight">
+              <h2 className="font-cocosharp-bold-italic text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-800 leading-tight">
                 Zostań częścią{" "}
-                <span className="text-[#ffa920]">naszej sieci</span>
+                <span className="text-[#ffa920] font-cocosharp-bold-italic">naszej sieci</span>
               </h2>
             </div>
 
@@ -102,7 +102,7 @@ export default async function Page() {
       <section className="py-16 lg:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16">
           <div className="text-center mb-12 lg:mb-16">
-            <h2 className="font-heading text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-800 mb-4">
+            <h2 className="font-cocosharp-bold-italic text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-800 mb-4">
               Co mówią o nas klienci
             </h2>
             <p className="font-body text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto">

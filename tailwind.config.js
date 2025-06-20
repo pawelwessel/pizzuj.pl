@@ -10,6 +10,8 @@ module.exports = {
       fontFamily: {
         gothic: ["var(--font-gothic)", "ui-serif", "Georgia", "serif"],
         cocosharp: ["Cocosharp", "ui-sans-serif", "system-ui", "sans-serif"],
+        "cocosharp-bold-italic": ["Cocosharp", "ui-sans-serif", "system-ui", "sans-serif"],
+        "cocosharp-italic": ["Cocosharp", "ui-sans-serif", "system-ui", "sans-serif"],
         heading: ["Cocosharp", "ui-sans-serif", "system-ui", "sans-serif"],
         body: ["var(--font-gothic)", "ui-serif", "Georgia", "serif"],
         sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],

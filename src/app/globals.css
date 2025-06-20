@@ -25,6 +25,22 @@
 }
 
 @font-face {
+  font-family: "Cocosharp";
+  src: url("../../public/fonts/Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cocosharp";
+  src: url("../../public/fonts/BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Gotham";
   src: url("../../public/Gotham.ttf") format("ttf"),
     url("../../public/Gotham.ttf") format("ttf");
@@ -35,6 +51,17 @@
 
 .font-cocosharp {
   font-family: "Cocosharp", sans-serif;
+}
+
+.font-cocosharp-bold-italic {
+  font-family: "Cocosharp", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.font-cocosharp-italic {
+  font-family: "Cocosharp", sans-serif;
+  font-style: italic;
 }
 
 .font-gotham {
