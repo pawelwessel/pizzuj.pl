@@ -46,11 +46,19 @@ export default async function HeroSectionForHomePage() {
         <div className="glass bg-black/50 backdrop-blur-xl p-6 sm:p-8 lg:p-12 rounded-2xl lg:rounded-3xl border border-white/30 shadow-large">
           {/* Enhanced hero heading */}
           <div className="text-center mb-8 lg:mb-12 flex flex-col items-center justify-center">
+            <Image
+              src={pizzuj}
+              alt="Pizzuj opinie o pizzeriach Logo"
+              width={420}
+              height={420}
+              className="w-auto h-48 lg:h-60 mb-8 lg:mb-12 rounded-lg transition-all duration-300 group-hover:brightness-110"
+              priority
+            />
             <h1 className="font-heading text-zinc-800 text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight mb-4 lg:mb-6">
-              Najlepsze pizzerie w <br />
+              Najlepsze pizzerie w{" "}
               <span className="text-[#ffa920]">Twoim mieście</span>
             </h1>
-            <p className="font-gotham text-zinc-700 text-base sm:text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed">
+            <p className="font-cocosharp italic font-light text-zinc-700 text-base sm:text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed">
               Wybierz najlepszą dla siebie restaurację i{" "}
               <Link
                 href="/advertise"

@@ -50,7 +50,7 @@ export default async function HeroSectionForHomePage() {
               Najlepsze pizzerie w <br />
               <span className="text-[#ffa920]">Twoim mieście</span>
             </h1>
-            <p className="font-gotham text-zinc-700 text-base sm:text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed">
+            <p className="font-gothic text-zinc-700 text-base sm:text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed">
               Wybierz najlepszą dla siebie restaurację i{" "}
               <Link
                 href="/advertise"

@@ -6,10 +6,17 @@ import localFont from "next/font/local";
 import Link from "next/link";
 import { FaArrowRight, FaCrown } from "react-icons/fa";
 
+const gothic = localFont({
+  src: "../../public/gothic.ttf",
+  variable: "--font-gothic",
+});
+
 export default function RootLayout({ children }) {
   return (
     <html lang="pl" className="overflow-x-hidden">
-      <body className={`antialiased overflow-x-hidden w-full`}>
+      <body
+        className={`${gothic.variable} antialiased overflow-x-hidden w-full`}
+      >
         {/* Enhanced geometric background shapes */}
         <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
           {/* Animated floating shapes */}

@@ -39,15 +39,14 @@ export default function WarsawSection({ placesData }) {
   };
 
   return (
-    <section className="bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700 py-12 w-full px-4 lg:px-8 xl:px-16 2xl:px-24 relative overflow-hidden">
+    <section className="bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700 py-16 lg:py-24 w-full px-4 lg:px-8 xl:px-16 2xl:px-24 relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 pointer-events-none opacity-10">
         <div className="absolute top-8 left-8 w-32 h-32 bg-white rounded-full blur-3xl"></div>
         <div className="absolute bottom-8 right-8 w-24 h-24 bg-white rounded-full blur-2xl"></div>
       </div>
-
-      {/* Section header */}
-      {/* <div className="relative z-10 text-center mb-12 lg:mb-16">
+      Section header
+      <div className="relative z-10 text-center mb-12 lg:mb-16">
         <h2 className="font-heading text-zinc-800 text-3xl lg:text-4xl xl:text-5xl font-bold mb-4">
           Popularne pizzerie
         </h2>
@@ -55,8 +54,7 @@ export default function WarsawSection({ placesData }) {
           Odkryj najlepsze miejsca polecane przez naszą społeczność
         </p>
         <div className="w-24 h-1 bg-gradient-to-r from-primary-200 to-white rounded-full mx-auto mt-6"></div>
-      </div> */}
-
+      </div>
       <div className="relative z-10 max-w-7xl mx-auto">
         <Slider {...settings}>
           {placesData?.map((place, index) => (
@@ -133,7 +131,6 @@ export default function WarsawSection({ placesData }) {
           ))}
         </Slider>
       </div>
-
       {/* Bottom section with CTA */}
       <div className="relative z-10 text-center mt-12 lg:mt-16">
         <Link

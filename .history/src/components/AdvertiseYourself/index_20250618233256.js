@@ -90,7 +90,7 @@ const PricingCard = ({
     )}
     <div className="relative flex flex-col flex-1 p-4 sm:p-6 items-center justify-center w-full h-full">
       <div className="flex flex-col items-center justify-center rounded-lg bg-black/50 p-3 sm:p-4 w-[90%] sm:w-[85%] lg:w-[80%]">
-        <div className="2xl:text-2xl font-light text-white font-cocosharp italic">
+        <div className="text-xl sm:text-2xl font-light text-white font-cocosharp italic">
           {price}
         </div>
         <h2 className="text-2xl sm:text-3xl font-bold mt-4 sm:mt-6 text-[#ffa920] transition-colors duration-300">
@@ -111,7 +111,7 @@ export default function AdvertiseYourself() {
       <Image
         src={pizza}
         alt="Promuj swój lokal z pizzą"
-        className="w-12 lg:w-32 xl:w-36 2xl:w-40 lg:top-12 xl:top-24 h-auto"
+        className="w-12 lg:w-32 xl:w-36 2xl:w-40 lg:top-12 xl:top-24 h-auto absolute z-0 left-4 top-12"
       />
 
       <span className="border-b-2 border-[#ffa920] pb-3 block text-[#ffa920] text-4xl mb-12 text-right w-full">
@@ -119,7 +119,7 @@ export default function AdvertiseYourself() {
       </span>
 
       <h2 className="relative z-10 text-3xl font-bold text-black mt-12">
-        Aktywny udział w rozwoju Twojej restauracji
+        Zwiększ ruch w swoim lokalu
       </h2>
 
       <p className="w-full lg:max-w-[70%] font-sans text-left mt-12 text-black border-l-2 border-[#ffa920] p-4 bg-gray-200">

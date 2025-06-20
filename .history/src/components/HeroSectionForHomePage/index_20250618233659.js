@@ -4,11 +4,8 @@ import Form from "../Form";
 import accent from "../../../public/assets/asset6.png";
 import accent1 from "../../../public/assets/asset7.png";
 import { loadingTexts } from "../../db/data/loadingTexts";
-import pizzuj from "../../../public/assets/1234.png";
-import WarsawSection from "../WarsawSection";
-import { getDocument } from "../../db/firebase";
 
-export default async function HeroSectionForHomePage() {
+export default function HeroSectionForHomePage() {
   const popularCities = [
     { name: "Warszawa", slug: "warszawa" },
     { name: "Grudziądz", slug: "grudziadz" },
@@ -18,7 +15,7 @@ export default async function HeroSectionForHomePage() {
     { name: "Kraków", slug: "krakow" },
     { name: "Toruń", slug: "torun" },
   ];
-  const warsaw = await getDocument("pages", "warszawa");
+
   return (
     <section className="relative min-h-[50vh] lg:min-h-[60vh] w-full bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700 pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
       {/* Enhanced floating pizza images with better positioning */}
@@ -45,18 +42,18 @@ export default async function HeroSectionForHomePage() {
       <div className="relative z-50 mx-auto w-[95%] sm:w-[90%] lg:w-[80%] xl:w-[70%] max-w-4xl">
         <div className="glass bg-black/50 backdrop-blur-xl p-6 sm:p-8 lg:p-12 rounded-2xl lg:rounded-3xl border border-white/30 shadow-large">
           {/* Enhanced hero heading */}
-          <div className="text-center mb-8 lg:mb-12 flex flex-col items-center justify-center">
+          <div className="text-center mb-8 lg:mb-12">
             <h1 className="font-heading text-zinc-800 text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight mb-4 lg:mb-6">
-              Najlepsze pizzerie w <br />
+              Najlepsze pizzerie w{" "}
               <span className="text-[#ffa920]">Twoim mieście</span>
             </h1>
-            <p className="font-gotham text-zinc-700 text-base sm:text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed">
+            <p className="font-cocosharp text-white text-base sm:text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed">
               Wybierz najlepszą dla siebie restaurację i{" "}
               <Link
                 href="/advertise"
                 className="group inline-flex items-center"
               >
-                <span className="font-semibold underline decoration-primary-200 hover:decoration-white transition-colors duration-200 animate-pulse group-hover:animate-none">
+                <span className="text-green-600 font-semibold underline decoration-primary-200 hover:decoration-white transition-colors duration-200 animate-pulse group-hover:animate-none">
                   zamów online
                 </span>
               </Link>
@@ -69,8 +66,7 @@ export default async function HeroSectionForHomePage() {
               <Form loadingTexts={loadingTexts} />
             </div>
           </div>
-          {/* Pizza places section */}
-          <WarsawSection placesData={warsaw.places} />
+
           {/* Enhanced popular cities section */}
           <div className="text-center">
             <div className="inline-flex items-center gap-4 mb-6">

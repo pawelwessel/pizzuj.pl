@@ -111,7 +111,7 @@ export default function AdvertiseYourself() {
       <Image
         src={pizza}
         alt="Promuj swój lokal z pizzą"
-        className="w-12 lg:w-32 xl:w-36 2xl:w-40 lg:top-12 xl:top-24 h-auto"
+        className="w-12 lg:w-32 xl:w-36 2xl:w-40 lg:top-12 xl:top-24 h-auto left-4 top-12"
       />
 
       <span className="border-b-2 border-[#ffa920] pb-3 block text-[#ffa920] text-4xl mb-12 text-right w-full">

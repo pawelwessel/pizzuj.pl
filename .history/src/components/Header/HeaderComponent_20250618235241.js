@@ -1,5 +1,8 @@
 "use client";
+import pizzuj from "../../../public/assets/1234.png";
+import Image from "next/image";
 import Link from "next/link";
+import { FaChevronDown } from "react-icons/fa";
 export default function HeaderComponent({
   showHeader,
   menuShow,

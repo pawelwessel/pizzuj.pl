@@ -47,10 +47,10 @@ export default async function HeroSectionForHomePage() {
           {/* Enhanced hero heading */}
           <div className="text-center mb-8 lg:mb-12 flex flex-col items-center justify-center">
             <h1 className="font-heading text-zinc-800 text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight mb-4 lg:mb-6">
-              Najlepsze pizzerie w <br />
+              Najlepsze pizzerie w <br className="" />
               <span className="text-[#ffa920]">Twoim mieście</span>
             </h1>
-            <p className="font-gotham text-zinc-700 text-base sm:text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed">
+            <p className="font-cocosharp italic font-light text-zinc-700 text-base sm:text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed">
               Wybierz najlepszą dla siebie restaurację i{" "}
               <Link
                 href="/advertise"

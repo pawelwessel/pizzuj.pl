@@ -25,7 +25,7 @@
 }
 
 @font-face {
-  font-family: "Gotham";
+  font-family: "Gothic";
   src: url("../../public/Gotham.ttf") format("ttf"),
     url("../../public/Gotham.ttf") format("ttf");
   font-style: normal;
@@ -37,8 +37,8 @@
   font-family: "Cocosharp", sans-serif;
 }
 
-.font-gotham {
-  font-family: "Gotham", sans-serif;
+.font-gothic {
+  font-family: "Gothic", sans-serif;
 }
 
 /* Base styles with improved typography */
