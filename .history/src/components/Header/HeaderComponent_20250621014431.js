@@ -1,5 +1,7 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
+import logo from "../../../public/assets/123.png";
 export default function HeaderComponent({
   showHeader,
   menuShow,
@@ -24,6 +26,13 @@ export default function HeaderComponent({
       >
         {/* Header Content */}
         <div className="flex w-full max-w-7xl items-center justify-between py-3">
+          <Image
+            src={logo}
+            alt="logo"
+            width={100}
+            height={100}
+            className="rounded-xl xl:w-[5vw]"
+          />
           {/* Mobile Menu & Logo Section */}
           <div className="flex items-center gap-2">
             {/* Enhanced Mobile Menu Button */}
@@ -94,7 +103,7 @@ export default function HeaderComponent({
           {/* Enhanced CTA Button */}
           <Link
             href="/login"
-            className={`group relative inline-flex items-center justify-center text-nowrap py-3 px-6 lg:px-8 text-base lg:text-lg font-cocosharp-bold-italic font-semibold text-center bg-gradient-to-r from-green-500 to-green-600 hover:from-green-700 hover:to-green-700 text-white rounded-xl transition-all duration-300 ease-out transform hover:scale-105 shadow-golden hover:shadow-golden-lg`}
+            className={`group relative inline-flex items-center justify-center text-nowrap py-3 px-6 lg:px-8 text-base lg:text-lg font-heading font-semibold text-center bg-gradient-to-r from-green-500 to-green-600 hover:from-green-700 hover:to-green-700 text-white rounded-xl transition-all duration-300 ease-out transform hover:scale-105 shadow-golden hover:shadow-golden-lg`}
           >
             <span className="relative z-10 drop-shadow-sm">ZALOGUJ</span>
             {/* Button glow effect */}

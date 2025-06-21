@@ -18,7 +18,7 @@ export default function AboutHero() {
           </h1>
           <div className="h-1 w-24 golden rounded-full mb-8" />
           <p className="text-white text-lg lg:text-xl text-center max-w-3xl leading-relaxed">
-            Połączenie technologii i pasji do pizzy - poznaj historię Pizzuj.pl
+            Połączenie technologii i pasji do pizzy - poznaj historię za Pizzuj.pl
           </p>
         </div>
       </div>

@@ -24,6 +24,7 @@ export default function HeaderComponent({
       >
         {/* Header Content */}
         <div className="flex w-full max-w-7xl items-center justify-between py-3">
+          asd
           {/* Mobile Menu & Logo Section */}
           <div className="flex items-center gap-2">
             {/* Enhanced Mobile Menu Button */}
@@ -65,7 +66,6 @@ export default function HeaderComponent({
               </button>
             </div>
           </div>
-
           {/* Desktop Navigation */}
           <nav className="font-sans text-lg lg:flex items-center justify-center gap-8 hidden">
             <Link
@@ -90,11 +90,10 @@ export default function HeaderComponent({
               <div className="absolute inset-0 bg-gradient-to-r from-primary-400 to-primary-600 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-200"></div>
             </Link>
           </nav>
-
           {/* Enhanced CTA Button */}
           <Link
             href="/login"
-            className={`group relative inline-flex items-center justify-center text-nowrap py-3 px-6 lg:px-8 text-base lg:text-lg font-cocosharp-bold-italic font-semibold text-center bg-gradient-to-r from-green-500 to-green-600 hover:from-green-700 hover:to-green-700 text-white rounded-xl transition-all duration-300 ease-out transform hover:scale-105 shadow-golden hover:shadow-golden-lg`}
+            className={`group relative inline-flex items-center justify-center text-nowrap py-3 px-6 lg:px-8 text-base lg:text-lg font-heading font-semibold text-center bg-gradient-to-r from-green-500 to-green-600 hover:from-green-700 hover:to-green-700 text-white rounded-xl transition-all duration-300 ease-out transform hover:scale-105 shadow-golden hover:shadow-golden-lg`}
           >
             <span className="relative z-10 drop-shadow-sm">ZALOGUJ</span>
             {/* Button glow effect */}
