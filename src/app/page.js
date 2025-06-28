@@ -4,6 +4,7 @@ import accent3 from "../../public/assets/asset5.png";
 import { getDocument } from "../db/firebase";
 import HeroSectionForHomePage from "../components/HeroSectionForHomePage";
 import AdvertiseYourself from "../components/AdvertiseYourself";
+import { ptSans } from "./layout";
 
 export default async function Page() {
   return (
@@ -28,10 +29,6 @@ export default async function Page() {
           <div className="text-center space-y-8 lg:space-y-12">
             {/* Enhanced main heading */}
             <div className="space-y-6">
-              <div className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white font-heading font-semibold text-lg lg:text-xl rounded-full shadow-golden">
-                Dołącz do Pizzuj
-              </div>
-
               <h2 className="font-cocosharp-bold-italic text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-800 leading-tight">
                 Zostań częścią{" "}
                 <span className="text-[#ffa920] font-cocosharp-bold-italic">
@@ -48,19 +45,8 @@ export default async function Page() {
               </p>
 
               <div className="glass bg-white/60 border border-primary-200/30 rounded-2xl lg:rounded-3xl p-6 lg:p-8 backdrop-blur-sm shadow-medium">
-                <p className="font-body text-base lg:text-lg text-gray-500 mb-4">
-                  Przykładowe lokale z{" "}
-                  <span
-                    className="font-semibold text-primary-600 cursor-help hover:text-primary-700 transition-colors duration-200"
-                    title="Pozyskujemy adresy i nazwy lokali z tego samego miejsca co Google"
-                  >
-                    Google Maps
-                  </span>
-                  :
-                </p>
-
                 {/* Benefits list */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 mt-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
                   <div className="flex items-center gap-3 p-4 bg-white/50 rounded-xl border border-primary-100">
                     <div className="w-8 h-8 bg-primary-500 rounded-full flex items-center justify-center flex-shrink-0">
                       <span className="text-[#ffa920] text-2xl font-bold">
@@ -104,11 +90,13 @@ export default async function Page() {
       <section className="py-16 lg:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16">
           <div className="text-center mb-12 lg:mb-16">
-            <h2 className="font-cocosharp-bold-italic text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-800 mb-4">
-              Co mówią o nas klienci
+            <h2 className="font-cocosharp-bold-italic text-3xl lg:text-4xl xl:text-5xl text-gray-800 mb-4">
+              Co znajdziesz w naszej ofercie?
             </h2>
-            <p className="font-body text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto">
-              Przeczytaj opinie zadowolonych użytkowników naszej platformy
+            <p
+              className={`text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto ${ptSans.className}`}
+            >
+              Przejrzyj listę korzyści płynących ze współpracy z nami
             </p>
             <div className="w-24 h-1 bg-gradient-to-r from-primary-400 to-primary-600 rounded-full mx-auto mt-6"></div>
           </div>

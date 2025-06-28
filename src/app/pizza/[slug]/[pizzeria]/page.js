@@ -57,7 +57,7 @@ export default async function Page({ params }) {
         />
         <div className="relative z-50 mx-auto w-[90%] lg:w-1/2">
           <div className="flex flex-col items-center justify-center text-center bg-black/70 rounded-xl p-6 z-20 py-24">
-            <h1 className="text-white text-xl lg:text-3xl drop-shadow-lg shadow-black font-bold">
+            <h1 className="!text-white text-xl lg:text-3xl drop-shadow-lg shadow-black font-bold">
               {pizzeriaData.name}
             </h1>
             <div className="flex items-center gap-2 mt-4 flex-col justify-center">
@@ -68,7 +68,7 @@ export default async function Page({ params }) {
                   <FaStar key={i} className="text-yellow-400" />
                 ))}
               </div>
-              <span className="text-white">
+              <span className="!text-white">
                 ({pizzeriaData.user_ratings_total} opinii)
               </span>
             </div>
@@ -76,7 +76,7 @@ export default async function Page({ params }) {
               {pizzeriaData.phone && (
                 <Link
                   href={`tel:${pizzeriaData.phone}`}
-                  className="flex items-center gap-2 bg-white/10 hover:bg-white/20 transition-colors px-4 py-2 rounded-full text-white"
+                  className="flex items-center gap-2 bg-white/10 hover:bg-white/20 transition-colors px-4 py-2 rounded-full !text-white"
                 >
                   <FaPhone />
                   {pizzeriaData.phone}
@@ -87,13 +87,13 @@ export default async function Page({ params }) {
                   href={pizzeriaData.website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 bg-white/10 hover:bg-white/20 transition-colors px-4 py-2 rounded-full text-white"
+                  className="flex items-center gap-2 bg-white/10 hover:bg-white/20 transition-colors px-4 py-2 rounded-full !text-white"
                 >
                   <FaGlobe />
                   Strona WWW
                 </Link>
               )}
-              <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full text-white">
+              <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full !text-white">
                 <FaLocationDot />
                 {pizzeriaData.address}
               </div>

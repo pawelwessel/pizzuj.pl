@@ -4,7 +4,7 @@ import pizza from "../../../public/assets/pizza.png";
 export default function Page() {
   return (
     <div className="overflow-hidden">
-      <div className="golden container text-white mt-12 p-6 w-max mx-auto">
+      <div className="golden container !text-white mt-12 p-6 w-max mx-auto">
         <div className="  flex flex-col breadcrumbs">
           <ul className="flex items-center flex-wrap">
             <Image
@@ -40,7 +40,7 @@ export default function Page() {
         <div className="grid grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 px-4 mt-12 pb-6">
           <div className="flex items-center justify-center golden p-12">
             <div className="text-center">
-              <h2 className="text-2xl lg:text-3xl font-bold text-white">
+              <h2 className="text-2xl lg:text-3xl font-bold !text-white">
                 Wkrótce więcej!
               </h2>
               <p className="text-lg text-zinc-600">
@@ -50,7 +50,7 @@ export default function Page() {
           </div>
           <div className="flex items-center justify-center golden p-12">
             <div className="text-center">
-              <h2 className="text-2xl lg:text-3xl font-bold text-white">
+              <h2 className="text-2xl lg:text-3xl font-bold !text-white">
                 Wkrótce więcej!
               </h2>
               <p className="text-lg text-zinc-600">
@@ -60,7 +60,7 @@ export default function Page() {
           </div>
           <div className="flex items-center justify-center golden p-12">
             <div className="text-center">
-              <h2 className="text-2xl lg:text-3xl font-bold text-white">
+              <h2 className="text-2xl lg:text-3xl font-bold !text-white">
                 Wkrótce więcej!
               </h2>
               <p className="text-lg text-zinc-600">
@@ -70,7 +70,7 @@ export default function Page() {
           </div>
           <div className="flex items-center justify-center golden p-12">
             <div className="text-center">
-              <h2 className="text-2xl lg:text-3xl font-bold text-white">
+              <h2 className="text-2xl lg:text-3xl font-bold !text-white">
                 Wkrótce więcej!
               </h2>
               <p className="text-lg text-zinc-600">
@@ -80,7 +80,7 @@ export default function Page() {
           </div>
           <div className="flex items-center justify-center golden p-12">
             <div className="text-center">
-              <h2 className="text-2xl lg:text-3xl font-bold text-white">
+              <h2 className="text-2xl lg:text-3xl font-bold !text-white">
                 Wkrótce więcej!
               </h2>
               <p className="text-lg text-zinc-600">
@@ -90,7 +90,7 @@ export default function Page() {
           </div>
           <div className="flex items-center justify-center golden p-12">
             <div className="text-center">
-              <h2 className="text-2xl lg:text-3xl font-bold text-white">
+              <h2 className="text-2xl lg:text-3xl font-bold !text-white">
                 Wkrótce więcej!
               </h2>
               <p className="text-lg text-zinc-600">
@@ -100,7 +100,7 @@ export default function Page() {
           </div>
           <div className="flex items-center justify-center golden p-12">
             <div className="text-center">
-              <h2 className="text-2xl lg:text-3xl font-bold text-white">
+              <h2 className="text-2xl lg:text-3xl font-bold !text-white">
                 Wkrótce więcej!
               </h2>
               <p className="text-lg text-zinc-600">
@@ -110,7 +110,7 @@ export default function Page() {
           </div>
           <div className="flex items-center justify-center golden p-12">
             <div className="text-center">
-              <h2 className="text-2xl lg:text-3xl font-bold text-white">
+              <h2 className="text-2xl lg:text-3xl font-bold !text-white">
                 Wkrótce więcej!
               </h2>
               <p className="text-lg text-zinc-600">
@@ -120,7 +120,7 @@ export default function Page() {
           </div>
           <div className="flex items-center justify-center golden p-12">
             <div className="text-center">
-              <h2 className="text-2xl lg:text-3xl font-bold text-white">
+              <h2 className="text-2xl lg:text-3xl font-bold !text-white">
                 Wkrótce więcej!
               </h2>
               <p className="text-lg text-zinc-600">
@@ -130,7 +130,7 @@ export default function Page() {
           </div>
           <div className="flex items-center justify-center golden p-12">
             <div className="text-center">
-              <h2 className="text-2xl lg:text-3xl font-bold text-white">
+              <h2 className="text-2xl lg:text-3xl font-bold !text-white">
                 Wkrótce więcej!
               </h2>
               <p className="text-lg text-zinc-600">
@@ -140,7 +140,7 @@ export default function Page() {
           </div>
           <div className="flex items-center justify-center golden p-12">
             <div className="text-center">
-              <h2 className="text-2xl lg:text-3xl font-bold text-white">
+              <h2 className="text-2xl lg:text-3xl font-bold !text-white">
                 Wkrótce więcej!
               </h2>
               <p className="text-lg text-zinc-600">
@@ -150,7 +150,7 @@ export default function Page() {
           </div>
           <div className="flex items-center justify-center golden p-12">
             <div className="text-center">
-              <h2 className="text-2xl lg:text-3xl font-bold text-white">
+              <h2 className="text-2xl lg:text-3xl font-bold !text-white">
                 Wkrótce więcej!
               </h2>
               <p className="text-lg text-zinc-600">

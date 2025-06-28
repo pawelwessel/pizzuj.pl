@@ -41,6 +41,10 @@ export default function Header() {
     return () => window.removeEventListener("scroll", scrollListener);
   }, []);
   const pathname = usePathname();
+  const closeMobileMenu = () => {
+    setMenuShow(false);
+    setProductsOpen(false);
+  };
   return (
     <div className={`${pathname.includes("user") && "hidden"}`}>
       <ProductsWide
@@ -59,6 +63,7 @@ export default function Header() {
         productsOpen={productsOpen}
         setHovered={setHovered}
         secondMenuItems={secondMenuItems}
+        closeMobileMenu={closeMobileMenu}
       />
       {/* HEADER */}
       <HeaderComponent

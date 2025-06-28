@@ -26,7 +26,7 @@ export default function AboutProfile() {
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 aspect-square bg-[#ec7308] rounded-full flex items-center justify-center">
-                    <FaCode className="text-white text-xl" />
+                    <FaCode className="!text-white text-xl" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 font-gothic">
@@ -39,7 +39,7 @@ export default function AboutProfile() {
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 aspect-square bg-[#ec7308] rounded-full flex items-center justify-center">
-                    <FaPizzaSlice className="text-white text-xl" />
+                    <FaPizzaSlice className="!text-white text-xl" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 font-gothic">
@@ -52,7 +52,7 @@ export default function AboutProfile() {
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 aspect-square bg-[#ec7308] rounded-full flex items-center justify-center">
-                    <FaMapMarkerAlt className="text-white text-xl" />
+                    <FaMapMarkerAlt className="!text-white text-xl" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 font-gothic">
@@ -74,7 +74,7 @@ export default function AboutProfile() {
                 </div>
               </div>
               <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-[#d65d00] rounded-full flex items-center justify-center shadow-lg">
-                <FaPizzaSlice className="text-white text-2xl" />
+                <FaPizzaSlice className="!text-white text-2xl" />
               </div>
             </div>
           </div>

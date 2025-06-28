@@ -119,7 +119,7 @@ export default function UserProfile() {
               {!isEditingProfile && (
                 <button
                   onClick={() => setIsEditingProfile(true)}
-                  className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors"
+                  className="bg-blue-500 hover:bg-blue-600 !text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors"
                 >
                   <FaEdit /> Edytuj profil
                 </button>
@@ -157,7 +157,7 @@ export default function UserProfile() {
                 <div className="flex gap-3">
                   <button
                     type="submit"
-                    className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg flex items-center gap-2 transition-colors"
+                    className="bg-green-500 hover:bg-green-600 !text-white px-6 py-2 rounded-lg flex items-center gap-2 transition-colors"
                   >
                     <FaSave /> Zapisz zmiany
                   </button>
@@ -170,7 +170,7 @@ export default function UserProfile() {
                         email: userData.email || "",
                       });
                     }}
-                    className="bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded-lg flex items-center gap-2 transition-colors"
+                    className="bg-gray-500 hover:bg-gray-600 !text-white px-6 py-2 rounded-lg flex items-center gap-2 transition-colors"
                   >
                     <FaTimes /> Anuluj
                   </button>

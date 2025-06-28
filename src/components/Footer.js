@@ -29,7 +29,7 @@ export const Footer = () => {
   ];
 
   return (
-    <footer className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white overflow-hidden">
+    <footer className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 !text-white overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute inset-0 pointer-events-none opacity-5">
         <div className="absolute top-8 left-8 w-32 h-32 bg-primary-500 rounded-full blur-3xl"></div>
@@ -53,7 +53,7 @@ export const Footer = () => {
                 />
               </div>
 
-              <p className="font-body text-gray-300 text-base lg:text-lg leading-relaxed max-w-md">
+              <p className="font-body !text-gray-300 text-base lg:text-lg leading-relaxed max-w-md">
                 Najlepsza platforma do znajdowania i oceniania pizzerii w
                 Polsce. Dołącz do społeczności miłośników pizzy!
               </p>
@@ -61,7 +61,7 @@ export const Footer = () => {
               <div className="space-y-3">
                 <a
                   href="tel:+48721417154"
-                  className="group flex items-center gap-3 text-gray-300 hover:text-primary-300 transition-colors duration-200"
+                  className="group flex items-center gap-3 !text-gray-300 hover:text-primary-300 transition-colors duration-200"
                 >
                   <span className="text-primary-400 group-hover:text-primary-300">
                     📞
@@ -70,7 +70,7 @@ export const Footer = () => {
                 </a>
                 <a
                   href="mailto:wesiudev@gmail.com"
-                  className="group flex items-center gap-3 text-gray-300 hover:text-primary-300 transition-colors duration-200"
+                  className="group flex items-center gap-3 !text-gray-300 hover:text-primary-300 transition-colors duration-200"
                 >
                   <span className="text-primary-400 group-hover:text-primary-300">
                     ✉️
@@ -90,7 +90,7 @@ export const Footer = () => {
                   <li key={link.title}>
                     <Link
                       href={link.href}
-                      className="group relative inline-block font-body text-gray-300 hover:text-white transition-all duration-300"
+                      className="group relative inline-block font-body !text-gray-300 hover:!text-white transition-all duration-300"
                     >
                       <span className="relative z-10">{link.title}</span>
                       <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-400 to-primary-500 group-hover:w-full transition-all duration-300"></div>
@@ -110,7 +110,7 @@ export const Footer = () => {
                   <li key={link.title}>
                     <Link
                       href={link.href}
-                      className="group relative inline-block font-body text-gray-300 hover:text-white transition-all duration-300"
+                      className="group relative inline-block font-body !text-gray-300 hover:!text-white transition-all duration-300"
                       {...(link.href.startsWith("http") && {
                         target: "_blank",
                         rel: "noopener noreferrer",
@@ -129,10 +129,10 @@ export const Footer = () => {
           <div className="pt-8 border-t border-gray-700/50">
             <div className="flex flex-col md:flex-row justify-between items-center gap-6">
               <div className="text-center md:text-left">
-                <p className="font-body text-gray-400 text-sm lg:text-base">
+                <p className="font-body !text-gray-400 text-sm lg:text-base">
                   &copy; 2025 Pizzuj.pl - Wszelkie prawa zastrzeżone
                 </p>
-                <p className="font-body text-gray-500 text-xs lg:text-sm mt-1">
+                <p className="font-body !text-gray-500 text-xs lg:text-sm mt-1">
                   Stworzone z ❤️ dla miłośników pizzy
                 </p>
               </div>
@@ -148,7 +148,7 @@ export const Footer = () => {
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full bg-gray-700 hover:bg-primary-600 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
                 >
-                  <span className="text-gray-300 group-hover:text-white text-lg">
+                  <span className="!text-gray-300 group-hover:!text-white text-lg">
                     f
                   </span>
                 </Link>

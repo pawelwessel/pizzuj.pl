@@ -13,11 +13,11 @@ export default function AboutHero() {
       />
       <div className="relative z-50 mx-auto w-[90%] lg:w-4/5 xl:w-3/4 2xl:w-2/3">
         <div className="flex flex-col items-center justify-center bg-black/70 p-8 lg:p-12 rounded-2xl">
-          <h1 className="text-center text-white drop-shadow-lg shadow-black text-3xl lg:text-4xl xl:text-5xl font-bold mb-6">
+          <h1 className="text-center !text-white drop-shadow-lg shadow-black text-3xl lg:text-4xl xl:text-5xl font-bold mb-6">
             O mnie
           </h1>
           <div className="h-1 w-24 golden rounded-full mb-8" />
-          <p className="text-white text-lg lg:text-xl text-center max-w-3xl leading-relaxed">
+          <p className="!text-white text-lg lg:text-xl text-center max-w-3xl leading-relaxed">
             Połączenie technologii i pasji do pizzy - poznaj historię Pizzuj.pl
           </p>
         </div>

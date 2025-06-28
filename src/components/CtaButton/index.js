@@ -20,7 +20,7 @@ export default function CtaButton() {
         aria-label="Poproś o wycenę promowania restauracji"
         type="button"
         className={`mx-auto block p-3 px-6 rounded-md font-bold ${
-          inputOpen ? "bg-white text-[#ffa920]" : "bg-[#ec7308] text-white"
+          inputOpen ? "bg-white text-[#ffa920]" : "bg-[#ec7308] !text-white"
         }`}
       >
         Wycena personalna
@@ -48,7 +48,7 @@ export default function CtaButton() {
             placeholder="pizzeria@example.com"
             className="w-full text-black border-2 border-white p-2 rounded-md mt-2"
           />
-          <p className="text-xs text-white mt-2">
+          <p className="text-xs !text-white mt-2">
             Wypełniając formularz, wyrażasz zgodę na przetwarzanie swoich danych
             osobowych w celu kontaktu z Tobą. Więcej informacji znajdziesz w{" "}
             <Link
@@ -73,7 +73,7 @@ export default function CtaButton() {
                 email,
               });
             }}
-            className="mt-2 p-2 px-12 bg-[#ec7308] text-white rounded-md"
+            className="mt-2 p-2 px-12 bg-[#ec7308] !text-white rounded-md"
           >
             Wyślij
           </button>

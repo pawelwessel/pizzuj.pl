@@ -104,7 +104,7 @@ export default function ArrayWithPlaces({ placesData }) {
                       {isOpen ? "Otwarte" : "Zamknięte"}
                     </span>
                   </div>
-                  <div className="w-max text-xs rounded-xl golden text-white flex items-center golden p-1.5 px-3 mt-1.5 gap-2">
+                  <div className="w-max text-xs rounded-xl golden !text-white flex items-center golden p-1.5 px-3 mt-1.5 gap-2">
                     <FaPhone />
                     <Link href={`tel:${place.phone}`}>{place.phone}</Link>
                   </div>
@@ -112,7 +112,7 @@ export default function ArrayWithPlaces({ placesData }) {
                   <div className="flex">
                     <button
                       onClick={() => setSelectedPlace(place)}
-                      className="cursor-pointer block text-nowrap !w-max mt-1 golden h-full p-2 rounded-tl-xl rounded-br-xl text-white text-sm px-3 hover:bg-[#ec7308] transition-colors"
+                      className="cursor-pointer block text-nowrap !w-max mt-1 golden h-full p-2 rounded-tl-xl rounded-br-xl !text-white text-sm px-3 hover:bg-[#ec7308] transition-colors"
                     >
                       Idź do
                     </button>

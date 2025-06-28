@@ -103,7 +103,7 @@ export default function Navigation({ address, isOpen, onClose }) {
           </div>
           <button
             onClick={getDirections}
-            className="mt-4 w-full py-3 px-6 bg-[#ffa920] text-white rounded-lg hover:bg-[#ec7308] transition-colors"
+            className="mt-4 w-full py-3 px-6 bg-[#ffa920] !text-white rounded-lg hover:bg-[#ec7308] transition-colors"
           >
             Pokaż trasę
           </button>

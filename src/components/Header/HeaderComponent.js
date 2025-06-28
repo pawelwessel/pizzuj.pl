@@ -1,5 +1,7 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
+import logo from "../../../public/assets/pizzuj.png";
 export default function HeaderComponent({
   showHeader,
   menuShow,
@@ -16,16 +18,25 @@ export default function HeaderComponent({
     <>
       <div className="w-full h-[70px] lg:h-[90px]"></div>
       <header
-        className={`fixed left-0 top-0 z-[10000] px-4 lg:px-8 glass bg-white/95 backdrop-blur-xl flex flex-row items-center justify-center w-full border-b border-primary-200/20 shadow-medium ${
+        className={`fixed left-0 top-0 z-[10000] px-4 lg:px-8 bg-white flex flex-row items-center justify-center w-full border-b border-gray-200 shadow-medium ${
           showHeader || menuShow || hovered === "cat" || productsOpen
             ? "-translate-y-0"
             : "-translate-y-[100%]"
         } transition-transform duration-500 ease-out`}
       >
         {/* Header Content */}
-        <div className="flex w-full max-w-7xl items-center justify-between py-3">
+        <div className="flex w-full items-center justify-between py-3">
           {/* Mobile Menu & Logo Section */}
-          <div className="flex items-center gap-2">
+          <Link href="/">
+            <Image
+              src={logo}
+              alt="logo"
+              width={200}
+              height={200}
+              className="min-w-42 h-auto"
+            />
+          </Link>
+          <div className="w-full flex items-center gap-2">
             {/* Enhanced Mobile Menu Button */}
             <div className={`lg:hidden`}>
               <button
@@ -67,24 +78,24 @@ export default function HeaderComponent({
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="font-sans text-lg lg:flex items-center justify-center gap-8 hidden">
+          <nav className="font-cocosharp w-max text-nowrap font-sans text-lg lg:flex items-center justify-center gap-8 hidden pr-12">
             <Link
               href="/advertise"
-              className="relative px-4 py-2 rounded-xl font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50 transition-all duration-200 group"
+              className="relative px-4 py-2 rounded-xl font-medium text-black hover:text-primary-600 hover:bg-primary-50 transition-all duration-200 group"
             >
               <span className="relative z-10">Dla restauracji</span>
               <div className="absolute inset-0 bg-gradient-to-r from-primary-400 to-primary-600 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-200"></div>
             </Link>
             <Link
               href="/about"
-              className="relative px-4 py-2 rounded-xl font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50 transition-all duration-200 group"
+              className="relative px-4 py-2 rounded-xl font-medium text-black hover:text-primary-600 hover:bg-primary-50 transition-all duration-200 group"
             >
               <span className="relative z-10">O nas</span>
               <div className="absolute inset-0 bg-gradient-to-r from-primary-400 to-primary-600 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-200"></div>
             </Link>
             <Link
               href="/blog"
-              className="relative px-4 py-2 rounded-xl font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50 transition-all duration-200 group"
+              className="relative px-4 py-2 rounded-xl font-medium text-black hover:text-primary-600 hover:bg-primary-50 transition-all duration-200 group"
             >
               <span className="relative z-10">Blog</span>
               <div className="absolute inset-0 bg-gradient-to-r from-primary-400 to-primary-600 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-200"></div>
@@ -94,7 +105,7 @@ export default function HeaderComponent({
           {/* Enhanced CTA Button */}
           <Link
             href="/login"
-            className={`group relative inline-flex items-center justify-center text-nowrap py-3 px-6 lg:px-8 text-base lg:text-lg font-cocosharp-bold-italic font-semibold text-center bg-gradient-to-r from-green-500 to-green-600 hover:from-green-700 hover:to-green-700 text-white rounded-xl transition-all duration-300 ease-out transform hover:scale-105 shadow-golden hover:shadow-golden-lg`}
+            className={`group relative inline-flex items-center justify-center text-nowrap py-3 px-6 lg:px-8 text-base lg:text-lg font-cocosharp-bold-italic font-semibold text-center bg-gradient-to-r from-green-500 to-green-600 hover:from-green-700 hover:to-green-700 !text-white rounded-xl transition-all duration-300 ease-out transform hover:scale-105 shadow-golden hover:shadow-golden-lg`}
           >
             <span className="relative z-10 drop-shadow-sm">ZALOGUJ</span>
             {/* Button glow effect */}

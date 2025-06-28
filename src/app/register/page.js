@@ -169,7 +169,7 @@ export default function Register() {
               <button
                 disabled={isThinking}
                 onClick={register}
-                className="md:w-max w-[279px] max-w-full px-6 py-3.5 rounded-br-xl rounded-tl-xl disabled:bg-gray-600 goldenShadow hover:bg-opacity-80 duration-150 text-white font-bold"
+                className="md:w-max w-[279px] max-w-full px-6 py-3.5 rounded-br-xl rounded-tl-xl disabled:bg-gray-600 goldenShadow hover:bg-opacity-80 duration-150 !text-white font-bold"
               >
                 {!isThinking && (
                   <div className="flex flex-row items-center justify-center">

@@ -2,14 +2,21 @@ import { Footer } from "../components/Footer";
 import AchievmentsList from "../components/Achievements/AchievementsList";
 import Header from "../components/Header";
 import "./globals.css";
-import localFont from "next/font/local";
+import { PT_Sans } from "next/font/google";
 import Link from "next/link";
 import { FaArrowRight, FaCrown } from "react-icons/fa";
+
+export const ptSans = PT_Sans({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
 
 export default function RootLayout({ children }) {
   return (
     <html lang="pl" className="overflow-x-hidden">
-      <body className={`antialiased overflow-x-hidden w-full`}>
+      <body
+        className={`antialiased overflow-x-hidden w-full ${ptSans.className}`}
+      >
         {/* Enhanced geometric background shapes */}
         <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
           {/* Animated floating shapes */}
@@ -155,7 +162,7 @@ export default function RootLayout({ children }) {
               <div className="relative w-full max-w-md">
                 <div className="absolute inset-0 bg-white/60 rounded-3xl blur-sm shadow-medium"></div>
                 <div className="relative bg-white/80 rounded-3xl p-6 lg:p-8 shadow-large border border-primary-200/60 backdrop-blur-sm">
-                  <AchievmentsList achievements={["Pioneer"]} />
+                  <AchievmentsList />
                 </div>
               </div>
 
@@ -163,7 +170,7 @@ export default function RootLayout({ children }) {
               <div className="group relative">
                 <Link
                   href="/login"
-                  className="relative inline-flex items-center gap-4 px-8 lg:px-12 py-4 lg:py-5 bg-gradient-to-r from-primary-400 via-primary-500 to-primary-600 hover:from-primary-500 hover:via-primary-600 hover:to-primary-700 text-white font-heading font-semibold text-lg lg:text-xl rounded-full transition-all duration-300 ease-out transform hover:scale-105 hover:shadow-golden-lg shadow-golden"
+                  className="relative inline-flex items-center gap-4 px-8 lg:px-12 py-4 lg:py-5 bg-gradient-to-r from-primary-400 via-primary-500 to-primary-600 hover:from-primary-500 hover:via-primary-600 hover:to-primary-700 !text-white font-heading font-semibold text-lg lg:text-xl rounded-full transition-all duration-300 ease-out transform hover:scale-105 hover:shadow-golden-lg shadow-golden"
                 >
                   <span className="relative z-10">Zaloguj się</span>
                   <FaArrowRight className="text-lg lg:text-xl transition-transform duration-300 group-hover:translate-x-1" />

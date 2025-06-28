@@ -84,20 +84,20 @@ const PricingCard = ({
       </div>
     </div>
     {featured && (
-      <div className="absolute -top-4 right-4 bg-[#ffa920] text-white px-4 py-1 rounded-full text-sm font-medium shadow-md">
+      <div className="absolute -top-4 right-4 bg-[#ffa920] !text-white px-4 py-1 rounded-full text-sm font-medium shadow-md">
         Polecane
       </div>
     )}
     <div className="relative flex flex-col flex-1 p-4 sm:p-6 items-center justify-center w-full h-full">
       <div className="flex flex-col items-center justify-center rounded-lg bg-black/50 p-3 sm:p-4 w-[90%] sm:w-[85%] lg:w-[80%]">
-        <div className="2xl:text-2xl font-light text-white font-cocosharp italic">
+        <div className="2xl:text-2xl font-light !text-white font-cocosharp italic">
           {price}
         </div>
         <h2 className="text-2xl sm:text-3xl font-bold mt-4 sm:mt-6 text-[#ffa920] transition-colors duration-300">
           {title}
         </h2>
         <div className="h-1 w-16 bg-white mt-3 sm:mt-4 mx-auto rounded-full" />
-        <p className="text-center text-sm sm:text-base mt-3 text-white">
+        <p className="text-center text-sm sm:text-base mt-3 !text-white">
           {description}
         </p>
       </div>

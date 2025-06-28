@@ -40,7 +40,7 @@ export default function JoinUs() {
           <div className="group relative">
             <Link
               href="/login"
-              className="relative px-8 py-4 bg-gradient-to-r from-yellow-400 via-orange-400 to-yellow-500 hover:from-yellow-500 hover:via-orange-500 hover:to-yellow-600 text-white font-semibold rounded-full transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl flex items-center gap-3 shadow-lg"
+              className="relative px-8 py-4 bg-gradient-to-r from-yellow-400 via-orange-400 to-yellow-500 hover:from-yellow-500 hover:via-orange-500 hover:to-yellow-600 !text-white font-semibold rounded-full transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl flex items-center gap-3 shadow-lg"
             >
               <span className="relative z-10">Zaloguj się</span>
               <FaArrowRight className="text-lg transition-transform duration-300 group-hover:translate-x-1" />
@@ -55,7 +55,7 @@ export default function JoinUs() {
         </div>
       </div>
       <div className="w-[75vw] lg:w-[87vw] py-3 mx-auto bg-zinc-600 rounded-b-xl justify-center items-center flex text-center">
-        <div className="flex flex-col items-center gap-2 bg-gradient-to-r from-green-500 to-green-700 text-white px-4 py-2 rounded-lg shadow-lg">
+        <div className="flex flex-col items-center gap-2 bg-gradient-to-r from-green-500 to-green-700 !text-white px-4 py-2 rounded-lg shadow-lg">
           <FaCrown className="text-green-200" />
           <span className="font-medium">Pionier Pizzuj.pl</span>
           <span className="text-sm opacity-80">Pierwsze 100 Członków</span>

@@ -45,11 +45,11 @@ export default async function Page({ params }) {
         />
         <div className="relative z-50 mx-auto w-[90%] lg:w-2/3 xl:w-1/2">
           <div className="flex flex-col items-center justify-center text-center bg-black/50 rounded-xl p-3 sm:p-6">
-            <h1 className="text-white text-lg lg:text-3xl drop-shadow-lg shadow-black font-bold">
+            <h1 className="!text-white text-lg lg:text-3xl drop-shadow-lg shadow-black font-bold">
               {page?.page?.h2}
             </h1>
 
-            <p className="mt-3 lg:mt-6 w-[90%] mx-auto text-white drop-shadow-lg font-sans text-sm sm:text-base">
+            <p className="mt-3 lg:mt-6 w-[90%] mx-auto !text-white drop-shadow-lg font-sans text-sm sm:text-base">
               {page?.page?.introduction}
             </p>
             <div className="flex flex-col mt-4 lg:mt-8 mx-auto w-max max-w-full">
@@ -71,7 +71,7 @@ export default async function Page({ params }) {
           </p>
           <ArrayWithPlaces placesData={page?.places} />
           <div className="mt-6">
-            <h3 className="text-xl lg:text-3xl bg-[#ffa920] block p-3 text-white rounded-md w-max max-w-full">
+            <h3 className="text-xl lg:text-3xl bg-[#ffa920] block p-3 !text-white rounded-md w-max max-w-full">
               {page?.page?.testimonialSection}
             </h3>
             <ul className="grid grid-cols-1 md:grid-cols-2 w-[90%] lg:w-[66%] mt-4 gap-4">

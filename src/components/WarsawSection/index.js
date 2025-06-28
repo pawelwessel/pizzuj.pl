@@ -39,7 +39,7 @@ export default function WarsawSection({ placesData }) {
   };
 
   return (
-    <section className="bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700 py-12 w-full px-4 lg:px-8 xl:px-16 2xl:px-24 relative overflow-hidden">
+    <section className="bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700 py-12 w-full relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 pointer-events-none opacity-10">
         <div className="absolute top-8 left-8 w-32 h-32 bg-white rounded-full blur-3xl"></div>
@@ -99,7 +99,7 @@ export default function WarsawSection({ placesData }) {
                   <div className="p-6 lg:p-8">
                     <div className="space-y-4">
                       {/* Restaurant name */}
-                      <h3 className="font-heading text-xl lg:text-2xl font-bold text-gray-800 group-hover:text-primary-600 transition-colors duration-300 line-clamp-2">
+                      <h3 className="font-heading text-lg font-bold text-gray-800 group-hover:text-primary-600 transition-colors duration-300 line-clamp-2">
                         {place.name}
                       </h3>
 

@@ -37,7 +37,7 @@ export default function ProductsWide({
           >
             <span
               style={{ textShadow: "2px 2px 5px gray" }}
-              className="text-white text-xl p-2"
+              className="!text-white text-xl p-2"
             >
               asdb
             </span>
@@ -51,7 +51,7 @@ export default function ProductsWide({
               href="https://www.tiktok.com/@biznespomysly"
               className="flex items-center"
             >
-              <FaTiktok className="text-2xl text-white" />
+              <FaTiktok className="text-2xl !text-white" />
             </Link>
             <Link
               title="Zobacz Facebook Quixy - Biznes, Pomysły, Rady"
@@ -59,13 +59,13 @@ export default function ProductsWide({
               target="_blank"
               className="flex items-center"
             >
-              <FaFacebook className="text-2xl text-white" />
+              <FaFacebook className="text-2xl !text-white" />
             </Link>
             <Link
               title="Zobacz Zakładkę Praca Zdalna"
               href="/praca-zdalna"
               target="_blank"
-              className="ml-3 text-white text-lg"
+              className="ml-3 !text-white text-lg"
             >
               /praca-zdalna
             </Link>
@@ -78,7 +78,7 @@ export default function ProductsWide({
                     title={`Wypróbuj ${item.urlLabel}`}
                     aria-label={item.urlLabel}
                     href={item.url}
-                    className={`hover:underline border-2 border-white py-4 text-white rounded-lg bg-gradient-to-b from-primaryStart to-primaryEnd hover:from-accentStart hover:to-accentEnd group w-full font-bold relative overflow-hidden flex items-center justify-center gap-3`}
+                    className={`hover:underline border-2 border-white py-4 !text-white rounded-lg bg-gradient-to-b from-primaryStart to-primaryEnd hover:from-accentStart hover:to-accentEnd group w-full font-bold relative overflow-hidden flex items-center justify-center gap-3`}
                   >
                     <div className="flex relative z-[201]">
                       <item.icon className="drop-shadow-sm shadow-black text-4xl" />

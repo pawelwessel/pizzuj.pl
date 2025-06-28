@@ -19,14 +19,15 @@ export default function AboutMission() {
           </h2>
           <div className="h-1 w-24 bg-[#ffa920] rounded-full mx-auto mb-6" />
           <p className="text-gray-600 text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed">
-            Połączenie dwóch światów – technologii i gastronomii w jednym miejscu
+            Połączenie dwóch światów – technologii i gastronomii w jednym
+            miejscu
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           <div className="bg-white p-6 lg:p-8 rounded-2xl shadow-lg text-center group hover:shadow-xl transition-shadow duration-300">
             <div className="w-16 h-16 bg-[#ffa920] rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-              <FaLightbulb className="text-white text-2xl" />
+              <FaLightbulb className="!text-white text-2xl" />
             </div>
             <h3 className="text-xl font-bold text-gray-800 mb-3">Innowacja</h3>
             <p className="text-gray-600 leading-relaxed">
@@ -36,21 +37,23 @@ export default function AboutMission() {
 
           <div className="bg-white p-6 lg:p-8 rounded-2xl shadow-lg text-center group hover:shadow-xl transition-shadow duration-300">
             <div className="w-16 h-16 bg-[#ec7308] rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-              <FaHeart className="text-white text-2xl" />
+              <FaHeart className="!text-white text-2xl" />
             </div>
             <h3 className="text-xl font-bold text-gray-800 mb-3">Pasja</h3>
             <p className="text-gray-600 leading-relaxed">
-              Każdy element projektu powstaje z miłości do pizzy i kuchni włoskiej
+              Każdy element projektu powstaje z miłości do pizzy i kuchni
+              włoskiej
             </p>
           </div>
 
           <div className="bg-white p-6 lg:p-8 rounded-2xl shadow-lg text-center group hover:shadow-xl transition-shadow duration-300">
             <div className="w-16 h-16 bg-[#ffa920] rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-              <FaRocket className="text-white text-2xl" />
+              <FaRocket className="!text-white text-2xl" />
             </div>
             <h3 className="text-xl font-bold text-gray-800 mb-3">Przyszłość</h3>
             <p className="text-gray-600 leading-relaxed">
-              Buduję platformę, która zmieni sposób odkrywania najlepszych pizzerii
+              Buduję platformę, która zmieni sposób odkrywania najlepszych
+              pizzerii
             </p>
           </div>
         </div>
@@ -58,14 +61,19 @@ export default function AboutMission() {
         <div className="bg-white p-8 lg:p-12 rounded-2xl shadow-lg">
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-gray-700 text-lg leading-relaxed mb-6">
-              Projekt <strong className="text-[#ffa920]">pizzuj.pl</strong> to moje połączenie dwóch światów – 
-              technologii i gastronomii. Tworzę to miejsce, by dzielić się wiedzą, 
-              obserwacjami i tworzyć przyszłość.
+              Projekt <strong className="text-[#ffa920]">pizzuj.pl</strong> to
+              moje połączenie dwóch światów – technologii i gastronomii. Tworzę
+              to miejsce, by dzielić się wiedzą, obserwacjami i tworzyć
+              przyszłość.
             </p>
             <p className="text-gray-700 text-lg leading-relaxed">
-              Jeśli kochasz pizzę, chcesz poznać kulisy pracy w gastro albo szukasz 
-              inspiracji do własnych kulinarnych eksperymentów – 
-              <span className="text-[#ec7308] font-semibold"> jesteś w dobrym miejscu</span>.
+              Jeśli kochasz pizzę, chcesz poznać kulisy pracy w gastro albo
+              szukasz inspiracji do własnych kulinarnych eksperymentów –
+              <span className="text-[#ec7308] font-semibold">
+                {" "}
+                jesteś w dobrym miejscu
+              </span>
+              .
             </p>
           </div>
         </div>

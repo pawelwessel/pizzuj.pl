@@ -34,7 +34,7 @@ export default function ProductsWide({
               href={`/praca-zdalna/`}
               title={`Pracuj zdalnie w `}
               style={{ boxShadow: "0px 0px 4px black" }}
-              className={`text-lg mt-3 font-bold p-1 px-3  text-white bg-[#126b91] w-max`}
+              className={`text-lg mt-3 font-bold p-1 px-3  !text-white bg-[#126b91] w-max`}
               key={i}
               onClick={() => setHovered(false)}
             >
@@ -52,7 +52,7 @@ export default function ProductsWide({
                   title={`Wypróbuj Quixy Talent™: ${item.urlLabel}`}
                   aria-label={`Link to ${item.urlLabel}`}
                   href={item.url}
-                  className={`aspect-square  group w-full h-max text-white font-bold text-sm sm:text-lg text-center relative overflow-hidden flex flex-col items-center justify-center`}
+                  className={`aspect-square  group w-full h-max !text-white font-bold text-sm sm:text-lg text-center relative overflow-hidden flex flex-col items-center justify-center`}
                   style={{
                     backgroundColor: item.color,
                     boxShadow: "0px 0px 3px rgb(0, 0, 0)",
@@ -68,10 +68,10 @@ export default function ProductsWide({
                         boxShadow: "0px 0px 5px black",
                       }}
                     >
-                      <item.icon className="text-white drop-shadow-sm shadow-black w-full h-auto" />
+                      <item.icon className="!text-white drop-shadow-sm shadow-black w-full h-auto" />
                     </div>
                   </div>
-                  <h4 className="bg-black bg-opacity-50 font-gotham text-white font-bold sticky bottom-0 left-0 w-full drop-shadow-xl shadow-black z-[202] text-xs sm:text-sm 2xl:text-base py-2">
+                  <h4 className="bg-black bg-opacity-50 font-gotham !text-white font-bold sticky bottom-0 left-0 w-full drop-shadow-xl shadow-black z-[202] text-xs sm:text-sm 2xl:text-base py-2">
                     {item.urlLabel}
                   </h4>
                 </Link>
@@ -91,7 +91,7 @@ export default function ProductsWide({
                 style={{ boxShadow: "2px 2px 3px black" }}
                 className="p-3 rounded-full bg-[#126b91]"
               >
-                <FaTiktok className="text-xl text-white" />
+                <FaTiktok className="text-xl !text-white" />
               </div>
               <p className="text-xl ml-1 text-black">TikTok</p>
             </Link>
@@ -104,7 +104,7 @@ export default function ProductsWide({
                 style={{ boxShadow: "2px 2px 3px black" }}
                 className="p-3 rounded-full bg-[#126b91]"
               >
-                <FaFacebook className="text-xl text-white" />
+                <FaFacebook className="text-xl !text-white" />
               </div>
               <p className="text-xl ml-1 text-black">Facebook</p>
             </Link>

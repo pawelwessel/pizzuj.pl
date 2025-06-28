@@ -3,16 +3,11 @@ export default function ProductsMobile({
   productsOpen,
   setProductsOpen,
   setMenuShow,
-
   menuShow,
   setHovered,
   secondMenuItems,
+  closeMobileMenu,
 }) {
-  function resetHeader() {
-    setMenuShow(false);
-    setProductsOpen(false);
-    setHovered("");
-  }
   return (
     <div
       className={`h-screen bg-black/90 backdrop-blur-sm fixed left-0 top-0 w-full z-[101] transition-all duration-500 ease-in-out ${
@@ -28,48 +23,60 @@ export default function ProductsMobile({
             : "-translate-y-24 opacity-0"
         }`}
       >
-        <h2 className="text-[#ffa920] text-2xl font-bold mb-3">Linki</h2>
-        <div className="flex flex-col gap-3">
-          <Link href="/" className="text-white text-base hover:text-yellow-500">
+        <h2 className="text-[#ffa920] text-2xl font-bold mb-3">
+          Szybkie Linki
+        </h2>
+        <div className="font-cocosharp flex flex-col gap-3">
+          <Link
+            onClick={closeMobileMenu}
+            href="/"
+            className="!text-white text-base hover:text-yellow-500"
+          >
             Strona główna
           </Link>
           <Link
+            onClick={closeMobileMenu}
             href="/advertise"
-            className="text-white text-base hover:text-yellow-500"
+            className="!text-white text-base hover:text-yellow-500"
           >
             Pakiety premium
           </Link>
           <Link
+            onClick={closeMobileMenu}
             href="/terms"
-            className="text-white text-base hover:text-yellow-500"
+            className="!text-white text-base hover:text-yellow-500"
           >
             Regulamin
           </Link>
           <Link
+            onClick={closeMobileMenu}
             href="/blog"
-            className="text-white text-base hover:text-yellow-500"
+            className="!text-white text-base hover:text-yellow-500"
           >
             Blog
           </Link>
-          <h2 className="text-[#ffa920] text-2xl font-bold mb-3 mt-6">
-            Więcej linków
+          <h2 className="text-[#ffa920] text-2xl font-bold mb-3 mt-12">
+            Informacje
           </h2>
           <Link
+            onClick={closeMobileMenu}
             href="/privacy"
-            className="text-white text-base hover:text-yellow-500"
+            className="!text-white text-base hover:text-yellow-500"
           >
             Polityka prywatności
           </Link>
           <Link
+            onClick={closeMobileMenu}
             href="https://www.facebook.com/pizzuj"
             target="_blank"
-            className="text-white text-base hover:text-yellow-500"
+            className="!text-white text-base hover:text-yellow-500"
           >
             Facebook
           </Link>
           <Link
+            onClick={closeMobileMenu}
             href="/about"
-            className="text-white text-base hover:text-yellow-500"
+            className="!text-white text-base hover:text-yellow-500"
           >
             O nas
           </Link>

@@ -3,7 +3,7 @@ import logo from "../../public/assets/pizza.png";
 
 export default function Loading() {
   return (
-    <div className="fixed left-0 top-0 z-[99999999999999999999999] font-sans font-light h-screen w-screen flex justify-center items-center bg-[#202020] text-xl text-white">
+    <div className="fixed left-0 top-0 z-[99999999999999999999999] font-sans font-light h-screen w-screen flex justify-center items-center bg-[#202020] text-xl !text-white">
       <div className="flex flex-col items-center justify-center">
         <Image
           src={logo}
