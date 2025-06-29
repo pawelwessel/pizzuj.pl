@@ -4,6 +4,7 @@ import accent3 from "../../public/assets/asset5.png";
 import { getDocument } from "../db/firebase";
 import HeroSectionForHomePage from "../components/HeroSectionForHomePage";
 import AdvertiseYourself from "../components/AdvertiseYourself";
+import FoodCostInvite from "../components/FoodCostInvite";
 import { ptSans } from "./layout";
 
 export default async function Page() {
@@ -85,6 +86,9 @@ export default async function Page() {
           </div>
         </div>
       </section>
+
+      {/* Food Cost Calculator Invitation */}
+      <FoodCostInvite />
 
       {/* Reviews section */}
       <section className="py-16 lg:py-24 bg-gray-50">
