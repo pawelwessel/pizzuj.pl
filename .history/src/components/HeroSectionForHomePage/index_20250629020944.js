@@ -50,11 +50,11 @@ export default async function HeroSectionForHomePage() {
             <Image
               src={pizzuj2}
               alt="Pizzuj.pl"
-              className="w-42 h-42"
-              width={40}
-              height={40}
+              className="mb-8 w-42 h-42 rounded-xl"
+              width={240}
+              height={240}
             />
-            <h1 className="font-cocosharp-bold-italic !text-gray-700 text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight drop-shadow-lg">
+            <h1 className="font-cocosharp-bold-italic !text-gray-700 !text-2xl sm:text-3xl font-extrabold lg:text-4xl xl:text-5xl leading-tight drop-shadow-lg">
               Najlepsze pizzerie w <br />
               <span className="text-[#ffa920] font-cocosharp-bold-italic">
                 Twoim mieście

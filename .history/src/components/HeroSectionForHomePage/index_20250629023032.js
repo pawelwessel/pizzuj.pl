@@ -50,11 +50,11 @@ export default async function HeroSectionForHomePage() {
             <Image
               src={pizzuj2}
               alt="Pizzuj.pl"
-              className="w-10 h-10"
-              width={40}
-              height={40}
+              className="mb-8 w-42 h-42 rounded-xl"
+              width={240}
+              height={240}
             />
-            <h1 className="font-cocosharp-bold-italic !text-gray-700 text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight drop-shadow-lg">
+            <h1 className="font-cocosharp-bold-italic !text-gray-700 !text-2xl sm:text-3xl font-extrabold lg:text-4xl xl:text-5xl leading-tight drop-shadow-lg">
               Najlepsze pizzerie w <br />
               <span className="text-[#ffa920] font-cocosharp-bold-italic">
                 Twoim mieście
@@ -86,7 +86,7 @@ export default async function HeroSectionForHomePage() {
           {/* Enhanced popular cities section */}
           <div className="text-center">
             <div className="inline-flex items-center gap-4 mb-6">
-              <h2 className="font-cocosharp-italic !text-white text-lg lg:text-xl font-semibold">
+              <h2 className="font-cocosharp-italic !text-black !text-lg lg:text-xl font-semibold !mx-auto w-max max-w-full !text-center">
                 Często wyszukiwane
               </h2>
               <div className="h-px w-16 lg:w-24 bg-gradient-to-r from-white to-white/70 rounded-full"></div>
