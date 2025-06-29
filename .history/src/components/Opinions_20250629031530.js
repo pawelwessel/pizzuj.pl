@@ -7,7 +7,7 @@ export default function Opinions() {
   return (
     <main className="overflow-hidden bg-[#333333] rounded-xl !text-gray-300 h-max relative px-6 md:px-12 pb-12 w-full">
       <div className="text-center gap-4 flex flex-col my-12">
-        <p className="font-normal text-white text-sm">PIZZUJ.PL</p>
+        <p className="font-normal text-yellow-600 text-sm">PIZZUJ.PL</p>
         <h2 className="text-xl md:text-2xl font-bold uppercase">
           Opinie o pizzeriach
         </h2>

@@ -47,7 +47,7 @@ export default async function Page() {
               <div className="glass bg-white/60 border border-primary-200/30 rounded-2xl lg:rounded-3xl p-6 lg:p-8 backdrop-blur-sm shadow-medium">
                 {/* Benefits list */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
-                  <div className="flex items-center gap-3 p-4 bg-gray-300/30 rounded-xl border border-gray-400/50">
+                  <div className="flex items-center gap-3 p-4 bg-gray-300/50 rounded-xl border border-gray-400/50">
                     <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center flex-shrink-0">
                       <span className="text-green-500 text-2xl font-bold">
                         ✓
@@ -58,7 +58,7 @@ export default async function Page() {
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-3 p-4 bg-gray-300/30 rounded-xl border border-gray-400/50">
+                  <div className="flex items-center gap-3 p-4 bg-gray-300/50 rounded-xl border border-gray-400/50">
                     <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center flex-shrink-0">
                       <span className="text-green-500 text-2xl font-bold">
                         ✓
@@ -69,7 +69,7 @@ export default async function Page() {
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-3 p-4 bg-gray-300/30 rounded-xl border border-gray-400/50">
+                  <div className="flex items-center gap-3 p-4 bg-gray-300/50 rounded-xl border border-gray-400/50">
                     <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center flex-shrink-0">
                       <span className="text-green-500 text-2xl font-bold">
                         ✓

@@ -5,9 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 export default function Opinions() {
   return (
-    <main className="overflow-hidden bg-[#333333] rounded-xl !text-gray-300 h-max relative px-6 md:px-12 pb-12 w-full">
+    <main className="overflow-hidden bg-[#333333] !text-gray-300 h-max relative px-6 md:px-12 pb-12 w-full">
       <div className="text-center gap-4 flex flex-col my-12">
-        <p className="font-normal text-white text-sm">PIZZUJ.PL</p>
+        <p className="font-normal text-yellow-600 text-sm">PIZZUJ.PL</p>
         <h2 className="text-xl md:text-2xl font-bold uppercase">
           Opinie o pizzeriach
         </h2>
@@ -58,7 +58,7 @@ export default function Opinions() {
   );
 }
 export const ReviewCard = ({ author, comment, restaurant, favoritePizza }) => (
-  <div className="font-cocosharp animate-from-top-to-bottom-and-forwards w-full sm:w-[500px] lg:w-[600px] flex items-start justify-between border-b border-white py-4">
+  <div className="animate-from-top-to-bottom-and-forwards w-full sm:w-[500px] lg:w-[600px] flex items-start justify-between border-b border-white py-4">
     <div className="text-sm w-full">
       <div className="flex items-center w-full justify-between">
         <p className="font-bold uppercase !text-white">{author}</p>

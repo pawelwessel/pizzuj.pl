@@ -51,9 +51,9 @@ const pricingPlans = [
 ];
 
 const FeatureItem = ({ title }) => (
-  <div className="flex w-full items-center lg:justify-center lg:flex-col gap-3 p-6 rounded-xl hover:bg-gray-50 transition-all duration-300 group">
+  <div className="flex w-full items-center lg:justify-center lg:flex-col p-6 rounded-xl hover:bg-gray-50 transition-all duration-300 group">
     <FaCheckCircle className="text-[#ffa920] w-12 h-12 lg:w-28 lg:h-28 group-hover:scale-110 transition-transform duration-300" />
-    <p className="font-cocosharp font-medium text-left text-black w-[80%] lg:text-center mt-6 text-lg">
+    <p className="font-cocosharp font-medium text-left text-black ml-4 w-[80%] lg:text-center mt-6 text-lg">
       {title}
     </p>
     <div className="h-1 w-16 bg-[#ffa920] mt-4 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -69,7 +69,7 @@ const PricingCard = ({
   showCta,
 }) => (
   <div
-    className={`flex flex-col items-center justify-center text-center min-w-full h-[400px] sm:h-[450px] lg:h-[500px] rounded-xl shadow-lg hover:shadow-xl hover:border-[#ffa920] transition-all duration-300 group relative`}
+    className={`flex flex-col items-center justify-center text-center w-full h-[400px] sm:h-[450px] lg:h-[500px] rounded-xl shadow-lg hover:shadow-xl hover:border-[#ffa920] transition-all duration-300 group relative`}
   >
     <div className="absolute top-0 left-0 w-full h-full bg-black/50 z-0 rounded-xl overflow-hidden">
       <div className="relative h-full w-full overflow-hidden">
@@ -78,6 +78,7 @@ const PricingCard = ({
           alt={title}
           fill
           className="object-cover rounded-t-xl"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
       </div>
     </div>
@@ -108,7 +109,7 @@ const PricingCard = ({
 
 export default function AdvertiseYourself() {
   return (
-    <div className="relative flex flex-col items-center">
+    <div className="relative px-6 lg:px-12 pb-12 flex flex-col items-center">
       <Image
         src={pizza}
         alt="Promuj swój lokal z pizzą"
@@ -153,7 +154,7 @@ export default function AdvertiseYourself() {
         ))}
       </div>
 
-      <div className="flex flex-col lg:grid lg:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-12 mt-6">
+      <div className="flex flex-col lg:grid sm:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-12 mt-6">
         {pricingPlans.map((plan, index) => (
           <PricingCard key={index} {...plan} />
         ))}
