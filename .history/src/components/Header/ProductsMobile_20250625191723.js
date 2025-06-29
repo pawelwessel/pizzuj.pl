@@ -55,13 +55,6 @@ export default function ProductsMobile({
           >
             Blog
           </Link>
-          <Link
-            onClick={closeMobileMenu}
-            href="/food-cost-calculator"
-            className="!text-white text-base hover:text-yellow-500"
-          >
-            Kalkulator kosztów
-          </Link>
           <h2 className="text-[#ffa920] text-2xl font-bold mb-3 mt-12">
             Informacje
           </h2>
