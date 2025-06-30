@@ -53,6 +53,20 @@ const isOpenNow = (weekdayText) => {
 export default function ArrayWithPlaces({ placesData }) {
   const [selectedPlace, setSelectedPlace] = useState(null);
 
+  // Handle cases where placesData is undefined, null, or empty
+  if (!placesData || placesData.length === 0) {
+    return (
+      <div className="w-full mt-12 p-8 text-center bg-gray-50 rounded-lg">
+        <p className="text-gray-600 text-lg">
+          Obecnie nie mamy danych o pizzeriach w tym mieście.
+        </p>
+        <p className="text-gray-500 text-sm mt-2">
+          Spróbuj ponownie za chwilę lub wybierz inne miasto.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="w-full">
       <ul className="w-full grid grid-cols-1 md:grid-cols-2 gap-8 xl:gap-12 mx-auto mt-12">
@@ -62,7 +76,7 @@ export default function ArrayWithPlaces({ placesData }) {
             <li
               key={index}
               className={`${
-                place.photos && place.phone ? "" : "hidden"
+                place.name ? "" : "hidden"
               } rounded-2xl relative w-full p-3 group hover:border-yellow-500 border-transparent border-2 duration-300`}
             >
               <div className="flex flex-col xl:flex-row w-full">
@@ -73,13 +87,19 @@ export default function ArrayWithPlaces({ placesData }) {
                     )}/${createLinkFromText(place.name)}`}
                     className="text-left block font-sans text-lg font-bold"
                   >
-                    <Image
-                      src={place.photos[0]}
-                      alt={place.name}
-                      width={400}
-                      height={400}
-                      className="group-hover:scale-[1.02] duration-300 rounded-xl w-full h-60 sm:h-[400px] xl:h-60 object-cover"
-                    />
+                    {place.photos && place.photos.length > 0 ? (
+                      <Image
+                        src={place.photos[0]}
+                        alt={place.name}
+                        width={400}
+                        height={400}
+                        className="group-hover:scale-[1.02] duration-300 rounded-xl w-full h-60 sm:h-[400px] xl:h-60 object-cover"
+                      />
+                    ) : (
+                      <div className="group-hover:scale-[1.02] duration-300 rounded-xl w-full h-60 sm:h-[400px] xl:h-60 bg-gray-200 flex items-center justify-center">
+                        <span className="text-gray-500 text-sm">Brak zdjęcia</span>
+                      </div>
+                    )}
                   </Link>
                 </div>
                 <div className="pt-3 w-full lg:px-3">
@@ -104,10 +124,12 @@ export default function ArrayWithPlaces({ placesData }) {
                       {isOpen ? "Otwarte" : "Zamknięte"}
                     </span>
                   </div>
-                  <div className="w-max text-xs rounded-xl golden !text-white flex items-center golden p-1.5 px-3 mt-1.5 gap-2">
-                    <FaPhone />
-                    <Link href={`tel:${place.phone}`}>{place.phone}</Link>
-                  </div>
+                  {place.phone && (
+                    <div className="w-max text-xs rounded-xl golden !text-white flex items-center golden p-1.5 px-3 mt-1.5 gap-2">
+                      <FaPhone />
+                      <Link href={`tel:${place.phone}`}>{place.phone}</Link>
+                    </div>
+                  )}
                   <div className="flex flex-col lg:flex-row w-full justify-between items-start gap-3 mt-2"></div>
                   <div className="flex">
                     <button

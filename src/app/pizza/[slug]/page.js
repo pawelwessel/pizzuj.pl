@@ -4,7 +4,7 @@ import accent1 from "../../../../public/assets/asset7.png";
 import accent2 from "../../../../public/assets/asset4.png";
 import Image from "next/image";
 import ArrayWithPlaces from "../../../components/ArrayWithPlaces";
-import { getDocument, getDocuments } from "../../../db/firebase";
+import { getDocument, getDocuments, addDocument } from "../../../db/firebase";
 import { Footer } from "../../../components/Footer";
 import CtaButton from "../../../components/CtaButton";
 import pizza from "../../../../public/assets/pizza.png";
@@ -12,20 +12,161 @@ import { FaCheckCircle } from "react-icons/fa";
 import Form from "../../../components/Form";
 import { loadingTexts } from "../../../db/data/loadingTexts";
 import AdvertiseYourself from "../../../components/AdvertiseYourself";
+import { createChat } from "completions";
+
 export const dynamic = "force-dynamic";
+
+// Function to generate page content using OpenAI
+async function generatePageContent(searchTerm) {
+  const chat = createChat({
+    apiKey: process.env.OPENAI_API_KEY,
+    model: "gpt-4",
+  });
+  
+  const response = await chat.sendMessage(
+    `Generate POLISH content for pizza theme ranking page. Details: ${searchTerm}`,
+    {
+      expect: {
+        examples: [
+          {
+            address: "Warszawa",
+            googleTitle: "Pizza Warszawa – Ranking Najlepszych Pizzerii",
+            googleDescription: "Zobacz ranking top pizzerii w Warszawie. Gdzie zjeść najlepszą pizzę w stolicy? Sprawdź opinie!",
+            businessName: "Pizzerie Warszawskie",
+            introduction: "Odkryj najlepsze pizzerie w Warszawie – klasyka i nowoczesne interpretacje smaków.",
+            rankingSection: "Ranking oparty na ocenach mieszkańców Warszawy i jakości składników.",
+            testimonialSection: "Opinie klientów o pizzy w Warszawie",
+            faqSection: "Najczęściej zadawane pytania o pizzerie w Warszawie – ceny, rodzaje ciasta, dostawa.",
+            h1: "Najlepsze Pizzerie w Warszawie",
+            h2: "Pizza w Warszawie – Ranking, Opinie, Rekomendacje",
+            opinion1: "Pizza w Warszawie to prawdziwa uczta dla smakoszy!",
+            opinion2: "Duży wybór, szybka obsługa – polecam każdemu w Warszawie.",
+            opinion3: "Stolica wie, jak robić pizzę – jestem pod wrażeniem.",
+            opinion4: "Cienkie ciasto, świeże dodatki – Warszawa na plus!",
+          },
+        ],
+        properties: {
+          response: {
+            googleTitle: "string",
+          },
+        },
+        schema: {
+          additionalProperties: true,
+          type: "object",
+          properties: {
+            response: { type: "object" },
+          },
+          required: ["googleTitle"],
+        },
+      },
+    }
+  );
+  return response.content;
+}
+
+// Function to fetch places from Google API
+async function fetchPlacesData(searchTerm) {
+  try {
+    const baseUrl = process.env.NEXT_PUBLIC_LINK || 'http://localhost:3000';
+    const response = await fetch(`${baseUrl}/api/getTextPlaces`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ search: searchTerm }),
+    });
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+    const places = await response.json();
+    return places;
+  } catch (error) {
+    console.error('Error fetching places data:', error);
+    return [];
+  }
+}
+
 const pages = await getDocuments("pages");
+
 export async function generateStaticParams() {
   return pages.map((page) => ({
     slug: page?.id,
   }));
 }
+
 export default async function Page({ params }) {
   const { slug } = await params;
-  const page = await getDocument("pages", slug);
+  let page = await getDocument("pages", slug);
 
+  // If page doesn't exist, generate it on-the-fly
   if (!page) {
-    return <div>Page not found</div>;
+    try {
+      console.log(`Generating page for slug: ${slug}`);
+      
+      // Generate page content
+      const pageContent = await generatePageContent(slug);
+      
+      // Fetch places data
+      const placesData = await fetchPlacesData(slug);
+      
+      // Store in Firebase
+      const newPageData = {
+        id: slug,
+        page: pageContent,
+        createdAt: Date.now(),
+        places: placesData,
+      };
+      
+      await addDocument("pages", slug, newPageData);
+      page = newPageData;
+      
+      console.log(`Successfully generated page for ${slug} with ${placesData.length} places`);
+    } catch (error) {
+      console.error('Error generating page:', error);
+      // Return a fallback page if generation fails
+      page = {
+        page: {
+          h2: `Pizza ${slug}`,
+          introduction: `Znajdź najlepsze pizzerie w ${slug}`,
+          businessName: `Pizzerie ${slug}`,
+          h1: `Najlepsze Pizzerie w ${slug}`,
+          rankingSection: `Ranking pizzerii w ${slug}`,
+          testimonialSection: `Opinie o pizzy w ${slug}`,
+          opinion1: "Świetna pizza!",
+          opinion2: "Polecam każdemu!",
+          opinion3: "Wysokiej jakości składniki.",
+          opinion4: "Szybka obsługa i pyszne jedzenie.",
+          googleTitle: `Pizza ${slug} - Najlepsze Pizzerie`,
+          googleDescription: `Znajdź najlepsze pizzerie w ${slug}. Zobacz ranking i opinie!`,
+        },
+        places: [],
+      };
+    }
   }
+
+  // If page exists but has no places data, try to fetch it
+  if (page && (!page.places || page.places.length === 0)) {
+    try {
+      console.log(`Fetching places data for existing page: ${slug}`);
+      const placesData = await fetchPlacesData(slug);
+      
+      if (placesData && placesData.length > 0) {
+        page.places = placesData;
+        // Update the page in Firebase with places data
+        await addDocument("pages", slug, {
+          ...page,
+          places: placesData,
+          updatedAt: Date.now(),
+        });
+        console.log(`Updated page ${slug} with ${placesData.length} places`);
+      }
+    } catch (error) {
+      console.error('Error fetching places for existing page:', error);
+    }
+  }
+
   return (
     <div>
       <div className="overflow-hidden relative min-h-[35vh] w-full golden pt-12 lg:pt-24 pb-12">
@@ -69,7 +210,19 @@ export default async function Page({ params }) {
           <p className="text-black mt-3 text-center font-sans">
             {page?.page?.rankingSection}
           </p>
-          <ArrayWithPlaces placesData={page?.places} />
+          
+          {/* Show loading message if places are being fetched */}
+          {(!page?.places || page.places.length === 0) && (
+            <div className="mt-8 p-6 bg-gray-100 rounded-lg">
+              <p className="text-gray-600">Ładowanie danych o pizzeriach...</p>
+            </div>
+          )}
+          
+          {/* Display places data */}
+          {page?.places && page.places.length > 0 && (
+            <ArrayWithPlaces placesData={page.places} />
+          )}
+          
           <div className="mt-6">
             <h3 className="text-xl lg:text-3xl bg-[#ffa920] block p-3 !text-white rounded-md w-max max-w-full">
               {page?.page?.testimonialSection}
@@ -103,14 +256,11 @@ export default async function Page({ params }) {
 }
 
 export async function generateMetadata({ params }, parent) {
-  // read route params
   const { slug } = await params;
-
-  // fetch data
   const page = await getDocument("pages", slug);
 
   return {
-    title: page?.page?.googleTitle,
-    description: page?.page?.googleDescription,
+    title: page?.page?.googleTitle || `Pizza ${slug} - Najlepsze Pizzerie`,
+    description: page?.page?.googleDescription || `Znajdź najlepsze pizzerie w ${slug}. Zobacz ranking i opinie!`,
   };
 }
