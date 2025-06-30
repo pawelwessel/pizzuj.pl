@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import pizzuj from "../../public/assets/pizzuj2.png";
 import { createLinkFromText } from "../lib/createLinkFromText";
+import { ShinyAffiliateInvite } from "./ShinyAffiliateInvite";
 
 export const Footer = () => {
   const links = [
@@ -39,6 +40,11 @@ export const Footer = () => {
 
       <div className="relative z-10 px-6 md:px-12 lg:px-16 py-16 lg:py-24">
         <div className="max-w-7xl mx-auto">
+          {/* Affiliate invitation section */}
+          <div className="mb-16 lg:mb-20">
+            <ShinyAffiliateInvite />
+          </div>
+
           {/* Main footer content */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 mb-12">
             {/* Company info section */}
