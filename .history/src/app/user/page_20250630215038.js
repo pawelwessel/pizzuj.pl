@@ -4,6 +4,7 @@ import { auth } from "../../db/firebase";
 import { getDocument, updateUserProfile } from "../../db/firebase";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import AchievementsList from "../../components/PioneerBadge/AchievementsList";
 import PizzeriaDashboard from "../../components/PizzeriaDashboard";
 import { toast } from "react-toastify";
 import { FaEdit, FaSave, FaTimes, FaUser, FaPizzaSlice } from "react-icons/fa";
