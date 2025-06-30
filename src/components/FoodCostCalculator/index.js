@@ -1,6 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
-import { FaPlus, FaMinus, FaCalculator, FaTrash } from "react-icons/fa";
+import { FaPlus, FaMinus, FaCalculator, FaTrash, FaSave, FaDownload, FaList } from "react-icons/fa";
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 export default function FoodCostCalculator() {
   const [dishName, setDishName] = useState("Pizza Margherita");
@@ -22,6 +24,21 @@ export default function FoodCostCalculator() {
   const [totalCost, setTotalCost] = useState(0);
   const [costPerServing, setCostPerServing] = useState(0);
   const [suggestedPrice, setSuggestedPrice] = useState(0);
+  const [savedProducts, setSavedProducts] = useState([]);
+  const [showProductsList, setShowProductsList] = useState(false);
+
+  // Load saved products from localStorage on component mount
+  useEffect(() => {
+    const saved = localStorage.getItem('foodCostProducts');
+    if (saved) {
+      setSavedProducts(JSON.parse(saved));
+    }
+  }, []);
+
+  // Save products to localStorage whenever savedProducts changes
+  useEffect(() => {
+    localStorage.setItem('foodCostProducts', JSON.stringify(savedProducts));
+  }, [savedProducts]);
 
   // Calculate costs whenever ingredients, servings, or target margin change
   useEffect(() => {
@@ -73,8 +90,155 @@ export default function FoodCostCalculator() {
     );
   };
 
+  const saveProduct = () => {
+    if (!dishName.trim()) {
+      alert('Proszę wprowadzić nazwę potrawy przed zapisaniem.');
+      return;
+    }
+
+    const product = {
+      id: Date.now(),
+      dishName,
+      servings,
+      targetMargin,
+      ingredients: [...ingredients],
+      totalCost,
+      costPerServing,
+      suggestedPrice,
+      savedAt: new Date().toISOString()
+    };
+
+    setSavedProducts(prev => [...prev, product]);
+    alert('Produkt został zapisany!');
+  };
+
+  const loadProduct = (product) => {
+    setDishName(product.dishName);
+    setServings(product.servings);
+    setTargetMargin(product.targetMargin);
+    setIngredients(product.ingredients);
+  };
+
+  const deleteProduct = (id) => {
+    if (confirm('Czy na pewno chcesz usunąć ten produkt?')) {
+      setSavedProducts(prev => prev.filter(product => product.id !== id));
+    }
+  };
+
+  const clearProductsList = () => {
+    if (confirm('Czy na pewno chcesz usunąć wszystkie zapisane produkty?')) {
+      setSavedProducts([]);
+    }
+  };
+
+  const generatePDF = () => {
+    const doc = new jsPDF();
+    
+    // Header
+    doc.setFontSize(20);
+    doc.text('Raport Kalkulatora Kosztów Żywności', 14, 22);
+    
+    doc.setFontSize(12);
+    doc.text(`Data wygenerowania: ${new Date().toLocaleDateString('pl-PL')}`, 14, 35);
+    
+    let yPos = 50;
+
+    if (savedProducts.length === 0) {
+      doc.text('Brak zapisanych produktów do wygenerowania raportu.', 14, yPos);
+    } else {
+      // Summary
+      doc.setFontSize(14);
+      doc.text('Podsumowanie', 14, yPos);
+      yPos += 10;
+      
+      doc.setFontSize(10);
+      doc.text(`Liczba produktów: ${savedProducts.length}`, 14, yPos);
+      yPos += 7;
+      
+      const totalValue = savedProducts.reduce((sum, product) => sum + product.suggestedPrice, 0);
+      doc.text(`Łączna wartość produktów: ${totalValue.toFixed(2)} zł`, 14, yPos);
+      yPos += 15;
+
+      // Products table
+      const tableData = savedProducts.map(product => [
+        product.dishName,
+        `${product.servings}`,
+        `${product.costPerServing.toFixed(2)} zł`,
+        `${product.suggestedPrice.toFixed(2)} zł`,
+        `${product.targetMargin}%`,
+        new Date(product.savedAt).toLocaleDateString('pl-PL')
+      ]);
+
+      doc.autoTable({
+        head: [['Nazwa potrawy', 'Porcje', 'Koszt/porcja', 'Cena sprzedaży', 'Marża', 'Data zapisania']],
+        body: tableData,
+        startY: yPos,
+        styles: { fontSize: 9 },
+        headStyles: { fillColor: [255, 169, 32] },
+        margin: { top: 20 }
+      });
+
+      yPos = doc.lastAutoTable.finalY + 20;
+
+      // Detailed breakdown for each product
+      savedProducts.forEach((product, index) => {
+        if (yPos > 250) {
+          doc.addPage();
+          yPos = 20;
+        }
+
+        doc.setFontSize(12);
+        doc.text(`${index + 1}. ${product.dishName}`, 14, yPos);
+        yPos += 10;
+
+        // Ingredients table for this product
+        const ingredientsData = product.ingredients.map(ingredient => {
+          const ingredientCost = (ingredient.quantity / 100) * ingredient.costPer100g;
+          return [
+            ingredient.name,
+            `${ingredient.quantity}`,
+            ingredient.unit,
+            `${ingredient.costPer100g.toFixed(2)} zł`,
+            `${ingredientCost.toFixed(2)} zł`
+          ];
+        });
+
+        doc.autoTable({
+          head: [['Składnik', 'Ilość', 'Jednostka', 'Koszt/100g', 'Koszt składnika']],
+          body: ingredientsData,
+          startY: yPos,
+          styles: { fontSize: 8 },
+          headStyles: { fillColor: [200, 200, 200] }
+        });
+
+        yPos = doc.lastAutoTable.finalY + 5;
+
+        // Product summary
+        doc.setFontSize(9);
+        doc.text(`Całkowity koszt składników: ${product.totalCost.toFixed(2)} zł`, 14, yPos);
+        yPos += 5;
+        doc.text(`Koszt na porcję: ${product.costPerServing.toFixed(2)} zł`, 14, yPos);
+        yPos += 5;
+        doc.text(`Sugerowana cena sprzedaży: ${product.suggestedPrice.toFixed(2)} zł (marża ${product.targetMargin}%)`, 14, yPos);
+        yPos += 15;
+      });
+    }
+
+    // Save PDF
+    doc.save('raport-kosztow-zywnosci.pdf');
+  };
+
+  const createNewProduct = () => {
+    setDishName("");
+    setServings(1);
+    setTargetMargin(65);
+    setIngredients([
+      { id: 1, name: "", quantity: 0, unit: "g", costPer100g: 0 }
+    ]);
+  };
+
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-6xl mx-auto">
       {/* Calculator Header */}
       <div className="text-center mb-8">
         <div className="inline-flex items-center gap-3 mb-4">
@@ -85,7 +249,97 @@ export default function FoodCostCalculator() {
             Kalkulator kosztów
           </h2>
         </div>
+        
+        {/* Action buttons */}
+        <div className="flex flex-wrap justify-center gap-4 mb-6">
+          <button
+            onClick={createNewProduct}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-xl transition-all duration-300 hover:scale-105 shadow-golden"
+          >
+            <FaPlus className="text-sm" />
+            Nowy produkt
+          </button>
+          
+          <button
+            onClick={saveProduct}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-xl transition-all duration-300 hover:scale-105 shadow-golden"
+          >
+            <FaSave className="text-sm" />
+            Zapisz produkt
+          </button>
+          
+          <button
+            onClick={() => setShowProductsList(!showProductsList)}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white rounded-xl transition-all duration-300 hover:scale-105 shadow-golden"
+          >
+            <FaList className="text-sm" />
+            Lista produktów ({savedProducts.length})
+          </button>
+          
+          <button
+            onClick={generatePDF}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-xl transition-all duration-300 hover:scale-105 shadow-golden"
+            disabled={savedProducts.length === 0}
+          >
+            <FaDownload className="text-sm" />
+            Pobierz raport PDF
+          </button>
+        </div>
       </div>
+
+      {/* Saved Products List */}
+      {showProductsList && (
+        <div className="mb-8">
+          <div className="glass bg-white/80 border border-gray-200/50 rounded-2xl p-6 backdrop-blur-sm shadow-medium">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="font-cocosharp text-xl font-semibold text-gray-800">
+                Zapisane produkty
+              </h3>
+              {savedProducts.length > 0 && (
+                <button
+                  onClick={clearProductsList}
+                  className="px-3 py-1 bg-red-500 hover:bg-red-600 text-white text-sm rounded-lg transition-all"
+                >
+                  Wyczyść listę
+                </button>
+              )}
+            </div>
+            
+            {savedProducts.length === 0 ? (
+              <p className="text-gray-500 text-center py-4">Brak zapisanych produktów</p>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {savedProducts.map((product) => (
+                  <div key={product.id} className="bg-gray-50/70 rounded-xl p-4 border border-gray-200/50">
+                    <h4 className="font-semibold text-gray-800 mb-2">{product.dishName}</h4>
+                    <div className="text-sm text-gray-600 space-y-1">
+                      <p>Porcje: {product.servings}</p>
+                      <p>Koszt/porcja: {product.costPerServing.toFixed(2)} zł</p>
+                      <p>Cena sprzedaży: {product.suggestedPrice.toFixed(2)} zł</p>
+                      <p>Marża: {product.targetMargin}%</p>
+                      <p className="text-xs">Zapisano: {new Date(product.savedAt).toLocaleDateString('pl-PL')}</p>
+                    </div>
+                    <div className="flex gap-2 mt-3">
+                      <button
+                        onClick={() => loadProduct(product)}
+                        className="flex-1 px-3 py-1 bg-blue-500 hover:bg-blue-600 text-white text-sm rounded-lg transition-all"
+                      >
+                        Wczytaj
+                      </button>
+                      <button
+                        onClick={() => deleteProduct(product.id)}
+                        className="px-3 py-1 bg-red-500 hover:bg-red-600 text-white text-sm rounded-lg transition-all"
+                      >
+                        <FaTrash className="text-xs" />
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Input Section */}
