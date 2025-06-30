@@ -36,7 +36,7 @@ export default function HeaderComponent({
               className="min-w-42 h-auto"
             />
           </Link>
-          <div className="lg:hidden w-full flex items-center gap-2">
+          <div className="w-full flex items-center gap-2">
             {/* Enhanced Mobile Menu Button */}
             <div className={`lg:hidden`}>
               <button

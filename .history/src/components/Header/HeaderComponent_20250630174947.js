@@ -36,7 +36,7 @@ export default function HeaderComponent({
               className="min-w-42 h-auto"
             />
           </Link>
-          <div className="lg:hidden w-full flex items-center gap-2">
+          <div className="w-full flex items-center gap-2">
             {/* Enhanced Mobile Menu Button */}
             <div className={`lg:hidden`}>
               <button
@@ -78,38 +78,38 @@ export default function HeaderComponent({
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="font-cocosharp w-full text-nowrap font-sans text-lg lg:flex flex-wrap items-center justify-center gap-8 hidden pr-12">
+          <nav className="font-cocosharp w-max text-nowrap font-sans text-lg lg:flex items-center justify-center gap-8 hidden pr-12">
             <Link
               href="/advertise"
-              className="relative px-4 py-2 rounded-xl font-medium text-black hover:text-primary-600 hover:bg-primary-50 transition-all duration-200 group w-max"
+              className="relative px-4 py-2 rounded-xl font-medium text-black hover:text-primary-600 hover:bg-primary-50 transition-all duration-200 group"
             >
               <span className="relative z-10">Dla restauracji</span>
               <div className="absolute inset-0 bg-gradient-to-r from-primary-400 to-primary-600 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-200"></div>
             </Link>
             <Link
               href="/food-cost-calculator"
-              className="relative px-4 py-2 rounded-xl font-medium text-black hover:text-primary-600 hover:bg-primary-50 transition-all duration-200 group w-max"
+              className="relative px-4 py-2 rounded-xl font-medium text-black hover:text-primary-600 hover:bg-primary-50 transition-all duration-200 group"
             >
               <span className="relative z-10">Kalkulator kosztów</span>
               <div className="absolute inset-0 bg-gradient-to-r from-primary-400 to-primary-600 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-200"></div>
             </Link>
             <Link
               href="/affiliate"
-              className="relative px-4 py-2 rounded-xl font-medium text-black hover:text-primary-600 hover:bg-primary-50 transition-all duration-200 group w-max"
+              className="relative px-4 py-2 rounded-xl font-medium text-black hover:text-primary-600 hover:bg-primary-50 transition-all duration-200 group"
             >
               <span className="relative z-10">System afiliacyjny</span>
               <div className="absolute inset-0 bg-gradient-to-r from-primary-400 to-primary-600 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-200"></div>
             </Link>
             <Link
               href="/about"
-              className="relative px-4 py-2 rounded-xl font-medium text-black hover:text-primary-600 hover:bg-primary-50 transition-all duration-200 group w-max"
+              className="relative px-4 py-2 rounded-xl font-medium text-black hover:text-primary-600 hover:bg-primary-50 transition-all duration-200 group"
             >
               <span className="relative z-10">O nas</span>
               <div className="absolute inset-0 bg-gradient-to-r from-primary-400 to-primary-600 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-200"></div>
             </Link>
             <Link
               href="/blog"
-              className="relative px-4 py-2 rounded-xl font-medium text-black hover:text-primary-600 hover:bg-primary-50 transition-all duration-200 group w-max"
+              className="relative px-4 py-2 rounded-xl font-medium text-black hover:text-primary-600 hover:bg-primary-50 transition-all duration-200 group"
             >
               <span className="relative z-10">Blog</span>
               <div className="absolute inset-0 bg-gradient-to-r from-primary-400 to-primary-600 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-200"></div>

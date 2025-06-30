@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export const ShinyAffiliateInvite = () => {
   return (
-    <div className="mt-24 w-max max-w-[90vw] mx-auto relative overflow-hidden bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-600 rounded-2xl p-6 md:p-8 shadow-2xl transform hover:scale-105 transition-all duration-300 group">
+    <div className="relative overflow-hidden bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-600 rounded-2xl p-6 md:p-8 shadow-2xl transform hover:scale-105 transition-all duration-300 group">
       {/* Animated background shine effect */}
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
 
