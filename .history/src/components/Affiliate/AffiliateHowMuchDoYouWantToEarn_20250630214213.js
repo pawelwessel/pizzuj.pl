@@ -11,7 +11,7 @@ export default function AffiliateHowMuchDoYouWantToEarn() {
 
   // Commission rate (15% example)
   const commissionRate = 0.15;
-  const avgOrderValue = 100; // Average pizza order value per restaurant per month
+  const avgOrderValue = 45; // Average pizza order value
 
   // Calculate metrics
   const requiredReferrals = Math.ceil(
