@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 import { FaLocationArrow, FaStar } from "react-icons/fa6";
 import { createLinkFromText } from "../../lib/createLinkFromText";
 import Slider from "react-slick";
@@ -8,7 +9,43 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { MdLocationPin } from "react-icons/md";
 
-export default function WarsawSection({ placesData }) {
+export default function WarsawSection() {
+  const [placesData, setPlacesData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Fetch pizza places data for Warsaw
+  useEffect(() => {
+    const fetchWarsawPizzaPlaces = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        
+        const response = await fetch('/api/pizza/Warszawa');
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        if (data.error) {
+          throw new Error(data.error);
+        }
+        
+        // Set the places data from the API response
+        setPlacesData(data.places || []);
+      } catch (err) {
+        console.error('Error fetching Warsaw pizza places:', err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchWarsawPizzaPlaces();
+  }, []);
+
   const settings = {
     infinite: true,
     speed: 500,
@@ -37,6 +74,75 @@ export default function WarsawSection({ placesData }) {
       },
     ],
   };
+
+  // Show loading state
+  if (loading) {
+    return (
+      <section className="bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700 py-12 w-full relative overflow-hidden">
+        <div className="relative z-10 max-w-7xl mx-auto">
+          <h2 className="font-cocosharp-bold-italic !text-black text-xl font-semibold">
+            Popularne pizzerie w Warszawie
+          </h2>
+          <p className="text-black font-cocosharp text-base lg:text-xl max-w-2xl mx-auto">
+            Odkryj najlepsze miejsca polecane przez naszą społeczność
+          </p>
+          <div className="w-24 h-1 bg-gradient-to-r from-primary-200 to-white rounded-full mx-auto mt-6"></div>
+          
+          {/* Loading skeleton */}
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-large animate-pulse">
+                <div className="h-48 lg:h-56 bg-gray-300"></div>
+                <div className="p-6 space-y-4">
+                  <div className="h-6 bg-gray-300 rounded"></div>
+                  <div className="h-4 bg-gray-300 rounded w-3/4"></div>
+                  <div className="h-4 bg-gray-300 rounded w-1/2"></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // Show error state
+  if (error) {
+    return (
+      <section className="bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700 py-12 w-full relative overflow-hidden">
+        <div className="relative z-10 max-w-7xl mx-auto text-center">
+          <h2 className="font-cocosharp-bold-italic !text-black text-xl font-semibold">
+            Popularne pizzerie w Warszawie
+          </h2>
+          <p className="text-black font-cocosharp text-base lg:text-xl max-w-2xl mx-auto mt-4">
+            Przepraszamy, wystąpił błąd podczas ładowania danych: {error}
+          </p>
+          <button 
+            onClick={() => window.location.reload()} 
+            className="mt-6 px-6 py-3 bg-white text-primary-600 rounded-full font-semibold hover:bg-gray-100 transition-colors"
+          >
+            Spróbuj ponownie
+          </button>
+        </div>
+      </section>
+    );
+  }
+
+  // Show empty state if no places found
+  if (!placesData || placesData.length === 0) {
+    return (
+      <section className="bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700 py-12 w-full relative overflow-hidden">
+        <div className="relative z-10 max-w-7xl mx-auto text-center">
+          <h2 className="font-cocosharp-bold-italic !text-black text-xl font-semibold">
+            Popularne pizzerie w Warszawie
+          </h2>
+          <p className="text-black font-cocosharp text-base lg:text-xl max-w-2xl mx-auto mt-4">
+            Nie znaleziono pizzerii w Warszawie.
+          </p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700 py-12 w-full relative overflow-hidden">
