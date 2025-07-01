@@ -83,7 +83,7 @@ export default async function HeroSectionForHomePage() {
             </div>
           </div>
           {/* Pizza places section */}
-          {/* <WarsawSection placesData={warsaw.places} /> */}
+          <WarsawSection placesData={warsaw.places} />
           {/* Enhanced popular cities section */}
           <div className="text-center">
             <div className="flex items-center justify-center gap-4 mb-6">
