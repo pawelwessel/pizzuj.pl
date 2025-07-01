@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
-import { FaLocationArrow, FaStar } from "react-icons/fa6";
+import { useState } from "react";
+import { FaLocationArrow, FaStar, FaTimes } from "react-icons/fa6";
 import { createLinkFromText } from "../../lib/createLinkFromText";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -9,6 +9,9 @@ import "slick-carousel/slick/slick-theme.css";
 import { MdLocationPin } from "react-icons/md";
 
 export default function WarsawSection({ placesData }) {
+  const [selectedPlace, setSelectedPlace] = useState(null);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
   const settings = {
     infinite: true,
     speed: 500,
@@ -36,6 +39,16 @@ export default function WarsawSection({ placesData }) {
         },
       },
     ],
+  };
+
+  const handlePlaceClick = (place) => {
+    setSelectedPlace(place);
+    setIsPopupOpen(true);
+  };
+
+  const closePopup = () => {
+    setIsPopupOpen(false);
+    setSelectedPlace(null);
   };
 
   return (
@@ -71,11 +84,9 @@ export default function WarsawSection({ placesData }) {
               key={index}
               className={`${!place.photos[0] ? "hidden" : ""} px-3 lg:px-4`}
             >
-              <Link
-                href={`/pizza/${createLinkFromText(
-                  place.city
-                )}/${createLinkFromText(place.name)}`}
-                className="block group"
+              <div
+                onClick={() => handlePlaceClick(place)}
+                className="block group cursor-pointer"
               >
                 <div className="card-hover bg-white rounded-2xl lg:rounded-3xl overflow-hidden shadow-large hover:shadow-golden-lg border border-white/20 transition-all duration-300 group-hover:scale-[1.02]">
                   {/* Image container */}
@@ -135,7 +146,7 @@ export default function WarsawSection({ placesData }) {
                     </div>
                   </div>
                 </div>
-              </Link>
+              </div>
             </div>
           ))}
         </Slider>
@@ -143,14 +154,140 @@ export default function WarsawSection({ placesData }) {
 
       {/* Bottom section with CTA */}
       <div className="relative z-10 text-center mt-12 lg:mt-16">
-        <Link
-          href="/pizza"
-          className="inline-flex items-center gap-3 px-8 lg:px-10 py-4 lg:py-5 bg-white text-primary-600 hover:text-primary-700 font-heading font-semibold text-lg lg:text-xl rounded-full transition-all duration-300 hover:scale-105 shadow-large hover:shadow-xl group"
+        <div
+          onClick={() => {/* Handle "Zobacz wszystkie pizzerie" click */}}
+          className="inline-flex items-center gap-3 px-8 lg:px-10 py-4 lg:py-5 bg-white text-primary-600 hover:text-primary-700 font-heading font-semibold text-lg lg:text-xl rounded-full transition-all duration-300 hover:scale-105 shadow-large hover:shadow-xl group cursor-pointer"
         >
           <span>Zobacz wszystkie pizzerie</span>
           <FaLocationArrow className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-        </Link>
+        </div>
       </div>
+
+      {/* Popup Modal */}
+      {isPopupOpen && selectedPlace && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto relative">
+            {/* Close button */}
+            <button
+              onClick={closePopup}
+              className="absolute top-4 right-4 bg-gray-100 hover:bg-gray-200 rounded-full p-2 transition-colors duration-200 z-10"
+            >
+              <FaTimes className="w-5 h-5 text-gray-600" />
+            </button>
+
+            {/* Modal content */}
+            <div className="p-0">
+              {/* Image */}
+              <div className="relative">
+                <Image
+                  src={selectedPlace.photos[0] || "/assets/pizza.png"}
+                  alt={`${selectedPlace.name} - pizzeria`}
+                  width={600}
+                  height={400}
+                  className="w-full h-64 lg:h-80 object-cover rounded-t-3xl"
+                />
+                {selectedPlace.rating && (
+                  <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 flex items-center gap-2 shadow-lg">
+                    <FaStar className="text-yellow-500 text-lg" />
+                    <span className="font-heading text-lg font-semibold text-gray-800">
+                      {selectedPlace.rating}
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              {/* Content */}
+              <div className="p-8">
+                <div className="space-y-6">
+                  {/* Restaurant name */}
+                  <h2 className="font-heading text-2xl lg:text-3xl font-bold text-gray-800">
+                    {selectedPlace.name}
+                  </h2>
+
+                  {/* Location */}
+                  <div className="flex items-center gap-3 text-gray-600">
+                    <MdLocationPin className="w-6 h-6 text-primary-500 flex-shrink-0" />
+                    <span className="font-body text-lg lg:text-xl">
+                      {selectedPlace.city}
+                    </span>
+                  </div>
+
+                  {/* Address if available */}
+                  {selectedPlace.address && (
+                    <div className="space-y-2">
+                      <h3 className="font-heading text-lg font-semibold text-gray-800">
+                        Adres
+                      </h3>
+                      <p className="font-body text-gray-600 text-base">
+                        {selectedPlace.address}
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Description */}
+                  {selectedPlace.description && (
+                    <div className="space-y-2">
+                      <h3 className="font-heading text-lg font-semibold text-gray-800">
+                        Opis
+                      </h3>
+                      <p className="font-body text-gray-600 text-base leading-relaxed">
+                        {selectedPlace.description}
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Additional details if available */}
+                  {selectedPlace.phone && (
+                    <div className="space-y-2">
+                      <h3 className="font-heading text-lg font-semibold text-gray-800">
+                        Telefon
+                      </h3>
+                      <p className="font-body text-gray-600 text-base">
+                        {selectedPlace.phone}
+                      </p>
+                    </div>
+                  )}
+
+                  {selectedPlace.website && (
+                    <div className="space-y-2">
+                      <h3 className="font-heading text-lg font-semibold text-gray-800">
+                        Strona internetowa
+                      </h3>
+                      <a
+                        href={selectedPlace.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-body text-primary-600 hover:text-primary-700 text-base underline"
+                      >
+                        {selectedPlace.website}
+                      </a>
+                    </div>
+                  )}
+
+                  {/* Action buttons */}
+                  <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                    <button
+                      onClick={closePopup}
+                      className="flex-1 px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-800 font-heading font-semibold rounded-full transition-colors duration-200"
+                    >
+                      Zamknij
+                    </button>
+                    <button
+                      onClick={() => {
+                        window.open(`/pizza/${createLinkFromText(selectedPlace.city)}/${createLinkFromText(selectedPlace.name)}`, '_blank');
+                      }}
+                      className="flex-1 px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-heading font-semibold rounded-full transition-colors duration-200 flex items-center justify-center gap-2"
+                    >
+                      <span>Zobacz pełną stronę</span>
+                      <FaLocationArrow className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
