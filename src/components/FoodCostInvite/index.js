@@ -24,7 +24,7 @@ export default function FoodCostInvite() {
         ></div>
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-8 lg:px-16">
+      <div className="relative z-10 max-w-6xl mx-auto sm:px-8 lg:px-16">
         <div className="glass bg-gradient-to-br from-white/70 via-primary-50/60 to-primary-100/40 border border-primary-200/40 rounded-3xl lg:rounded-5xl p-8 lg:p-12 backdrop-blur-sm shadow-golden-lg hover:shadow-large transition-all duration-500 transform hover:-translate-y-2">
           {/* Main content */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -32,7 +32,7 @@ export default function FoodCostInvite() {
             <div className="space-y-6 lg:space-y-8">
               {/* Badge */}
               <div className="inline-flex items-center gap-2 bg-primary-500/10 border border-primary-300/30 rounded-full px-4 py-2 text-sm font-cocosharp text-primary-700">
-                <span className="w-2 h-2 bg-primary-500 rounded-full animate-pulse"></span>
+                <span className="w-4 h-4 bg-blue-500 rounded-full animate-pulse"></span>
                 Nowe narzędzie
               </div>
 
@@ -79,8 +79,8 @@ export default function FoodCostInvite() {
               {/* CTA Button */}
               <div className="pt-4">
                 <Link href="/food-cost-calculator" className="group">
-                  <button className="relative overflow-hidden bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-cocosharp font-semibold px-8 py-4 rounded-2xl shadow-golden transition-all duration-300 transform hover:scale-105 hover:shadow-golden-lg">
-                    <span className="relative z-10 flex items-center gap-2 text-lg">
+                  <button className="relative overflow-hidden bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-zinc-800 font-cocosharp font-semibold px-8 py-4 rounded-2xl shadow-golden transition-all duration-300 transform hover:scale-105 hover:shadow-golden-lg">
+                    <span className="px-6 py-3 rounded-br-xl rounded-tl-xl text-white font-bold font-cocosharp text-nowrap bg-[#ffa920] relative z-10 flex items-center gap-2 text-lg">
                       Zacznij kalkulować
                       <span className="transform group-hover:translate-x-1 transition-transform duration-300">
                         →
@@ -96,7 +96,7 @@ export default function FoodCostInvite() {
 
             {/* Right side - Visual element */}
             <div className="relative">
-              <div className="relative bg-gradient-to-br from-primary-100 to-primary-200 rounded-3xl p-8 lg:p-12 shadow-medium">
+              <div className="relative bg-gradient-to-br from-primary-100 to-primary-200 rounded-3xl shadow-medium">
                 {/* Calculator mockup */}
                 <div className="space-y-4">
                   <div className="bg-white rounded-2xl p-6 shadow-soft">

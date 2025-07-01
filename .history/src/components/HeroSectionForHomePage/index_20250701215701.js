@@ -97,7 +97,7 @@ export default async function HeroSectionForHomePage() {
           {/* Enhanced popular cities section */}
           <div className="text-center">
             <div className="flex items-center justify-center gap-4 mb-6">
-              <h2 className="mt-24 font-cocosharp-italic !text-black !text-lg lg:text-xl font-semibold !text-center">
+              <h2 className="font-cocosharp-italic !text-black !text-lg lg:text-xl font-semibold !text-center">
                 Często wyszukiwane
               </h2>
             </div>
@@ -111,7 +111,7 @@ export default async function HeroSectionForHomePage() {
                   className="group relative p-3 lg:p-4 rounded-xl bg-green-500/15 hover:bg-white/25 backdrop-blur-sm border border-white/30 hover:border-white/50 transition-all duration-300 hover:scale-105 hover:shadow-golden card-hover"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <span className="!uppercase text-green-800 text-sm lg:text-base font-medium group-hover:text-green-600  transition-colors duration-200 block">
+                  <span className="font-heading text-green-800 text-sm lg:text-base font-medium group-hover:text-green-600  transition-colors duration-200 block">
                     {city.name}
                   </span>
 

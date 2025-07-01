@@ -134,10 +134,38 @@ export const metadata = {
     description:
       "To nie są ćwiczenia – jeśli kochasz pizzę, musisz poznać Pizzuj.pl. Pizzerie w Polsce – szybko, smacznie, bez kompromisów.",
     siteName: "Pizzuj",
+    images: [
+      {
+        url: "https://pizzuj.pl/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Pizzuj.pl - najlepsze pizzerie w Polsce",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@pizzujpl",
+    creator: "@pizzujpl",
+    title:
+      "Kochasz pizzę? Dołącz do sieci! Pizzuj.pl – najlepsze pizzerie w Polsce",
+    description:
+      "To nie są ćwiczenia – jeśli kochasz pizzę, musisz poznać Pizzuj.pl. Pizzerie w Polsce – szybko, smacznie, bez kompromisów.",
+    images: ["https://pizzuj.pl/og-image.jpg"],
   },
   authors: [{ name: "pizzuj.pl", url: "https://pizzuj.pl" }],
   publisher: "wesiu.dev",
-  keywords: "pizza, pizza warszawa najlepsza pizza w miescie",
+  keywords: [
+    "pizza",
+    "pizzerie w Polsce",
+    "najlepsza pizza",
+    "pizza warszawa",
+    "sieć pizzerii",
+    "ranking pizzerii",
+    "gdzie zjeść pizzę",
+    "pizza dostawa",
+    "pizzerie online",
+  ],
   icons: [
     {
       url: "../../public/favicons/apple-touch-icon.png",

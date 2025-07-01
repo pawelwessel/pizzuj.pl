@@ -17,7 +17,7 @@ export default function AffiliateHowMuchDoYouWantToEarn() {
   const requiredReferrals = Math.ceil(
     monthlyGoal / (avgOrderValue * commissionRate)
   );
-  const dailyReferrals = Math.ceil(requiredReferrals / 30) * 3;
+  const dailyReferrals = Math.ceil(requiredReferrals / 30);
   const yearlyEarnings = monthlyGoal * 12;
 
   // Animate numbers when goal changes
@@ -155,7 +155,7 @@ export default function AffiliateHowMuchDoYouWantToEarn() {
               </div>
 
               {/* Quick Preset Buttons */}
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
                 {[2000, 5000, 10000, 15000].map((preset) => (
                   <button
                     key={preset}
@@ -212,12 +212,17 @@ export default function AffiliateHowMuchDoYouWantToEarn() {
                   Polecenia dziennie:
                 </span>
                 <span className="text-3xl font-bold text-blue-600 tabular-nums">
-                  ~{dailyReferrals}
+                  ~{dailyReferrals * 3}
                 </span>
               </div>
               <div className="mt-4 bg-blue-50 p-3 rounded-xl">
                 <p className="text-sm text-blue-700">
-                  To tylko <strong>{dailyReferrals} polecenia</strong> dziennie!
+                  To tylko{" "}
+                  <strong>
+                    {dailyReferrals} polecenie
+                    {dailyReferrals > 1 ? (dailyReferrals < 5 ? "a" : "ń") : ""}
+                  </strong>{" "}
+                  dziennie!
                 </p>
               </div>
             </div>

@@ -60,7 +60,7 @@ export async function GET(params, req) {
     );
     const searchData = await searchRes.json();
 
-    if (!searchData.results || searchData.results.length === 0) {
+    if (!searchData.ults || searchData.results.length === 0) {
       return NextResponse.json(
         { error: "No pizza places found in this city" },
         { status: 404 }

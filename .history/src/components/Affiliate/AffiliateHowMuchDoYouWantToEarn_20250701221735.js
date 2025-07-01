@@ -155,7 +155,7 @@ export default function AffiliateHowMuchDoYouWantToEarn() {
               </div>
 
               {/* Quick Preset Buttons */}
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
                 {[2000, 5000, 10000, 15000].map((preset) => (
                   <button
                     key={preset}
@@ -217,7 +217,12 @@ export default function AffiliateHowMuchDoYouWantToEarn() {
               </div>
               <div className="mt-4 bg-blue-50 p-3 rounded-xl">
                 <p className="text-sm text-blue-700">
-                  To tylko <strong>{dailyReferrals} polecenia</strong> dziennie!
+                  To tylko{" "}
+                  <strong>
+                    {dailyReferrals} polecenia
+                    {dailyReferrals > 1 ? (dailyReferrals < 5 ? "a" : "ń") : ""}
+                  </strong>{" "}
+                  dziennie!
                 </p>
               </div>
             </div>

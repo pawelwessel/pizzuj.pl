@@ -97,7 +97,7 @@ export default async function HeroSectionForHomePage() {
           {/* Enhanced popular cities section */}
           <div className="text-center">
             <div className="flex items-center justify-center gap-4 mb-6">
-              <h2 className="mt-24 font-cocosharp-italic !text-black !text-lg lg:text-xl font-semibold !text-center">
+              <h2 className="font-cocosharp-italic !text-black !text-lg lg:text-xl font-semibold !text-center">
                 Często wyszukiwane
               </h2>
             </div>

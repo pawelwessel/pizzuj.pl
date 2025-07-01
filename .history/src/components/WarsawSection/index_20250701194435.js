@@ -2,6 +2,7 @@
 import BackgroundDecorations from "./BackgroundDecorations";
 import WarsawSectionHeader from "./WarsawSectionHeader";
 import WarsawSectionSlider from "./WarsawSectionSlider";
+import WarsawSectionCTA from "./WarsawSectionCTA";
 
 export default function WarsawSection({ placesData }) {
   return (
@@ -9,6 +10,7 @@ export default function WarsawSection({ placesData }) {
       <BackgroundDecorations />
       <WarsawSectionHeader />
       <WarsawSectionSlider placesData={placesData} />
+      <WarsawSectionCTA />
     </section>
   );
 }
