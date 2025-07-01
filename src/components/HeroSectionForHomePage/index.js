@@ -4,12 +4,10 @@ import Form from "../Form";
 import accent from "../../../public/assets/asset6.png";
 import accent1 from "../../../public/assets/asset7.png";
 import { loadingTexts } from "../../db/data/loadingTexts";
-import pizzuj2 from "../../../public/assets/1234.png";
 import WarsawSection from "../WarsawSection";
-import { getDocument } from "../../db/firebase";
 import { ptSans } from "../../app/layout";
 
-export default async function HeroSectionForHomePage() {
+export default function HeroSectionForHomePage() {
   const popularCities = [
     { name: "Warszawa", slug: "warszawa" },
     { name: "Grudziądz", slug: "grudziadz" },
@@ -20,7 +18,6 @@ export default async function HeroSectionForHomePage() {
     { name: "Toruń", slug: "torun" },
     { name: "Białystok", slug: "bialystok" },
   ];
-  const warsaw = await getDocument("pages", "warszawa");
   return (
     <section className="relative min-h-[50vh] lg:min-h-[60vh] w-full bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700 pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
       {/* Enhanced floating pizza images with better positioning */}
@@ -82,8 +79,7 @@ export default async function HeroSectionForHomePage() {
               <Form loadingTexts={loadingTexts} />
             </div>
           </div>
-          {/* Pizza places section */}
-          {/* <WarsawSection placesData={warsaw.places} /> */}
+
           {/* Enhanced popular cities section */}
           <div className="text-center">
             <div className="flex items-center justify-center gap-4 mb-6">
@@ -116,6 +112,9 @@ export default async function HeroSectionForHomePage() {
           </div>
         </div>
       </div>
+
+      {/* Pizza places section */}
+      <WarsawSection />
     </section>
   );
 }
