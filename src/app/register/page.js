@@ -11,6 +11,8 @@ import GoogleAuthButton from "../../components/Auth/GoogleButton";
 import { FaUserPlus } from "react-icons/fa";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Image from "next/image";
+import { getDocument } from "../../db/firebase";
+import { checkAdminRole } from "../../hooks/useAdminRedirect";
 
 export default function Register() {
   const [user, loading] = useAuthState(auth);
@@ -55,7 +57,19 @@ export default function Register() {
           autoClose: 3000,
         });
         setThinking(false);
-        router.push("/user");
+        
+        // Check if user has admin role and redirect accordingly
+        try {
+          const userDoc = await getDocument("users", userCredential.user.uid);
+          if (checkAdminRole(userDoc)) {
+            router.push("/admin");
+          } else {
+            router.push("/user");
+          }
+        } catch (error) {
+          console.error("Error checking user role:", error);
+          router.push("/user");
+        }
       } catch (err) {
         const errorMsg = errorCatcher(err);
         toast.update(id, {

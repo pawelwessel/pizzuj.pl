@@ -101,3 +101,23 @@ export async function updateUserProfile(userId, updateData) {
     updatedAt: new Date().toISOString(),
   });
 }
+
+// User role management functions
+export async function updateUserRole(userId, role) {
+  const userRef = doc(db, "users", userId);
+  await updateDoc(userRef, {
+    role: role,
+    updatedAt: new Date().toISOString(),
+  });
+}
+
+export async function getUserRole(userId) {
+  const userDoc = await getDocument("users", userId);
+  return userDoc?.role || "user";
+}
+
+export async function isUserAdmin(userId) {
+  const userDoc = await getDocument("users", userId);
+  const role = userDoc?.role?.toLowerCase();
+  return role === "admin" || role === "owner";
+}

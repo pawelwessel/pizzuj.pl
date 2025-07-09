@@ -10,6 +10,7 @@ import { signInWithPopup, getAuth, GoogleAuthProvider } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { errorCatcher } from "../../lib/errorCatcher";
 import { toast } from "react-toastify";
+import { checkAdminRole } from "../../hooks/useAdminRedirect";
 
 async function sendVerificationEmail(email, verificationCode) {
   const data = await fetch(
@@ -40,7 +41,7 @@ export default function GoogleAuthButton() {
         const users = await getDocuments("users");
         const isPioneer = users.length < 100;
 
-        await createUser({
+        const newUserData = {
           uid: user?.uid,
           name: user?.displayName,
           email: user?.email,
@@ -49,7 +50,9 @@ export default function GoogleAuthButton() {
           emailVerified: false,
           achievements: isPioneer ? ["pioneer"] : [],
           joinDate: new Date().toISOString(),
-        });
+        };
+
+        await createUser(newUserData);
         await sendVerificationEmail(user?.email, user?.uid);
 
         toast.update(loadingToast, {
@@ -58,6 +61,13 @@ export default function GoogleAuthButton() {
           isLoading: false,
           autoClose: 3000,
         });
+
+        // Check if new user has admin role and redirect accordingly
+        if (checkAdminRole(newUserData)) {
+          router.push(`${process.env.NEXT_PUBLIC_URL}/admin`);
+        } else {
+          router.push(`${process.env.NEXT_PUBLIC_URL}/user`);
+        }
       } else {
         toast.update(loadingToast, {
           render: `Hello ${displayName}! Zalogowano pomyślnie!`,
@@ -65,9 +75,14 @@ export default function GoogleAuthButton() {
           isLoading: false,
           autoClose: 3000,
         });
-      }
 
-      router.push(`${process.env.NEXT_PUBLIC_URL}/user`);
+        // Check if existing user has admin role and redirect accordingly
+        if (checkAdminRole(existingUser)) {
+          router.push(`${process.env.NEXT_PUBLIC_URL}/admin`);
+        } else {
+          router.push(`${process.env.NEXT_PUBLIC_URL}/user`);
+        }
+      }
     } catch (error) {
       toast.update(loadingToast, {
         render: errorCatcher(error),
