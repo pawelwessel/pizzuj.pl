@@ -5,8 +5,9 @@ import { getDocument, updateUserProfile } from "../../db/firebase";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import PizzeriaDashboard from "../../components/PizzeriaDashboard";
+import Settings from "../../components/UserDashboard/Settings";
 import { toast } from "react-toastify";
-import { FaEdit, FaSave, FaTimes, FaUser, FaPizzaSlice } from "react-icons/fa";
+import { FaEdit, FaSave, FaTimes, FaUser, FaPizzaSlice, FaCog } from "react-icons/fa";
 
 export default function UserProfile() {
   const [user] = useAuthState(auth);
@@ -102,6 +103,17 @@ export default function UserProfile() {
               >
                 <FaPizzaSlice className="inline mr-2" />
                 Moje Pizzerie
+              </button>
+              <button
+                onClick={() => setActiveTab("settings")}
+                className={`py-4 px-1 border-b-2 font-medium text-sm ${
+                  activeTab === "settings"
+                    ? "border-orange-500 text-orange-600"
+                    : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                }`}
+              >
+                <FaCog className="inline mr-2" />
+                Ustawienia
               </button>
             </nav>
           </div>
@@ -214,6 +226,8 @@ export default function UserProfile() {
         )}
 
         {activeTab === "pizzerias" && <PizzeriaDashboard user={user} />}
+        
+        {activeTab === "settings" && <Settings user={user} />}
       </div>
     </div>
   );
