@@ -11,6 +11,7 @@ import GoogleAuthButton from "../../components/Auth/GoogleButton";
 import { FaKey } from "react-icons/fa";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Image from "next/image";
+import { redirectByRole } from "../../utils/roleUtils";
 
 export default function Login() {
   const [user, loading] = useAuthState(auth);
@@ -49,7 +50,7 @@ export default function Login() {
           autoClose: 3000,
         });
         setThinking(false);
-        router.push("/user");
+        await redirectByRole(router, userCredential.user.uid);
       } catch (err) {
         const errorMsg = errorCatcher(err);
         toast.update(id, {

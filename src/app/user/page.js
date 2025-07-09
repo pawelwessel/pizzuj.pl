@@ -7,6 +7,7 @@ import Image from "next/image";
 import PizzeriaDashboard from "../../components/PizzeriaDashboard";
 import { toast } from "react-toastify";
 import { FaEdit, FaSave, FaTimes, FaUser, FaPizzaSlice } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 
 export default function UserProfile() {
   const [user] = useAuthState(auth);
@@ -17,20 +18,36 @@ export default function UserProfile() {
     name: "",
     email: "",
   });
+  const router = useRouter();
 
   useEffect(() => {
     async function fetchUserData() {
-      if (user) {
+      if (!user) {
+        router.push("/login");
+        return;
+      }
+
+      try {
         const data = await getDocument("users", user.uid);
+        
+        // Redirect admin users to admin panel
+        if (data && data.role === "admin") {
+          router.push("/admin");
+          return;
+        }
+        
         setUserData(data);
         setProfileData({
           name: data?.name || "",
           email: data?.email || "",
         });
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+        toast.error("Błąd podczas pobierania danych użytkownika");
       }
     }
     fetchUserData();
-  }, [user]);
+  }, [user, router]);
 
   const handleProfileUpdate = async (e) => {
     e.preventDefault();

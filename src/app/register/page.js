@@ -2,7 +2,7 @@
 import loginImage from "../../../public/assets/pizzar.jpg";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useState } from "react";
-import { auth } from "../../db/firebase";
+import { auth, createUser, getDocuments } from "../../db/firebase";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { errorCatcher } from "../../lib/errorCatcher";
@@ -11,6 +11,7 @@ import GoogleAuthButton from "../../components/Auth/GoogleButton";
 import { FaUserPlus } from "react-icons/fa";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Image from "next/image";
+import { redirectByRole } from "../../utils/roleUtils";
 
 export default function Register() {
   const [user, loading] = useAuthState(auth);
@@ -48,6 +49,23 @@ export default function Register() {
           displayName: userData.name,
         });
 
+        // Get total user count to determine if user is pioneer
+        const users = await getDocuments("users");
+        const isPioneer = users.length < 100;
+
+        // Create user document in Firestore
+        await createUser({
+          uid: userCredential.user.uid,
+          name: userData.name,
+          email: userData.email,
+          photoURL: null,
+          isPremium: false,
+          emailVerified: false,
+          achievements: isPioneer ? ["pioneer"] : [],
+          joinDate: new Date().toISOString(),
+          role: "user", // Default role for new users
+        });
+
         toast.update(id, {
           render: `Hello ${userData.name}! Zarejestrowano pomyślnie!`,
           type: "success",
@@ -55,7 +73,7 @@ export default function Register() {
           autoClose: 3000,
         });
         setThinking(false);
-        router.push("/user");
+        await redirectByRole(router, userCredential.user.uid);
       } catch (err) {
         const errorMsg = errorCatcher(err);
         toast.update(id, {

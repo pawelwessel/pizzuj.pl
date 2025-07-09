@@ -10,6 +10,7 @@ import { signInWithPopup, getAuth, GoogleAuthProvider } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { errorCatcher } from "../../lib/errorCatcher";
 import { toast } from "react-toastify";
+import { redirectByRole } from "../../utils/roleUtils";
 
 async function sendVerificationEmail(email, verificationCode) {
   const data = await fetch(
@@ -49,6 +50,7 @@ export default function GoogleAuthButton() {
           emailVerified: false,
           achievements: isPioneer ? ["pioneer"] : [],
           joinDate: new Date().toISOString(),
+          role: "user", // Default role for new users
         });
         await sendVerificationEmail(user?.email, user?.uid);
 
@@ -67,7 +69,7 @@ export default function GoogleAuthButton() {
         });
       }
 
-      router.push(`${process.env.NEXT_PUBLIC_URL}/user`);
+      await redirectByRole(router, user?.uid);
     } catch (error) {
       toast.update(loadingToast, {
         render: errorCatcher(error),
