@@ -80,7 +80,7 @@ export default function HeaderComponent({
           {/* Desktop Navigation */}
           <nav className="font-cocosharp w-full text-nowrap font-sans text-lg lg:flex flex-wrap items-center justify-center gap-8 hidden pr-12">
             <Link
-              href="/advertise"
+              href="/reklama-dla-pizzerii"
               className="relative px-4 py-2 rounded-xl font-medium text-black hover:text-primary-600 hover:bg-primary-50 transition-all duration-200 group w-max"
             >
               <span className="relative z-10">Dla restauracji</span>

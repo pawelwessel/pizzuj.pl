@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { FaLightbulb, FaHeart, FaRocket } from "react-icons/fa";
 import missionAccent from "../../../public/assets/asset8.png";
+import { ptSans } from "../../app/layout";
 
 export default function AboutMission() {
   return (
@@ -18,7 +19,7 @@ export default function AboutMission() {
             Misja <span className="text-[#ffa920]">Pizzuj.pl</span>
           </h2>
           <div className="h-1 w-24 bg-[#ffa920] rounded-full mx-auto mb-6" />
-          <p className="text-gray-600 text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed">
+          <p className={`text-gray-600 text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed ${ptSans.className}`}>
             Połączenie dwóch światów – technologii i gastronomii w jednym
             miejscu
           </p>
@@ -30,7 +31,7 @@ export default function AboutMission() {
               <FaLightbulb className="!text-white text-2xl" />
             </div>
             <h3 className="text-xl font-bold text-gray-800 mb-3">Innowacja</h3>
-            <p className="text-gray-600 leading-relaxed">
+            <p className="text-gray-600 leading-relaxed font-cocosharp">
               Łączę nowoczesną technologię z tradycyjną sztuką tworzenia pizzy
             </p>
           </div>
@@ -40,7 +41,7 @@ export default function AboutMission() {
               <FaHeart className="!text-white text-2xl" />
             </div>
             <h3 className="text-xl font-bold text-gray-800 mb-3">Pasja</h3>
-            <p className="text-gray-600 leading-relaxed">
+            <p className="text-gray-600 leading-relaxed font-cocosharp">
               Każdy element projektu powstaje z miłości do pizzy i kuchni
               włoskiej
             </p>
@@ -51,7 +52,7 @@ export default function AboutMission() {
               <FaRocket className="!text-white text-2xl" />
             </div>
             <h3 className="text-xl font-bold text-gray-800 mb-3">Przyszłość</h3>
-            <p className="text-gray-600 leading-relaxed">
+            <p className="text-gray-600 leading-relaxed font-cocosharp">
               Buduję platformę, która zmieni sposób odkrywania najlepszych
               pizzerii
             </p>
@@ -59,14 +60,14 @@ export default function AboutMission() {
         </div>
 
         <div className="bg-white p-8 lg:p-12 rounded-2xl shadow-lg">
-          <div className="max-w-4xl mx-auto text-center">
-            <p className="text-gray-700 text-lg leading-relaxed mb-6">
+          <div className="max-w-4xl mx-auto text-center uppercase font-light">
+            <p className="text-gray-700 text-lg leading-relaxed mb-6 font-cocosharp">
               Projekt <strong className="text-[#ffa920]">pizzuj.pl</strong> to
               moje połączenie dwóch światów – technologii i gastronomii. Tworzę
               to miejsce, by dzielić się wiedzą, obserwacjami i tworzyć
               przyszłość.
             </p>
-            <p className="text-gray-700 text-lg leading-relaxed">
+            <p className="text-gray-700 text-lg leading-relaxed font-cocosharp">
               Jeśli kochasz pizzę, chcesz poznać kulisy pracy w gastro albo
               szukasz inspiracji do własnych kulinarnych eksperymentów –
               <span className="text-[#ec7308] font-semibold">

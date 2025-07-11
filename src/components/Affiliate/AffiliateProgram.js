@@ -23,7 +23,7 @@ export default function AffiliateProgram() {
     },
     {
       icon: FaPercent,
-      number: "15%",
+      number: "20%",
       label: "Maksymalna prowizja",
       color: "text-purple-500",
     },

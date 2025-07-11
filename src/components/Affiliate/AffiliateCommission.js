@@ -1,13 +1,14 @@
 import { FaPercentage, FaStar, FaCrown, FaRocket } from "react-icons/fa";
 import { ptSans } from "../../app/layout";
+import { TIER_SYSTEM, getCommissionRange, getRestaurantRange } from "../../lib/affiliateCalculator";
 
 export default function AffiliateCommission() {
   const tiers = [
     {
       icon: FaPercentage,
       name: "Starter",
-      commission: "8-10%",
-      orders: "0-50",
+      commission: getCommissionRange("Starter"),
+      restaurants: getRestaurantRange("Starter"),
       color: "text-blue-500",
       bgColor: "bg-blue-50",
       borderColor: "border-blue-200",
@@ -20,8 +21,8 @@ export default function AffiliateCommission() {
     {
       icon: FaStar,
       name: "Silver",
-      commission: "10-12%",
-      orders: "51-200",
+      commission: getCommissionRange("Silver"),
+      restaurants: getRestaurantRange("Silver"),
       color: "text-gray-600",
       bgColor: "bg-gray-50",
       borderColor: "border-gray-200",
@@ -34,8 +35,8 @@ export default function AffiliateCommission() {
     {
       icon: FaCrown,
       name: "Gold",
-      commission: "12-15%",
-      orders: "201+",
+      commission: getCommissionRange("Gold"),
+      restaurants: getRestaurantRange("Gold"),
       color: "text-yellow-600",
       bgColor: "bg-yellow-50",
       borderColor: "border-yellow-200",
@@ -50,8 +51,8 @@ export default function AffiliateCommission() {
     {
       icon: FaRocket,
       name: "VIP",
-      commission: "15%+",
-      orders: "500+",
+      commission: getCommissionRange("VIP"),
+      restaurants: getRestaurantRange("VIP"),
       color: "text-purple-600",
       bgColor: "bg-purple-50",
       borderColor: "border-purple-200",
@@ -146,7 +147,7 @@ export default function AffiliateCommission() {
                   <p
                     className={`text-gray-600 text-sm mt-1 ${ptSans.className}`}
                   >
-                    {tier.orders} zamówień/miesiąc
+                    {tier.restaurants} Zdobytych restauracji
                   </p>
                 </div>
 

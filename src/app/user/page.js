@@ -3,13 +3,32 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../db/firebase";
 import { getDocument, updateUserProfile } from "../../db/firebase";
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import PizzeriaDashboard from "../../components/PizzeriaDashboard";
 import { toast } from "react-toastify";
-import { FaEdit, FaSave, FaTimes, FaUser, FaPizzaSlice } from "react-icons/fa";
+import { useRouter } from "next/navigation";
+import UserHeader from "../../components/UserDashboard/UserHeader";
+import TabNavigation from "../../components/UserDashboard/TabNavigation";
+import ProfileForm from "../../components/UserDashboard/ProfileForm";
+import LoadingSpinner from "../../components/UserDashboard/LoadingSpinner";
+import Opinions from "../../components/UserDashboard/Opinions";
+import Marketing from "../../components/UserDashboard/Marketing";
+import Settings from "../../components/UserDashboard/Settings";
+import OnboardingWizard from "../../components/UserDashboard/Onboarding/OnboardingWizard";
+import FeatureTour from "../../components/UserDashboard/Onboarding/FeatureTour";
+import useOnboarding from "../../components/UserDashboard/Onboarding/useOnboarding";
+import HelpFloatingButton from "../../components/UserDashboard/Onboarding/HelpFloatingButton";
+import Onboarding from "../../components/UserDashboard/Onboarding";
+import {
+  SubscriptionOverview,
+  PlanUpgrade,
+  PlanDowngrade,
+  PaymentIntegration,
+  BillingHistory,
+  PlanComparison
+} from "../../components/UserDashboard/SubscriptionManagement";
 
 export default function UserProfile() {
-  const [user] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   const [userData, setUserData] = useState(null);
   const [isEditingProfile, setIsEditingProfile] = useState(false);
   const [activeTab, setActiveTab] = useState("profile");
@@ -17,7 +36,29 @@ export default function UserProfile() {
     name: "",
     email: "",
   });
-
+  
+  // Subscription management state
+  const [subscriptionView, setSubscriptionView] = useState("overview");
+  const [currentPlan, setCurrentPlan] = useState("free");
+  
+  const router = useRouter();
+  
+  // Onboarding system
+  const {
+    onboardingState,
+    loading: onboardingLoading,
+    completeOnboarding,
+    skipOnboarding,
+    completeFeatureTour,
+    skipFeatureTour,
+    startOnboarding,
+    startFeatureTour,
+  } = useOnboarding(user?.uid);
+  
+  if (!user && !loading) {
+    router.push("/login");
+  }
+  
   useEffect(() => {
     async function fetchUserData() {
       if (user) {
@@ -27,10 +68,15 @@ export default function UserProfile() {
           name: data?.name || "",
           email: data?.email || "",
         });
+        
+        // Set current plan from user data
+        if (data?.subscription?.plan) {
+          setCurrentPlan(data.subscription.plan);
+        }
       }
     }
     fetchUserData();
-  }, [user]);
+  }, [loading]);
 
   const handleProfileUpdate = async (e) => {
     e.preventDefault();
@@ -49,172 +95,276 @@ export default function UserProfile() {
     setProfileData((prev) => ({ ...prev, [name]: value }));
   };
 
-  if (!user || !userData) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Loading...</h1>
-        </div>
-      </div>
-    );
+  // Subscription management handlers
+  const handlePlanChange = (action) => {
+    if (action === 'upgrade') {
+      setSubscriptionView('upgrade');
+    } else if (action === 'downgrade') {
+      setSubscriptionView('downgrade');
+    }
+  };
+
+  const handlePlanUpgrade = async (planId, billingCycle) => {
+    try {
+      // Here you would integrate with Stripe
+      toast.info('Przekierowywanie do płatności...');
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      setCurrentPlan(planId);
+      setSubscriptionView('overview');
+      toast.success('Plan został zaktualizowany pomyślnie!');
+    } catch (error) {
+      toast.error('Błąd podczas aktualizacji planu');
+    }
+  };
+
+  const handlePlanDowngrade = async (planId) => {
+    try {
+      // Here you would integrate with Stripe
+      toast.info('Przetwarzanie zmiany planu...');
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      setCurrentPlan(planId);
+      setSubscriptionView('overview');
+      toast.success('Plan został zmieniony pomyślnie!');
+    } catch (error) {
+      toast.error('Błąd podczas zmiany planu');
+    }
+  };
+
+  const handleSubscriptionViewChange = (view) => {
+    setSubscriptionView(view);
+  };
+
+  const handlePlanSelect = (planId) => {
+    if (planId === currentPlan) {
+      toast.info('To jest Twój obecny plan');
+      return;
+    }
+    if (planId === 'free') {
+      handlePlanDowngrade(planId);
+    } else {
+      handlePlanUpgrade(planId, 'monthly');
+    }
+  };
+
+  if (!user || !userData || onboardingLoading) {
+    return <LoadingSpinner message="Ładowanie..." />;
   }
 
-  return (
-    <div className="min-h-screen py-12 px-6 bg-gray-50">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="bg-white rounded-xl shadow-lg p-8 mb-6">
-          <div className="flex items-center gap-6 mb-6">
-            <Image
-              src={userData.photoURL || "/assets/user-placeholder.png"}
-              alt={userData.name}
-              width={100}
-              height={100}
-              className="rounded-full"
-            />
-            <div className="flex-grow">
-              <h1 className="text-3xl font-bold">{userData.name}</h1>
-              <p className="text-gray-600">{userData.email}</p>
-            </div>
-          </div>
+  const renderSubscriptionContent = () => {
+    switch (subscriptionView) {
+      case 'overview':
+        return (
+          <SubscriptionOverview
+            userData={userData}
+            onPlanChange={handlePlanChange}
+          />
+        );
+      case 'upgrade':
+        return (
+          <PlanUpgrade
+            currentPlan={currentPlan}
+            onUpgrade={handlePlanUpgrade}
+            onCancel={() => setSubscriptionView('overview')}
+          />
+        );
+      case 'downgrade':
+        return (
+          <PlanDowngrade
+            currentPlan={currentPlan}
+            onDowngrade={handlePlanDowngrade}
+            onCancel={() => setSubscriptionView('overview')}
+          />
+        );
+      case 'payment':
+        return (
+          <PaymentIntegration
+            userData={userData}
+            onPaymentMethodUpdate={() => {}}
+          />
+        );
+      case 'billing':
+        return (
+          <BillingHistory
+            userData={userData}
+          />
+        );
+      case 'comparison':
+        return (
+          <PlanComparison
+            currentPlan={currentPlan}
+            onPlanSelect={handlePlanSelect}
+          />
+        );
+      default:
+        return (
+          <SubscriptionOverview
+            userData={userData}
+            onPlanChange={handlePlanChange}
+          />
+        );
+    }
+  };
 
-          {/* Tab Navigation */}
-          <div className="border-b border-gray-200">
-            <nav className="-mb-px flex space-x-8">
-              <button
-                onClick={() => setActiveTab("profile")}
-                className={`py-4 px-1 border-b-2 font-medium text-sm ${
-                  activeTab === "profile"
-                    ? "border-orange-500 text-orange-600"
-                    : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
-                }`}
-              >
-                <FaUser className="inline mr-2" />
-                Profil
-              </button>
-              <button
-                onClick={() => setActiveTab("pizzerias")}
-                className={`py-4 px-1 border-b-2 font-medium text-sm ${
-                  activeTab === "pizzerias"
-                    ? "border-orange-500 text-orange-600"
-                    : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
-                }`}
-              >
-                <FaPizzaSlice className="inline mr-2" />
-                Moje Pizzerie
-              </button>
-            </nav>
-          </div>
+  return (
+    <div className="min-h-screen py-12 px-6 bg-gradient-to-br from-orange-50 via-white to-orange-50">
+      <div className="max-w-6xl mx-auto">
+        {/* Enhanced Header with Shine Effect */}
+        <div className="user-header">
+          <UserHeader userData={userData} />
         </div>
 
-        {/* Tab Content */}
-        {activeTab === "profile" && (
-          <div className="bg-white rounded-xl shadow-lg p-8">
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="text-2xl font-bold">Informacje o koncie</h2>
-              {!isEditingProfile && (
-                <button
-                  onClick={() => setIsEditingProfile(true)}
-                  className="bg-blue-500 hover:bg-blue-600 !text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors"
-                >
-                  <FaEdit /> Edytuj profil
-                </button>
-              )}
-            </div>
+        {/* Enhanced Tab Navigation */}
+        <div className="tab-navigation">
+          <TabNavigation activeTab={activeTab} setActiveTab={setActiveTab} />
+        </div>
 
-            {isEditingProfile ? (
-              <form onSubmit={handleProfileUpdate} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Imię i nazwisko
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={profileData.name}
-                      onChange={handleInputChange}
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={profileData.email}
-                      onChange={handleInputChange}
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-                    />
-                  </div>
-                </div>
-                <div className="flex gap-3">
-                  <button
-                    type="submit"
-                    className="bg-green-500 hover:bg-green-600 !text-white px-6 py-2 rounded-lg flex items-center gap-2 transition-colors"
-                  >
-                    <FaSave /> Zapisz zmiany
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setIsEditingProfile(false);
-                      setProfileData({
-                        name: userData.name || "",
-                        email: userData.email || "",
-                      });
-                    }}
-                    className="bg-gray-500 hover:bg-gray-600 !text-white px-6 py-2 rounded-lg flex items-center gap-2 transition-colors"
-                  >
-                    <FaTimes /> Anuluj
-                  </button>
-                </div>
-              </form>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <p className="text-gray-600 text-sm">Imię i nazwisko</p>
-                  <p className="font-medium text-lg">{userData.name}</p>
-                </div>
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <p className="text-gray-600 text-sm">Email</p>
-                  <p className="font-medium text-lg">{userData.email}</p>
-                </div>
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <p className="text-gray-600 text-sm">Dołączył</p>
-                  <p className="font-medium text-lg">
-                    {new Date(userData.joinDate).toLocaleDateString()}
-                  </p>
-                </div>
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <p className="text-gray-600 text-sm">Typ konta</p>
-                  <p className="font-medium text-lg">
-                    {userData.isPremium ? "Premium" : "Standard"}
-                  </p>
-                </div>
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <p className="text-gray-600 text-sm">Status weryfikacji</p>
-                  <p className="font-medium text-lg">
-                    {userData.emailVerified
-                      ? "Zweryfikowany"
-                      : "Nie zweryfikowany"}
-                  </p>
-                </div>
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <p className="text-gray-600 text-sm">Osiągnięcia</p>
-                  <p className="font-medium text-lg">
-                    {userData.achievements?.length || 0}
-                  </p>
-                </div>
-              </div>
-            )}
+        {/* Enhanced Tab Content */}
+        {activeTab === "profile" && (
+          <div className="profile-section">
+            <ProfileForm
+              isEditingProfile={isEditingProfile}
+              profileData={profileData}
+              handleInputChange={handleInputChange}
+              handleProfileUpdate={handleProfileUpdate}
+              setIsEditingProfile={setIsEditingProfile}
+              userData={userData}
+              setProfileData={setProfileData}
+            />
           </div>
         )}
 
-        {activeTab === "pizzerias" && <PizzeriaDashboard user={user} />}
+        {activeTab === "pizzerias" && (
+          <div className="pizzerias-section bg-white rounded-2xl shadow-2xl p-8 relative overflow-hidden">
+            {/* Shine effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full animate-shine-slow"></div>
+            <div className="relative">
+              <PizzeriaDashboard user={user} />
+            </div>
+          </div>
+        )}
+
+        {activeTab === "opinions" && (
+          <div className="opinions-section bg-white rounded-2xl shadow-2xl p-8 relative overflow-hidden">
+            {/* Shine effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full animate-shine-slow"></div>
+            <div className="relative">
+              <Opinions userData={userData} />
+            </div>
+          </div>
+        )}
+
+        {activeTab === "marketing" && (
+          <div className="marketing-section bg-white rounded-2xl shadow-2xl p-8 relative overflow-hidden">
+            {/* Shine effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full animate-shine-slow"></div>
+            <div className="relative">
+              <Marketing userData={userData} />
+            </div>
+          </div>
+        )}
+
+        {activeTab === "onboarding" && (
+          <div className="onboarding-section bg-white rounded-2xl shadow-2xl p-8 relative overflow-hidden">
+            {/* Shine effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full animate-shine-slow"></div>
+            <div className="relative">
+              <Onboarding 
+                userData={userData}
+                onboardingState={onboardingState}
+                onComplete={completeOnboarding}
+                onSkip={skipOnboarding}
+                onStartTour={startFeatureTour}
+                onCompleteTour={completeFeatureTour}
+                onSkipTour={skipFeatureTour}
+              />
+            </div>
+          </div>
+        )}
+
+        {activeTab === "subscription" && (
+          <div className="subscription-section bg-white rounded-2xl shadow-2xl p-8 relative overflow-hidden">
+            {/* Shine effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full animate-shine-slow"></div>
+            <div className="relative">
+              {/* Subscription Navigation */}
+              {subscriptionView !== 'overview' && (
+                <div className="mb-6">
+                  <button
+                    onClick={() => setSubscriptionView('overview')}
+                    className="flex items-center gap-2 text-orange-600 hover:text-orange-700 font-medium"
+                  >
+                    ← Powrót do przeglądu
+                  </button>
+                </div>
+              )}
+              
+              {/* Subscription Content */}
+              {renderSubscriptionContent()}
+              
+              {/* Quick Navigation for Overview */}
+              {subscriptionView === 'overview' && (
+                <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <button
+                    onClick={() => setSubscriptionView('payment')}
+                    className="p-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg font-semibold hover:from-blue-600 hover:to-blue-700 transition-all duration-300"
+                  >
+                    Zarządzanie płatnościami
+                  </button>
+                  <button
+                    onClick={() => setSubscriptionView('billing')}
+                    className="p-4 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg font-semibold hover:from-green-600 hover:to-green-700 transition-all duration-300"
+                  >
+                    Historia rozliczeń
+                  </button>
+                  <button
+                    onClick={() => setSubscriptionView('comparison')}
+                    className="p-4 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-lg font-semibold hover:from-purple-600 hover:to-purple-700 transition-all duration-300"
+                  >
+                    Porównanie planów
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {activeTab === "settings" && (
+          <div className="settings-section bg-white rounded-2xl shadow-2xl p-8 relative overflow-hidden">
+            {/* Shine effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full animate-shine-slow"></div>
+            <div className="relative">
+              <Settings userData={userData} />
+            </div>
+          </div>
+        )}
+
+        {/* Dashboard content wrapper for tour */}
+        <div className="dashboard-content" />
       </div>
+
+      {/* Onboarding Components */}
+      <OnboardingWizard
+        isVisible={onboardingState.isVisible && !onboardingState.showFeatureTour}
+        userData={userData}
+        onComplete={completeOnboarding}
+        onSkip={skipOnboarding}
+      />
+
+      <FeatureTour
+        isVisible={onboardingState.showFeatureTour}
+        userData={userData}
+        onComplete={completeFeatureTour}
+        onSkip={skipFeatureTour}
+      />
+
+      {/* Help Floating Button */}
+      <HelpFloatingButton
+        onStartTour={startFeatureTour}
+        onStartOnboarding={startOnboarding}
+        isOnboardingCompleted={onboardingState.isCompleted}
+      />
     </div>
   );
 }

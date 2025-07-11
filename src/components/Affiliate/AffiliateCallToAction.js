@@ -62,7 +62,7 @@ export default function AffiliateCallToAction() {
 
             {/* Main heading */}
             <h2 className="font-cocosharp-bold-italic text-3xl lg:text-4xl xl:text-5xl text-white leading-tight mb-6">
-              Gotowy na <span className="text-[#ffa920]">sukces</span>?
+              Gotowi na <span className="text-[#ffa920]">sukces</span>?
             </h2>
 
             <p
@@ -74,7 +74,7 @@ export default function AffiliateCallToAction() {
                 {" "}
                 Twoja przygoda z zarabianiem online
               </span>{" "}
-              zaczyna się już dziś!
+              zaczyna się dziś!
             </p>
 
             {/* Benefits list */}
@@ -108,7 +108,7 @@ export default function AffiliateCallToAction() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 lg:gap-6 mb-8">
               <Link
-                href="/register"
+                href="/register?affiliate=true"
                 className="group relative inline-flex items-center gap-3 px-10 lg:px-14 py-5 lg:py-6 bg-[#ffa920] hover:bg-[#ff8f00] !text-white font-heading font-bold text-lg lg:text-xl xl:text-2xl rounded-full transition-all duration-300 ease-out transform hover:scale-105 hover:shadow-golden-lg shadow-golden"
               >
                 <FaHandshake className="text-xl lg:text-2xl transition-transform duration-300 group-hover:rotate-12" />

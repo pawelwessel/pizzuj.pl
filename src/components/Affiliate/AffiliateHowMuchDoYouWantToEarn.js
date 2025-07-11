@@ -1,24 +1,25 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { 
+  calculateRequirements, 
+  formatCurrency, 
+  getMotivationalMessage, 
+  getTierColor, 
+  getTierBgColor 
+} from "../../lib/affiliateCalculator";
 
 export default function AffiliateHowMuchDoYouWantToEarn() {
-  const [monthlyGoal, setMonthlyGoal] = useState(1000);
+  const [monthlyGoal, setMonthlyGoal] = useState(2000);
   const [animatedEarnings, setAnimatedEarnings] = useState(0);
   const [animatedCommission, setAnimatedCommission] = useState(0);
-  const [animatedReferrals, setAnimatedReferrals] = useState(0);
+  const [animatedRestaurants, setAnimatedRestaurants] = useState(0);
+  const [currentTier, setCurrentTier] = useState("Starter");
 
-  // Commission rate (15% example)
-  const commissionRate = 0.15;
-  const avgOrderValue = 900; // Average pizza order value per restaurant per month
-
-  // Calculate metrics
-  const requiredReferrals = Math.ceil(
-    monthlyGoal / (avgOrderValue * commissionRate)
-  );
-  const dailyReferrals = Math.ceil(requiredReferrals / 30) * 3;
-  const yearlyEarnings = monthlyGoal * 12;
+  // Memoize the requirements calculation to prevent unnecessary re-renders
+  const requirements = useMemo(() => calculateRequirements(monthlyGoal), [monthlyGoal]);
 
   // Animate numbers when goal changes
   useEffect(() => {
@@ -32,69 +33,41 @@ export default function AffiliateHowMuchDoYouWantToEarn() {
       const easeOutQuart = 1 - Math.pow(1 - progress, 4);
 
       setAnimatedEarnings(Math.floor(monthlyGoal * easeOutQuart));
-      setAnimatedCommission(
-        Math.floor(monthlyGoal * commissionRate * easeOutQuart)
-      );
-      setAnimatedReferrals(Math.floor(requiredReferrals * easeOutQuart));
+      setAnimatedCommission(Math.floor(requirements.effectiveCommission * 100 * easeOutQuart));
+      setAnimatedRestaurants(Math.floor(requirements.requiredRestaurants * easeOutQuart));
+      setCurrentTier(requirements.tier);
 
       currentStep++;
 
       if (currentStep > steps) {
         clearInterval(timer);
         setAnimatedEarnings(monthlyGoal);
-        setAnimatedCommission(Math.floor(monthlyGoal * commissionRate));
-        setAnimatedReferrals(requiredReferrals);
+        setAnimatedCommission(Math.floor(requirements.effectiveCommission * 100));
+        setAnimatedRestaurants(requirements.requiredRestaurants);
       }
     }, stepDelay);
 
     return () => clearInterval(timer);
-  }, [monthlyGoal, requiredReferrals]);
-
-  const formatCurrency = (amount) => {
-    return new Intl.NumberFormat("pl-PL", {
-      style: "currency",
-      currency: "PLN",
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }).format(amount);
-  };
-
-  const getMotivationalMessage = () => {
-    if (monthlyGoal < 2000) return "Świetny początek! 🚀";
-    if (monthlyGoal < 5000) return "Ambitny cel! 💪";
-    if (monthlyGoal < 10000) return "Myślisz jak przedsiębiorca! 🔥";
-    return "Poziom CEO! 👑";
-  };
+  }, [monthlyGoal, requirements.effectiveCommission, requirements.requiredRestaurants, requirements.tier]);
 
   return (
-    <div className="mt-24 rounded-xl relative py-16 lg:py-24 bg-gradient-to-br from-orange-50 to-yellow-50 overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-gradient-to-br from-orange-200/30 to-yellow-200/30 rounded-full animate-pulse"></div>
+    <div className="relative py-16 lg:py-24 bg-gradient-to-br from-white to-orange-50 overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 pointer-events-none">
         <div
-          className="absolute -bottom-24 -left-24 w-96 h-96 bg-gradient-to-tr from-orange-200/20 to-yellow-200/20 rounded-full animate-pulse"
-          style={{ animationDelay: "1s" }}
+          className="absolute top-20 right-10 w-36 h-36 rounded-full opacity-5 animate-bounce-gentle"
+          style={{
+            background: "linear-gradient(135deg, #ffa920 0%, #ff8f00 100%)",
+            animationDelay: "0s",
+          }}
         ></div>
-
-        {/* Moving pizza icons */}
         <div
-          className="absolute top-20 left-10 w-8 h-8 text-orange-300 animate-bounce"
-          style={{ animationDelay: "0.5s" }}
-        >
-          🍕
-        </div>
-        <div
-          className="absolute top-40 right-20 w-8 h-8 text-orange-300 animate-bounce"
-          style={{ animationDelay: "1.5s" }}
-        >
-          🍕
-        </div>
-        <div
-          className="absolute bottom-20 left-20 w-8 h-8 text-orange-300 animate-bounce"
-          style={{ animationDelay: "2s" }}
-        >
-          🍕
-        </div>
+          className="absolute bottom-32 left-16 w-28 h-28 opacity-8 rotate-45 animate-bounce-gentle"
+          style={{
+            background: "linear-gradient(135deg, #ffca28 0%, #ffa920 100%)",
+            animationDelay: "1.5s",
+          }}
+        ></div>
       </div>
 
       <div className="relative z-10 mx-auto w-[90%] lg:w-4/5 xl:w-3/4 2xl:w-2/3">
@@ -103,8 +76,7 @@ export default function AffiliateHowMuchDoYouWantToEarn() {
             Ile chcesz zarabiać miesięcznie?
           </h2>
           <p className="text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
-            Ustaw swój cel finansowy, a pokażemy Ci, ile polecanych zamówień
-            potrzebujesz
+            Ustaw swój cel finansowy, a pokażemy Ci, ile restauracji potrzebujesz zaprosić
           </p>
         </div>
 
@@ -121,23 +93,23 @@ export default function AffiliateHowMuchDoYouWantToEarn() {
                 <div className="relative mb-6">
                   <input
                     type="range"
-                    min="1000"
-                    max="20000"
-                    step="500"
+                    min="2000"
+                    max="320000"
+                    step="1000"
                     value={monthlyGoal}
                     onChange={(e) => setMonthlyGoal(parseInt(e.target.value))}
                     className="w-full h-3 bg-gradient-to-r from-orange-200 to-yellow-200 rounded-lg appearance-none cursor-pointer slider"
                     style={{
                       background: `linear-gradient(to right, #ffa920 0%, #ffa920 ${
-                        ((monthlyGoal - 1000) / 19000) * 100
+                        ((monthlyGoal - 2000) / 318000) * 100
                       }%, #f3f4f6 ${
-                        ((monthlyGoal - 1000) / 19000) * 100
+                        ((monthlyGoal - 2000) / 318000) * 100
                       }%, #f3f4f6 100%)`,
                     }}
                   />
                   <div className="flex justify-between text-sm text-gray-500 mt-2">
-                    <span>1 000 PLN</span>
-                    <span>20 000 PLN</span>
+                    <span>2 000 PLN</span>
+                    <span>320 000 PLN</span>
                   </div>
                 </div>
 
@@ -149,7 +121,7 @@ export default function AffiliateHowMuchDoYouWantToEarn() {
                     </span>
                   </div>
                   <p className="text-lg text-gray-600 mt-2 font-medium">
-                    {getMotivationalMessage()}
+                    {getMotivationalMessage(monthlyGoal)}
                   </p>
                 </div>
               </div>
@@ -175,50 +147,43 @@ export default function AffiliateHowMuchDoYouWantToEarn() {
 
           {/* Right side - Calculations Display */}
           <div className="space-y-6">
-            {/* Monthly Stats Card */}
-            <div className="bg-white/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl border-l-4 border-orange-400 transform transition-all duration-500 hover:scale-105">
+            {/* Current Tier Card */}
+            <div className={`bg-white/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl border-l-4 border-orange-400 transform transition-all duration-500 hover:scale-105 ${getTierBgColor(currentTier)}`}>
               <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
-                <span className="mr-2">📊</span>
-                Statystyki miesięczne
+                <span className="mr-2">🏆</span>
+                Twój poziom partnerski
               </h3>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="text-center p-4 bg-orange-50 rounded-xl">
-                  <div className="text-2xl lg:text-3xl font-bold text-orange-600 tabular-nums">
-                    {animatedReferrals}
-                  </div>
-                  <div className="text-sm text-gray-600 font-medium">
-                    Zdobyte restauracje
-                  </div>
+              <div className="text-center">
+                <div className={`text-3xl lg:text-4xl font-bold ${getTierColor(currentTier)}`}>
+                  {currentTier}
                 </div>
-                <div className="text-center bg-green-50 rounded-xl">
-                  <div className="text-2xl lg:text-3xl font-bold text-green-600 tabular-nums">
-                    {Math.floor(animatedCommission)}%
-                  </div>
-                  <div className="text-sm text-gray-600 font-medium">
-                    Twoja prowizja
-                  </div>
+                <div className="text-2xl font-bold text-orange-600 mt-2">
+                  {animatedCommission}%
                 </div>
+                <p className="text-sm text-gray-600 font-medium mt-1">
+                  Twoja prowizja
+                </p>
               </div>
             </div>
 
-            {/* Daily Goals Card */}
+            {/* Required Restaurants Card */}
             <div className="bg-white/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl border-l-4 border-blue-400 transform transition-all duration-500 hover:scale-105">
               <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
-                <span className="mr-2">⏰</span>
-                Cele dzienne
+                <span className="mr-2">🍕</span>
+                Restauracje do zaproszenia
               </h3>
-              <div className="flex items-center justify-between">
-                <span className="text-gray-700 font-medium">
-                  Polecenia dziennie:
-                </span>
-                <span className="text-3xl font-bold text-blue-600 tabular-nums">
-                  ~{dailyReferrals}
-                </span>
-              </div>
-              <div className="mt-4 bg-blue-50 p-3 rounded-xl">
-                <p className="text-sm text-blue-700">
-                  To tylko <strong>{dailyReferrals} polecenia</strong> dziennie!
+              <div className="text-center">
+                <div className="text-3xl lg:text-4xl font-bold text-blue-600 tabular-nums">
+                  {animatedRestaurants}
+                </div>
+                <p className="text-sm text-gray-600 font-medium mt-1">
+                  Restauracji potrzebujesz
                 </p>
+                <div className="mt-3 bg-blue-50 p-3 rounded-xl">
+                  <p className="text-sm text-blue-700">
+                    ~{Math.ceil(animatedRestaurants / 30)} restauracji miesięcznie przez {Math.ceil(animatedRestaurants / Math.ceil(animatedRestaurants / 30))} miesięcy
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -230,7 +195,7 @@ export default function AffiliateHowMuchDoYouWantToEarn() {
               </h3>
               <div className="text-center">
                 <div className="text-3xl lg:text-4xl font-bold text-purple-600 tabular-nums">
-                  {formatCurrency(yearlyEarnings)}
+                  {formatCurrency(requirements.yearlyEarnings)}
                 </div>
                 <p className="text-purple-700 font-medium mt-2">
                   Potencjalny zarobek rocznie
@@ -244,15 +209,16 @@ export default function AffiliateHowMuchDoYouWantToEarn() {
         <div className="text-center mt-12">
           <div className="bg-gradient-to-r from-orange-500 to-yellow-500 p-8 rounded-3xl text-white shadow-2xl">
             <h3 className="text-2xl lg:text-3xl font-bold mb-4">
-              Gotowy na start? 🏁
+              Zacznij już dziś! 🏁
             </h3>
             <p className=" font-cocosharp font-light !text-white text-lg mb-6 opacity-90">
               Dołącz do naszego programu partnerskiego i zacznij zarabiać już
               dziś!
             </p>
-            <button className="bg-white text-orange-600 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-orange-50 transition-all duration-300 transform hover:scale-105 shadow-lg">
+             
+            <Link href="/register?affiliate=true" className="bg-white text-orange-600 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-orange-50 transition-all duration-300 transform hover:scale-105 shadow-lg">
               Rozpocznij teraz
-            </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -280,8 +246,8 @@ export default function AffiliateHowMuchDoYouWantToEarn() {
           width: 24px;
           border-radius: 50%;
           background: linear-gradient(135deg, #ffa920, #ff8f00);
-          cursor: pointer;
           border: none;
+          cursor: pointer;
           box-shadow: 0 4px 12px rgba(255, 169, 32, 0.4);
         }
       `}</style>

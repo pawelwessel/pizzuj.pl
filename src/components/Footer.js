@@ -3,12 +3,14 @@ import Link from "next/link";
 import pizzuj from "../../public/assets/pizzuj2.png";
 import { createLinkFromText } from "../lib/createLinkFromText";
 import { ShinyAffiliateInvite } from "./ShinyAffiliateInvite";
+import { FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa6";
+import { ptSans } from "../app/layout";
 
 export const Footer = () => {
   const links = [
     {
       title: "Pakiety premium",
-      href: "/advertise",
+      href: "/reklama-dla-pizzerii",
     },
     {
       title: "Regulamin",
@@ -28,6 +30,8 @@ export const Footer = () => {
     },
     { title: "O nas", href: "/about" },
     { title: "System afiliacyjny", href: "/affiliate" },
+    { title: "Status strony", href: "/website-status" },
+    { title: "Admin", href: "/admin-login" },
   ];
 
   return (
@@ -55,7 +59,7 @@ export const Footer = () => {
                 />
               </div>
 
-              <p className="font-body !text-gray-300 text-base lg:text-lg leading-relaxed max-w-md">
+              <p className="font-cocosharp font-light !text-white text-base lg:text-lg leading-relaxed max-w-md">
                 Najlepsza platforma do znajdowania i oceniania pizzerii w
                 Polsce. Dołącz do społeczności miłośników pizzy!
               </p>
@@ -65,19 +69,19 @@ export const Footer = () => {
                   href="tel:+48721417154"
                   className="group flex items-center gap-3 !text-gray-300 hover:text-primary-300 transition-colors duration-200"
                 >
-                  <span className="text-primary-400 group-hover:text-primary-300">
+                  <span className="">
                     📞
                   </span>
-                  <span className="font-body">+48 721 417 154</span>
+                  <span className="">+48 721 417 154</span>
                 </a>
                 <a
                   href="mailto:wesiudev@gmail.com"
                   className="group flex items-center gap-3 !text-gray-300 hover:text-primary-300 transition-colors duration-200"
                 >
-                  <span className="text-primary-400 group-hover:text-primary-300">
+                  <span className="">
                     ✉️
                   </span>
-                  <span className="font-body">wesiudev@gmail.com</span>
+                  <span className="">wesiudev@gmail.com</span>
                 </a>
               </div>
             </div>
@@ -92,7 +96,7 @@ export const Footer = () => {
                   <li key={link.title}>
                     <Link
                       href={link.href}
-                      className="group relative inline-block font-body !text-gray-300 hover:!text-white transition-all duration-300"
+                      className="group relative inline-block  !text-gray-300 hover:!text-white transition-all duration-300"
                     >
                       <span className="relative z-10">{link.title}</span>
                       <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-400 to-primary-500 group-hover:w-full transition-all duration-300"></div>
@@ -112,7 +116,7 @@ export const Footer = () => {
                   <li key={link.title}>
                     <Link
                       href={link.href}
-                      className="group relative inline-block font-body !text-gray-300 hover:!text-white transition-all duration-300"
+                      className="group relative inline-block  !text-gray-300 hover:!text-white transition-all duration-300"
                       {...(link.href.startsWith("http") && {
                         target: "_blank",
                         rel: "noopener noreferrer",
@@ -131,17 +135,17 @@ export const Footer = () => {
           <div className="pt-8 border-t border-gray-700/50">
             <div className="flex flex-col md:flex-row justify-between items-center gap-6">
               <div className="text-center md:text-left">
-                <p className="font-body !text-gray-400 text-sm lg:text-base">
+                <p className="font-cocosharp !text-gray-400 text-sm lg:text-base">
                   &copy; 2025 Pizzuj.pl - Wszelkie prawa zastrzeżone
                 </p>
-                <p className="font-body !text-gray-500 text-xs lg:text-sm mt-1">
+                <p className={`!text-gray-500 text-xs lg:text-sm mt-1 ${ptSans.className}`}>
                   Stworzone z ❤️ dla miłośników pizzy
                 </p>
               </div>
 
               {/* Social links or additional info */}
               <div className="flex items-center gap-4">
-                <div className="text-gray-500 text-xs lg:text-sm font-body">
+                <div className={`text-gray-500 text-xs lg:text-sm ${ptSans.className}`}>
                   Śledź nas:
                 </div>
                 <Link
@@ -151,7 +155,7 @@ export const Footer = () => {
                   className="w-10 h-10 rounded-full bg-gray-700 hover:bg-primary-600 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
                 >
                   <span className="!text-gray-300 group-hover:!text-white text-lg">
-                    f
+                    <FaFacebook/>
                   </span>
                 </Link>
                 <Link
@@ -159,16 +163,26 @@ export const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full bg-gray-700 hover:bg-primary-600 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
+                  >
+                  <span className="!text-gray-300 group-hover:!text-white text-lg">
+                    <FaTiktok/>
+                  </span>
+                </Link>
+                  <Link
+                  href="https://www.instagram.com/pizzuj_pl/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-gray-700 hover:bg-primary-600 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
                 >
                   <span className="!text-gray-300 group-hover:!text-white text-lg">
-                    t
+                    <FaInstagram/>
                   </span>
                 </Link>
               </div>
             </div>
           </div>
         </div>
-        <ShinyAffiliateInvite />
+        {/* <ShinyAffiliateInvite /> */}
       </div>
     </footer>
   );

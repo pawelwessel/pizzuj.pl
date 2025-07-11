@@ -36,7 +36,7 @@ export default function ProductsMobile({
           </Link>
           <Link
             onClick={closeMobileMenu}
-            href="/advertise"
+            href="/reklama-dla-pizzerii"
             className="!text-white text-base hover:text-yellow-500"
           >
             Pakiety premium

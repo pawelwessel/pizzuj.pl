@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { FaCode, FaPizzaSlice, FaMapMarkerAlt } from "react-icons/fa";
 import profileAccent from "../../../public/assets/asset4.png";
+import { ptSans } from "../../app/layout";
 
 export default function AboutProfile() {
   return (
@@ -17,9 +18,9 @@ export default function AboutProfile() {
           <div className="order-2 lg:order-1">
             <div className="bg-gradient-to-br from-gray-50 to-white p-8 lg:p-10 rounded-2xl shadow-lg border border-gray-100">
               <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-6 font-gothic">
-                Cześć, jestem <span className="text-[#ec7308]">Paweł</span>!
+                Cześć, jestem <span className="text-[#ffa920]">Paweł</span>!
               </h2>
-              <p className="text-gray-700 text-lg leading-relaxed mb-6">
+              <p className={`text-gray-700 text-lg leading-relaxed mb-6 ${ptSans.className}`}>
                 Jestem programistą z kilkuletnim doświadczeniem, ale moją
                 prawdziwą pasją jest również pizza.
               </p>
@@ -32,7 +33,7 @@ export default function AboutProfile() {
                     <h3 className="font-semibold text-gray-900 font-gothic">
                       Programista
                     </h3>
-                    <p className="text-gray-700 text-sm">
+                    <p className="text-gray-700 text-sm font-cocosharp font-light">
                       Kilkuletnie doświadczenie w technologii
                     </p>
                   </div>
@@ -45,7 +46,7 @@ export default function AboutProfile() {
                     <h3 className="font-semibold text-gray-900 font-gothic">
                       Pasjonat pizzy
                     </h3>
-                    <p className="text-gray-700 text-sm">
+                    <p className="text-gray-700 text-sm font-cocosharp font-light">
                       Specjalista ds. mięs i ciasta
                     </p>
                   </div>
@@ -58,7 +59,7 @@ export default function AboutProfile() {
                     <h3 className="font-semibold text-gray-900 font-gothic">
                       Tutti Santi, Grudziądz
                     </h3>
-                    <p className="text-gray-700 text-sm">
+                    <p className="text-gray-700 text-sm font-cocosharp font-light">
                       Tam pogłębiłem zamiłowanie do sztuki pizzy
                     </p>
                   </div>

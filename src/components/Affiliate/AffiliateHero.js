@@ -12,7 +12,7 @@ import accent1 from "../../../public/assets/asset7.png";
 
 export default function AffiliateHero() {
   const highlights = [
-    { icon: FaMoneyBillWave, text: "Do 15% prowizji", color: "text-green-500" },
+    { icon: FaMoneyBillWave, text: "Do 20% prowizji", color: "text-green-500" },
     {
       icon: FaChartLine,
       text: "Transparentne rozliczenia",
@@ -120,7 +120,7 @@ export default function AffiliateHero() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 lg:gap-6">
               <Link
-                href="/register"
+                href="/register?affiliate=true"
                 className="group relative inline-flex items-center gap-3 px-8 lg:px-12 py-4 lg:py-5 bg-[#ffa920] hover:bg-[#ff8f00] !text-white font-heading font-semibold text-lg lg:text-xl rounded-full transition-all duration-300 ease-out transform hover:scale-105 hover:shadow-golden-lg shadow-golden"
               >
                 <span className="relative z-10">Dołącz teraz</span>

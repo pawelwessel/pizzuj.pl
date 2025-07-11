@@ -14,7 +14,7 @@ export default function AffiliateBenefits() {
       icon: FaMoneyBillWave,
       title: "Wysokie prowizje",
       description:
-        "Zarabiaj do 15% ze zdobytej restauracji - jedna z najwyższych stawek na rynku",
+        "Zarabiaj do 20% ze zdobytej restauracji - jedna z najwyższych stawek na rynku",
       color: "text-green-500",
       bgColor: "bg-green-50",
     },
@@ -151,7 +151,7 @@ export default function AffiliateBenefits() {
         <div className="text-center mt-12 lg:mt-16">
           <div className="glass bg-gradient-to-r from-[#ffa920]/10 to-[#ec7308]/10 backdrop-blur-xl p-8 lg:p-12 rounded-3xl border border-[#ffa920]/20 shadow-large">
             <h3 className="text-2xl lg:text-3xl font-bold text-gray-800 mb-4">
-              Gotowy na start?
+              Chcesz zarabiać z nami?
             </h3>
             <p className={`text-lg text-gray-600 mb-6 ${ptSans.className}`}>
               Dołącz do grona naszych partnerów i rozpocznij zarabianie już

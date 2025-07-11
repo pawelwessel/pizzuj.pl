@@ -1,21 +1,17 @@
 import Image from "next/image";
-import Link from "next/link";
 import { FaLocationArrow, FaStar } from "react-icons/fa6";
 import { MdLocationPin } from "react-icons/md";
-import { createLinkFromText } from "../../lib/createLinkFromText";
 
-export default function PizzaPlaceCard({ place }) {
+export default function PizzaPlaceCard({ place, onCardClick }) {
   const photoUrl = place.photos?.[0]?.photo_reference
     ? `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${place.photos[0].photo_reference}&key=${process.env.NEXT_PUBLIC_FIREBASE_MAP_KEY}`
     : "/assets/pizza.png";
 
   return (
     <div className={`${!place.photos[0] ? "hidden" : ""} px-3 lg:px-4`}>
-      <Link
-        href={`/pizza/${createLinkFromText(place.city)}/${createLinkFromText(
-          place.name
-        )}`}
-        className="block group"
+      <button
+        onClick={() => onCardClick(place)}
+        className="block group w-full text-left"
       >
         <div className="card-hover bg-white rounded-2xl lg:rounded-3xl overflow-hidden shadow-large hover:shadow-golden-lg border border-white/20 transition-all duration-300 group-hover:scale-[1.02]">
           {/* Image container */}
@@ -75,7 +71,7 @@ export default function PizzaPlaceCard({ place }) {
             </div>
           </div>
         </div>
-      </Link>
+      </button>
     </div>
   );
 }

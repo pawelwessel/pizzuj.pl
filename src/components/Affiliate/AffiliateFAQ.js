@@ -10,7 +10,7 @@ export default function AffiliateFAQ() {
     {
       question: "Jak szybko mogę zacząć zarabiać?",
       answer:
-        "Po rejestracji i zatwierdzeniu konta (do 24h) możesz natychmiast zacząć promować pizzerie. Pierwsze prowizje otrzymasz po pierwszych zamówieniach złożonych przez Twoje polecenia.",
+        "Po rejestracji i zatwierdzeniu konta (do 24h) możesz natychmiast zacząć zdobywać pizzerie. Pierwsze prowizje otrzymasz po pierwszej pomyślnie zaproszonej restauracji, która kupiła Pakiet Premium lub Pakiet Enterprise.",
     },
     {
       question: "Czy są jakieś opłaty za udział w programie?",
@@ -20,7 +20,12 @@ export default function AffiliateFAQ() {
     {
       question: "Jak są naliczane prowizje?",
       answer:
-        "Prowizje są naliczane od wartości zamówienia (bez kosztów dostawy) i zależą od poziomu partnerskiego. Śledzenie jest w czasie rzeczywistym w Twoim panelu.",
+        "Prowizje dzielimy na 4 poziomy: Starter (10%) dla 0-15 restauracji, Silver (12%) dla 16-30 restauracji, Gold (15%) dla 31-100 restauracji i VIP (20%) dla 101+ restauracji. Im więcej restauracji zdobędziesz, tym wyższa prowizja.",
+    },
+    {
+      question: "Ile restauracji potrzebuję, żeby zarabiać X złotych?",
+      answer:
+        "Użyj naszego kalkulatora na stronie, aby sprawdzić dokładne obliczenia. Przykład: aby zarabiać 5000 zł miesięcznie, potrzebujesz około 42 restauracji na poziomie Gold (15% prowizji). Każda restauracja generuje 1000 zł.",
     },
     {
       question: "Kiedy otrzymam wypłatę prowizji?",
@@ -28,24 +33,29 @@ export default function AffiliateFAQ() {
         "Wypłaty realizujemy co 2 tygodnie na podane przez Ciebie konto bankowe. Nie ma minimalnych progów - wypłacamy każdą naliczoną prowizję.",
     },
     {
-      question: "Czy mogę promować wszystkie pizzerie?",
+      question: "Czy mogę odwiedzać wszystkie pizzerie?",
       answer:
-        "Tak, jako partner masz dostęp do linków do wszystkich pizzerii w naszej bazie. Możesz wybierać te, które najlepiej pasują do Twojej grupy odbiorców.",
+        "Tak, jako nasz partner możesz werbować restauracje do naszej platformy odwiedzając je w rzeczywistości. W zamian za to otrzymujesz prowizję.",
     },
     {
       question: "Jak długo są ważne moje linki partnerskie?",
       answer:
-        "Linki partnerskie są ważne przez 30 dni od kliknięcia. Jeśli użytkownik złoży zamówienie w tym okresie, otrzymasz prowizję.",
+        "Linki partnerskie nie tracą ważności. Jeśli restauracja zakupi pakiet w tym okresie, otrzymasz prowizję.",
     },
     {
-      question: "Czy mogę polecać pizzerie znajomym i rodzinie?",
+      question: "Czy mogę awansować na wyższy poziom?",
       answer:
-        "Oczywiście! Polecanie znajomym i rodzinie to świetny sposób na start. Pamiętaj tylko, żeby zawsze używać swoich unikalnych linków partnerskich.",
+        "Tak! Po osiągnięciu odpowiedniej liczby restauracji automatycznie awansujesz na wyższy poziom z lepszymi prowizjami. Starter → Silver (16 restauracji), Silver → Gold (31 restauracji), Gold → VIP (101 restauracji).",
     },
     {
-      question: "Jak mogę śledzić swoje wyniki?",
+      question: "Co się dzieje z moimi prowizjami po awansie?",
       answer:
-        "W panelu partnerskim masz dostęp do szczegółowych statystyk: liczba kliknięć, konwersje, naliczone prowizje, historia wypłat i więcej.",
+        "Po awansie na wyższy poziom wszystkie Twoje restauracje automatycznie otrzymują nową, wyższą prowizję. Nie tracisz żadnych wcześniejszych zarobków.",
+    },
+    {
+      question: "Jakie są limity zarobków?",
+      answer:
+        "Nie ma górnych limitów zarobków! Możesz zarabiać od 2000 zł do 320 000 zł miesięcznie, w zależności od liczby zdobytych restauracji i poziomu partnerskiego.",
     },
   ];
 
@@ -169,13 +179,13 @@ export default function AffiliateFAQ() {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
-                href="mailto:partner@pizzuj.pl"
+                href="mailto:wesiudev@gmail.com"
                 className="group inline-flex items-center gap-3 px-8 py-4 bg-[#ffa920] hover:bg-[#ff8f00] !text-white font-heading font-semibold text-lg rounded-full transition-all duration-300 ease-out transform hover:scale-105 hover:shadow-golden-lg shadow-golden"
               >
                 <span>Napisz do nas</span>
               </a>
               <span className="text-sm text-gray-500">
-                lub zadzwoń: +48 123 456 789
+                lub zadzwoń: +48 721 417 154
               </span>
             </div>
           </div>

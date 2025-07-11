@@ -1,14 +1,14 @@
 "use client";
-import loginImage from "../../../public/assets/pizzar.jpg";
+import loginImage from "../../../public/assets/1.jpg";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { auth } from "../../db/firebase";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { errorCatcher } from "../../lib/errorCatcher";
 import Link from "next/link";
 import GoogleAuthButton from "../../components/Auth/GoogleButton";
-import { FaKey } from "react-icons/fa";
+import { FaKey, FaEye, FaEyeSlash, FaEnvelope, FaLock } from "react-icons/fa";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Image from "next/image";
 
@@ -16,13 +16,25 @@ export default function Login() {
   const [user, loading] = useAuthState(auth);
   const router = useRouter();
   const [isThinking, setThinking] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  
   const [userData, setUserData] = useState({
-    phoneNumber: "",
-    password: "",
-    passwordRepeat: "",
     email: "",
+    password: "",
   });
+
+  useEffect(() => {
+    if (user) {
+      router.push("/user");
+    }
+  }, [user]);
+
   function signIn() {
+    if (!userData.email || !userData.password) {
+      toast.error("Proszę wypełnić wszystkie pola");
+      return;
+    }
+
     setThinking(true);
     const id = toast.loading("Loguję...", {
       position: "top-right",
@@ -43,7 +55,7 @@ export default function Login() {
           "User";
 
         toast.update(id, {
-          render: `Hello ${displayName}! Zalogowano pomyślnie!`,
+          render: `Witaj ${displayName}! Zalogowano pomyślnie!`,
           type: "success",
           isLoading: false,
           autoClose: 3000,
@@ -63,90 +75,152 @@ export default function Login() {
     })();
   }
 
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      signIn();
+    }
+  };
+
   return (
-    <div className="pr-6 font-sans min-h-screen w-full bg-slug bg-cover bg-center mx-auto relative flex flex-col-reverse md:flex-row items-center justify-center">
-      <Image
-        src={loginImage}
-        className="w-full md:w-[33vw] lg:w-[50vw] h-full object-cover rounded-br-[69px] mt-6 md:mt-0"
-        alt="Login"
-        width={1024}
-        height={1024}
-        priority
-      />
-      <div className="w-full mx-auto md:w-[67vw] lg:w-[50vw] sm:px-2 sm:p-4 lg:p-6 h-full flex items-center justify-center">
-        <div className="w-full p-6 2xl:px-12 bg-white md:mx-6 2xl:mx-12">
-          <h2
-            className={`text-black py-3 pr-3 font-bold text-2xl lg:text-3xl drop-shadow-xl shadow-black mb-6 flex flex-row items-center`}
-          >
-            Zaloguj się na swoje konto
-          </h2>
-          <div className="grid grid-cols-1 gap-3 h-max">
-            <div className="flex flex-col">
-              {" "}
-              <label
-                htmlFor="email"
-                className="font-gotham text-black  font-light text-lg"
-              >
-                Email
-              </label>
-              <input
-                required
-                type="email"
-                id="email"
-                placeholder="Wpisz email"
-                value={userData.email}
-                onChange={(e) =>
-                  setUserData({ ...userData, email: e.target.value })
-                }
-                className="input-lg bg-white border border-gray-300 text-black p-3 text-lg mb-3 font-light rounded-xl"
-              />
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-50 flex items-center justify-center p-4">
+      <div className="max-w-6xl w-full grid lg:grid-cols-2 gap-8 items-center">
+        {/* Left Side - Image */}
+        <div className="hidden lg:block relative">
+          <div className="relative overflow-hidden rounded-3xl shadow-2xl">
+            <Image
+              src={loginImage}
+              alt="Pizzuj Login"
+              width={600}
+              height={800}
+              className="w-full h-[600px] object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+            <div className="absolute bottom-8 left-8 text-white">
+              <h1 className="text-4xl font-bold mb-2">Witaj w Pizzuj!</h1>
+              <p className="text-lg opacity-90 !text-white">Odkryj najlepsze pizzerie w Polsce</p>
             </div>
-            <div className="flex flex-col">
-              {" "}
-              <label
-                htmlFor="password"
-                className="font-gotham text-black  font-light text-lg"
-              >
+          </div>
+        </div>
+
+        {/* Right Side - Login Form */}
+        <div className="bg-white rounded-3xl shadow-xl p-8 lg:p-12 max-w-md mx-auto w-full">
+          {/* Header */}
+          <div className="text-center mb-8">
+            <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <FaKey className="text-white text-2xl" />
+            </div>
+            <h2 className="text-3xl font-bold text-gray-900 mb-2">
+              Zaloguj się
+            </h2>
+            <p className="text-gray-600">
+              Wróć do swojego konta Pizzuj
+            </p>
+          </div>
+
+          {/* Form */}
+          <form onSubmit={(e) => { e.preventDefault(); signIn(); }} className="space-y-6">
+            {/* Email Field */}
+            <div className="space-y-2">
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                Adres email
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <FaEnvelope className="h-5 w-5 text-gray-400" />
+                </div>
+                <input
+                  required
+                  type="email"
+                  id="email"
+                  placeholder="twoj@email.com"
+                  value={userData.email}
+                  onChange={(e) => setUserData({ ...userData, email: e.target.value })}
+                  onKeyPress={handleKeyPress}
+                  className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200"
+                />
+              </div>
+            </div>
+
+            {/* Password Field */}
+            <div className="space-y-2">
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
                 Hasło
               </label>
-              <input
-                required
-                type="password"
-                placeholder="Wpisz hasło"
-                id="password"
-                value={userData.password}
-                onChange={(e) =>
-                  setUserData({ ...userData, password: e.target.value })
-                }
-                className="input-lg bg-white border border-gray-300 text-black  p-3 text-lg mb-3 font-light rounded-xl"
-              />
-            </div>
-          </div>{" "}
-          <div className="md:mt-6 grid grid-cols-1 gap-3 w-full">
-            <div className="flex flex-col md:flex-row items-center gap-3">
-              <button
-                disabled={isThinking}
-                onClick={signIn}
-                className="md:w-max w-[279px] max-w-full px-6 py-3.5 rounded-br-xl rounded-tl-xl disabled:bg-gray-600 goldenShadow hover:bg-opacity-80 duration-150 !text-white font-bold"
-              >
-                {!isThinking && (
-                  <div className="flex flex-row items-center justify-center">
-                    <FaKey className="mr-2" /> Zaloguj się
-                  </div>
-                )}
-                {isThinking && "Poczekaj..."}
-              </button>
-              <div className="my-2 text-gray-700 text-lg">
-                Nie posiadasz jeszcze konta?{" "}
-                <Link
-                  href="/register"
-                  className="text-[#ffa920] underline hover:no-underline"
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <FaLock className="h-5 w-5 text-gray-400" />
+                </div>
+                <input
+                  required
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  placeholder="Wprowadź hasło"
+                  value={userData.password}
+                  onChange={(e) => setUserData({ ...userData, password: e.target.value })}
+                  onKeyPress={handleKeyPress}
+                  className="block w-full pl-10 pr-12 py-3 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
                 >
-                  Zarejestruj się
-                </Link>
+                  {showPassword ? (
+                    <FaEyeSlash className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                  ) : (
+                    <FaEye className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                  )}
+                </button>
               </div>
-              <GoogleAuthButton />
             </div>
+
+            {/* Login Button */}
+            <button
+              type="submit"
+              disabled={isThinking}
+              className="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-3 px-6 rounded-xl font-semibold hover:from-orange-600 hover:to-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-lg hover:shadow-xl"
+            >
+              {isThinking ? (
+                <div className="flex items-center justify-center">
+                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                  Logowanie...
+                </div>
+              ) : (
+                <div className="flex items-center justify-center">
+                  <FaKey className="mr-2" />
+                  Zaloguj się
+                </div>
+              )}
+            </button>
+          </form>
+
+          {/* Divider */}
+          <div className="relative my-8">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-gray-300"></div>
+            </div>
+            <div className="relative flex justify-center text-sm">
+              <span className="px-2 bg-white text-gray-500">lub</span>
+            </div>
+          </div>
+
+          {/* Google Auth */}
+          <div className="mb-6">
+            <GoogleAuthButton />
+          </div>
+
+          {/* Register Link */}
+          <div className="text-center">
+            <p className="text-gray-600">
+              Nie masz jeszcze konta?{" "}
+              <Link
+                href="/register"
+                className="font-semibold text-orange-600 hover:text-orange-700 transition-colors duration-200"
+              >
+                Zarejestruj się
+              </Link>
+            </p>
           </div>
         </div>
       </div>

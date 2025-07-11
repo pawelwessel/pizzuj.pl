@@ -3,7 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import PizzaPlaceCard from "./PizzaPlaceCard";
 
-export default function WarsawSectionSlider({ placesData }) {
+export default function WarsawSectionSlider({ placesData, onCardClick }) {
   const settings = {
     infinite: true,
     speed: 500,
@@ -34,10 +34,14 @@ export default function WarsawSectionSlider({ placesData }) {
   };
 
   return (
-    <div className="relative z-10 max-w-[1200px] mx-auto">
+    <div className="relative z-10 max-w-6xl mx-auto">
       <Slider {...settings}>
         {placesData?.map((place, index) => (
-          <PizzaPlaceCard key={index} place={place} />
+          <PizzaPlaceCard 
+            key={index} 
+            place={place} 
+            onCardClick={onCardClick}
+          />
         ))}
       </Slider>
     </div>

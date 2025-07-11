@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { FaArrowRight, FaPizzaSlice, FaUserPlus } from "react-icons/fa";
 import ctaAccent from "../../../public/assets/asset10.png";
+import { ptSans } from "../../app/layout";
 
 export default function AboutCallToAction() {
   return (
@@ -20,7 +21,9 @@ export default function AboutCallToAction() {
             <span className="text-[#ffa920]">Pizzuj.pl</span>
           </h2>
           <div className="h-1 w-32 bg-[#ffa920] rounded-full mx-auto mb-8" />
-          <p className="!text-white/90 text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed mb-10">
+          <p
+            className={`!text-white/90 text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed mb-10 ${ptSans.className}`}
+          >
             Rozpocznij swoją przygodę z najlepszymi pizzeriami w Polsce.
             Odkrywaj, oceniaj i dziel się swoimi doświadczeniami kulinarnymi.
           </p>
@@ -49,7 +52,7 @@ export default function AboutCallToAction() {
             <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
               <div className="text-3xl mb-3">🍕</div>
               <h3 className="!text-white font-bold text-lg mb-2">Odkrywaj</h3>
-              <p className="!text-white/80 text-sm">
+              <p className="!text-white/80 text-sm uppercase font-cocosharp">
                 Znajdź najlepsze pizzerie w swojej okolicy
               </p>
             </div>
@@ -57,7 +60,7 @@ export default function AboutCallToAction() {
             <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
               <div className="text-3xl mb-3">⭐</div>
               <h3 className="!text-white font-bold text-lg mb-2">Oceniaj</h3>
-              <p className="!text-white/80 text-sm">
+              <p className="!text-white/80 text-sm uppercase font-cocosharp">
                 Dziel się swoimi opiniami i doświadczeniami
               </p>
             </div>
@@ -67,7 +70,7 @@ export default function AboutCallToAction() {
               <h3 className="!text-white font-bold text-lg mb-2">
                 Społeczność
               </h3>
-              <p className="!text-white/80 text-sm">
+              <p className="!text-white/80 text-sm uppercase font-cocosharp">
                 Połącz się z innymi miłośnikami pizzy
               </p>
             </div>

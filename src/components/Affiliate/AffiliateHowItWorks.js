@@ -7,6 +7,7 @@ import {
 } from "react-icons/fa";
 import { ptSans } from "../../app/layout";
 import AffiliateHowMuchDoYouWantToEarn from "./AffiliateHowMuchDoYouWantToEarn";
+import Link from "next/link";
 
 export default function AffiliateHowItWorks() {
   const steps = [
@@ -56,7 +57,7 @@ export default function AffiliateHowItWorks() {
       description:
         "Otrzymuj prowizję z każdego zamówienia złożonego przez osoby, które kliknęły Twój link.",
       details: [
-        "Do 15% prowizji",
+        "Do 20% prowizji",
         "Wypłaty co 2 tygodnie",
         "Bez minimalnych progów",
       ],
@@ -101,7 +102,7 @@ export default function AffiliateHowItWorks() {
             Jak to <span className="text-[#ffa920]">działa</span>?
           </h2>
           <p
-            className={`text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed ${ptSans.className}`}
+            className={`!text-white text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed ${ptSans.className}`}
           >
             Prosty proces w 4 krokach, który pozwoli Ci zacząć zarabiać w ciągu
             kilku minut.
@@ -192,13 +193,13 @@ export default function AffiliateHowItWorks() {
             <p className={`text-lg !text-white mb-6 ${ptSans.className}`}>
               Tysiące naszych partnerów już zarabia. Dołącz do nich już dziś.
             </p>
-            <button className="group relative inline-flex items-center gap-3 px-8 lg:px-12 py-4 lg:py-5 bg-[#ffa920] hover:bg-[#ff8f00] !text-zinc-800 font-heading font-semibold text-lg lg:text-xl rounded-full transition-all duration-300 ease-out transform hover:scale-105 hover:shadow-golden-lg shadow-golden">
+            <Link href="/register?affiliate=true" className="group relative inline-flex items-center gap-3 px-8 lg:px-12 py-4 lg:py-5 bg-[#ffa920] hover:bg-[#ff8f00] !text-zinc-800 font-heading font-semibold text-lg lg:text-xl rounded-full transition-all duration-300 ease-out transform hover:scale-105 hover:shadow-golden-lg shadow-golden">
               <span className="relative z-10">Zacznij zarabiać</span>
               <FaArrowRight className="text-lg lg:text-xl transition-transform duration-300 group-hover:translate-x-1" />
 
               {/* Button effects */}
               <div className="absolute inset-0 bg-gradient-to-r from-primary-400 to-primary-600 rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-300 blur-xl"></div>
-            </button>
+            </Link>
           </div>
         </div>
       </div>

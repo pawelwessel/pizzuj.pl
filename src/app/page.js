@@ -26,14 +26,14 @@ export default async function Page() {
           />
         </div>
 
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-8 lg:px-16">
+        <div className="z-10 max-w-6xl mx-auto px-4 sm:px-8 lg:px-16">
           <div className="text-center space-y-8 lg:space-y-12">
             {/* Enhanced main heading */}
             <div className="space-y-6">
               <h2 className="font-cocosharp-bold-italic text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-800 leading-tight">
                 Zostań częścią{" "}
                 <span className="text-[#ffa920] font-cocosharp-bold-italic">
-                  naszej sieci
+                  naszej strony
                 </span>
               </h2>
             </div>
@@ -41,8 +41,8 @@ export default async function Page() {
             {/* Enhanced description */}
             <div className="max-w-4xl mx-auto space-y-6">
               <p className="font-cocosharp text-lg lg:text-xl text-gray-600 leading-relaxed">
-                Dołącz do naszej sieci i zyskaj nowych klientów. Wspólnie
-                zbudujemy najlepszą sieć pizz w Polsce.
+                Dołącz do naszej strony i zyskaj nowych klientów. Wspólnie
+                zbudujemy najlepszą platformę z pizzą!
               </p>
 
               <div className="glass bg-white/60 border border-primary-200/30 rounded-2xl lg:rounded-3xl p-6 lg:p-8 backdrop-blur-sm shadow-medium">
@@ -183,7 +183,7 @@ export const metadata = {
       type: "image/png",
     },
     {
-      url: "../../public/favicons/android-chrome-192x192.png",
+      url: "/favicons/android-chrome-192x192.png",
       sizes: "192x192",
       type: "image/png",
     },

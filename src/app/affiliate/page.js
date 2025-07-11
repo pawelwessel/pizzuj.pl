@@ -34,7 +34,7 @@ export const metadata = {
     type: "website",
     url: "https://pizzuj.pl/affiliate",
     title:
-      "Program Partnerski Pizzuj.pl | Zarabiaj z najlepszymi pizzeriami w Polsce",
+      "Sprzedawca w Pizzuj.pl | Zarabiaj z najlepszymi pizzeriami w Polsce",
     description:
       "Dołącz do programu partnerskiego Pizzuj.pl i zarabiaj prowizje polecając najlepsze pizzerie. Wysokie prowizje, łatwa rejestracja, transparentne rozliczenia.",
     siteName: "Pizzuj",
@@ -50,7 +50,7 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "Program Partnerski Pizzuj.pl | Zarabiaj z najlepszymi pizzeriami w Polsce",
+      "Sprzedawca w Pizzuj.pl | Zarabiaj z najlepszymi pizzeriami w Polsce",
     description:
       "Dołącz do programu partnerskiego Pizzuj.pl i zarabiaj prowizje polecając najlepsze pizzerie. Wysokie prowizje, łatwa rejestracja, transparentne rozliczenia.",
     images: ["https://pizzuj.pl/assets/pizza.png"],

@@ -16,21 +16,41 @@ export async function POST(req) {
       `${PLACES_TEXTSEARCH_URL}?query=pizza-${search}&key=${GOOGLE_API_KEY}`
     ).then((res) => res.json());
 
-    // Get detailed info for each place
+    // Get detailed info for each place, including 5 recent opinions (reviews) in Polish
     const detailedPlaces = await Promise.all(
       placesResponse.results.map(async (place) => {
+        // Request reviews in Polish by setting language=pl
         const detailsResponse = await fetch(
-          `${PLACE_DETAILS_URL}?place_id=${place.place_id}&fields=name,formatted_address,formatted_phone_number,opening_hours,photos,rating,reviews,website,price_level,user_ratings_total,geometry&key=${GOOGLE_API_KEY}`
+          `${PLACE_DETAILS_URL}?place_id=${place.place_id}&fields=name,formatted_address,formatted_phone_number,opening_hours,photos,rating,reviews,website,price_level,user_ratings_total,geometry&language=pl&key=${GOOGLE_API_KEY}`
         ).then((res) => res.json());
+
+        // Extract up to 5 most recent reviews (opinions) in Polish
+        let recentOpinions = [];
+        if (
+          detailsResponse.result &&
+          Array.isArray(detailsResponse.result.reviews)
+        ) {
+          // Filter reviews to only those in Polish (just in case), then sort and take the first 5
+          recentOpinions = detailsResponse.result.reviews
+            .filter((review) => review.language === "pl")
+            .sort((a, b) => b.time - a.time)
+            .slice(0, 5);
+        }
 
         return {
           ...place,
           details: detailsResponse.result,
           city: search,
           address: place.formatted_address,
+          recentOpinions, // add the 5 recent opinions in Polish
         };
       })
     );
+    console.log({
+      results: detailedPlaces,
+      status: placesResponse.status,
+      next_page_token: placesResponse.next_page_token,
+    })
     return NextResponse.json({
       results: detailedPlaces,
       status: placesResponse.status,

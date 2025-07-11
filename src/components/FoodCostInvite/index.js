@@ -40,15 +40,15 @@ export default function FoodCostInvite() {
               <div className="space-y-4">
                 <h2 className="font-cocosharp-bold-italic text-3xl sm:text-4xl lg:text-5xl text-gray-800 leading-tight">
                   Kalkuluj koszty{" "}
-                  <span className="text-primary-500 relative">
+                  <span className="text-[#ffa920] relative">
                     jak profesjonalista
                     <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-primary-400 to-primary-600 rounded-full transform -rotate-1"></div>
                   </span>
                 </h2>
-                <p className="font-cocosharp text-lg lg:text-xl text-gray-600 leading-relaxed">
+                <p className="font-cocosharp font-light text-lg lg:text-xl text-gray-600 leading-relaxed">
                   Zwiększ rentowność swojej pizzerii dzięki precyzyjnym
                   kalkulacjom kosztów żywności.
-                  <span className="font-semibold text-primary-600">
+                  <span className="font-semibold text-[#ffa920]">
                     {" "}
                     Za darmo!
                   </span>
@@ -77,22 +77,15 @@ export default function FoodCostInvite() {
               </div>
 
               {/* CTA Button */}
-              <div className="pt-4">
                 <Link href="/food-cost-calculator" className="group">
-                  <button className="relative overflow-hidden bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-zinc-800 font-cocosharp font-semibold px-8 py-4 rounded-2xl shadow-golden transition-all duration-300 transform hover:scale-105 hover:shadow-golden-lg">
-                    <span className="px-6 py-3 rounded-br-xl rounded-tl-xl text-white font-bold font-cocosharp text-nowrap bg-[#ffa920] relative z-10 flex items-center gap-2 text-lg">
+                    <span className="px-6 py-3 rounded-xl w-max max-w-full hover:scale-105 transition-all duration-300 text-white font-bold font-cocosharp text-nowrap bg-[#ffa920] relative z-10 flex items-center gap-2 text-lg">
                       Zacznij kalkulować
                       <span className="transform group-hover:translate-x-1 transition-transform duration-300">
                         →
                       </span>
                     </span>
-
-                    {/* Button shine effect */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-                  </button>
                 </Link>
               </div>
-            </div>
 
             {/* Right side - Visual element */}
             <div className="relative">
@@ -101,15 +94,15 @@ export default function FoodCostInvite() {
                 <div className="space-y-4">
                   <div className="bg-white rounded-2xl p-6 shadow-soft">
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-primary-400 to-primary-600 rounded-xl flex items-center justify-center text-white text-xl font-bold">
+                      <div className="flex items-center justify-center text-white text-4xl font-bold">
                         🍕
                       </div>
                       <div>
                         <h3 className="font-cocosharp font-semibold text-gray-800">
                           Pizza Margherita
                         </h3>
-                        <p className="text-sm text-gray-500">
-                          Koszt składników
+                        <p className="text-sm text-gray-500 font-cocosharp font-light uppercase">
+                          Koszt składników:
                         </p>
                       </div>
                     </div>
@@ -125,10 +118,10 @@ export default function FoodCostInvite() {
                           key={index}
                           className="flex justify-between items-center p-2 bg-gray-50 rounded-lg"
                         >
-                          <span className="text-sm text-gray-600">
+                          <span className="text-sm text-black font-cocosharp font-light">
                             {item.ingredient}
                           </span>
-                          <span className="text-sm font-semibold text-primary-600">
+                          <span className="text-sm font-semibold text-black font-cocosharp">
                             {item.cost}
                           </span>
                         </div>
