@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@keyframes slideBg {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.infinite-bg {
+  background: radial-gradient(circle at center, #91128770 0%, #47410867 100%);
+  background-size: 150% 100%;
+  animation: slideBg 6s linear infinite;
+  animation-direction: alternate;
+}

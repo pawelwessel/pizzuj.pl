@@ -49,9 +49,33 @@
 
 @font-face {
   font-family: "Cocosharp";
-  src: url("../../public/fonts/Italic.ttf") format("truetype");
+  src: url("../../public/fonts/Medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cocosharp";
+  src: url("../../public/fonts/MediumItalic.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cocosharp";
+  src: url("../../public/fonts/Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cocosharp";
+  src: url("../../public/fonts/BlackItalic.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic;
   font-display: swap;
 }
 

@@ -1,0 +1,102 @@
+[
+  {
+    "name": "Warszawa",
+    "slug": "warszawa",
+    "nominative": "Warszawa",
+    "accusative": "Warszawę",
+    "locative": "Warszawie",
+    "genitive": "Warszawy",
+    "dative": "Warszawie",
+    "instrumental": "Warszawą"
+  },
+  {
+    "name": "Kraków",
+    "slug": "krakow",
+    "nominative": "Kraków",
+    "accusative": "Kraków",
+    "locative": "Krakowie",
+    "genitive": "Krakowa",
+    "dative": "Krakowowi",
+    "instrumental": "Krakowem"
+  },
+  {
+    "name": "Łódź",
+    "slug": "lodz",
+    "nominative": "Łódź",
+    "accusative": "Łódź",
+    "locative": "Łodzi",
+    "genitive": "Łodzi",
+    "dative": "Łodzi",
+    "instrumental": "Łodzią"
+  },
+  {
+    "name": "Wrocław",
+    "slug": "wroclaw",
+    "nominative": "Wrocław",
+    "accusative": "Wrocław",
+    "locative": "Wrocławiu",
+    "genitive": "Wrocławia",
+    "dative": "Wrocławiowi",
+    "instrumental": "Wrocławiem"
+  },
+  {
+    "name": "Poznań",
+    "slug": "poznan",
+    "nominative": "Poznań",
+    "accusative": "Poznań",
+    "locative": "Poznaniu",
+    "genitive": "Poznania",
+    "dative": "Poznaniowi",
+    "instrumental": "Poznaniem"
+  },
+  {
+    "name": "Gdańsk",
+    "slug": "gdansk",
+    "nominative": "Gdańsk",
+    "accusative": "Gdańsk",
+    "locative": "Gdańsku",
+    "genitive": "Gdańska",
+    "dative": "Gdańskowi",
+    "instrumental": "Gdańskiem"
+  },
+  {
+    "name": "Szczecin",
+    "slug": "szczecin",
+    "nominative": "Szczecin",
+    "accusative": "Szczecin",
+    "locative": "Szczecinie",
+    "genitive": "Szczecina",
+    "dative": "Szczecinowi",
+    "instrumental": "Szczecinem"
+  },
+  {
+    "name": "Bydgoszcz",
+    "slug": "bydgoszcz",
+    "nominative": "Bydgoszcz",
+    "accusative": "Bydgoszcz",
+    "locative": "Bydgoszczy",
+    "genitive": "Bydgoszczy",
+    "dative": "Bydgoszczy",
+    "instrumental": "Bydgoszczą"
+  },
+  {
+    "name": "Lublin",
+    "slug": "lublin",
+    "nominative": "Lublin",
+    "accusative": "Lublin",
+    "locative": "Lublinie",
+    "genitive": "Lublina",
+    "dative": "Lublinowi",
+    "instrumental": "Lublinem"
+  },
+  {
+    "name": "Katowice",
+    "slug": "katowice",
+    "nominative": "Katowice",
+    "accusative": "Katowice",
+    "locative": "Katowicach",
+    "genitive": "Katowic",
+    "dative": "Katowicom",
+    "instrumental": "Katowicami"
+  }
+]
