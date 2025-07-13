@@ -1,18 +1,17 @@
 "use client";
 import { useEffect, useState, useCallback, useMemo } from "react";
 import { createLinkFromText } from "../../lib/createLinkFromText";
-import {
-  FaMagnifyingGlass,
-} from "react-icons/fa6";
+import { FaMagnifyingGlass } from "react-icons/fa6";
 import loading1 from "../../../public/assets/loading1.png";
 import loading2 from "../../../public/assets/loading2.png";
 import dynamic from "next/dynamic";
 
 // Dynamically import Image and useRouter to avoid SSR issues
 const Image = dynamic(() => import("next/image"), { ssr: false });
-const useRouter = typeof window !== "undefined"
-  ? require("next/navigation").useRouter
-  : () => null;
+const useRouter =
+  typeof window !== "undefined"
+    ? require("next/navigation").useRouter
+    : () => null;
 
 import { getDocument } from "../../db/firebase";
 
@@ -56,9 +55,13 @@ function FormClient({ loadingTexts }) {
   const currentLoadingText = useMemo(() => {
     if (state.isLoading) {
       const seconds = Math.floor(state.loadingTimer / 1000);
-      const milliseconds = (state.loadingTimer % 1000).toString().padStart(3, "0");
+      const milliseconds = (state.loadingTimer % 1000)
+        .toString()
+        .padStart(3, "0");
       return `${
-        loadingTexts[Math.floor(state.loadingTimer / 2000) % loadingTexts.length]
+        loadingTexts[
+          Math.floor(state.loadingTimer / 2000) % loadingTexts.length
+        ]
       } (${seconds},${milliseconds}s)`;
     }
     return state.loadingText;
@@ -69,13 +72,13 @@ function FormClient({ loadingTexts }) {
     let interval;
     if (state.loadingStarted) {
       interval = setInterval(() => {
-        setState(prev => ({
+        setState((prev) => ({
           ...prev,
-          loadingTimer: prev.loadingTimer + 100
+          loadingTimer: prev.loadingTimer + 100,
         }));
       }, 100);
     } else {
-      setState(prev => ({ ...prev, loadingTimer: 0 }));
+      setState((prev) => ({ ...prev, loadingTimer: 0 }));
     }
     return () => clearInterval(interval);
   }, [state.loadingStarted]);
@@ -83,20 +86,21 @@ function FormClient({ loadingTexts }) {
   // Loading text rotation effect
   useEffect(() => {
     const interval = setInterval(() => {
-      setState(prev => ({
+      setState((prev) => ({
         ...prev,
-        loadingText: loadingTexts[Math.floor(Math.random() * loadingTexts.length)]
+        loadingText:
+          loadingTexts[Math.floor(Math.random() * loadingTexts.length)],
       }));
     }, 3000);
     return () => clearInterval(interval);
   }, [loadingTexts]);
 
   const handleInputChange = useCallback((e) => {
-    setState(prev => ({ ...prev, searchTerm: e.target.value }));
+    setState((prev) => ({ ...prev, searchTerm: e.target.value }));
   }, []);
 
   const resetLoadingState = useCallback(() => {
-    setState(prev => ({
+    setState((prev) => ({
       ...prev,
       isLoading: false,
       loadingTimer: 0,
@@ -107,15 +111,18 @@ function FormClient({ loadingTexts }) {
 
   const handleSearch = useCallback(async () => {
     if (!state.searchTerm || state.searchTerm.trim() === "") {
-      setState(prev => ({ ...prev, error: "Proszę wpisać miasto." }));
+      setState((prev) => ({ ...prev, error: "Proszę wpisać miasto." }));
       return;
     }
     if (state.searchTerm.length < 3) {
-      setState(prev => ({ ...prev, error: "Miasto musi mieć co najmniej 3 znaki." }));
+      setState((prev) => ({
+        ...prev,
+        error: "Miasto musi mieć co najmniej 3 znaki.",
+      }));
       return;
     }
 
-    setState(prev => ({
+    setState((prev) => ({
       ...prev,
       isLoading: true,
       loadingStarted: true,
@@ -127,12 +134,14 @@ function FormClient({ loadingTexts }) {
         "pages",
         createLinkFromText(state.searchTerm)
       );
-      
+
       if (isExistingPage) {
         if (router && typeof router.push === "function") {
           router.push(`/pizza/${createLinkFromText(state.searchTerm)}`);
         } else if (typeof window !== "undefined") {
-          window.location.href = `/pizza/${createLinkFromText(state.searchTerm)}`;
+          window.location.href = `/pizza/${createLinkFromText(
+            state.searchTerm
+          )}`;
         }
         resetLoadingState();
         return;
@@ -143,21 +152,29 @@ function FormClient({ loadingTexts }) {
         if (router && typeof router.push === "function") {
           router.push(`/pizza/${createLinkFromText(state.searchTerm)}`);
         } else if (typeof window !== "undefined") {
-          window.location.href = `/pizza/${createLinkFromText(state.searchTerm)}`;
+          window.location.href = `/pizza/${createLinkFromText(
+            state.searchTerm
+          )}`;
         }
         resetLoadingState();
       }
     } catch (error) {
-      setState(prev => ({ ...prev, error: "Wystąpił błąd podczas wyszukiwania." }));
+      setState((prev) => ({
+        ...prev,
+        error: "Wystąpił błąd podczas wyszukiwania.",
+      }));
       resetLoadingState();
     }
   }, [state.searchTerm, router, resetLoadingState]);
 
-  const handleKeyDown = useCallback((e) => {
-    if (e.key === "Enter") {
-      handleSearch();
-    }
-  }, [handleSearch]);
+  const handleKeyDown = useCallback(
+    (e) => {
+      if (e.key === "Enter") {
+        handleSearch();
+      }
+    },
+    [handleSearch]
+  );
 
   return (
     <>
@@ -168,18 +185,22 @@ function FormClient({ loadingTexts }) {
               <>
                 <Image
                   src={loading1}
-                  alt="Wczytywanie najlepszej pizzy w twoim mieście w-full"
+                  alt="Animacja ładowania - wczytywanie najlepszej pizzy"
+                  aria-hidden="true"
                 />
                 <Image
                   src={loading2}
-                  alt="Pizza Warszawa"
+                  alt="Animacja ładowania - pizza"
                   style={{ transform: "scaleX(-1)" }}
                   className="absolute left-0 top-0 w-full"
+                  aria-hidden="true"
                 />
               </>
             )}
           </div>
-          <span className="text-sm lg:text-2xl font-bold">{currentLoadingText}</span>
+          <span className="text-sm lg:text-2xl font-bold">
+            {currentLoadingText}
+          </span>
           <div className="block">
             {state.loadingTimer}
             <span className="text-green-500">ms</span>
@@ -197,6 +218,9 @@ function FormClient({ loadingTexts }) {
           </div>
         )}
         <div className="max-w-full relative flex items-center">
+          <div id="search-help" className="sr-only">
+            Wpisz nazwę miasta, aby znaleźć najlepsze pizzerie w okolicy
+          </div>
           <input
             onChange={handleInputChange}
             value={state.searchTerm}
@@ -205,9 +229,12 @@ function FormClient({ loadingTexts }) {
             className="border border-zinc-800 border-r-0 rounded-l-xl font-sans placeholder:text-black/50 text-lg py-4 h-12 pl-4 bg-white/50 text-black w-full mx-auto"
             placeholder="Wpisz miasto"
             onKeyDown={handleKeyDown}
+            aria-label="Wyszukaj pizzerię w mieście"
+            aria-describedby="search-help"
           />
           <button
             onClick={handleSearch}
+            aria-label="Wyszukaj pizzerię"
             className="!text-white text-sm h-12 goldenShadow py-4 rounded-r-lg flex w-max mx-auto max-w-full items-center px-3"
           >
             <FaMagnifyingGlass className="w-6 h-6 mr-1" />

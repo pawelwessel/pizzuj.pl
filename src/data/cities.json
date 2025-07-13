@@ -98,5 +98,855 @@
     "genitive": "Katowic",
     "dative": "Katowicom",
     "instrumental": "Katowicami"
+  },
+  {
+    "name": "Grudziądz",
+    "slug": "grudziadz",
+    "nominative": "Grudziądz",
+    "accusative": "Grudziądz",
+    "locative": "Grudziądzu",
+    "genitive": "Grudziądza",
+    "dative": "Grudziądzowi",
+    "instrumental": "Grudziądzem"
+  },
+  {
+    "name": "Gniezno",
+    "slug": "gniezno",
+    "nominative": "Gniezno",
+    "accusative": "Gniezno",
+    "locative": "Gnieźnie",
+    "genitive": "Gniezna",
+    "dative": "Gnieznu",
+    "instrumental": "Gnieznem"
+  },
+  {
+    "name": "Toruń",
+    "slug": "torun",
+    "nominative": "Toruń",
+    "accusative": "Toruń",
+    "locative": "Toruniu",
+    "genitive": "Torunia",
+    "dative": "Toruniowi",
+    "instrumental": "Toruniem"
+  },
+  {
+    "name": "Białystok",
+    "slug": "bialystok",
+    "nominative": "Białystok",
+    "accusative": "Białystok",
+    "locative": "Białymstoku",
+    "genitive": "Białegostoku",
+    "dative": "Białemustokowi",
+    "instrumental": "Białymstokiem"
+  },
+  {
+    "name": "Gdynia",
+    "slug": "gdynia",
+    "nominative": "Gdynia",
+    "accusative": "Gdynię",
+    "locative": "Gdyni",
+    "genitive": "Gdyni",
+    "dative": "Gdyni",
+    "instrumental": "Gdynią"
+  },
+  {
+    "name": "Częstochowa",
+    "slug": "czestochowa",
+    "nominative": "Częstochowa",
+    "accusative": "Częstochowę",
+    "locative": "Częstochowie",
+    "genitive": "Częstochowy",
+    "dative": "Częstochowie",
+    "instrumental": "Częstochową"
+  },
+  {
+    "name": "Radom",
+    "slug": "radom",
+    "nominative": "Radom",
+    "accusative": "Radom",
+    "locative": "Radomiu",
+    "genitive": "Radomia",
+    "dative": "Radomiowi",
+    "instrumental": "Radomiem"
+  },
+  {
+    "name": "Sosnowiec",
+    "slug": "sosnowiec",
+    "nominative": "Sosnowiec",
+    "accusative": "Sosnowiec",
+    "locative": "Sosnowcu",
+    "genitive": "Sosnowca",
+    "dative": "Sosnowcowi",
+    "instrumental": "Sosnowcem"
+  },
+  {
+    "name": "Kielce",
+    "slug": "kielce",
+    "nominative": "Kielce",
+    "accusative": "Kielce",
+    "locative": "Kielcach",
+    "genitive": "Kielc",
+    "dative": "Kielcom",
+    "instrumental": "Kielcami"
+  },
+  {
+    "name": "Rzeszów",
+    "slug": "rzeszow",
+    "nominative": "Rzeszów",
+    "accusative": "Rzeszów",
+    "locative": "Rzeszowie",
+    "genitive": "Rzeszowa",
+    "dative": "Rzeszowowi",
+    "instrumental": "Rzeszowem"
+  },
+  {
+    "name": "Gliwice",
+    "slug": "gliwice",
+    "nominative": "Gliwice",
+    "accusative": "Gliwice",
+    "locative": "Gliwice",
+    "genitive": "Gliwice",
+    "dative": "Gliwice",
+    "instrumental": "Gliwice"
+  },
+  {
+    "name": "Zabrze",
+    "slug": "zabrze",
+    "nominative": "Zabrze",
+    "accusative": "Zabrze",
+    "locative": "Zabrzu",
+    "genitive": "Zabrza",
+    "dative": "Zabrzu",
+    "instrumental": "Zabrzem"
+  },
+  {
+    "name": "Bytom",
+    "slug": "bytom",
+    "nominative": "Bytom",
+    "accusative": "Bytom",
+    "locative": "Bytomiu",
+    "genitive": "Bytomia",
+    "dative": "Bytomiowi",
+    "instrumental": "Bytomiem"
+  },
+  {
+    "name": "Bielsko-Biała",
+    "slug": "bielsko-biala",
+    "nominative": "Bielsko-Biała",
+    "accusative": "Bielsko-Białą",
+    "locative": "Bielsku-Białej",
+    "genitive": "Bielska-Białej",
+    "dative": "Bielsku-Białej",
+    "instrumental": "Bielskiem-Białą"
+  },
+  {
+    "name": "Olsztyn",
+    "slug": "olsztyn",
+    "nominative": "Olsztyn",
+    "accusative": "Olsztyn",
+    "locative": "Olsztynie",
+    "genitive": "Olsztyna",
+    "dative": "Olsztynowi",
+    "instrumental": "Olsztynem"
+  },
+  {
+    "name": "Ruda Śląska",
+    "slug": "ruda-slaska",
+    "nominative": "Ruda Śląska",
+    "accusative": "Rudę Śląską",
+    "locative": "Rudzie Śląskiej",
+    "genitive": "Rudy Śląskiej",
+    "dative": "Rudzie Śląskiej",
+    "instrumental": "Rudą Śląską"
+  },
+  {
+    "name": "Rybnik",
+    "slug": "rybnik",
+    "nominative": "Rybnik",
+    "accusative": "Rybnik",
+    "locative": "Rybniku",
+    "genitive": "Rybnika",
+    "dative": "Rybnikowi",
+    "instrumental": "Rybnikiem"
+  },
+  {
+    "name": "Tychy",
+    "slug": "tychy",
+    "nominative": "Tychy",
+    "accusative": "Tychy",
+    "locative": "Tychach",
+    "genitive": "Tych",
+    "dative": "Tychom",
+    "instrumental": "Tychami"
+  },
+  {
+    "name": "Dąbrowa Górnicza",
+    "slug": "dabrowa-gornicza",
+    "nominative": "Dąbrowa Górnicza",
+    "accusative": "Dąbrowę Górniczą",
+    "locative": "Dąbrowie Górniczej",
+    "genitive": "Dąbrowy Górniczej",
+    "dative": "Dąbrowie Górniczej",
+    "instrumental": "Dąbrową Górniczą"
+  },
+  {
+    "name": "Płock",
+    "slug": "plock",
+    "nominative": "Płock",
+    "accusative": "Płock",
+    "locative": "Płocku",
+    "genitive": "Płocka",
+    "dative": "Płockowi",
+    "instrumental": "Płockiem"
+  },
+  {
+    "name": "Elbląg",
+    "slug": "elblag",
+    "nominative": "Elbląg",
+    "accusative": "Elbląg",
+    "locative": "Elblągu",
+    "genitive": "Elbląga",
+    "dative": "Elblągowi",
+    "instrumental": "Elblągiem"
+  },
+  {
+    "name": "Opole",
+    "slug": "opole",
+    "nominative": "Opole",
+    "accusative": "Opole",
+    "locative": "Opolu",
+    "genitive": "Opola",
+    "dative": "Opolu",
+    "instrumental": "Opolem"
+  },
+  {
+    "name": "Wałbrzych",
+    "slug": "walbrzych",
+    "nominative": "Wałbrzych",
+    "accusative": "Wałbrzych",
+    "locative": "Wałbrzychu",
+    "genitive": "Wałbrzycha",
+    "dative": "Wałbrzychowi",
+    "instrumental": "Wałbrzychem"
+  },
+  {
+    "name": "Gorzów Wielkopolski",
+    "slug": "gorzow-wielkopolski",
+    "nominative": "Gorzów Wielkopolski",
+    "accusative": "Gorzów Wielkopolski",
+    "locative": "Gorzowie Wielkopolskim",
+    "genitive": "Gorzowa Wielkopolskiego",
+    "dative": "Gorzowowi Wielkopolskiemu",
+    "instrumental": "Gorzowem Wielkopolskim"
+  },
+  {
+    "name": "Zielona Góra",
+    "slug": "zielona-gora",
+    "nominative": "Zielona Góra",
+    "accusative": "Zieloną Górę",
+    "locative": "Zielonej Górze",
+    "genitive": "Zielonej Góry",
+    "dative": "Zielonej Górze",
+    "instrumental": "Zieloną Górą"
+  },
+  {
+    "name": "Włocławek",
+    "slug": "wloclawek",
+    "nominative": "Włocławek",
+    "accusative": "Włocławek",
+    "locative": "Włocławku",
+    "genitive": "Włocławka",
+    "dative": "Włocławkowi",
+    "instrumental": "Włocławkiem"
+  },
+  {
+    "name": "Tarnów",
+    "slug": "tarnow",
+    "nominative": "Tarnów",
+    "accusative": "Tarnów",
+    "locative": "Tarnowie",
+    "genitive": "Tarnowa",
+    "dative": "Tarnowowi",
+    "instrumental": "Tarnowem"
+  },
+  {
+    "name": "Chorzów",
+    "slug": "chorzow",
+    "nominative": "Chorzów",
+    "accusative": "Chorzów",
+    "locative": "Chorzowie",
+    "genitive": "Chorzowa",
+    "dative": "Chorzowowi",
+    "instrumental": "Chorzowem"
+  },
+  {
+    "name": "Kalisz",
+    "slug": "kalisz",
+    "nominative": "Kalisz",
+    "accusative": "Kalisz",
+    "locative": "Kaliszu",
+    "genitive": "Kalisza",
+    "dative": "Kaliszowi",
+    "instrumental": "Kaliszem"
+  },
+  {
+    "name": "Koszalin",
+    "slug": "koszalin",
+    "nominative": "Koszalin",
+    "accusative": "Koszalin",
+    "locative": "Koszalinie",
+    "genitive": "Koszalina",
+    "dative": "Koszalinowi",
+    "instrumental": "Koszalinem"
+  },
+  {
+    "name": "Legnica",
+    "slug": "legnica",
+    "nominative": "Legnica",
+    "accusative": "Legnicę",
+    "locative": "Legnicy",
+    "genitive": "Legnicy",
+    "dative": "Legnicy",
+    "instrumental": "Legnicą"
+  },
+  {
+    "name": "Słupsk",
+    "slug": "slupsk",
+    "nominative": "Słupsk",
+    "accusative": "Słupsk",
+    "locative": "Słupsku",
+    "genitive": "Słupska",
+    "dative": "Słupskowi",
+    "instrumental": "Słupskiem"
+  },
+  {
+    "name": "Jaworzno",
+    "slug": "jaworzno",
+    "nominative": "Jaworzno",
+    "accusative": "Jaworzno",
+    "locative": "Jaworznie",
+    "genitive": "Jaworzna",
+    "dative": "Jaworznu",
+    "instrumental": "Jaworznem"
+  },
+  {
+    "name": "Jelenia Góra",
+    "slug": "jelenia-gora",
+    "nominative": "Jelenia Góra",
+    "accusative": "Jelenią Górę",
+    "locative": "Jeleniej Górze",
+    "genitive": "Jeleniej Góry",
+    "dative": "Jeleniej Górze",
+    "instrumental": "Jelenią Górą"
+  },
+  {
+    "name": "Nowy Sącz",
+    "slug": "nowy-sacz",
+    "nominative": "Nowy Sącz",
+    "accusative": "Nowy Sącz",
+    "locative": "Nowym Sączu",
+    "genitive": "Nowego Sącza",
+    "dative": "Nowemu Sączowi",
+    "instrumental": "Nowym Sączem"
+  },
+  {
+    "name": "Konin",
+    "slug": "konin",
+    "nominative": "Konin",
+    "accusative": "Konin",
+    "locative": "Koninie",
+    "genitive": "Konina",
+    "dative": "Koninowi",
+    "instrumental": "Koninem"
+  },
+  {
+    "name": "Piotrków Trybunalski",
+    "slug": "piotrkow-trybunalski",
+    "nominative": "Piotrków Trybunalski",
+    "accusative": "Piotrków Trybunalski",
+    "locative": "Piotrkowie Trybunalskim",
+    "genitive": "Piotrkowa Trybunalskiego",
+    "dative": "Piotrkowowi Trybunalskiemu",
+    "instrumental": "Piotrkowem Trybunalskim"
+  },
+  {
+    "name": "Inowrocław",
+    "slug": "inowroclaw",
+    "nominative": "Inowrocław",
+    "accusative": "Inowrocław",
+    "locative": "Inowrocławiu",
+    "genitive": "Inowrocławia",
+    "dative": "Inowrocławiowi",
+    "instrumental": "Inowrocławiem"
+  },
+  {
+    "name": "Lubin",
+    "slug": "lubin",
+    "nominative": "Lubin",
+    "accusative": "Lubin",
+    "locative": "Lubinie",
+    "genitive": "Lubina",
+    "dative": "Lubinowi",
+    "instrumental": "Lubinem"
+  },
+  {
+    "name": "Ostrołęka",
+    "slug": "ostroleka",
+    "nominative": "Ostrołęka",
+    "accusative": "Ostrołękę",
+    "locative": "Ostrołęce",
+    "genitive": "Ostrołęki",
+    "dative": "Ostrołęce",
+    "instrumental": "Ostrołęką"
+  },
+  {
+    "name": "Suwałki",
+    "slug": "suwalki",
+    "nominative": "Suwałki",
+    "accusative": "Suwałki",
+    "locative": "Suwałkach",
+    "genitive": "Suwałk",
+    "dative": "Suwałkom",
+    "instrumental": "Suwałkami"
+  },
+  {
+    "name": "Stargard",
+    "slug": "stargard",
+    "nominative": "Stargard",
+    "accusative": "Stargard",
+    "locative": "Stargardzie",
+    "genitive": "Stargardu",
+    "dative": "Stargardowi",
+    "instrumental": "Stargardem"
+  },
+  {
+    "name": "Głogów",
+    "slug": "glogow",
+    "nominative": "Głogów",
+    "accusative": "Głogów",
+    "locative": "Głogowie",
+    "genitive": "Głogowa",
+    "dative": "Głogowowi",
+    "instrumental": "Głogowem"
+  },
+  {
+    "name": "Zamosc",
+    "slug": "zamosc",
+    "nominative": "Zamość",
+    "accusative": "Zamość",
+    "locative": "Zamościu",
+    "genitive": "Zamościa",
+    "dative": "Zamościowi",
+    "instrumental": "Zamościem"
+  },
+  {
+    "name": "Leszno",
+    "slug": "leszno",
+    "nominative": "Leszno",
+    "accusative": "Leszno",
+    "locative": "Lesznie",
+    "genitive": "Leszna",
+    "dative": "Lesznu",
+    "instrumental": "Lesznem"
+  },
+  {
+    "name": "Zielona Góra",
+    "slug": "zielona-gora",
+    "nominative": "Zielona Góra",
+    "accusative": "Zieloną Górę",
+    "locative": "Zielonej Górze",
+    "genitive": "Zielonej Góry",
+    "dative": "Zielonej Górze",
+    "instrumental": "Zieloną Górą"
+  },
+  {
+    "name": "Częstochowa",
+    "slug": "czestochowa",
+    "nominative": "Częstochowa",
+    "accusative": "Częstochowę",
+    "locative": "Częstochowie",
+    "genitive": "Częstochowy",
+    "dative": "Częstochowie",
+    "instrumental": "Częstochową"
+  },
+  {
+    "name": "Radom",
+    "slug": "radom",
+    "nominative": "Radom",
+    "accusative": "Radom",
+    "locative": "Radomiu",
+    "genitive": "Radomia",
+    "dative": "Radomiowi",
+    "instrumental": "Radomiem"
+  },
+  {
+    "name": "Sosnowiec",
+    "slug": "sosnowiec",
+    "nominative": "Sosnowiec",
+    "accusative": "Sosnowiec",
+    "locative": "Sosnowcu",
+    "genitive": "Sosnowca",
+    "dative": "Sosnowcowi",
+    "instrumental": "Sosnowcem"
+  },
+  {
+    "name": "Kielce",
+    "slug": "kielce",
+    "nominative": "Kielce",
+    "accusative": "Kielce",
+    "locative": "Kielcach",
+    "genitive": "Kielc",
+    "dative": "Kielcom",
+    "instrumental": "Kielcami"
+  },
+  {
+    "name": "Rzeszów",
+    "slug": "rzeszow",
+    "nominative": "Rzeszów",
+    "accusative": "Rzeszów",
+    "locative": "Rzeszowie",
+    "genitive": "Rzeszowa",
+    "dative": "Rzeszowowi",
+    "instrumental": "Rzeszowem"
+  },
+  {
+    "name": "Gliwice",
+    "slug": "gliwice",
+    "nominative": "Gliwice",
+    "accusative": "Gliwice",
+    "locative": "Gliwice",
+    "genitive": "Gliwice",
+    "dative": "Gliwice",
+    "instrumental": "Gliwice"
+  },
+  {
+    "name": "Zabrze",
+    "slug": "zabrze",
+    "nominative": "Zabrze",
+    "accusative": "Zabrze",
+    "locative": "Zabrzu",
+    "genitive": "Zabrza",
+    "dative": "Zabrzu",
+    "instrumental": "Zabrzem"
+  },
+  {
+    "name": "Bytom",
+    "slug": "bytom",
+    "nominative": "Bytom",
+    "accusative": "Bytom",
+    "locative": "Bytomiu",
+    "genitive": "Bytomia",
+    "dative": "Bytomiowi",
+    "instrumental": "Bytomiem"
+  },
+  {
+    "name": "Bielsko-Biała",
+    "slug": "bielsko-biala",
+    "nominative": "Bielsko-Biała",
+    "accusative": "Bielsko-Białą",
+    "locative": "Bielsku-Białej",
+    "genitive": "Bielska-Białej",
+    "dative": "Bielsku-Białej",
+    "instrumental": "Bielskiem-Białą"
+  },
+  {
+    "name": "Olsztyn",
+    "slug": "olsztyn",
+    "nominative": "Olsztyn",
+    "accusative": "Olsztyn",
+    "locative": "Olsztynie",
+    "genitive": "Olsztyna",
+    "dative": "Olsztynowi",
+    "instrumental": "Olsztynem"
+  },
+  {
+    "name": "Ruda Śląska",
+    "slug": "ruda-slaska",
+    "nominative": "Ruda Śląska",
+    "accusative": "Rudę Śląską",
+    "locative": "Rudzie Śląskiej",
+    "genitive": "Rudy Śląskiej",
+    "dative": "Rudzie Śląskiej",
+    "instrumental": "Rudą Śląską"
+  },
+  {
+    "name": "Rybnik",
+    "slug": "rybnik",
+    "nominative": "Rybnik",
+    "accusative": "Rybnik",
+    "locative": "Rybniku",
+    "genitive": "Rybnika",
+    "dative": "Rybnikowi",
+    "instrumental": "Rybnikiem"
+  },
+  {
+    "name": "Tychy",
+    "slug": "tychy",
+    "nominative": "Tychy",
+    "accusative": "Tychy",
+    "locative": "Tychach",
+    "genitive": "Tych",
+    "dative": "Tychom",
+    "instrumental": "Tychami"
+  },
+  {
+    "name": "Dąbrowa Górnicza",
+    "slug": "dabrowa-gornicza",
+    "nominative": "Dąbrowa Górnicza",
+    "accusative": "Dąbrowę Górniczą",
+    "locative": "Dąbrowie Górniczej",
+    "genitive": "Dąbrowy Górniczej",
+    "dative": "Dąbrowie Górniczej",
+    "instrumental": "Dąbrową Górniczą"
+  },
+  {
+    "name": "Płock",
+    "slug": "plock",
+    "nominative": "Płock",
+    "accusative": "Płock",
+    "locative": "Płocku",
+    "genitive": "Płocka",
+    "dative": "Płockowi",
+    "instrumental": "Płockiem"
+  },
+  {
+    "name": "Elbląg",
+    "slug": "elblag",
+    "nominative": "Elbląg",
+    "accusative": "Elbląg",
+    "locative": "Elblągu",
+    "genitive": "Elbląga",
+    "dative": "Elblągowi",
+    "instrumental": "Elblągiem"
+  },
+  {
+    "name": "Opole",
+    "slug": "opole",
+    "nominative": "Opole",
+    "accusative": "Opole",
+    "locative": "Opolu",
+    "genitive": "Opola",
+    "dative": "Opolu",
+    "instrumental": "Opolem"
+  },
+  {
+    "name": "Wałbrzych",
+    "slug": "walbrzych",
+    "nominative": "Wałbrzych",
+    "accusative": "Wałbrzych",
+    "locative": "Wałbrzychu",
+    "genitive": "Wałbrzycha",
+    "dative": "Wałbrzychowi",
+    "instrumental": "Wałbrzychem"
+  },
+  {
+    "name": "Gorzów Wielkopolski",
+    "slug": "gorzow-wielkopolski",
+    "nominative": "Gorzów Wielkopolski",
+    "accusative": "Gorzów Wielkopolski",
+    "locative": "Gorzowie Wielkopolskim",
+    "genitive": "Gorzowa Wielkopolskiego",
+    "dative": "Gorzowowi Wielkopolskiemu",
+    "instrumental": "Gorzowem Wielkopolskim"
+  },
+  {
+    "name": "Włocławek",
+    "slug": "wloclawek",
+    "nominative": "Włocławek",
+    "accusative": "Włocławek",
+    "locative": "Włocławku",
+    "genitive": "Włocławka",
+    "dative": "Włocławkowi",
+    "instrumental": "Włocławkiem"
+  },
+  {
+    "name": "Tarnów",
+    "slug": "tarnow",
+    "nominative": "Tarnów",
+    "accusative": "Tarnów",
+    "locative": "Tarnowie",
+    "genitive": "Tarnowa",
+    "dative": "Tarnowowi",
+    "instrumental": "Tarnowem"
+  },
+  {
+    "name": "Chorzów",
+    "slug": "chorzow",
+    "nominative": "Chorzów",
+    "accusative": "Chorzów",
+    "locative": "Chorzowie",
+    "genitive": "Chorzowa",
+    "dative": "Chorzowowi",
+    "instrumental": "Chorzowem"
+  },
+  {
+    "name": "Kalisz",
+    "slug": "kalisz",
+    "nominative": "Kalisz",
+    "accusative": "Kalisz",
+    "locative": "Kaliszu",
+    "genitive": "Kalisza",
+    "dative": "Kaliszowi",
+    "instrumental": "Kaliszem"
+  },
+  {
+    "name": "Koszalin",
+    "slug": "koszalin",
+    "nominative": "Koszalin",
+    "accusative": "Koszalin",
+    "locative": "Koszalinie",
+    "genitive": "Koszalina",
+    "dative": "Koszalinowi",
+    "instrumental": "Koszalinem"
+  },
+  {
+    "name": "Legnica",
+    "slug": "legnica",
+    "nominative": "Legnica",
+    "accusative": "Legnicę",
+    "locative": "Legnicy",
+    "genitive": "Legnicy",
+    "dative": "Legnicy",
+    "instrumental": "Legnicą"
+  },
+  {
+    "name": "Słupsk",
+    "slug": "slupsk",
+    "nominative": "Słupsk",
+    "accusative": "Słupsk",
+    "locative": "Słupsku",
+    "genitive": "Słupska",
+    "dative": "Słupskowi",
+    "instrumental": "Słupskiem"
+  },
+  {
+    "name": "Jaworzno",
+    "slug": "jaworzno",
+    "nominative": "Jaworzno",
+    "accusative": "Jaworzno",
+    "locative": "Jaworznie",
+    "genitive": "Jaworzna",
+    "dative": "Jaworznu",
+    "instrumental": "Jaworznem"
+  },
+  {
+    "name": "Jelenia Góra",
+    "slug": "jelenia-gora",
+    "nominative": "Jelenia Góra",
+    "accusative": "Jelenią Górę",
+    "locative": "Jeleniej Górze",
+    "genitive": "Jeleniej Góry",
+    "dative": "Jeleniej Górze",
+    "instrumental": "Jelenią Górą"
+  },
+  {
+    "name": "Nowy Sącz",
+    "slug": "nowy-sacz",
+    "nominative": "Nowy Sącz",
+    "accusative": "Nowy Sącz",
+    "locative": "Nowym Sączu",
+    "genitive": "Nowego Sącza",
+    "dative": "Nowemu Sączowi",
+    "instrumental": "Nowym Sączem"
+  },
+  {
+    "name": "Konin",
+    "slug": "konin",
+    "nominative": "Konin",
+    "accusative": "Konin",
+    "locative": "Koninie",
+    "genitive": "Konina",
+    "dative": "Koninowi",
+    "instrumental": "Koninem"
+  },
+  {
+    "name": "Piotrków Trybunalski",
+    "slug": "piotrkow-trybunalski",
+    "nominative": "Piotrków Trybunalski",
+    "accusative": "Piotrków Trybunalski",
+    "locative": "Piotrkowie Trybunalskim",
+    "genitive": "Piotrkowa Trybunalskiego",
+    "dative": "Piotrkowowi Trybunalskiemu",
+    "instrumental": "Piotrkowem Trybunalskim"
+  },
+  {
+    "name": "Inowrocław",
+    "slug": "inowroclaw",
+    "nominative": "Inowrocław",
+    "accusative": "Inowrocław",
+    "locative": "Inowrocławiu",
+    "genitive": "Inowrocławia",
+    "dative": "Inowrocławiowi",
+    "instrumental": "Inowrocławiem"
+  },
+  {
+    "name": "Lubin",
+    "slug": "lubin",
+    "nominative": "Lubin",
+    "accusative": "Lubin",
+    "locative": "Lubinie",
+    "genitive": "Lubina",
+    "dative": "Lubinowi",
+    "instrumental": "Lubinem"
+  },
+  {
+    "name": "Ostrołęka",
+    "slug": "ostroleka",
+    "nominative": "Ostrołęka",
+    "accusative": "Ostrołękę",
+    "locative": "Ostrołęce",
+    "genitive": "Ostrołęki",
+    "dative": "Ostrołęce",
+    "instrumental": "Ostrołęką"
+  },
+  {
+    "name": "Suwałki",
+    "slug": "suwalki",
+    "nominative": "Suwałki",
+    "accusative": "Suwałki",
+    "locative": "Suwałkach",
+    "genitive": "Suwałk",
+    "dative": "Suwałkom",
+    "instrumental": "Suwałkami"
+  },
+  {
+    "name": "Stargard",
+    "slug": "stargard",
+    "nominative": "Stargard",
+    "accusative": "Stargard",
+    "locative": "Stargardzie",
+    "genitive": "Stargardu",
+    "dative": "Stargardowi",
+    "instrumental": "Stargardem"
+  },
+  {
+    "name": "Głogów",
+    "slug": "glogow",
+    "nominative": "Głogów",
+    "accusative": "Głogów",
+    "locative": "Głogowie",
+    "genitive": "Głogowa",
+    "dative": "Głogowowi",
+    "instrumental": "Głogowem"
+  },
+  {
+    "name": "Zamość",
+    "slug": "zamosc",
+    "nominative": "Zamość",
+    "accusative": "Zamość",
+    "locative": "Zamościu",
+    "genitive": "Zamościa",
+    "dative": "Zamościowi",
+    "instrumental": "Zamościem"
+  },
+  {
+    "name": "Leszno",
+    "slug": "leszno",
+    "nominative": "Leszno",
+    "accusative": "Leszno",
+    "locative": "Lesznie",
+    "genitive": "Leszna",
+    "dative": "Lesznu",
+    "instrumental": "Lesznem"
   }
 ]

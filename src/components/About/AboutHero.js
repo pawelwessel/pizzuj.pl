@@ -1,45 +1,180 @@
+"use client";
 import Image from "next/image";
-import accent from "../../../public/assets/asset2.png";
+import Link from "next/link";
+import { motion } from "framer-motion";
 import { ptSans } from "../../app/layout";
 
 export default function AboutHero() {
   return (
-    <div className="relative min-h-[40vh] w-full golden pt-20 pb-12 lg:pt-24 lg:pb-16 overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/5 via-orange-500/5 to-red-600/5 animate-pulse" />
-      
-      {/* Floating pizza decoration with enhanced animation */}
-      <Image
-        src={accent}
-        alt="Pizza decoration"
-        className="absolute h-32 lg:h-[40%] xl:h-[60%] w-auto opacity-10 right-6 lg:right-16 xl:right-24 top-12 lg:top-1/2 lg:-translate-y-1/2 z-0 animate-float"
-        width={300}
-        height={300}
+    <div className="overflow-hidden relative min-h-[60vh] w-full golden pt-12 lg:pt-24 pb-12">
+      {/* Background Images */}
+      <div className="absolute inset-0 z-0">
+        <motion.div
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5 }}
+          className="absolute top-0 right-0 w-64 h-64 lg:w-96 lg:h-96 opacity-20"
+        >
+          <Image
+            src="/newAssets/1.jpg"
+            alt="Ludzie cieszący się pizzą"
+            fill
+            className="object-cover rounded-full"
+            aria-hidden="true"
+          />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5, delay: 0.3 }}
+          className="absolute bottom-0 left-0 w-48 h-48 lg:w-64 lg:h-64 opacity-20"
+        >
+          <Image
+            src="/newAssets/2.jpg"
+            alt="Pyszna pizza serwowana"
+            fill
+            className="object-cover rounded-full"
+            aria-hidden="true"
+          />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5, delay: 0.6 }}
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 lg:w-48 lg:h-48 opacity-15"
+        >
+          <Image
+            src="/newAssets/3.jpg"
+            alt="Przygotowanie pizzy"
+            fill
+            className="object-cover rounded-full"
+            aria-hidden="true"
+          />
+        </motion.div>
+      </div>
+
+      {/* Floating Elements */}
+      <motion.div
+        animate={{ y: [-10, 10, -10] }}
+        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-20 left-10 w-8 h-8 bg-yellow-400 rounded-full opacity-60 z-10"
+        aria-hidden="true"
       />
-      
-      {/* Additional decorative elements */}
-      <div className="absolute top-20 left-10 w-2 h-2 bg-yellow-400 rounded-full opacity-60 animate-bounce" style={{ animationDelay: '0.5s' }} />
-      <div className="absolute top-32 right-20 w-1 h-1 bg-orange-400 rounded-full opacity-40 animate-bounce" style={{ animationDelay: '1s' }} />
-      <div className="absolute bottom-20 left-20 w-1.5 h-1.5 bg-red-400 rounded-full opacity-50 animate-bounce" style={{ animationDelay: '1.5s' }} />
-      
-      <div className="relative z-50 mx-auto w-[90%] lg:w-4/5 xl:w-3/4 2xl:w-2/3">
-        <div className="flex flex-col items-center justify-center bg-black/70 backdrop-blur-sm p-8 lg:p-12 rounded-2xl border border-yellow-400/20 shadow-2xl hover:shadow-yellow-400/10 transition-all duration-500 transform hover:scale-[1.02]">
-          <h1 className="text-center !text-white drop-shadow-lg shadow-black text-3xl lg:text-4xl xl:text-5xl font-bold mb-6 bg-gradient-to-r from-yellow-400 via-orange-500 to-red-600 bg-clip-text text-transparent animate-gradient">
+      <motion.div
+        animate={{ y: [10, -10, 10] }}
+        transition={{
+          duration: 4,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 1,
+        }}
+        className="absolute top-40 right-20 w-6 h-6 bg-red-400 rounded-full opacity-60 z-10"
+        aria-hidden="true"
+      />
+      <motion.div
+        animate={{ rotate: [0, 360] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+        className="absolute bottom-20 left-1/4 w-4 h-4 bg-orange-400 rounded-full opacity-60 z-10"
+        aria-hidden="true"
+      />
+      <motion.div
+        animate={{ scale: [1, 1.2, 1] }}
+        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/3 right-1/3 w-3 h-3 bg-yellow-300 rounded-full opacity-40 z-10"
+        aria-hidden="true"
+      />
+
+      {/* Main Content */}
+      <div className="relative z-50 mx-auto w-[90%] lg:w-2/3 xl:w-1/2">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="flex flex-col items-center justify-center text-center bg-black/70 backdrop-blur-sm rounded-xl p-6 sm:p-8 border border-yellow-400/20 shadow-2xl hover:shadow-yellow-400/10 transition-all duration-500 transform hover:scale-[1.02]"
+        >
+          <motion.h1
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="!text-white text-2xl lg:text-4xl xl:text-5xl drop-shadow-lg shadow-black font-bold mb-4 bg-gradient-to-r from-yellow-400 via-orange-500 to-red-600 bg-clip-text text-transparent"
+          >
             O Pizzuj.pl
-          </h1>
-          <div className="h-1 w-24 golden rounded-full mb-8 animate-pulse" />
-          <p className={`!text-white text-lg lg:text-xl italic font-cocosharp font-light text-center max-w-3xl leading-relaxed ${ptSans.className}`}>
-            Połączenie technologii i pasji do pizzy - poznaj historię Pizzuj.pl
-          </p>
-          
+          </motion.h1>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="h-1 w-24 golden rounded-full mb-6 animate-pulse"
+          />
+
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className={`mt-4 lg:mt-6 w-[90%] mx-auto !text-white drop-shadow-lg font-sans text-base sm:text-lg lg:text-xl italic font-light ${ptSans.className}`}
+          >
+            Połączenie technologii i pasji do pizzy - poznaj historię{" "}
+            <Link
+              href="/about"
+              className="text-yellow-400 hover:text-yellow-300 underline"
+              aria-label="Dowiedz się więcej o Pizzuj.pl"
+            >
+              Pizzuj.pl
+            </Link>
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="mt-6 lg:mt-8 flex flex-col sm:flex-row gap-4 mx-auto w-max max-w-full"
+          >
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-3 bg-yellow-400 font-cocosharp text-zinc-800 font-bold rounded-full shadow-lg hover:bg-yellow-300 transition-colors"
+              onClick={() => {
+                const profileSection = document.getElementById("about-profile");
+                if (profileSection) {
+                  profileSection.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  });
+                }
+              }}
+              aria-label="Przejdź do sekcji o nas"
+            >
+              🍕 Poznaj naszą historię
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-3 bg-transparent border-2 font-cocosharp border-white text-white font-bold rounded-full hover:bg-white hover:text-black transition-colors"
+              aria-label="Skontaktuj się z nami"
+            >
+              📞 Skontaktuj się
+            </motion.button>
+          </motion.div>
+
           {/* Subtle scroll indicator */}
-          <div className="mt-8 flex flex-col items-center">
-            <div className="w-6 h-10 border-2 border-yellow-400/50 rounded-full flex justify-center">
-              <div className="w-1 h-3 bg-yellow-400 rounded-full mt-2 animate-bounce" />
-            </div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="mt-8 flex flex-col items-center"
+            aria-hidden="true"
+          >
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="w-6 h-10 border-2 border-yellow-400/50 rounded-full flex justify-center"
+            >
+              <div className="w-1 h-3 bg-yellow-400 rounded-full mt-2" />
+            </motion.div>
             <span className="text-yellow-400/70 text-sm mt-2">Scroll</span>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </div>
   );

@@ -37,8 +37,8 @@ function getPageContent(cityInfo) {
       stats: [
         {
           icon: "🍕",
-          value: "dynamic", // Will be replaced with actual count
-          label: "Pizzerii w rankingu",
+          value: "20+",
+          label: "Pizzerii w mieście",
           color: "from-yellow-400 to-orange-500",
         },
         {
@@ -144,7 +144,7 @@ function getPageContent(cityInfo) {
       ctaSecondary: "📱 Pobierz aplikację",
       stats: [
         { value: "10k+", label: "Zadowolonych klientów" },
-        { value: "500+", label: "Pizzerii w rankingu" },
+        { value: "10k+", label: "Pizzerii w Polsce" },
         { value: "4.8⭐", label: "Średnia ocena" },
       ],
       features: [
@@ -215,13 +215,6 @@ export default async function Page({ params }) {
 
   // Get page content with dynamic data
   const pageContent = getPageContent(cityInfo);
-
-  // Update stats with actual data
-  if (pageContent.stats.stats[0].value === "dynamic") {
-    pageContent.stats.stats[0].value = pizzerias?.length || 0;
-  }
-
-  console.log(citySlug);
 
   return (
     <div className="min-h-screen">

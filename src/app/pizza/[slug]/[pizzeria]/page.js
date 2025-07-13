@@ -160,8 +160,6 @@ export async function generateMetadata({ params }, parent) {
     `${process.env.NEXT_PUBLIC_LINK}/api/pizzeria/${pizzeria}`
   ).then((res) => res.json());
 
-  console.log(pizzeriaData);
-
   return {
     title: `Opinie o pizzy w ${pizzeriaData.name} | Pizzuj.pl `,
     description: `Sprawdź opinie i informacje kontaktowe ${pizzeriaData.name}. Zamów online lub odwiedź lokal!`,

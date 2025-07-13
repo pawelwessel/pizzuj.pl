@@ -6,10 +6,24 @@ import { auth } from "../../db/firebase";
 import { toast } from "react-toastify";
 import { useRouter, useSearchParams } from "next/navigation";
 import { errorCatcher } from "../../lib/errorCatcher";
-import { parseAffiliateParams, trackAffiliateRegistration, validateAffiliateParams } from "../../lib/affiliateUtils";
+import {
+  parseAffiliateParams,
+  trackAffiliateRegistration,
+  validateAffiliateParams,
+} from "../../lib/affiliateUtils";
 import Link from "next/link";
 import GoogleAuthButton from "../../components/Auth/GoogleButton";
-import { FaUserPlus, FaHandshake, FaGift, FaEye, FaEyeSlash, FaEnvelope, FaLock, FaUser, FaCheckCircle } from "react-icons/fa";
+import {
+  FaUserPlus,
+  FaHandshake,
+  FaGift,
+  FaEye,
+  FaEyeSlash,
+  FaEnvelope,
+  FaLock,
+  FaUser,
+  FaCheckCircle,
+} from "react-icons/fa";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Image from "next/image";
 import { addDocument } from "../../db/firebase";
@@ -21,7 +35,7 @@ export default function Register() {
   const [isThinking, setThinking] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showPasswordRepeat, setShowPasswordRepeat] = useState(false);
-  
+
   const [userData, setUserData] = useState({
     name: "",
     email: "",
@@ -32,7 +46,7 @@ export default function Register() {
   // Parse affiliate parameters
   const affiliateParams = parseAffiliateParams(searchParams);
   const isAffiliateRegistration = affiliateParams.affiliate;
-  const hasSourceParams = Object.values(affiliateParams).some(param => param);
+  const hasSourceParams = Object.values(affiliateParams).some((param) => param);
 
   useEffect(() => {
     // Redirect if user is already logged in
@@ -42,12 +56,17 @@ export default function Register() {
 
     // Validate affiliate parameters
     if (hasSourceParams && !validateAffiliateParams(affiliateParams)) {
-      console.warn('Invalid affiliate parameters detected');
+      console.warn("Invalid affiliate parameters detected");
     }
   }, [user, loading, router, hasSourceParams, affiliateParams]);
 
   function register() {
-    if (!userData.name || !userData.email || !userData.password || !userData.passwordRepeat) {
+    if (
+      !userData.name ||
+      !userData.email ||
+      !userData.password ||
+      !userData.passwordRepeat
+    ) {
       toast.error("Proszę wypełnić wszystkie pola");
       return;
     }
@@ -112,11 +131,15 @@ export default function Register() {
 
         // Track affiliate registration if applicable
         if (hasSourceParams) {
-          await trackAffiliateRegistration(userDocumentData, affiliateParams, addDocument);
+          await trackAffiliateRegistration(
+            userDocumentData,
+            affiliateParams,
+            addDocument
+          );
         }
 
         // Show appropriate success message
-        const successMessage = isAffiliateRegistration 
+        const successMessage = isAffiliateRegistration
           ? `Witaj ${userData.name}! Zarejestrowano pomyślnie w programie partnerskim!`
           : `Witaj ${userData.name}! Zarejestrowano pomyślnie!`;
 
@@ -142,7 +165,7 @@ export default function Register() {
   }
 
   const handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       register();
     }
   };
@@ -164,7 +187,9 @@ export default function Register() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
             <div className="absolute bottom-8 left-8 text-white">
               <h1 className="text-4xl font-bold mb-2">Dołącz do Pizzuj!</h1>
-              <p className="text-lg opacity-90 !text-white">Odkryj najlepsze pizzerie w Polsce</p>
+              <p className="text-lg opacity-90 !text-white">
+                Odkryj najlepsze pizzerie w Polsce
+              </p>
             </div>
           </div>
         </div>
@@ -211,18 +236,27 @@ export default function Register() {
               <FaUserPlus className="text-white text-2xl" />
             </div>
             <h2 className="text-3xl font-bold text-gray-900 mb-2">
-              {isAffiliateRegistration ? "Zarejestruj się jako Partner" : "Zarejestruj się"}
+              {isAffiliateRegistration
+                ? "Zarejestruj się jako Partner"
+                : "Zarejestruj się"}
             </h2>
-            <p className="text-gray-600">
-              Utwórz swoje konto Pizzuj
-            </p>
+            <p className="text-gray-600">Utwórz swoje konto Pizzuj</p>
           </div>
 
           {/* Form */}
-          <form onSubmit={(e) => { e.preventDefault(); register(); }} className="space-y-6">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              register();
+            }}
+            className="space-y-6"
+          >
             {/* Name Field */}
             <div className="space-y-2">
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Imię i nazwisko
               </label>
               <div className="relative">
@@ -235,7 +269,9 @@ export default function Register() {
                   id="name"
                   placeholder="Jan Kowalski"
                   value={userData.name}
-                  onChange={(e) => setUserData({ ...userData, name: e.target.value })}
+                  onChange={(e) =>
+                    setUserData({ ...userData, name: e.target.value })
+                  }
                   onKeyPress={handleKeyPress}
                   className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200"
                 />
@@ -244,7 +280,10 @@ export default function Register() {
 
             {/* Email Field */}
             <div className="space-y-2">
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Adres email
               </label>
               <div className="relative">
@@ -257,7 +296,9 @@ export default function Register() {
                   id="email"
                   placeholder="jan@example.com"
                   value={userData.email}
-                  onChange={(e) => setUserData({ ...userData, email: e.target.value })}
+                  onChange={(e) =>
+                    setUserData({ ...userData, email: e.target.value })
+                  }
                   onKeyPress={handleKeyPress}
                   className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200"
                 />
@@ -266,7 +307,10 @@ export default function Register() {
 
             {/* Password Field */}
             <div className="space-y-2">
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Hasło
               </label>
               <div className="relative">
@@ -279,7 +323,9 @@ export default function Register() {
                   id="password"
                   placeholder="Minimum 6 znaków"
                   value={userData.password}
-                  onChange={(e) => setUserData({ ...userData, password: e.target.value })}
+                  onChange={(e) =>
+                    setUserData({ ...userData, password: e.target.value })
+                  }
                   onKeyPress={handleKeyPress}
                   className="block w-full pl-10 pr-12 py-3 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200"
                 />
@@ -299,7 +345,10 @@ export default function Register() {
 
             {/* Password Repeat Field */}
             <div className="space-y-2">
-              <label htmlFor="passwordRepeat" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="passwordRepeat"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Powtórz hasło
               </label>
               <div className="relative">
@@ -312,14 +361,17 @@ export default function Register() {
                   id="passwordRepeat"
                   placeholder="Powtórz hasło"
                   value={userData.passwordRepeat}
-                  onChange={(e) => setUserData({ ...userData, passwordRepeat: e.target.value })}
+                  onChange={(e) =>
+                    setUserData({ ...userData, passwordRepeat: e.target.value })
+                  }
                   onKeyPress={handleKeyPress}
                   className={`block w-full pl-10 pr-12 py-3 border rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200 ${
-                    userData.passwordRepeat && userData.password === userData.passwordRepeat
-                      ? 'border-green-300 bg-green-50'
+                    userData.passwordRepeat &&
+                    userData.password === userData.passwordRepeat
+                      ? "border-green-300 bg-green-50"
                       : userData.passwordRepeat
-                      ? 'border-red-300 bg-red-50'
-                      : 'border-gray-300'
+                      ? "border-red-300 bg-red-50"
+                      : "border-gray-300"
                   }`}
                 />
                 <button
@@ -387,7 +439,9 @@ export default function Register() {
               ) : (
                 <div className="flex items-center justify-center">
                   <FaUserPlus className="mr-2" />
-                  {isAffiliateRegistration ? "Zarejestruj się jako Partner" : "Zarejestruj się"}
+                  {isAffiliateRegistration
+                    ? "Zarejestruj się jako Partner"
+                    : "Zarejestruj się"}
                 </div>
               )}
             </button>
@@ -421,17 +475,7 @@ export default function Register() {
             </p>
           </div>
 
-          {/* Debug info (remove in production) */}
-          {process.env.NODE_ENV === 'development' && hasSourceParams && (
-            <div className="mt-4 p-3 bg-gray-100 rounded-lg text-xs text-gray-600">
-              <p><strong>Debug Info:</strong></p>
-              <p>Affiliate: {affiliateParams.affiliate ? 'true' : 'false'}</p>
-              <p>Affiliate ID: {affiliateParams.affiliateId || 'none'}</p>
-              <p>Source: {affiliateParams.source || 'none'}</p>
-              <p>Campaign: {affiliateParams.campaign || 'none'}</p>
-              <p>Referrer: {affiliateParams.referrer || 'none'}</p>
-            </div>
-          )}
+          {/* Debug info removed for production */}
         </div>
       </div>
     </div>

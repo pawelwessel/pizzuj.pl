@@ -1,8 +1,22 @@
 import { createChat } from "completions";
 import { addDocument } from "../../../db/firebase";
 import { NextResponse } from "next/server";
+import { rateLimiter } from "../../../lib/rateLimiter";
+
 export const maxDuration = 300;
+
 export async function POST(req) {
+  // Rate limiting
+  const limiter = rateLimiter(5, 60000); // 5 requests per minute
+  const rateLimitResult = limiter(req);
+
+  if (!rateLimitResult.allowed) {
+    return NextResponse.json(
+      { error: "Rate limit exceeded. Please try again later." },
+      { status: 429 }
+    );
+  }
+
   const { searchTerm } = await req.json();
   if (!searchTerm || searchTerm.trim() === "") {
     return NextResponse.json(

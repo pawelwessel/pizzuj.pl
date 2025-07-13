@@ -14,7 +14,7 @@ import {
   where,
   deleteDoc,
 } from "firebase/firestore/lite";
-// TODO: Add SDKs for Firebase products that you want to use
+// Firebase SDKs for production use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
@@ -29,14 +29,7 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_PUBLIC_MEASURMENT_ID,
 };
 
-console.log("Firebase config environment variables:");
-console.log("NEXT_PUBLIC_API_KEY:", process.env.NEXT_PUBLIC_API_KEY ? "SET" : "NOT SET");
-console.log("NEXT_PUBLIC_AUTH_DOMAIN:", process.env.NEXT_PUBLIC_AUTH_DOMAIN ? "SET" : "NOT SET");
-console.log("NEXT_PUBLIC_PROJECT_ID:", process.env.NEXT_PUBLIC_PROJECT_ID ? "SET" : "NOT SET");
-console.log("NEXT_PUBLIC_STORAGE_BUCKET:", process.env.NEXT_PUBLIC_STORAGE_BUCKET ? "SET" : "NOT SET");
-console.log("NEXT_PUBLIC_MESSAGING_SENDER_ID:", process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID ? "SET" : "NOT SET");
-console.log("NEXT_PUBLIC_APP_ID:", process.env.NEXT_PUBLIC_APP_ID ? "SET" : "NOT SET");
-console.log("NEXT_PUBLIC_MEASURMENT_ID:", process.env.NEXT_PUBLIC_MEASURMENT_ID ? "SET" : "NOT SET");
+// Firebase config environment variables checked
 
 export const provider = new GoogleAuthProvider();
 // Initialize Firebase
@@ -44,14 +37,14 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 const db = getFirestore(app);
 
-console.log("Firebase initialized successfully");
+// Firebase initialized successfully
 
 // Test function to check Firebase connection
 export async function testFirebaseConnection() {
   try {
-    console.log("Testing Firebase connection...");
+    // Testing Firebase connection...
     const testDoc = await getDocument("test", "connection");
-    console.log("Firebase connection test successful");
+    // Firebase connection test successful
     return true;
   } catch (error) {
     console.error("Firebase connection test failed:", error);
@@ -62,14 +55,14 @@ export async function testFirebaseConnection() {
 // Test function to try writing to a test collection
 export async function testFirebaseWrite() {
   try {
-    console.log("Testing Firebase write...");
+    // Testing Firebase write...
     const testData = {
       test: true,
       timestamp: new Date().toISOString(),
-      message: "Test write from pizzeria dashboard"
+      message: "Test write from pizzeria dashboard",
     };
     await setDoc(doc(db, "test", "write_test"), testData);
-    console.log("Firebase write test successful");
+    // Firebase write test successful
     return true;
   } catch (error) {
     console.error("Firebase write test failed:", error);
@@ -108,8 +101,6 @@ export async function updateDocument(collectionName, uniqueId, data) {
 
 // Pizzeria management functions
 export async function createPizzeria(userId, pizzeriaData) {
-  console.log("createPizzeria called with:", { userId, pizzeriaData });
-  
   const pizzeriaId = `${userId}_${Date.now()}`;
   const pizzeria = {
     id: pizzeriaId,
@@ -118,13 +109,9 @@ export async function createPizzeria(userId, pizzeriaData) {
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
   };
-  
-  console.log("Pizzeria object to save:", pizzeria);
-  console.log("Saving to collection: user_pizzerias, document ID:", pizzeriaId);
-  
+
   try {
     await setDoc(doc(db, "user_pizzerias", pizzeriaId), pizzeria);
-    console.log("Pizzeria saved successfully to Firebase");
     return pizzeria;
   } catch (error) {
     console.error("Error saving pizzeria to Firebase:", error);
@@ -141,20 +128,17 @@ export async function updatePizzeria(pizzeriaId, updateData) {
 }
 
 export async function getUserPizzerias(userId) {
-  console.log("getUserPizzerias called for userId:", userId);
-  
   const q = query(
     collection(db, "user_pizzerias"),
     where("ownerId", "==", userId)
   );
-  
-  console.log("Query created, executing...");
-  
+
   try {
     const snapshot = await getDocs(q);
-    console.log("Query result - documents found:", snapshot.docs.length);
-    const pizzerias = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-    console.log("Processed pizzerias:", pizzerias);
+    const pizzerias = snapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
     return pizzerias;
   } catch (error) {
     console.error("Error in getUserPizzerias:", error);
@@ -176,7 +160,9 @@ export async function updateUserProfile(userId, updateData) {
 
 // Menu management functions
 export async function createMenuItem(pizzeriaId, menuItem) {
-  const menuItemId = `${pizzeriaId}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+  const menuItemId = `${pizzeriaId}_${Date.now()}_${Math.random()
+    .toString(36)
+    .substr(2, 9)}`;
   const menuItemData = {
     id: menuItemId,
     pizzeriaId,
@@ -184,7 +170,7 @@ export async function createMenuItem(pizzeriaId, menuItem) {
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
   };
-  
+
   await setDoc(doc(db, "menu_items", menuItemId), menuItemData);
   return menuItemData;
 }
@@ -194,7 +180,7 @@ export async function getMenuItems(pizzeriaId) {
     collection(db, "menu_items"),
     where("pizzeriaId", "==", pizzeriaId)
   );
-  
+
   const snapshot = await getDocs(q);
   return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 }
@@ -221,17 +207,19 @@ export async function toggleMenuItemAvailability(menuItemId, isAvailable) {
 
 // Promotion management functions
 export async function createPromotion(pizzeriaId, promotionData) {
-  const promotionId = `${pizzeriaId}_promotion_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+  const promotionId = `${pizzeriaId}_promotion_${Date.now()}_${Math.random()
+    .toString(36)
+    .substr(2, 9)}`;
   const promotion = {
     id: promotionId,
     pizzeriaId,
     ...promotionData,
-    status: promotionData.status || 'active',
+    status: promotionData.status || "active",
     usage: 0,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
   };
-  
+
   await setDoc(doc(db, "promotions", promotionId), promotion);
   return promotion;
 }
@@ -241,7 +229,7 @@ export async function getPromotions(pizzeriaId) {
     collection(db, "promotions"),
     where("pizzeriaId", "==", pizzeriaId)
   );
-  
+
   const snapshot = await getDocs(q);
   return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 }

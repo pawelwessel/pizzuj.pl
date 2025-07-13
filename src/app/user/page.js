@@ -24,7 +24,7 @@ import {
   PlanDowngrade,
   PaymentIntegration,
   BillingHistory,
-  PlanComparison
+  PlanComparison,
 } from "../../components/UserDashboard/SubscriptionManagement";
 
 export default function UserProfile() {
@@ -36,13 +36,13 @@ export default function UserProfile() {
     name: "",
     email: "",
   });
-  
+
   // Subscription management state
   const [subscriptionView, setSubscriptionView] = useState("overview");
   const [currentPlan, setCurrentPlan] = useState("free");
-  
+
   const router = useRouter();
-  
+
   // Onboarding system
   const {
     onboardingState,
@@ -54,11 +54,18 @@ export default function UserProfile() {
     startOnboarding,
     startFeatureTour,
   } = useOnboarding(user?.uid);
-  
+
+  useEffect(() => {
+    if (!user && !loading) {
+      router.push("/login");
+    }
+  }, [user, loading]);
+
+  // Return early if user is not authenticated and we're not loading
   if (!user && !loading) {
-    router.push("/login");
+    return null;
   }
-  
+
   useEffect(() => {
     async function fetchUserData() {
       if (user) {
@@ -68,7 +75,7 @@ export default function UserProfile() {
           name: data?.name || "",
           email: data?.email || "",
         });
-        
+
         // Set current plan from user data
         if (data?.subscription?.plan) {
           setCurrentPlan(data.subscription.plan);
@@ -97,38 +104,38 @@ export default function UserProfile() {
 
   // Subscription management handlers
   const handlePlanChange = (action) => {
-    if (action === 'upgrade') {
-      setSubscriptionView('upgrade');
-    } else if (action === 'downgrade') {
-      setSubscriptionView('downgrade');
+    if (action === "upgrade") {
+      setSubscriptionView("upgrade");
+    } else if (action === "downgrade") {
+      setSubscriptionView("downgrade");
     }
   };
 
   const handlePlanUpgrade = async (planId, billingCycle) => {
     try {
       // Here you would integrate with Stripe
-      toast.info('Przekierowywanie do płatności...');
+      toast.info("Przekierowywanie do płatności...");
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      await new Promise((resolve) => setTimeout(resolve, 2000));
       setCurrentPlan(planId);
-      setSubscriptionView('overview');
-      toast.success('Plan został zaktualizowany pomyślnie!');
+      setSubscriptionView("overview");
+      toast.success("Plan został zaktualizowany pomyślnie!");
     } catch (error) {
-      toast.error('Błąd podczas aktualizacji planu');
+      toast.error("Błąd podczas aktualizacji planu");
     }
   };
 
   const handlePlanDowngrade = async (planId) => {
     try {
       // Here you would integrate with Stripe
-      toast.info('Przetwarzanie zmiany planu...');
+      toast.info("Przetwarzanie zmiany planu...");
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      await new Promise((resolve) => setTimeout(resolve, 2000));
       setCurrentPlan(planId);
-      setSubscriptionView('overview');
-      toast.success('Plan został zmieniony pomyślnie!');
+      setSubscriptionView("overview");
+      toast.success("Plan został zmieniony pomyślnie!");
     } catch (error) {
-      toast.error('Błąd podczas zmiany planu');
+      toast.error("Błąd podczas zmiany planu");
     }
   };
 
@@ -138,13 +145,13 @@ export default function UserProfile() {
 
   const handlePlanSelect = (planId) => {
     if (planId === currentPlan) {
-      toast.info('To jest Twój obecny plan');
+      toast.info("To jest Twój obecny plan");
       return;
     }
-    if (planId === 'free') {
+    if (planId === "free") {
       handlePlanDowngrade(planId);
     } else {
-      handlePlanUpgrade(planId, 'monthly');
+      handlePlanUpgrade(planId, "monthly");
     }
   };
 
@@ -154,43 +161,39 @@ export default function UserProfile() {
 
   const renderSubscriptionContent = () => {
     switch (subscriptionView) {
-      case 'overview':
+      case "overview":
         return (
           <SubscriptionOverview
             userData={userData}
             onPlanChange={handlePlanChange}
           />
         );
-      case 'upgrade':
+      case "upgrade":
         return (
           <PlanUpgrade
             currentPlan={currentPlan}
             onUpgrade={handlePlanUpgrade}
-            onCancel={() => setSubscriptionView('overview')}
+            onCancel={() => setSubscriptionView("overview")}
           />
         );
-      case 'downgrade':
+      case "downgrade":
         return (
           <PlanDowngrade
             currentPlan={currentPlan}
             onDowngrade={handlePlanDowngrade}
-            onCancel={() => setSubscriptionView('overview')}
+            onCancel={() => setSubscriptionView("overview")}
           />
         );
-      case 'payment':
+      case "payment":
         return (
           <PaymentIntegration
             userData={userData}
             onPaymentMethodUpdate={() => {}}
           />
         );
-      case 'billing':
-        return (
-          <BillingHistory
-            userData={userData}
-          />
-        );
-      case 'comparison':
+      case "billing":
+        return <BillingHistory userData={userData} />;
+      case "comparison":
         return (
           <PlanComparison
             currentPlan={currentPlan}
@@ -270,7 +273,7 @@ export default function UserProfile() {
             {/* Shine effect */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full animate-shine-slow"></div>
             <div className="relative">
-              <Onboarding 
+              <Onboarding
                 userData={userData}
                 onboardingState={onboardingState}
                 onComplete={completeOnboarding}
@@ -289,37 +292,37 @@ export default function UserProfile() {
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full animate-shine-slow"></div>
             <div className="relative">
               {/* Subscription Navigation */}
-              {subscriptionView !== 'overview' && (
+              {subscriptionView !== "overview" && (
                 <div className="mb-6">
                   <button
-                    onClick={() => setSubscriptionView('overview')}
+                    onClick={() => setSubscriptionView("overview")}
                     className="flex items-center gap-2 text-orange-600 hover:text-orange-700 font-medium"
                   >
                     ← Powrót do przeglądu
                   </button>
                 </div>
               )}
-              
+
               {/* Subscription Content */}
               {renderSubscriptionContent()}
-              
+
               {/* Quick Navigation for Overview */}
-              {subscriptionView === 'overview' && (
+              {subscriptionView === "overview" && (
                 <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
                   <button
-                    onClick={() => setSubscriptionView('payment')}
+                    onClick={() => setSubscriptionView("payment")}
                     className="p-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg font-semibold hover:from-blue-600 hover:to-blue-700 transition-all duration-300"
                   >
                     Zarządzanie płatnościami
                   </button>
                   <button
-                    onClick={() => setSubscriptionView('billing')}
+                    onClick={() => setSubscriptionView("billing")}
                     className="p-4 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg font-semibold hover:from-green-600 hover:to-green-700 transition-all duration-300"
                   >
                     Historia rozliczeń
                   </button>
                   <button
-                    onClick={() => setSubscriptionView('comparison')}
+                    onClick={() => setSubscriptionView("comparison")}
                     className="p-4 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-lg font-semibold hover:from-purple-600 hover:to-purple-700 transition-all duration-300"
                   >
                     Porównanie planów
@@ -346,7 +349,9 @@ export default function UserProfile() {
 
       {/* Onboarding Components */}
       <OnboardingWizard
-        isVisible={onboardingState.isVisible && !onboardingState.showFeatureTour}
+        isVisible={
+          onboardingState.isVisible && !onboardingState.showFeatureTour
+        }
         userData={userData}
         onComplete={completeOnboarding}
         onSkip={skipOnboarding}

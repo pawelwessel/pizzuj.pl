@@ -1,5 +1,26 @@
-# Allow main domain
 User-agent: *
 Allow: /
 
-Disallow: /api
+# Sitemap
+Sitemap: https://pizzuj.pl/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /user/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
+
+# Allow important pages
+Allow: /pizza/
+Allow: /najlepsze-pizzerie-na-dowoz/
+Allow: /blog/
+Allow: /about/
+Allow: /register/
+Allow: /login/
+Allow: /food-cost-calculator/
+Allow: /reklama-dla-pizzerii/
+Allow: /affiliate/
