@@ -29,7 +29,7 @@ export const Footer = () => {
       href: "https://www.facebook.com/pizzuj",
     },
     { title: "O nas", href: "/about" },
-    { title: "System afiliacyjny", href: "/affiliate" },
+    { title: "System zaproszeń", href: "/affiliate" },
     { title: "Status strony", href: "/website-status" },
     { title: "Admin", href: "/admin-login" },
   ];
@@ -69,18 +69,14 @@ export const Footer = () => {
                   href="tel:+48721417154"
                   className="group flex items-center gap-3 !text-gray-300 hover:text-primary-300 transition-colors duration-200"
                 >
-                  <span className="">
-                    📞
-                  </span>
+                  <span className="">📞</span>
                   <span className="">+48 721 417 154</span>
                 </a>
                 <a
                   href="mailto:wesiudev@gmail.com"
                   className="group flex items-center gap-3 !text-gray-300 hover:text-primary-300 transition-colors duration-200"
                 >
-                  <span className="">
-                    ✉️
-                  </span>
+                  <span className="">✉️</span>
                   <span className="">wesiudev@gmail.com</span>
                 </a>
               </div>
@@ -138,14 +134,18 @@ export const Footer = () => {
                 <p className="font-cocosharp !text-gray-400 text-sm lg:text-base">
                   &copy; 2025 Pizzuj.pl - Wszelkie prawa zastrzeżone
                 </p>
-                <p className={`!text-gray-500 text-xs lg:text-sm mt-1 ${ptSans.className}`}>
+                <p
+                  className={`!text-gray-500 text-xs lg:text-sm mt-1 ${ptSans.className}`}
+                >
                   Stworzone z ❤️ dla miłośników pizzy
                 </p>
               </div>
 
               {/* Social links or additional info */}
               <div className="flex items-center gap-4">
-                <div className={`text-gray-500 text-xs lg:text-sm ${ptSans.className}`}>
+                <div
+                  className={`text-gray-500 text-xs lg:text-sm ${ptSans.className}`}
+                >
                   Śledź nas:
                 </div>
                 <Link
@@ -155,7 +155,7 @@ export const Footer = () => {
                   className="w-10 h-10 rounded-full bg-gray-700 hover:bg-primary-600 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
                 >
                   <span className="!text-gray-300 group-hover:!text-white text-lg">
-                    <FaFacebook/>
+                    <FaFacebook />
                   </span>
                 </Link>
                 <Link
@@ -163,19 +163,19 @@ export const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full bg-gray-700 hover:bg-primary-600 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
-                  >
+                >
                   <span className="!text-gray-300 group-hover:!text-white text-lg">
-                    <FaTiktok/>
+                    <FaTiktok />
                   </span>
                 </Link>
-                  <Link
+                <Link
                   href="https://www.instagram.com/pizzuj_pl/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full bg-gray-700 hover:bg-primary-600 flex items-center justify-center transition-all duration-300 hover:scale-110 group"
                 >
                   <span className="!text-gray-300 group-hover:!text-white text-lg">
-                    <FaInstagram/>
+                    <FaInstagram />
                   </span>
                 </Link>
               </div>

@@ -2,6 +2,10 @@
 import React, { useState, useRef, useCallback, useEffect } from "react";
 import { FaMapMarkerAlt, FaTimes, FaMap, FaSearch } from "react-icons/fa";
 import { GoogleMap, Marker } from "@react-google-maps/api";
+import {
+  loadGoogleMapsAPI,
+  initGoogleMapsServices,
+} from "../../lib/googleMapsLoader";
 
 const mapContainerStyle = {
   width: "100%",
@@ -21,11 +25,11 @@ const mapOptions = {
   fullscreenControl: false,
 };
 
-const LocationSearchInput = ({ 
-  value, 
-  onChange, 
+const LocationSearchInput = ({
+  value,
+  onChange,
   onLocationSelect,
-  placeholder = "Kliknij na mapę, aby wybrać lokalizację..." 
+  placeholder = "Kliknij na mapę, aby wybrać lokalizację...",
 }) => {
   const [searchInput, setSearchInput] = useState(value || "");
   const [showMap, setShowMap] = useState(false);
@@ -41,59 +45,43 @@ const LocationSearchInput = ({
 
   // Initialize Google Maps services
   const initServices = useCallback(() => {
-    if (typeof window !== 'undefined' && window.google && window.google.maps) {
-      try {
-        if (!geocoder.current) {
-          geocoder.current = new window.google.maps.Geocoder();
-        }
-        if (!autocompleteService.current) {
-          autocompleteService.current = new window.google.maps.places.AutocompleteService();
-        }
-      } catch (error) {
-        console.error('Error initializing Google Maps services:', error);
-      }
+    const services = initGoogleMapsServices();
+    if (services) {
+      geocoder.current = services.geocoder;
+      autocompleteService.current = services.autocompleteService;
     }
   }, []);
 
   useEffect(() => {
-    // Load Google Maps API dynamically
-    const loadGoogleMapsAPI = () => {
-      if (typeof window !== 'undefined' && !window.google) {
-        const script = document.createElement('script');
-        script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_FIREBASE_MAP_KEY}&libraries=places`;
-        script.async = true;
-        script.defer = true;
-        script.onload = () => {
-          initServices();
-        };
-        script.onerror = () => {
-          console.error('Failed to load Google Maps API');
-        };
-        document.head.appendChild(script);
-      } else if (window.google) {
+    // Load Google Maps API using centralized loader
+    loadGoogleMapsAPI()
+      .then(() => {
         initServices();
-      }
-    };
-
-    loadGoogleMapsAPI();
+      })
+      .catch((error) => {
+        console.error("Failed to load Google Maps API:", error);
+      });
   }, [initServices]);
 
   // Handle search input changes
   const handleSearchInputChange = (e) => {
     const value = e.target.value;
     setSearchInput(value);
-    
+
     if (value.length > 2 && autocompleteService.current) {
       setIsSearching(true);
       autocompleteService.current.getPlacePredictions(
-        { 
+        {
           input: value,
-          componentRestrictions: { country: 'pl' },
-          types: ['geocode']
+          componentRestrictions: { country: "pl" },
+          types: ["geocode"],
         },
         (predictions, status) => {
           setIsSearching(false);
-          if (status === window.google.maps.places.PlacesServiceStatus.OK && predictions) {
+          if (
+            status === window.google.maps.places.PlacesServiceStatus.OK &&
+            predictions
+          ) {
             setPredictions(predictions);
             setShowPredictions(true);
           } else {
@@ -114,126 +102,136 @@ const LocationSearchInput = ({
 
     setIsLoading(true);
     setShowPredictions(false);
-    
+
     try {
-      geocoder.current.geocode({ placeId: prediction.place_id }, (results, status) => {
-        setIsLoading(false);
-        if (status === 'OK' && results && results[0]) {
-          const place = results[0];
-          const location = place.geometry.location;
-          
-          // Extract address components
-          const addressComponents = place.address_components;
-          let city = '';
-          
-          addressComponents.forEach(component => {
-            const types = component.types;
-            if (types.includes('locality')) {
-              city = component.long_name;
+      geocoder.current.geocode(
+        { placeId: prediction.place_id },
+        (results, status) => {
+          setIsLoading(false);
+          if (status === "OK" && results && results[0]) {
+            const place = results[0];
+            const location = place.geometry.location;
+
+            // Extract address components
+            const addressComponents = place.address_components;
+            let city = "";
+
+            addressComponents.forEach((component) => {
+              const types = component.types;
+              if (types.includes("locality")) {
+                city = component.long_name;
+              }
+            });
+
+            const exactAddress = place.formatted_address;
+            const lat = location.lat();
+            const lng = location.lng();
+
+            // Update map center and selected location
+            const newLocation = { lat, lng };
+            setSelectedLocation(newLocation);
+            setMapCenter(newLocation);
+
+            // Update the form with location data
+            const locationData = {
+              address: exactAddress,
+              lat,
+              lng,
+              exactAddress,
+              city,
+            };
+
+            setSearchInput(exactAddress);
+            onChange(exactAddress);
+
+            if (onLocationSelect) {
+              onLocationSelect(locationData);
             }
-          });
-
-          const exactAddress = place.formatted_address;
-          const lat = location.lat();
-          const lng = location.lng();
-
-          // Update map center and selected location
-          const newLocation = { lat, lng };
-          setSelectedLocation(newLocation);
-          setMapCenter(newLocation);
-
-          // Update the form with location data
-          const locationData = {
-            address: exactAddress,
-            lat,
-            lng,
-            exactAddress,
-            city
-          };
-
-          setSearchInput(exactAddress);
-          onChange(exactAddress);
-          
-          if (onLocationSelect) {
-            onLocationSelect(locationData);
           }
         }
-      });
+      );
     } catch (error) {
-      console.error('Error getting place details:', error);
+      console.error("Error getting place details:", error);
       setIsLoading(false);
     }
   };
 
   // Handle map click
-  const handleMapClick = useCallback(async (event) => {
-    if (!geocoder.current) return;
+  const handleMapClick = useCallback(
+    async (event) => {
+      if (!geocoder.current) return;
 
-    setIsLoading(true);
-    const location = {
-      lat: event.latLng.lat(),
-      lng: event.latLng.lng(),
-    };
+      setIsLoading(true);
+      const location = {
+        lat: event.latLng.lat(),
+        lng: event.latLng.lng(),
+      };
 
-    setSelectedLocation(location);
-    setMapCenter(location);
+      setSelectedLocation(location);
+      setMapCenter(location);
 
-    try {
-      geocoder.current.geocode({ location }, (results, status) => {
-        setIsLoading(false);
-        if (status === 'OK' && results && results[0]) {
-          const place = results[0];
-          const exactAddress = place.formatted_address;
-          
-          // Extract address components
-          const addressComponents = place.address_components;
-          let city = '';
-          
-          addressComponents.forEach(component => {
-            const types = component.types;
-            if (types.includes('locality')) {
-              city = component.long_name;
+      try {
+        geocoder.current.geocode({ location }, (results, status) => {
+          setIsLoading(false);
+          if (status === "OK" && results && results[0]) {
+            const place = results[0];
+            const exactAddress = place.formatted_address;
+
+            // Extract address components
+            const addressComponents = place.address_components;
+            let city = "";
+
+            addressComponents.forEach((component) => {
+              const types = component.types;
+              if (types.includes("locality")) {
+                city = component.long_name;
+              }
+            });
+
+            const locationData = {
+              address: exactAddress,
+              lat: location.lat,
+              lng: location.lng,
+              exactAddress,
+              city,
+            };
+
+            setSearchInput(exactAddress);
+            onChange(exactAddress);
+
+            if (onLocationSelect) {
+              onLocationSelect(locationData);
             }
-          });
+          } else {
+            console.error("Geocoder failed due to:", status);
+            // Use coordinates as fallback
+            const locationData = {
+              address: `Lat: ${location.lat.toFixed(
+                6
+              )}, Lng: ${location.lng.toFixed(6)}`,
+              lat: location.lat,
+              lng: location.lng,
+              exactAddress: `Lat: ${location.lat.toFixed(
+                6
+              )}, Lng: ${location.lng.toFixed(6)}`,
+              city: "",
+            };
 
-          const locationData = {
-            address: exactAddress,
-            lat: location.lat,
-            lng: location.lng,
-            exactAddress,
-            city
-          };
+            setSearchInput(locationData.address);
+            onChange(locationData.address);
 
-          setSearchInput(exactAddress);
-          onChange(exactAddress);
-          
-          if (onLocationSelect) {
-            onLocationSelect(locationData);
+            if (onLocationSelect) {
+              onLocationSelect(locationData);
+            }
           }
-        } else {
-          console.error('Geocoder failed due to:', status);
-          // Use coordinates as fallback
-          const locationData = {
-            address: `Lat: ${location.lat.toFixed(6)}, Lng: ${location.lng.toFixed(6)}`,
-            lat: location.lat,
-            lng: location.lng,
-            exactAddress: `Lat: ${location.lat.toFixed(6)}, Lng: ${location.lng.toFixed(6)}`,
-            city: ''
-          };
-          
-          setSearchInput(locationData.address);
-          onChange(locationData.address);
-          
-          if (onLocationSelect) {
-            onLocationSelect(locationData);
-          }
-        }
-      });
-    } catch (error) {
-      console.error('Error geocoding clicked location:', error);
-      setIsLoading(false);
-    }
-  }, [geocoder, onChange, onLocationSelect]);
+        });
+      } catch (error) {
+        console.error("Error geocoding clicked location:", error);
+        setIsLoading(false);
+      }
+    },
+    [geocoder, onChange, onLocationSelect]
+  );
 
   // Handle manual address input
   const handleManualAddress = () => {
@@ -243,9 +241,9 @@ const LocationSearchInput = ({
         lat: null,
         lng: null,
         exactAddress: searchInput,
-        city: ''
+        city: "",
       };
-      
+
       if (onLocationSelect) {
         onLocationSelect(locationData);
       }
@@ -300,7 +298,9 @@ const LocationSearchInput = ({
           <div className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
             {/* Header */}
             <div className="p-4 border-b border-gray-200 flex justify-between items-center">
-              <h3 className="text-lg font-semibold text-gray-800">Wybierz lokalizację</h3>
+              <h3 className="text-lg font-semibold text-gray-800">
+                Wybierz lokalizację
+              </h3>
               <button
                 onClick={handleCloseMap}
                 className="text-gray-500 hover:text-gray-700 transition-colors"
@@ -343,8 +343,12 @@ const LocationSearchInput = ({
                       <div className="flex items-center">
                         <FaMapMarkerAlt className="h-4 w-4 text-orange-500 mr-2 flex-shrink-0" />
                         <div>
-                          <div className="font-medium text-gray-900">{prediction.structured_formatting.main_text}</div>
-                          <div className="text-sm text-gray-500">{prediction.structured_formatting.secondary_text}</div>
+                          <div className="font-medium text-gray-900">
+                            {prediction.structured_formatting.main_text}
+                          </div>
+                          <div className="text-sm text-gray-500">
+                            {prediction.structured_formatting.secondary_text}
+                          </div>
                         </div>
                       </div>
                     </button>
@@ -357,7 +361,10 @@ const LocationSearchInput = ({
             <div className="p-4 border-b border-gray-200 bg-blue-50">
               <div className="flex items-center gap-2 text-blue-700">
                 <FaMapMarkerAlt className="h-4 w-4" />
-                <span className="text-sm font-medium">Kliknij na mapę lub wyszukaj adres, aby wybrać lokalizację pizzerii</span>
+                <span className="text-sm font-medium">
+                  Kliknij na mapę lub wyszukaj adres, aby wybrać lokalizację
+                  pizzerii
+                </span>
               </div>
             </div>
 
@@ -368,7 +375,9 @@ const LocationSearchInput = ({
                   <div className="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center z-10">
                     <div className="flex flex-col items-center gap-2">
                       <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-orange-500"></div>
-                      <span className="text-sm text-gray-600">Ładowanie lokalizacji...</span>
+                      <span className="text-sm text-gray-600">
+                        Ładowanie lokalizacji...
+                      </span>
                     </div>
                   </div>
                 )}
@@ -385,29 +394,30 @@ const LocationSearchInput = ({
                   {selectedLocation && <Marker position={selectedLocation} />}
                 </GoogleMap>
               </div>
-              
+
               {/* Selected location info */}
               {selectedLocation && (
                 <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg">
                   <div className="flex items-center gap-2 text-green-700">
                     <FaMapMarkerAlt className="h-4 w-4" />
-                    <span className="text-sm font-medium">Wybrana lokalizacja:</span>
+                    <span className="text-sm font-medium">
+                      Wybrana lokalizacja:
+                    </span>
                   </div>
                   <div className="mt-1 text-sm text-green-600">
-                    {searchInput || `Lat: ${selectedLocation.lat.toFixed(6)}, Lng: ${selectedLocation.lng.toFixed(6)}`}
+                    {searchInput ||
+                      `Lat: ${selectedLocation.lat.toFixed(
+                        6
+                      )}, Lng: ${selectedLocation.lng.toFixed(6)}`}
                   </div>
                 </div>
               )}
-
-              
             </div>
           </div>
         </div>
       )}
-
-      
     </div>
   );
 };
 
-export default LocationSearchInput; 
+export default LocationSearchInput;

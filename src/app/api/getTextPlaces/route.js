@@ -46,11 +46,6 @@ export async function POST(req) {
         };
       })
     );
-    console.log({
-      results: detailedPlaces,
-      status: placesResponse.status,
-      next_page_token: placesResponse.next_page_token,
-    })
     return NextResponse.json({
       results: detailedPlaces,
       status: placesResponse.status,

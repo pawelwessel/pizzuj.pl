@@ -13,9 +13,7 @@ export const ptSans = PT_Sans({
 export default async function RootLayout({ children }) {
   return (
     <html lang="pl" className="overflow-x-hidden">
-      <body
-        className={`antialiased overflow-x-hidden w-full ${ptSans.className}`}
-      >
+      <body className={`font-gotham antialiased overflow-x-hidden w-full`}>
         {/* Enhanced geometric background shapes */}
         <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
           {/* Animated floating shapes */}

@@ -1,17 +1,8 @@
 import { notFound } from "next/navigation";
-import ArrayWithPlaces from "../../../components/ArrayWithPlaces";
-import AdvertiseYourself from "../../../components/AdvertiseYourself";
-import CtaButton from "../../../components/CtaButton";
 import { createLinkFromText } from "../../../lib/createLinkFromText";
 import { getCityInfo } from "../../../utils/cityInflect";
-import {
-  HeroSection,
-  RankingSection,
-  PromotionSection,
-  StatsSection,
-  CTASection,
-  CityQASection,
-} from "../../../components/CityPizzeriaPage";
+import ClientWrapper from "../../../components/CityPizzeriaPage/ClientWrapper";
+import LegacyWrapper from "../../../components/CityPizzeriaPage/LegacyWrapper";
 
 export const dynamic = "force-dynamic";
 
@@ -20,6 +11,27 @@ async function fetchPizzerias(citySlug) {
   const response = await fetch(`${baseUrl}/api/pizzeria/${citySlug}`);
   if (!response.ok) return null;
   return response.json();
+}
+
+// New function to fetch pizzerias from getTextPlaces API
+async function fetchTextPlaces(cityName) {
+  try {
+    const baseUrl = process.env.NEXT_PUBLIC_LINK || "http://localhost:3000";
+    const response = await fetch(`${baseUrl}/api/getTextPlaces`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ search: cityName }),
+    });
+
+    if (!response.ok) return null;
+    const data = await response.json();
+    return data.results || [];
+  } catch (error) {
+    console.error("Error fetching text places:", error);
+    return null;
+  }
 }
 
 // JSON data for all text content
@@ -90,11 +102,6 @@ function getPageContent(cityInfo) {
       title: `Ranking pizzerii na dowóz w ${cityInfo.locative}`,
       subtitle:
         "Zobacz listę najlepszych pizzerii oferujących dowóz w Twoim mieście. Zamów pizzę online i ciesz się smakiem bez wychodzenia z domu!",
-      emptyState: {
-        title: "Brak danych o pizzeriach w tym mieście...",
-        subtitle:
-          "Sprawdź inne miasta lub dodaj swoją pizzerię do naszego rankingu!",
-      },
       showAllButton: "Zobacz wszystkie pizzerie",
     },
     promotion: {
@@ -207,8 +214,32 @@ function getPageContent(cityInfo) {
 export default async function Page({ params }) {
   const { city } = await params;
   const citySlug = createLinkFromText(city);
-  const pizzerias = await fetchPizzerias(citySlug);
-  if (!pizzerias || pizzerias.error) return notFound();
+  let pizzerias = await fetchPizzerias(citySlug);
+
+  // If no pizzerias found, try to get from getTextPlaces API
+  if (!pizzerias || pizzerias.error || pizzerias.length === 0) {
+    const textPlaces = await fetchTextPlaces(city);
+    if (textPlaces && textPlaces.length > 0) {
+      // Transform getTextPlaces data to match expected structure
+      pizzerias = textPlaces.slice(0, 3).map((place) => ({
+        name: place.name,
+        address: place.address || place.formatted_address,
+        city: place.city,
+        phone: place.details?.formatted_phone_number,
+        photos: place.details?.photos
+          ? place.details.photos.map(
+              (photo) =>
+                `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=${photo.photo_reference}&key=${process.env.NEXT_PUBLIC_FIREBASE_MAP_KEY}`
+            )
+          : [],
+        rating: place.details?.rating,
+        opening_hours: place.details?.opening_hours,
+        place_id: place.place_id,
+      }));
+    } else {
+      return notFound();
+    }
+  }
 
   // Get city info with proper inflection
   const cityInfo = getCityInfo(citySlug);
@@ -218,43 +249,16 @@ export default async function Page({ params }) {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <HeroSection city={city} content={pageContent.hero} />
-
-      {/* Stats Section */}
-      <StatsSection
+      {/* Client-side rendered components */}
+      <ClientWrapper
         city={city}
         pizzerias={pizzerias}
-        content={pageContent.stats}
+        pageContent={pageContent}
+        cityInfo={cityInfo}
       />
-
-      {/* Ranking Section */}
-      <RankingSection
-        city={city}
-        pizzerias={pizzerias}
-        content={pageContent.ranking}
-      />
-
-      {/* Promotion Section */}
-      <PromotionSection city={city} content={pageContent.promotion} />
-
-      {/* CTA Section */}
-      <CTASection city={city} content={pageContent.cta} />
-
-      {/* Q&A Section */}
-      <CityQASection cityInfo={cityInfo} content={pageContent.qa} />
 
       {/* Legacy components for backward compatibility */}
-      {pizzerias && pizzerias.length > 0 && (
-        <div className="py-16 bg-white">
-          <div className="container mx-auto px-6">
-            <ArrayWithPlaces placesData={pizzerias} />
-          </div>
-        </div>
-      )}
-
-      <AdvertiseYourself />
-      <CtaButton />
+      <LegacyWrapper pizzerias={pizzerias} />
     </div>
   );
 }

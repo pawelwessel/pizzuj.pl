@@ -30,7 +30,7 @@ export default function City({ city }) {
     <div>
       <h1>Pizza Places in {city}</h1>
       <div>
-        <h2 onClick={() => console.log(places)}>Google Places Data:</h2>
+        <h2>Google Places Data:</h2>
         <ul>
           {places.map((place, index) => (
             <li key={index}>{place.name}</li> // Assuming each place has a `name` property

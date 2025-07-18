@@ -1,5 +1,9 @@
 import React, { useState, useRef, useCallback, useEffect } from "react";
 import { GoogleMap, Marker } from "@react-google-maps/api";
+import {
+  loadGoogleMapsAPI,
+  initGoogleMapsServices,
+} from "../../lib/googleMapsLoader";
 
 const mapContainerStyle = {
   width: "100%",
@@ -34,14 +38,23 @@ export const HomeMapInput = ({
 
   // Initialize Geocoder and AutocompleteService
   const initGeocoder = useCallback(() => {
-    if (!geocoder.current) {
-      geocoder.current = new google.maps.Geocoder();
-    }
-    if (!autocompleteService.current) {
-      autocompleteService.current =
-        new google.maps.places.AutocompleteService();
+    const services = initGoogleMapsServices();
+    if (services) {
+      geocoder.current = services.geocoder;
+      autocompleteService.current = services.autocompleteService;
     }
   }, []);
+
+  // Load Google Maps API
+  useEffect(() => {
+    loadGoogleMapsAPI()
+      .then(() => {
+        initGeocoder();
+      })
+      .catch((error) => {
+        console.error("Failed to load Google Maps API:", error);
+      });
+  }, [initGeocoder]);
 
   async function getPlace(search) {
     if (search) {

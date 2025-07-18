@@ -1,12 +1,8 @@
 "use client";
-import { useState, useCallback } from "react";
-import {
-  GoogleMap,
-  useJsApiLoader,
-  Marker,
-  DirectionsRenderer,
-} from "@react-google-maps/api";
+import { useState, useCallback, useEffect } from "react";
+import { GoogleMap, Marker, DirectionsRenderer } from "@react-google-maps/api";
 import { FaTimes } from "react-icons/fa";
+import { loadGoogleMapsAPI } from "../../lib/googleMapsLoader";
 
 const mapContainerStyle = {
   width: "100%",
@@ -21,11 +17,17 @@ const options = {
 export default function Navigation({ address, isOpen, onClose }) {
   const [directions, setDirections] = useState(null);
   const [map, setMap] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
-  const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: process.env.NEXT_PUBLIC_FIREBASE_MAP_KEY,
-    libraries: ["places"],
-  });
+  useEffect(() => {
+    loadGoogleMapsAPI()
+      .then(() => {
+        setIsLoaded(true);
+      })
+      .catch((error) => {
+        console.error("Failed to load Google Maps API:", error);
+      });
+  }, []);
 
   const onLoad = useCallback((map) => {
     const bounds = new window.google.maps.LatLngBounds();

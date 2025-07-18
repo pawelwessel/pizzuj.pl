@@ -199,16 +199,7 @@
     "dative": "Rzeszowowi",
     "instrumental": "Rzeszowem"
   },
-  {
-    "name": "Gliwice",
-    "slug": "gliwice",
-    "nominative": "Gliwice",
-    "accusative": "Gliwice",
-    "locative": "Gliwice",
-    "genitive": "Gliwice",
-    "dative": "Gliwice",
-    "instrumental": "Gliwice"
-  },
+
   {
     "name": "Zabrze",
     "slug": "zabrze",
@@ -218,16 +209,6 @@
     "genitive": "Zabrza",
     "dative": "Zabrzu",
     "instrumental": "Zabrzem"
-  },
-  {
-    "name": "Bytom",
-    "slug": "bytom",
-    "nominative": "Bytom",
-    "accusative": "Bytom",
-    "locative": "Bytomiu",
-    "genitive": "Bytomia",
-    "dative": "Bytomiowi",
-    "instrumental": "Bytomiem"
   },
   {
     "name": "Bielsko-Biała",

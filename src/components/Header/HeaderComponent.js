@@ -83,7 +83,7 @@ export default function HeaderComponent({
               href="/reklama-dla-pizzerii"
               className="relative px-4 py-2 rounded-xl font-medium text-black hover:text-primary-600 hover:bg-primary-50 transition-all duration-200 group w-max !not-italic"
             >
-              <span className="relative z-10">Dla restauracji</span>
+              <span className="relative z-10">Reklama pizzerii</span>
               <div className="absolute inset-0 bg-gradient-to-r from-primary-400 to-primary-600 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-200"></div>
             </Link>
             <Link
@@ -97,7 +97,7 @@ export default function HeaderComponent({
               href="/affiliate"
               className="relative px-4 py-2 rounded-xl font-medium text-black hover:text-primary-600 hover:bg-primary-50 transition-all duration-200 group w-max !not-italic"
             >
-              <span className="relative z-10">System afiliacyjny</span>
+              <span className="relative z-10">System zaproszeń</span>
               <div className="absolute inset-0 bg-gradient-to-r from-primary-400 to-primary-600 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-200"></div>
             </Link>
             <Link
